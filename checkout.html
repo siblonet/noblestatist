@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="fr-FR">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/animate.min.css">
+    <link rel="stylesheet" href="assets/css/boxicons.min.css">
+    <link rel="stylesheet" href="assets/css/flaticon.css">
+    <link rel="stylesheet" href="assets/css/magnific-popup.min.css">
+    <link rel="stylesheet" href="assets/css/nice-select.min.css">
+    <link rel="stylesheet" href="assets/css/slick.min.css">
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/css/meanmenu.min.css">
+    <link rel="stylesheet" href="assets/css/rangeSlider.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/dark.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <title>Commande</title>
+    <link rel="icon" type="image/png" href="assets/img/favicona.png">
+</head>
+
+<body>
+    <div class="page-title-area">
+        <div class="container">
+            <div class="page-title-content">
+                <a class="navbar-brand" href="index.html">
+                    <img src="assets/img/logo.jpg" alt="logo" width="90" , height="55">
+                </a>
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li>Validation</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <section class="checkout-area ptb-100">
+        <div class="container">
+            <div class="user-actions">
+                <i class="bx bx-log-in"></i>
+                <span>Client déjà enregistré ? <a href="login.html">Cliquez ici pour vous connecter</a></span>
+            </div>
+            <form>
+                <div class="row">
+                    <div class="col-lg-6 col-md-12">
+                        <div class="billing-details">
+                            <h3 class="title">Détails de facturation</h3>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="form-group">
+                                        <label>Prénom <span class="required">*</span></label>
+                                        <input type="text" class="form-control" id="prenomValue">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="form-group">
+                                        <label>Nom<span class="required">*</span></label>
+                                        <input type="text" class="form-control" id="nomValue">
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-md-6">
+                                    <div class="form-group">
+                                        <label>Ville <span class="required">*</span></label>
+                                        <input type="text" class="form-control" id="villeValue">
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-md-6">
+                                    <div class="form-group">
+                                        <label>Commune <span class="required">*</span></label>
+                                        <input type="text" class="form-control" id="communeValue">
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-md-6">
+                                    <div class="form-group">
+                                        <label>Adresse précis<span class="required">*</span></label>
+                                        <input type="text" class="form-control" id="adresseValue">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="form-group">
+                                        <label>Mot de passe <span class="required">*</span></label>
+                                        <input type="password" class="form-control" id="motValue">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="form-group">
+                                        <label>Confirmez le passe <span class="required">*</span></label>
+                                        <input type="password" class="form-control" id="confirmezValue">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="form-group">
+                                        <label>Adresse e-mail <span class="required">*</span></label>
+                                        <input type="email" class="form-control" id="emailValue">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="form-group">
+                                        <label>Téléphone <span class="required">*</span></label>
+                                        <input type="tel" class="form-control" id="telephoneValue">
+                                    </div>
+                                </div>
+                                <!--<div class="col-lg-12 col-md-12">
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="create-an-account">
+                                        <label class="form-check-label" for="create-an-account">Créer un compte
+                                            ?</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-md-12">
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="ship-different-address">
+                                        <label class="form-check-label" for="ship-different-address">Expédier à une
+                                            adresse différente ?</label>
+                                    </div>
+                                </div>-->
+                                <div class="col-lg-12 col-md-12">
+                                    <div class="form-group">
+                                        <textarea name="notes" id="notes" cols="30" rows="5"
+                                            placeholder="Notes de commande" class="form-control"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="order-details">
+                            <h3 class="title">Votre commande</h3>
+                            <div class="order-table table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Nom du produit</th>
+                                            <th scope="col">Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="checkoutpanier">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <br>
+                            <br>
+                            <div class="order-table table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Type</th>
+                                            <th scope="col">Coût</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="toteauxche">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="payment-box">
+
+                                <div class="payment-method">
+
+                                    <p>
+                                        <!--<input type="radio" id="direct-bank-transfer" name="radio-group" checked>
+                                        <label for="direct-bank-transfer">Virement bancaire direct</label>-->
+                                        Les modes de paiement en ligne tels que
+                                        MOMO, OMoney, Moov Money et Wave,
+                                        ainsi que les cartes de crédit,
+                                        seront bientôt disponibles.
+                                        Pour l'instant, vous payez à la livraison du colis.
+                                    </p>
+                                    <!--<p>
+                                        <input type="radio" id="paypal" name="radio-group">
+                                        <label for="paypal">PayPal</label>
+                                    </p>-->
+                                    <p>
+                                        <input type="radio" id="cash-on-delivery" name="radio-group" checked>
+                                        <label for="cash-on-delivery">Paiement à la livraison</label>
+                                    </p>
+                                </div>
+                                <a href="track-order.html" class="default-btn">Passer
+                                    la commande</a>
+                                <!--<a style="cursor: pointer !important;" class="default-btn" onclick="sendCommen()">Passer
+                                    la commande</a>-->
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+
+
+
+
+    <footer class="footer-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="single-footer-widget">
+                        <h3>À propos du magasin</h3>
+                        <div class="about-the-store">
+                            <p>L'une des activités les plus populaires sur le Web est le shopping.</p>
+                            <ul class="footer-contact-info">
+                                <li><i class="bx bx-map"></i> <a href="#" target="_blank">Abidjan, Cocody, Riviera II
+                                        (CI)</a></li>
+                                <li><i class="bx bx-phone-call"></i> <a href="tel:+2250748643884">+225 0748 64 38 84</a>
+                                </li>
+                                <li><i class="bx bx-envelope"></i> <a
+                                        href="https://templates.hibootstrap.com/cdn-cgi/l/email-protection#fe969b929291be868a9190d09d9193"><span
+                                            class="__cf_email__"
+                                            data-cfemail="a6cec3cacac9e6ded2c9c888c5c9cb">[email&#160;protected]</span></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <ul class="social-link">
+                            <li><a href="#" class="d-block" target="_blank"><i class="bx bxl-facebook"></i></a></li>
+                            <li><a href="#" class="d-block" target="_blank"><i class="bx bxl-twitter"></i></a></li>
+                            <li><a href="#" class="d-block" target="_blank"><i class="bx bxl-instagram"></i></a></li>
+                            <li><a href="#" class="d-block" target="_blank"><i class="bx bxl-linkedin"></i></a></li>
+                            <li><a href="#" class="d-block" target="_blank"><i class="bx bxl-pinterest-alt"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="single-footer-widget pl-4">
+                        <h3>Liens rapides</h3>
+                        <ul class="quick-links">
+                            <li><a href="about.html">À propos de nous</a></li>
+                            <li><a href="products-left-sidebar.html">Achetez maintenant !</a></li>
+                            <li><a href="products-left-sidebar-2.html">Femme</a></li>
+                            <li><a href="faqs.html">FAQ</a></li>
+                            <li><a href="contact.html">Contactez-nous</a></li>
+                            <li><a href="customer-service.html">Service client</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="single-footer-widget">
+                        <h3>Assistance client</h3>
+                        <ul class="customer-support">
+                            <li><a href="login.html">Mon compte</a></li>
+                            <li><a href="checkout.html">Paiement</a></li>
+                            <li><a href="cart.html">Panier</a></li>
+                            <li><a href="faqs.html">FAQ</a></li>
+                            <li><a href="track-order.html">Suivi des commandes</a></li>
+                            <li><a href="contact.html">Aide et support</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="single-footer-widget">
+                        <h3>Newsletter</h3>
+                        <div class="footer-newsletter-box">
+                            <p>Pour recevoir les dernières nouvelles et les dernières mises à jour de notre part.</p>
+                            <form class="newsletter-form" data-bs-toggle="validator">
+                                <label>Votre adresse e-mail :</label>
+                                <input type="email" class="input-newsletter" placeholder="Entrez votre email"
+                                    name="EMAIL" obligatoire autocomplete="off">
+                                <button type="submit">S'abonner</button>
+                                <div id="validator-newsletter" class="form-result"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom-area">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 col-md-6">
+                        <p>© Noble est fièrement détenu par
+                            <a href="https://hibootstrap.com/" target="_blank">John Kokar</a>
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <ul class="payment-types">
+                            <li><a href="#" target="_blank"><img src="assets/img/payment/visa.png" alt="image"></a></li>
+                            <li><a href="#" target="_blank"><img src="assets/img/payment/mastercard.png"
+                                        alt="image"></a></li>
+                            <li><a href="#" target="_blank"><img src="assets/img/payment/mastercard2.png"
+                                        alt="image"></a></li>
+                            <li><a href="#" target="_blank"><img src="assets/img/payment/visa2.png" alt="image"></a>
+                            </li>
+                            <li><a href="#" target="_blank"><img src="assets/img/payment/expresscard.png"
+                                        alt="image"></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="lines">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+    </footer>
+
+
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/popper.min.html"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
+    <script src="assets/js/magnific-popup.min.js"></script>
+    <script src="assets/js/parallax.min.js"></script>
+    <script src="assets/js/rangeSlider.min.js"></script>
+    <script src="assets/js/nice-select.min.js"></script>
+    <script src="assets/js/meanmenu.min.js"></script>
+    <script src="assets/js/isotope.pkgd.min.js"></script>
+    <script src="assets/js/slick.min.js"></script>
+    <script src="assets/js/sticky-sidebar.min.js"></script>
+    <script src="assets/js/wow.min.js"></script>
+    <script src="assets/js/form-validator.min.js"></script>
+    <script src="assets/js/contact-form-script.js"></script>
+    <script src="assets/js/ajaxchimp.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="./clientdb/currentdb.js"></script>
+    <script src="./checkouthand/checkouthanla.js"></script>
+    <script src="./productsFetcher/productsFetcher.js"></script>
+
+</body>
+
+
+</html>

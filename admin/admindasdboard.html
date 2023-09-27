@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="fr-FR">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/animate.min.css">
+    <link rel="stylesheet" href="../assets/css/boxicons.min.css">
+    <link rel="stylesheet" href="../assets/css/flaticon.css">
+    <link rel="stylesheet" href="../assets/css/magnific-popup.min.css">
+    <link rel="stylesheet" href="../assets/css/nice-select.min.css">
+    <link rel="stylesheet" href="../assets/css/slick.min.css">
+    <link rel="stylesheet" href="../assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../assets/css/meanmenu.min.css">
+    <link rel="stylesheet" href="../assets/css/rangeSlider.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/dark.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+    <title>Admin</title>
+    <link rel="icon" type="image/png" href="../assets/img/favicona.png">
+    <style>
+        /* Styles for the dropdown */
+        .dropdown {
+            position: absolute;
+            display: inline-block;
+        }
+
+        .dropdown .dropdown-toggle {
+            padding: 5px 10px;
+            cursor: pointer;
+            color: #333;
+        }
+
+        .dropdown .dropdown-toggle i {
+            margin-right: 5px;
+        }
+
+        .dropdown .dropdown-toggle:hover {
+            background-color: #f8f8f8;
+        }
+
+        .dropdown .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #fff;
+            display: none;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+            padding: 10px;
+        }
+
+        .dropdown .dropdown-menu li {
+            list-style: none;
+        }
+
+        .dropdown .dropdown-menu li span {
+            display: block;
+            padding: 5px 0;
+            cursor: pointer;
+        }
+
+        .dropdown .dropdown-menu li span:hover {
+            background-color: #f8f8f8;
+        }
+
+        /* Show the dropdown menu on hover */
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+    </style>
+    <script>
+        function toggleDropdown(event) {
+            event.stopPropagation();
+            const dropdownMenu = event.target.nextElementSibling;
+            dropdownMenu.style.display = (dropdownMenu.style.display === 'block') ? 'none' : 'block';
+        }
+    </script>
+</head>
+
+<body style="background-color: #f8f8f8;">
+    <div class="navbar-area">
+        <div class="xton-responsive-nav">
+            <div class="container">
+                <div class="xton-responsive-menu">
+                    <div class="logo">
+                        <a href="index.html">
+                            <img src="../assets/img/logo.jpg" class="main-logo" alt="logo">
+                            <img src="../assets/img/logo.jpg" class="white-logo" alt="logo">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="xton-nav">
+            <div class="container">
+                <nav class="navbar navbar-expand-md navbar-light">
+                    <a class="navbar-brand" href="index.html">
+                        <img src="../assets/img/logo.jpg" class="main-logo" alt="logo">
+                        <img src="../assets/img/logo.jpg" class="white-logo" alt="logo">
+                    </a>
+                    <div class="collapse navbar-collapse mean-menu">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a onclick="adminDasboard('commande')" class="nav-link"
+                                    style="cursor: pointer !important;">Commandes</a>
+                            </li>
+                            <li class="nav-item megamenu">
+                                <a onclick="adminDasboard('article')" class="nav-link"
+                                    style="cursor: pointer !important;">Articles</a>
+                            </li>
+                            <li class="nav-item megamenu">
+                                <a onclick="adminDasboard('client')" class="nav-link"
+                                    style="cursor: pointer !important;">CLients</a>
+                            </li>
+                        </ul>
+                        <div class="others-option">
+                            <div class="option-item">
+                                <div class="search-btn-box">
+                                    <i class="search-btn bx bx-search-alt"></i>
+                                </div>
+                            </div>
+                            <div class="option-item">
+                                <div class="cart-btn">
+                                    <a id="paniernumber2">
+                                        <i class="bx bx-user"></i>
+                                        Faveur
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="navbar-area header-sticky">
+        <div class="xton-nav">
+            <div class="container">
+                <nav class="navbar navbar-expand-md navbar-light">
+                    <a class="navbar-brand" href="index.html">
+                        <img src="../assets/img/logo.jpg" class="main-logo" alt="logo">
+                        <img src="../assets/img/logo.jpg" class="white-logo" alt="logo">
+                    </a>
+                    <div class="collapse navbar-collapse mean-menu">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a onclick="adminDasboard('commande')" class="nav-link"
+                                    style="cursor: pointer !important;">Commandes</a>
+                            </li>
+                            <li class="nav-item megamenu">
+                                <a onclick="adminDasboard('article')" class="nav-link"
+                                    style="cursor: pointer !important;">Articles</a>
+                            </li>
+                            <li class="nav-item megamenu">
+                                <a onclick="adminDasboard('client')" class="nav-link"
+                                    style="cursor: pointer !important;">CLients</a>
+                            </li>
+                        </ul>
+                        <div class="others-option">
+                            <div class="option-item">
+                                <div class="search-btn-box">
+                                    <i class="search-btn bx bx-search-alt"></i>
+                                </div>
+                            </div>
+                            <div class="option-item">
+                                <div class="cart-btn">
+                                    <a id="paniernumber3">
+                                        <i class="bx bx-user"></i>
+                                        Faveur
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="search-overlay">
+        <div class="d-table">
+            <div class="d-table-cell">
+                <div class="search-overlay-layer"></div>
+                <div class="search-overlay-layer"></div>
+                <div class="search-overlay-layer"></div>
+                <div class="search-overlay-close">
+                    <span class="search-overlay-close-line"></span>
+                    <span class="search-overlay-close-line"></span>
+                </div>
+                <div class="search-overlay-form">
+                    <form>
+                        <input type="text" class="input-search" placeholder="Search here...">
+                        <button type="submit"><i class="bx bx-search-alt"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="page-title-area">
+        <div class="container">
+            <div class="page-title-content">
+                <h2>Contenu à administrer</h2>
+                <ul>
+                    <li><a href="../index.html">Boutique</a></li>
+                    <li>Admin</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <section class="cart-area ptb-100" id="adminitration">
+
+    </section>
+
+    <section class="cart-area ptb-100" id="adminitrationproduc">
+
+    </section>
+
+    <section class="cart-area ptb-100" id="adminitrationuser">
+
+    </section>
+    <br>
+    <br>
+
+    <div class="modal fade productsQuickView" id="addArticle" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+
+                <form>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-12">
+                            <div class="billing-details">
+                                <h3 class="title">Détails de l'article</h3>
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="form-group">
+                                            <label>Article <span class="required">*</span></label>
+                                            <input type="text" class="form-control" id="addarticle">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="form-group">
+                                            <label>Prix Promotionel<span class="required">*</span></label>
+                                            <input type="text" class="form-control" id="addprixpro">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-6">
+                                        <div class="form-group">
+                                            <label>Prix Normal <span class="required">*</span></label>
+                                            <input type="text" class="form-control" id="addprix">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="form-group">
+                                            <label>Fournisseur <span class="required">*</span></label>
+                                            <input type="text" class="form-control" id="addfour">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="form-group">
+                                            <label>Disponibilité<span class="required">*</span></label>
+                                            <input type="text" class="form-control" id="adddispo">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-12 col-md-6">
+                                        <div class="form-group">
+                                            <label>Couleur <span class="required">*</span></label>
+                                            <input type="text" class="form-control" id="addcoul">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-6">
+                                        <div class="form-group">
+                                            <label>Taille<span class="required">*</span></label>
+                                            <input type="text" class="form-control" id="addtail">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="form-group">
+                                            <label>Matériau <span class="required">*</span></label>
+                                            <input type="text" class="form-control" id="addmateri">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="form-group">
+                                            <label>Type de produit <span class="required">*</span></label>
+                                            <input type="text" class="form-control" id="addtype">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="form-group">
+                                            <label>Téléphone <span class="required">*</span></label>
+                                            <input type="tel" class="form-control" id="addphone">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="form-group">
+                                            <label>Expédition <span class="required">*</span></label>
+                                            <input type="text" class="form-control" id="addexpe">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="form-group">
+                                            <textarea name="notes" id="notes" cols="30" rows="5"
+                                                placeholder="Description" class="form-control"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-12">
+                            <div class="order-details">
+                                <h3 class="title">Suite de l'article</h3>
+                                <div class="order-table table-responsive">
+                                    <div id="imagePreview1"></div>
+                                    <div id="imagePreview2"></div>
+                                    <div id="imagePreview3"></div>
+                                    <div id="imagePreview4"></div>
+                                    <div id="imagePreview5"></div>
+                                </div>
+                                <div class="order-table table-responsive">
+                                    <input type="file" id="imageInput" accept="image/*" onchange="previewImage(event)">
+
+                                </div>
+                                <br>
+
+                                <div>
+                                    <a style="cursor: pointer !important;" class="default-btn"
+                                        onclick="AddArticle()">Ajouter</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="single-footer-widget">
+                        <h3>À propos du magasin</h3>
+                        <div class="about-the-store">
+                            <p>L'une des activités les plus populaires sur le Web est le shopping.</p>
+                            <ul class="footer-contact-info">
+                                <li><i class="bx bx-map"></i> <a href="#" target="_blank">Abidjan, Cocody, Riviera II
+                                        (CI)</a></li>
+                                <li><i class="bx bx-phone-call"></i> <a href="tel:+2250748643884">+225 0748 64 38 84</a>
+                                </li>
+                                <li><i class="bx bx-envelope"></i> <a
+                                        href="https://templates.hibootstrap.com/cdn-cgi/l/email-protection#fe969b929291be868a9190d09d9193"><span
+                                            class="__cf_email__"
+                                            data-cfemail="a6cec3cacac9e6ded2c9c888c5c9cb">[email&#160;protected]</span></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <ul class="social-link">
+                            <li><a href="#" class="d-block" target="_blank"><i class="bx bxl-facebook"></i></a></li>
+                            <li><a href="#" class="d-block" target="_blank"><i class="bx bxl-twitter"></i></a></li>
+                            <li><a href="#" class="d-block" target="_blank"><i class="bx bxl-instagram"></i></a></li>
+                            <li><a href="#" class="d-block" target="_blank"><i class="bx bxl-linkedin"></i></a></li>
+                            <li><a href="#" class="d-block" target="_blank"><i class="bx bxl-pinterest-alt"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="single-footer-widget pl-4">
+                        <h3>Liens rapides</h3>
+                        <ul class="quick-links">
+                            <li><a href="about.html">À propos de nous</a></li>
+                            <li><a href="products-left-sidebar.html">Achetez maintenant !</a></li>
+                            <li><a href="products-left-sidebar-2.html">Femme</a></li>
+                            <li><a href="faqs.html">FAQ</a></li>
+                            <li><a href="contact.html">Contactez-nous</a></li>
+                            <li><a href="customer-service.html">Service client</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="single-footer-widget">
+                        <h3>Assistance client</h3>
+                        <ul class="customer-support">
+                            <li><a href="login.html">Mon compte</a></li>
+                            <li><a href="checkout.html">Paiement</a></li>
+                            <li><a href="cart.html">Panier</a></li>
+                            <li><a href="faqs.html">FAQ</a></li>
+                            <li><a href="track-order.html">Suivi des commandes</a></li>
+                            <li><a href="contact.html">Aide et support</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="single-footer-widget">
+                        <h3>Newsletter</h3>
+                        <div class="footer-newsletter-box">
+                            <p>Pour recevoir les dernières nouvelles et les dernières mises à jour de notre part.</p>
+                            <form class="newsletter-form" data-bs-toggle="validator">
+                                <label>Votre adresse e-mail :</label>
+                                <input type="email" class="input-newsletter" placeholder="Entrez votre email"
+                                    name="EMAIL" obligatoire autocomplete="off">
+                                <button type="submit">S'abonner</button>
+                                <div id="validator-newsletter" class="form-result"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom-area">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 col-md-6">
+                        <p>© Noble est fièrement détenu par
+                            <a href="https://hibootstrap.com/" target="_blank">John Kokar</a>
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <ul class="payment-types">
+                            <li><a href="#" target="_blank"><img src="../assets/img/payment/visa.png" alt="image"></a>
+                            </li>
+                            <li><a href="#" target="_blank"><img src="../assets/img/payment/mastercard.png"
+                                        alt="image"></a></li>
+                            <li><a href="#" target="_blank"><img src="../assets/img/payment/mastercard2.png"
+                                        alt="image"></a></li>
+                            <li><a href="#" target="_blank"><img src="../assets/img/payment/visa2.png" alt="image"></a>
+                            </li>
+                            <li><a href="#" target="_blank"><img src="../assets/img/payment/expresscard.png"
+                                        alt="image"></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="lines">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+    </footer>
+
+
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/popper.min.html"></script>
+    <script src="../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/owl.carousel.min.js"></script>
+    <script src="../assets/js/magnific-popup.min.js"></script>
+    <script src="../assets/js/parallax.min.js"></script>
+    <script src="../assets/js/rangeSlider.min.js"></script>
+    <script src="../assets/js/nice-select.min.js"></script>
+    <script src="../assets/js/meanmenu.min.js"></script>
+    <script src="../assets/js/isotope.pkgd.min.js"></script>
+    <script src="../assets/js/slick.min.js"></script>
+    <script src="../assets/js/sticky-sidebar.min.js"></script>
+    <script src="../assets/js/wow.min.js"></script>
+    <script src="../assets/js/form-validator.min.js"></script>
+    <script src="../assets/js/contact-form-script.js"></script>
+    <script src="../assets/js/ajaxchimp.min.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../clientdb/currentdb.js"></script>
+    <script src="../productsFetcher/productsFetcher.js"></script>
+    <!-- Include Bootstrap CSS and JS -->
+
+    <!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    -->
+</body>
+
+</html>
