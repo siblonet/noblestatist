@@ -930,19 +930,6 @@
     </section>
 
 
-    <section class="products-area pb-70">
-        <div class="container">
-            <div class="section-title">
-                <span class="sub-title">Découvrez Notre Collection</span>
-
-                <h2>Meilleures Ventes</h2>
-            </div>
-            <div class="row" id="meilleures-vente">
-                <!-- meilleures ventes @@@@@@@@@@@  -->
-            </div>
-        </div>
-    </section>
-
 
     <!--<div class="partner-area ptb-70">
         <div class="container">
@@ -1207,33 +1194,26 @@
                                 <a href="#" class="rating-count" id="rating"></a>
                             </div>
                             <ul class="products-info">
-                                <li><span>Vendeur:</span> <a href="#">Lereve</a></li>
-                                <li><span>Disponibilité:</span> <a href="#">En stock (7 articles) </a></li>
-                                <li><span>Type de produits:</span> <a href="#">T-Shirt</a></li>
+                                <li><span>Vendeur:</span> <a id="quickFour"></a></li>
+                                <li><span>Disponibilité:</span> <a id="quickDispo"></a></li>
+                                <li><span>Type de produits:</span> <a id="quickType"></a></li>
                             </ul>
                             <div class="products-color-switch">
                                 <h4>Couleur:</h4>
-                                <ul>
-                                    <li><a href="#" data-bs-toggle="tooltip" data-placement="top" title="Black"
-                                            class="color-black"></a></li>
-                                    <li><a href="#" data-bs-toggle="tooltip" data-placement="top" title="White"
-                                            class="color-white"></a></li>
-                                    <li><a href="#" data-bs-toggle="tooltip" data-placement="top" title="Green"
-                                            class="color-green"></a></li>
-                                    <li><a href="#" data-bs-toggle="tooltip" data-placement="top" title="Yellow Green"
-                                            class="color-yellowgreen"></a></li>
-                                    <li><a href="#" data-bs-toggle="tooltip" data-placement="top" title="Teal"
-                                            class="color-teal"></a></li>
+                                <ul id="quickCouleu">
+                                   
+                                </ul>
+                            </div>
+                            <div class="products-color-switch">
+                                <h4>Couleur Selectionné:</h4>
+                                <ul id="quickColose">
+                                    
                                 </ul>
                             </div>
                             <div class="products-size-wrapper">
                                 <h4>Taille:</h4>
-                                <ul>
-                                    <li><a href="#">XS</a></li>
-                                    <li class="active"><a href="#">S</a></li>
-                                    <li><a href="#">M</a></li>
-                                    <li><a href="#">XL</a></li>
-                                    <li><a href="#">XXL</a></li>
+                                <ul id="quickTail">
+                                    
                                 </ul>
                             </div>
                             <div class="products-add-to-cart" id="hidlater">
@@ -1269,7 +1249,7 @@
                 </button>
                 <div class="modal-body">
                     <h3 id="monpanier">Mon Panier (0)</h3>
-                    <div class="products-cart-content" id="pannier">
+                    <div class="products-cart-content" id="pannierid">
 
 
 
@@ -1704,7 +1684,6 @@
 
     <script src="devouvreproduc.js"></script>
     <script src="mainslidproduc.js"></script>
-    <script src="meileurproduct.js"></script>
     <script src="populaproduct.js"></script>
     <script src="recentproduct.js"></script>
     <script src="./pannier/pannier.js"></script>

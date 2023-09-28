@@ -1,6 +1,6 @@
 let articldb;
 
-const pannier = [];
+const pannierCotent = [];
 const pannierPrin = [];
 
 function openArticleDatabase() {
@@ -23,7 +23,7 @@ function openArticleDatabase() {
             articldb = event.target.result;
 
             if (!articldb.objectStoreNames.contains("ArticleStore")) {
-                articldb.createObjectStore("ArticleStore", { keyPath: "id" });
+                articldb.createObjectStore("ArticleStore", { keyPath: "_id" });
             }
         };
     });
@@ -55,8 +55,8 @@ function addArticles(data) {
 
 
 
-const apiUrlaq = 'http://localhost:3000/'; // Replace with your API endpoint
-const apiUrla = 'https://zany-plum-bear.cyclic.cloud/'; // Replace with your API endpoint
+const apiUrla = 'http://localhost:3000/'; // Replace with your API endpoint
+const apiUrlaq = 'https://zany-plum-bear.cyclic.cloud/'; // Replace with your API endpoint
 
 const sendRequestnot = async (method, endpoint, data = null) => {
     const options = {
@@ -99,13 +99,14 @@ function clearArticle() {
 }
 
 
-async function DataLOad() {
+async function DataLoad() {
     try {
         const items = await sendRequestnot('GET', 'boutique');
         return new Promise((resolve, reject) => {
             openArticleDatabase().then(() => clearArticle().then(result => resolve(result)).catch(error => reject(error)));
             openArticleDatabase().then(() => addArticles(items).then(result => resolve(result)).catch(error => reject(error)));
             recentProduct(items);
+            populaProduct(items);
         }).catch(error => reject(error));
         
     } catch (error) {
@@ -113,7 +114,7 @@ async function DataLOad() {
     };
     
 };
-DataLOad();
+DataLoad();
 
 
 function getallArticles() {
@@ -125,7 +126,7 @@ function getallArticles() {
         const cursor = event.target.result;
         if (cursor) {
             data.push(cursor.value);
-            pannier.push(cursor.value);
+            pannierCotent.push(cursor.value);
             cursor.continue();
         } else {
 

@@ -2,8 +2,8 @@ let db;
 
 function openDatabase() {
     return new Promise((resolve, reject) => {
-        const dbName = "myDatabase";
-        const dbVersion = 1;
+        const dbName = "panierDatabase";
+        const dbVersion = 2;
 
         const request = indexedDB.open(dbName, dbVersion);
 
@@ -19,8 +19,8 @@ function openDatabase() {
         request.onupgradeneeded = (event) => {
             db = event.target.result;
 
-            if (!db.objectStoreNames.contains("myObjectStore")) {
-                db.createObjectStore("myObjectStore", { keyPath: "id" });
+            if (!db.objectStoreNames.contains("PannierContent")) {
+                db.createObjectStore("PannierContent", { keyPath: "_id" });
             }
         };
     });
@@ -73,9 +73,9 @@ function previewImage(event) {
     }
 };
 
-const apiUrlw = 'http://localhost:3000/'; // Replace with your API endpoint
+const apiUrl = 'http://localhost:3000/'; // Replace with your API endpoint
 const token = 'YOUR_TOKEN_HERE'; // Replace with your actual token
-const apiUrl = 'https://zany-plum-bear.cyclic.cloud/'; // Replace with your API endpoint
+const apiUrlf = 'https://zany-plum-bear.cyclic.cloud/'; // Replace with your API endpoint
 
 // Helper function to send authenticated requests
 const sendRequest = async (method, endpoint, data = null) => {
@@ -200,8 +200,9 @@ function AdminAdministrtion(who, data) {
 
 
 function addData(data) {
-    const transaction = db.transaction(["myObjectStore"], "readwrite");
-    const objectStore = transaction.objectStore("myObjectStore");
+    //console.log(data);
+    const transaction = db.transaction(["PannierContent"], "readwrite");
+    const objectStore = transaction.objectStore("PannierContent");
 
     const addRequest = objectStore.add(data);
     let answer;
@@ -224,10 +225,10 @@ function addData(data) {
 
 
 function getDataById(id) {
-    const transaction = db.transaction(["myObjectStore"], "readonly");
-    const objectStore = transaction.objectStore("myObjectStore");
+    const transaction = db.transaction(["PannierContent"], "readonly");
+    const objectStore = transaction.objectStore("PannierContent");
 
-    const getRequest = objectStore.get(id.id);
+    const getRequest = objectStore.get(id._id);
 
     getRequest.onsuccess = (event) => {
         const result = event.target.result;
@@ -254,15 +255,15 @@ function getDataById(id) {
 };
 
 function getDasbordById(id) {
-    const transaction = db.transaction(["myObjectStore"], "readonly");
-    const objectStore = transaction.objectStore("myObjectStore");
+    const transaction = db.transaction(["PannierContent"], "readonly");
+    const objectStore = transaction.objectStore("PannierContent");
 
     const getRequest = objectStore.get(id);
 
     getRequest.onsuccess = (event) => {
         const result = event.target.result;
         document.getElementById('optionCancilename').innerText = result.articleName;
-        document.getElementById('ido').value = result.id;
+        document.getElementById('ido').value = result._id;
         const bacgro = document.getElementById('bagron');
         bacgro.style.backgroundColor = result.backgroundColor;
         const modalImage = document.getElementById('ipage');
@@ -273,9 +274,9 @@ function getDasbordById(id) {
         optionid.innerHTML = '';
         const optionQuanhtml =
             `
-                                <span class="minus-btn" onclick="decreaseQuantity(${result.id})"><i class="bx bx-minus"></i></span>
+                                <span class="minus-btn" onclick="decreaseQuantity(${result._id})"><i class="bx bx-minus"></i></span>
                                 <input type="text" min="1" id="optionQuantity" value="${result.quantity}">
-                                <span class="plus-btn" onclick="increaseQuantity(${result.id})"><i class="bx bx-plus"></i></span>
+                                <span class="plus-btn" onclick="increaseQuantity(${result._id})"><i class="bx bx-plus"></i></span>
                              `;
         optionid.innerHTML += optionQuanhtml;
 
@@ -292,9 +293,10 @@ function getDasbordById(id) {
     return "answer";
 };
 
+//cart data entering
 function getallData() {
-    const transaction = db.transaction(["myObjectStore"], "readonly");
-    const objectStore = transaction.objectStore("myObjectStore");
+    const transaction = db.transaction(["PannierContent"], "readonly");
+    const objectStore = transaction.objectStore("PannierContent");
     const data = [];
 
     objectStore.openCursor().onsuccess = (event) => {
@@ -313,32 +315,32 @@ function getallData() {
                         <tr>
                             <td class="product-thumbnail">
                                 <a href="#">
-                                    <img src="${pani.image1}" alt="item">
+                                    <img src="${pani.image[parseInt(pani.imago[0])].ima}" alt="item">
                                 </a>
                             </td>
                             <td class="product-name">
-                                <a href="#">${pani.articleName}</a>
+                                <a href="#">${pani.addarticle}</a>
                                 <ul>
-                                    <li>Color: <span>${pani.color}</span></li>
+                                    <li>Color: <span style="background-color: ${pani.color.substring(0, 7)}; color: ${pani.color.substring(0, 7)}">${pani.color.substring(0, 7)}</span></li>
                                     <li>Size: <span>${pani.size}</span></li>
-                                    <li>Material: <span>${pani.material}</span></li>
+                                    <li>Material: <span>${pani.addmateri}</span></li>
                                 </ul>
                             </td>
                             <td class="product-price">
-                                <span class="unit-amount">${pani.newPrice} F</span>
+                                <span class="unit-amount">${pani.prix} F</span>
                             </td>
                             <td class="product-quantity">
                                 <div class="input-counter" id="quantity-manipulate">
                                     <div class="input-counter">
-                                        <span class="minus-btn" onclick="decreaseQuantity('inputId${pani.id}')">-</span>
-                                        <input type="text" min="1" id="inputId${pani.id}" value="${pani.quantity}">
-                                        <span class="plus-btn" onclick="increaseQuantity('inputId${pani.id}')">+</span>
+                                        <span class="minus-btn" onclick="decreaseQuantity('${pani._id}')">-</span>
+                                        <input type="text" min="1" id="${pani._id}" value="${parseInt(pani.quantcho)}">
+                                        <span class="plus-btn" onclick="increaseQuantity('${pani._id}')">+</span>
                                     </div>
                                 </div>
                             </td>
                             <td class="product-subtotal">
-                                <span class="subtotal-amount">${pani.newPrice * pani.quantity} F.CFA</span>
-                                <a class="remove" style="cursor: pointer !important;" onclick="removePanierById(${pani.id})"><i class="bx bx-trash"></i></a>
+                                <span class="subtotal-amount">${parseInt(pani.prix) * parseInt(pani.quantcho)} F.CFA</span>
+                                <a class="remove" style="cursor: pointer !important;" onclick="removePanierById('${pani._id}')"><i class="bx bx-trash"></i></a>
                             </td>
                         </tr>
                     `;
@@ -353,7 +355,7 @@ function getallData() {
             let totalPricea = 0; // Initialize to 1 so that the first multiplication works
 
             for (const pri of data) {
-                const adda = pri.newPrice * pri.quantity;
+                const adda = parseInt(pri.prix) * parseInt(pri.quantcho);
                 totalPricea += adda;
             };
 
@@ -374,8 +376,8 @@ function getallData() {
 }
 
 function getallDataa() {
-    const transaction = db.transaction(["myObjectStore"], "readonly");
-    const objectStore = transaction.objectStore("myObjectStore");
+    const transaction = db.transaction(["PannierContent"], "readonly");
+    const objectStore = transaction.objectStore("PannierContent");
     const data = [];
 
     objectStore.openCursor().onsuccess = (event) => {
@@ -434,7 +436,7 @@ function getallDataa() {
                                             <span>=</span>
                                             <span class="price">${pro.newPrice * pro.quantity}</span>
                                         </div>
-                                        <a style="cursor: pointer !important;" class="remove-btn" onclick="removeItemById(${pro.id})"><i class="bx bx-trash"></i></a>
+                                        <a style="cursor: pointer !important;" class="remove-btn" onclick="removeItemById(${pro._id})"><i class="bx bx-trash"></i></a>
                                     </div>
                                 </div>
                 `;
@@ -491,8 +493,8 @@ function getallDataa() {
 
 
 function updateData(data) {
-    const transaction = db.transaction(["myObjectStore"], "readwrite");
-    const objectStore = transaction.objectStore("myObjectStore");
+    const transaction = db.transaction(["PannierContent"], "readwrite");
+    const objectStore = transaction.objectStore("PannierContent");
 
     const updateRequest = objectStore.put(data);
     let answer;
@@ -513,8 +515,8 @@ function updateData(data) {
 };
 
 function deleteData(id) {
-    const transaction = db.transaction(["myObjectStore"], "readwrite");
-    const objectStore = transaction.objectStore("myObjectStore");
+    const transaction = db.transaction(["PannierContent"], "readwrite");
+    const objectStore = transaction.objectStore("PannierContent");
 
     const deleteRequest = objectStore.delete(id);
     let answer;
@@ -535,8 +537,8 @@ function deleteData(id) {
 };
 
 function clearData() {
-    const transaction = db.transaction(["myObjectStore"], "readwrite");
-    const objectStore = transaction.objectStore("myObjectStore");
+    const transaction = db.transaction(["PannierContent"], "readwrite");
+    const objectStore = transaction.objectStore("PannierContent");
 
     const clearRequest = objectStore.clear();
     let answer;
@@ -552,11 +554,31 @@ function clearData() {
     return answer
 }
 
+function getPanierSend() {
+    const transaction = db.transaction(["PannierContent"], "readonly");
+    const objectStore = transaction.objectStore("PannierContent");
+    const data = [];
 
+    objectStore.openCursor().onsuccess = (event) => {
+        const cursor = event.target.result;
+        if (cursor) {
+            data.push(cursor.value);
+            cursor.continue();
+        } else {
+
+        }
+    };
+
+    transaction.onerror = (event) => {
+        console.error("Transaction error:", event.target.error);
+    };
+
+    return data
+};
 
 function getallCheckou() {
-    const transaction = db.transaction(["myObjectStore"], "readonly");
-    const objectStore = transaction.objectStore("myObjectStore");
+    const transaction = db.transaction(["PannierContent"], "readonly");
+    const objectStore = transaction.objectStore("PannierContent");
     const data = [];
 
     objectStore.openCursor().onsuccess = (event) => {
@@ -573,10 +595,10 @@ function getallCheckou() {
                     `
                         <tr>                       
                             <td class="product-name">
-                                <a href="#">${pani.articleName}</a>
+                                <a href="#">${pani.addarticle}</a>
                             </td>
                             <td class="product-total">
-                                <span class="subtotal-amount">${pani.newPrice * pani.quantity} F.CFA</span>
+                                <span class="subtotal-amount">${pani.prix * pani.quantcho} F.CFA</span>
                             </td>
                         </tr>  
                     `;
@@ -591,7 +613,7 @@ function getallCheckou() {
             let totalPricea = 0;
 
             for (const pri of data) {
-                const adda = pri.newPrice * pri.quantity;
+                const adda = pri.prix * pri.quantcho;
                 totalPricea += adda;
             };
 
@@ -638,8 +660,8 @@ function getallCheckou() {
 
 
 function getDasboard() {
-    const transaction = db.transaction(["myObjectStore"], "readonly");
-    const objectStore = transaction.objectStore("myObjectStore");
+    const transaction = db.transaction(["PannierContent"], "readonly");
+    const objectStore = transaction.objectStore("PannierContent");
     const data = [];
 
     objectStore.openCursor().onsuccess = (event) => {
@@ -656,7 +678,7 @@ function getDasboard() {
 
                 const panierTBODY =
                     `
-                        <tr onclick="optionCancileView(${pani.id})" style="cursor: pointer !important;" onmouseover="this.style.backgroundColor='#f8f8f8'" onmouseout="this.style.backgroundColor='#fff'"  data-bs-toggle="modal" data-bs-target="#optionCancile">
+                        <tr onclick="optionCancileView(${pani._id})" style="cursor: pointer !important;" onmouseover="this.style.backgroundColor='#f8f8f8'" onmouseout="this.style.backgroundColor='#fff'"  data-bs-toggle="modal" data-bs-target="#optionCancile">
                             <td class="product-thumbnail">
                                 <a>
                                     <img src="${pani.image1}" alt="item">
@@ -744,10 +766,10 @@ function selectStatus(ido, sat) {
 };
 
 function getselectDataById(id) {
-    const transaction = db.transaction(["myObjectStore"], "readonly");
-    const objectStore = transaction.objectStore("myObjectStore");
+    const transaction = db.transaction(["PannierContent"], "readonly");
+    const objectStore = transaction.objectStore("PannierContent");
 
-    const getRequest = objectStore.get(id.id);
+    const getRequest = objectStore.get(id._id);
 
     getRequest.onsuccess = (event) => {
         const actioa = event.target.result;
@@ -764,14 +786,14 @@ function getselectDataById(id) {
 };
 
 function getAdminDasboard() {
-    const transaction = db.transaction(["myObjectStore"], "readonly");
-    const objectStore = transaction.objectStore("myObjectStore");
+    const transaction = db.transaction(["PannierContent"], "readonly");
+    const objectStore = transaction.objectStore("PannierContent");
     const data = [];
 
     objectStore.openCursor().onsuccess = (event) => {
         const cursor = event.target.result;
         if (cursor) {
-            if (cursor.value.id == 50 || cursor.value.id == 51) {
+            if (cursor.value._id == 50 || cursor.value._id == 51) {
                 data.push(cursor.value);
             }
             cursor.continue();
@@ -848,10 +870,10 @@ function getAdminDasboard() {
                                         ${deliveryStatus}
                                     </a>
                                     <ul class="dropdown-menu">
-                                        <li><span onclick="selectStatus(${pani.id}, 'done')">Livré</span></li>
-                                        <li><span onclick="selectStatus(${pani.id}, 'review')">En attente</span></li>
-                                        <li><span onclick="selectStatus(${pani.id}, 'onway')">En cours</span></li>
-                                        <li><span onclick="selectStatus(${pani.id}, 'fail')">Échoué</span></li>
+                                        <li><span onclick="selectStatus(${pani._id}, 'done')">Livré</span></li>
+                                        <li><span onclick="selectStatus(${pani._id}, 'review')">En attente</span></li>
+                                        <li><span onclick="selectStatus(${pani._id}, 'onway')">En cours</span></li>
+                                        <li><span onclick="selectStatus(${pani._id}, 'fail')">Échoué</span></li>
                                     </ul>
                                 </div>
                             </td>
@@ -877,14 +899,14 @@ function getAdminDasboard() {
 
 
 function getAdminDasboardproduc() {
-    const transaction = db.transaction(["myObjectStore"], "readonly");
-    const objectStore = transaction.objectStore("myObjectStore");
+    const transaction = db.transaction(["PannierContent"], "readonly");
+    const objectStore = transaction.objectStore("PannierContent");
     const data = [];
 
     objectStore.openCursor().onsuccess = (event) => {
         const cursor = event.target.result;
         if (cursor) {
-            if (cursor.value.id == 50 || cursor.value.id == 51) {
+            if (cursor.value._id == 50 || cursor.value._id == 51) {
                 data.push(cursor.value);
 
             }
@@ -973,10 +995,10 @@ function getAdminDasboardproduc() {
                                         ${deliveryStatus}
                                     </a>
                                     <ul class="dropdown-menu">
-                                        <li><span onclick="selectStatus(${pani.id}, 'done')">Livré</span></li>
-                                        <li><span onclick="selectStatus(${pani.id}, 'review')">En attente</span></li>
-                                        <li><span onclick="selectStatus(${pani.id}, 'onway')">En cours</span></li>
-                                        <li><span onclick="selectStatus(${pani.id}, 'fail')">Échoué</span></li>
+                                        <li><span onclick="selectStatus(${pani._id}, 'done')">Livré</span></li>
+                                        <li><span onclick="selectStatus(${pani._id}, 'review')">En attente</span></li>
+                                        <li><span onclick="selectStatus(${pani._id}, 'onway')">En cours</span></li>
+                                        <li><span onclick="selectStatus(${pani._id}, 'fail')">Échoué</span></li>
                                     </ul>
                                 </div>
                             </td>
@@ -1003,14 +1025,14 @@ function getAdminDasboardproduc() {
 
 
 function getAdminDasboarduser() {
-    const transaction = db.transaction(["myObjectStore"], "readonly");
-    const objectStore = transaction.objectStore("myObjectStore");
+    const transaction = db.transaction(["PannierContent"], "readonly");
+    const objectStore = transaction.objectStore("PannierContent");
     const data = [];
 
     objectStore.openCursor().onsuccess = (event) => {
         const cursor = event.target.result;
         if (cursor) {
-            if (cursor.value.id == 50 || cursor.value.id == 51) {
+            if (cursor.value._id == 50 || cursor.value._id == 51) {
                 data.push(cursor.value);
 
             }
@@ -1089,10 +1111,10 @@ function getAdminDasboarduser() {
                                         ${deliveryStatus}
                                     </a>
                                     <ul class="dropdown-menu">
-                                        <li><span onclick="selectStatus(${pani.id}, 'done')">Livré</span></li>
-                                        <li><span onclick="selectStatus(${pani.id}, 'review')">En attente</span></li>
-                                        <li><span onclick="selectStatus(${pani.id}, 'onway')">En cours</span></li>
-                                        <li><span onclick="selectStatus(${pani.id}, 'fail')">Échoué</span></li>
+                                        <li><span onclick="selectStatus(${pani._id}, 'done')">Livré</span></li>
+                                        <li><span onclick="selectStatus(${pani._id}, 'review')">En attente</span></li>
+                                        <li><span onclick="selectStatus(${pani._id}, 'onway')">En cours</span></li>
+                                        <li><span onclick="selectStatus(${pani._id}, 'fail')">Échoué</span></li>
                                     </ul>
                                 </div>
                             </td>
@@ -1162,6 +1184,10 @@ function TotalAll(who, data) {
                         .catch(error => reject(error));
                 } else if (who === "clear") {
                     clearData()
+                        .then(result => resolve(result))
+                        .catch(error => reject(error));
+                } else if (who === "sendOrder") {
+                    getPanierSend(data)
                         .then(result => resolve(result))
                         .catch(error => reject(error));
                 } else {

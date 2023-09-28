@@ -1,8 +1,8 @@
 
 
 
-const apiUrlq = 'http://localhost:3000/'; // Replace with your API endpoint
-const apiUrl = 'https://zany-plum-bear.cyclic.cloud/'; // Replace with your API endpoint
+const apiUrl = 'http://localhost:3000/'; // Replace with your API endpoint
+const apiUrlq = 'https://zany-plum-bear.cyclic.cloud/'; // Replace with your API endpoint
 
 const sendRequestnoto = async (method, endpoint, data = null) => {
     const options = {

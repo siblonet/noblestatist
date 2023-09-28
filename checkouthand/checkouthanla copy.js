@@ -1,3 +1,8 @@
+/*function totalManager() {
+    TotalAll('all2', "")
+};
+totalManager();*/
+
 const Upcased = {
     "A": "z",
     "B": "y",
@@ -27,6 +32,9 @@ const Upcased = {
     "Z": "a"
 }
 
+
+
+
 const Lowcasd = {
     "a": "Z",
     "b": "Y",
@@ -55,6 +63,8 @@ const Lowcasd = {
     "y": "B",
     "z": "A"
 }
+
+
 
 const Nud = {
     "1": 0,
@@ -132,41 +142,35 @@ const deed = {
     "°": "°"
 }
 
+
 function whatisthisd(ee) {
     const adaa = ee.replaceAll("/", "¨");
     let dof = "";
     [...adaa].forEach(en => {
-        dof += Upcased[en] || '';
-        dof += Lowcasd[en] || '';
-        dof += Nud[en] || '';
-        dof += Sumd[en] || '';
-        dof += deed[en] || '';
+        dof += Upcase[`${en}`];
+        dof += Lowcas[`${en}`];
+        dof += Nu[`${en}`];
+        dof += Sum[`${en}`];
+        dof += dee[`${en}`];
+
     });
     const ad = dof.replaceAll("undefined", "");
     return ad;
 }
 
+
 function thisiswhatd(eee) {
     let dof = "";
     [...eee].forEach(en => {
-        const upcasedChar = Upcased[en];
-        const lowcasdChar = Lowcasd[en];
-        const nudChar = Nud[en];
-        const sumdChar = Sumd[en];
-        const deedChar = deed[en];
-
-        if (upcasedChar || lowcasdChar || nudChar || sumdChar || deedChar) {
-            dof += upcasedChar || lowcasdChar || nudChar || sumdChar || deedChar;
-        } else {
-            dof += en; // Keep the original character if not in the mappings
-        }
-    });
+        dof += Upcased[`${en}`];
+        dof += Lowcasd[`${en}`];
+        dof += Nud[`${en}`];
+        dof += Sumd[`${en}`];
+        dof += deed[`${en}`];
+    })
     const adaa = dof.replaceAll("undefined", "");
-    console.log("sss", adaa, eee);
     return adaa;
 };
-
-thisiswhatd("FMWVURMVW".toUpperCase());
 
 
 function sendCommen() {
@@ -181,7 +185,7 @@ function sendCommen() {
         const emailValue = document.getElementById('emailValue').value;
         const telephoneValue = document.getElementById('telephoneValue').value;
         const notesValue = document.getElementById('notes').value;
-
+        
         if (prenomValue && nomValue && villeValue && communeValue && adresseValue && motValue && emailValue && telephoneValue && notesValue) {
             if (confirmezValue === motValue) {
                 const person = {
@@ -191,11 +195,31 @@ function sendCommen() {
                     email: emailValue,
                     phone: telephoneValue,
                 };
-
+ 
                 const clientId = CreatClientd(person);
                 console.log(clientId);
 
-                // ... Implement articleOne and axc as needed ...
+                const articleOne = {
+                    articles: [],
+                    ville: villeValue,
+                    commune: communeValue,
+                    lieu: adresseValue,
+                    phone: telephoneValue,
+                    note: notesValue,
+                    client: clientId,
+                }
+                
+                const axc = {
+                    arti_id: "",
+                    quantcho: 0,
+                    image: "String",
+                    color: "String",
+                    size: "String",
+                    statut: string,
+                    prix: 0
+                }
+
+                //const daa = TotalAll('sendOrder', "");
 
             } else {
                 alert("mot de passe n'est conform a la confirmation")
@@ -206,7 +230,10 @@ function sendCommen() {
     }
 };
 
-const apiUrl1 = 'http://localhost:3000/';
+
+
+const apiUrl1 = 'http://localhost:3000/'; // Replace with your API endpoint
+const apiUrl2 = 'https://zany-plum-bear.cyclic.cloud/'; // Replace with your API endpoint
 
 const sendRequestOrder = async (method, endpoint, data = null) => {
     const options = {
@@ -230,6 +257,7 @@ const sendRequestOrder = async (method, endpoint, data = null) => {
     return responseData;
 };
 
+
 function CreatClientd(client) {
     try {
 
@@ -246,6 +274,8 @@ function CreatClientd(client) {
         };
 
         return createItem();
+
+
 
     } catch (error) {
         console.log(error);

@@ -1,15 +1,17 @@
+const populaProd = [];
 
-
-function populaProduct() {
+function populaProduct(popuPro) {
     const productContainer = document.getElementById('product-popula');
     productContainer.innerHTML = '';
 
-    populaProd.forEach(producta => {
+    popuPro.forEach(producta => {
+        if(producta.who === "populaProd"){
+        populaProd.push(producta);
         const productHTML = `
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="single-products-box">
                             <div class="products-image" style="background-color: ${producta.backgroundColor};">
-                               <a href="products-type-1.html?ov=${producta.id}?vo=${producta.who}">
+                               <a href="products-type-1.html?ov=${producta._id}?vo=${producta.who}">
                                 <img src="${producta.image1}" class="main-image" alt="image">
                                 <img src="${producta.image2}" class="hover-image" alt="image">
                                 </a>
@@ -32,7 +34,7 @@ function populaProduct() {
                                             </div>
                                         </li>-->
                                         <li>
-                                            <div class="quick-view-btn" onclick="showProductQuickViewa(${producta.id})">
+                                            <div class="quick-view-btn" onclick="showProductQuickViewa('${producta._id}')">
                                                 <a style="cursor: pointer !important;" data-bs-toggle="modal" data-bs-target="#productsQuickView">
                                                     <i class="bx bx-search-alt"></i>
                                                     <span class="tooltip-label">Vue rapide</span>
@@ -56,28 +58,29 @@ function populaProduct() {
                                     <i class="bx bxs-star"></i>
                                     <i class="bx bxs-star"></i>
                                 </div>
-                                <a style="cursor: pointer !important;" class="add-to-cart" onclick="Pannier('${producta.id}, ${producta.backgroundColor}, ${producta.image1}, ${producta.image2}, ${producta.articleName}, ${producta.oldPrice}, ${producta.oldPrice}, ${producta.newPrice}')">Ajouter au panier</a>
+                                <a style="cursor: pointer !important;" class="add-to-cart" onclick="Pannier('${producta._id}, ${producta.backgroundColor}, ${producta.image1}, ${producta.image2}, ${producta.articleName}, ${producta.oldPrice}, ${producta.oldPrice}, ${producta.newPrice}')">Ajouter au panier</a>
                             </div>
                         </div>
                     </div>
         `;
 
         productContainer.innerHTML += productHTML;
+        }
     });
 };
 
 
 
 function showProductQuickViewa(productId) {
-    const producta = populaProd.find(item => item.id === productId);
-    const exista = pannier.find(dd => dd.id === productId);
+    const producta = populaProd.find(item => item._id === productId);
+    const exista = pannier.find(dd => dd._id === productId);
     if (producta && !exista) {
         document.getElementById('quickViewProductName').innerText = producta.articleName;
         document.getElementById('quickViewOldPrice').innerText = `$ ${producta.oldPrice}`;
         document.getElementById('quickViewNewPrice').innerText = `$ ${producta.newPrice}`;
         document.getElementById('rating').innerText = `${producta.rating} avis`;
-        document.getElementById('idp').value = "populaProd";
-        document.getElementById('ido').value = producta.id;
+        document.getElementById('idp').value = producta.who;
+        document.getElementById('ido').value = producta._id;
         const element = document.getElementById('hidlater');
         element.classList.remove('hiddendhid');
         element.classList.add('hiddendshow');
@@ -93,7 +96,7 @@ function showProductQuickViewa(productId) {
         const modalImage = document.getElementById('ipage');
         modalImage.src = producta.image1;
 
-        const newURL = `products-type-1.html?ov=${producta.id}?vo=${producta.who}`;  // Replace with the desired new URL
+        const newURL = `products-type-1.html?ov=${producta._id}?vo=${producta.who}`;  // Replace with the desired new URL
 
         const linkElement = document.getElementById('change-url');
 
@@ -105,7 +108,7 @@ function showProductQuickViewa(productId) {
         document.getElementById('quickViewOldPrice').innerText = `$ ${producta.oldPrice}`;
         document.getElementById('quickViewNewPrice').innerText = `$ ${producta.newPrice}`;
         document.getElementById('rating').innerText = `${producta.rating} avis`;
-        document.getElementById('ido').value = producta.id;
+        document.getElementById('ido').value = producta._id;
 
         const element = document.getElementById('hidlater');
         element.classList.remove('hiddendshow');
@@ -117,7 +120,7 @@ function showProductQuickViewa(productId) {
         const modalImage = document.getElementById('ipage');
         modalImage.src = producta.image1;
 
-        const newURL = `products-type-1.html?ov=${producta.id}?vo=${producta.who}`;  // Replace with the desired new URL
+        const newURL = `products-type-1.html?ov=${producta._id}?vo=${producta.who}`;  // Replace with the desired new URL
 
         const linkElement = document.getElementById('change-url');
 
