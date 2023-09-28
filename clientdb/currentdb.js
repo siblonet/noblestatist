@@ -33,6 +33,7 @@ function adminDasboard(what) {
     }
 };
 
+
 adminDasboard("commande");
 
 function getAdmin() {
@@ -73,9 +74,9 @@ function previewImage(event) {
     }
 };
 
-const apiUrla = 'http://localhost:3000/'; // Replace with your API endpoint
+const apiUrl = 'https://zany-plum-bear.cyclic.cloud/'; //http://localhost:3000/';
 const token = 'YOUR_TOKEN_HERE'; // Replace with your actual token
-const apiUrl = 'https://zany-plum-bear.cyclic.cloud/'; // Replace with your API endpoint
+const apiUrle = 'https://zany-plum-bear.cyclic.cloud/'; // Replace with your API endpoint
 
 // Helper function to send authenticated requests
 const sendRequest = async (method, endpoint, data = null) => {
@@ -135,14 +136,15 @@ function AddArticle(who) {
         const addmateri = document.getElementById('addmateri').value;
         const addtype = document.getElementById('addtype').value;
         const addphone = document.getElementById('addphone').value;
+        const addquant = document.getElementById('addquant').value;
         const addexpe = document.getElementById('addexpe').value;
         const notes = document.getElementById('notes').value;
 
         if (addarticle && addprixpro && addprix && addfour && adddispo && addcoul && addtail && addmateri && addtype && addphone && addexpe && notes) {
             const product = {
                 addarticle: addarticle,
-                addprixpro: addprixpro,
-                addprix: addprix,
+                addprixpro: parseInt(addprixpro),
+                addprix: parseInt(addprix),
                 addfour: addfour,
                 adddispo: adddispo,
                 addcoul: addcoul,
@@ -150,12 +152,12 @@ function AddArticle(who) {
                 addmateri: addmateri,
                 addtype: addtype,
                 addphone: addphone,
+                quantity: parseInt(addquant),
                 addexpe: addexpe,
                 who: who,
                 notes: notes,
                 image: imas
             };
-
             const createItem = async () => {
                 try {
                     const response = await sendRequestnoto('POST', 'boutique', product);
@@ -557,7 +559,7 @@ function clearData() {
 function getPanierSend(tocompl) {
     const transaction = db.transaction(["PannierContent"], "readonly");
     const objectStore = transaction.objectStore("PannierContent");
-    objectStore.openCursor().onsuccess = (event) => {
+    objectStore.openCursor().onsuccess = async (event) => {
         const cursor = event.target.result;
         if (cursor) {
             tocompl.articles.push({
@@ -571,20 +573,18 @@ function getPanierSend(tocompl) {
             cursor.continue();
         } else {
             //sendRequestnoto
-            (async () => {
-                try {
-                    const response = await sendRequestnoto('POST', 'orders', tocompl);
-                    if (response.done == "done") {
-                        TotalAll("clear", "");
-                        pannierCotent.length = 0;
-                        window.location.href = "./track-order.html"
-                    };
+            try {
+                const response = await sendRequestnoto('POST', 'orders', tocompl);
+                if (response.done == "done") {
+                    TotalAll("clear", "");
+                    pannierCotent.length = 0;
+                    window.location.href = "./track-order.html"
+                };
 
-                } catch (error) {
-                    console.error('Error creating item:', error.message);
-                    throw error; // Re-throw the error to handle it in the calling function if needed
-                }
-            })();
+            } catch (error) {
+                console.error('Error creating item:', error.message);
+                throw error; // Re-throw the error to handle it in the calling function if needed
+            }
 
         }
     };
@@ -1216,4 +1216,11 @@ function TotalAll(who, data) {
             })
             .catch(error => reject(error));
     });
+};
+
+function navigateAdminCLient() {
+    const token = sessionStorage.getItem('tibule');
+    const splo = token.split("°");
+    const admin = splo[5];
+    window.location.href = admin == "GIFV" ? "./admin/admindasdboard.html" : "./track-order.html"
 }

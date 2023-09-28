@@ -2,7 +2,14 @@ let orderdb;
 
 function Dasboard(what) {
     if (getAdmin()) {
-        OrderLoad(what, "");
+
+
+        //OrderLoad(what, "");
+        OrderLoad()
+            .then()
+            .catch(error => {
+                console.error('Error executing OrderLoad:', error.message);
+            });
     }
 };
 
@@ -14,8 +21,8 @@ function getAdmin() {
 Dasboard("commande");
 
 
-const apiUrlb = 'http://localhost:3000/'; // Replace with your API endpoint
-const apiUrlbq = 'https://zany-plum-bear.cyclic.cloud/'; // Replace with your API endpoint
+const apiUrlxxs = 'http://localhost:3000/'; // Replace with your API endpoint
+const apiUrlxx = 'https://zany-plum-bear.cyclic.cloud/'; // Replace with your API endpoint
 
 const sendRequestforOrder = async (method, endpoint, data = null) => {
     const options = {
@@ -29,7 +36,7 @@ const sendRequestforOrder = async (method, endpoint, data = null) => {
         options.body = JSON.stringify(data);
     }
 
-    const response = await fetch(apiUrla + endpoint, options);
+    const response = await fetch(apiUrlxx + endpoint, options);
     const responseData = await response.json();
 
     if (!response.ok) {
@@ -38,30 +45,6 @@ const sendRequestforOrder = async (method, endpoint, data = null) => {
 
     return responseData;
 };
-
-function ClienDasbordAdministration(who, data) {
-    return new Promise((resolve, reject) => {
-        openDatabase()
-            .then(() => {
-                if (who === "commande") {
-                    getDasboardCustomer()
-                        .then(result => resolve(result))
-                        .catch(error => reject(error));
-                } else if (who === "article") {
-                    getDasboardCustomer()
-                        .then(result => resolve(result))
-                        .catch(error => reject(error));
-                } else if (who === "client") {
-                    getDasboardCustomer()
-                        .then(result => resolve(result))
-                        .catch(error => reject(error));
-                } else {
-                    reject(new Error("Invalid operation"));
-                }
-            })
-            .catch(error => reject(error));
-    });
-}
 
 
 function optionCancileView(productId) {
@@ -124,7 +107,7 @@ function addOrders(data) {
 
         const requests = data.map(article => {
             return new Promise((innerResolve, innerReject) => {
-                const request = objectStore.add(article);
+                const request = objectStore.put(article);
                 request.onsuccess = () => innerResolve();
                 request.onerror = (event) => innerReject(event.target.error);
             });
@@ -135,6 +118,7 @@ function addOrders(data) {
             .catch(error => reject(error));
     });
 }
+
 
 
 
@@ -159,7 +143,8 @@ function clearOrder() {
 
 
 async function OrderLoad() {
-    const sendRequestforOrder = async (method, endpoint, data = null) => {
+    const apU = 'https://zany-plum-bear.cyclic.cloud/';
+    const sendRequestforO = async (method, endpoint, data = null) => {
         const options = {
             method,
             headers: {
@@ -171,7 +156,7 @@ async function OrderLoad() {
             options.body = JSON.stringify(data);
         }
 
-        const response = await fetch(apiUrla + endpoint, options);
+        const response = await fetch(apU + endpoint, options);
         const responseData = await response.json();
 
         if (!response.ok) {
@@ -182,86 +167,71 @@ async function OrderLoad() {
     };
 
     try {
-        const items = await sendRequestforOrder('GET', 'oders');
-        return new Promise((resolve, reject) => {
-            openOrdersDatabase().then(() => clearOrder().then(result => resolve(result)).catch(error => reject(error)));
-            openOrdersDatabase().then(() => addOrders(items).then(result => resolve(result)).catch(error => reject(error)));
-            ClienDasbordAdministration("commande", "")
-        }).catch(error => reject(error));
+        await openOrdersDatabase();
 
-    } catch (error) {
-        console.error('Error fetching items:', error.message);
-    };
+        const items = await sendRequestforO('GET', 'orders');
 
-};
+        await addOrders(items);
 
-
-function getDasboardCustomer() {
-    const transaction = db.transaction(["OrderdStore"], "readonly");
-    const objectStore = transaction.objectStore("OrderdStore");
-    const data = [];
-
-    objectStore.openCursor().onsuccess = (event) => {
-        const cursor = event.target.result;
-        if (cursor) {
-            data.push(cursor.value);
-            cursor.continue();
-        } else {
-            console.log(data);
+        getDasboardCustomer().then(data => {
             const tbodyId = document.getElementById('tbody-data');
             tbodyId.innerHTML = '';
 
-            data.forEach(pani => {
-                const deliveryStatus = pani.statut === "done" ? "livré" : pani.statut == "review" ? "en attente" : pani.statut === "onway" ? "en cours" : "échoué";
+            data.forEach(pan => {
+                pan.articles.forEach((pani, inde) => {
+                    const deliveryStatus = pani.statut === "done" ? "livré" : pani.statut == "review" ? "en attente" : pani.statut === "onway" ? "en cours" : "échoué";
+                    const panierTBODY =
+                        `
+                            <tr onclick="optionCancileView(${pani._id})" style="cursor: pointer !important;" onmouseover="this.style.backgroundColor='#f8f8f8'" onmouseout="this.style.backgroundColor='#fff'"  data-bs-toggle="modal" data-bs-target="#optionCancile">
+                                <td class="product-thumbnail">
+                                    <a>
+                                        <img src="${pani.arti_id.image[parseInt(pani.image[0])].ima}" alt="item">
+                                    </a>
+                                </td>
+                                <td class="product-name">
+                                    <a>${pani.arti_id.addarticle}</a>
+                                    <ul>
+                                        <li>Color: <span style="background-color: ${pani.color.substring(0, 7)}; color: ${pani.color.substring(0, 7)}">${pani.color.substring(0, 7)}</span></li>
+                                        <li>Size: <span>${pani.size}</span></li>
+                                        <li>Material: <span>${pani.arti_id.addmateri}</span></li>
+                                    </ul>
+                                </td>
+                                <td class="product-price">
+                                    <span class="unit-amount">${pani.prix} F</span>
+                                </td>
+                                <td class="product-quantity">
+                                    <div class="input-counter">
+                                        <input type="text" min="1" value="${pani.quantcho}">
+                                    </div>
+                                </td>
+                                <td class="product-subtotal">
+                                    <span class="subtotal-amount">${pani.prix * pani.quantcho} F.CFA</span>
+                                </td>
+                                <td class="product-subtotal">
+                                    <a class="remove${deliveryStatus === 'livré' ? 'c' : deliveryStatus === 'en attente' ? 'a' : deliveryStatus === 'en cours' ? 'b' : 'd'}">
+                                    <i class="bx bx-failed">${deliveryStatus}</i>
+                                    </a>
+                                </td>
+                            </tr>
+                            
+                        `;
 
-                const panierTBODY =
-                    `
-                        <tr onclick="optionCancileView(${pani._id})" style="cursor: pointer !important;" onmouseover="this.style.backgroundColor='#f8f8f8'" onmouseout="this.style.backgroundColor='#fff'"  data-bs-toggle="modal" data-bs-target="#optionCancile">
-                            <td class="product-thumbnail">
-                                <a>
-                                    <img src="${pani.image1}" alt="item">
-                                </a>
-                            </td>
-                            <td class="product-name">
-                                <a>${pani.articleName}</a>
-                                <ul>
-                                    <li>Color: <span>${pani.color}</span></li>
-                                    <li>Size: <span>${pani.size}</span></li>
-                                    <li>Material: <span>${pani.material}</span></li>
-                                </ul>
-                            </td>
-                            <td class="product-price">
-                                <span class="unit-amount">${pani.newPrice} F</span>
-                            </td>
-                            <td class="product-quantity">
-                                   <div class="input-counter">
-                                      <input type="text" min="1" value="${pani.quantity}">
-                                   </div>
-                            </td>
-                            <td class="product-subtotal">
-                                <span class="subtotal-amount">${pani.newPrice * pani.quantity} F.CFA</span>
-                            </td>
-                            <td class="product-subtotal">
-                                <a class="remove${deliveryStatus === 'livré' ? 'c' : deliveryStatus === 'en attente' ? 'a' : deliveryStatus === 'en cours' ? 'b' : 'd'}">
-                                   <i class="bx bx-failed">${deliveryStatus}</i>
-                                </a>
-                            </td>
-                        </tr>
-                        
-                    `;
-
-                tbodyId.innerHTML += panierTBODY;
-
+                    tbodyId.innerHTML += panierTBODY;
+                });
             });
 
             const pantotalid = document.getElementById('toteaux');
             pantotalid.innerHTML = '';
 
-            let totalPricea = 0; // Initialize to 1 so that the first multiplication works
+            let totalPricea = 0;
 
             for (const pri of data) {
-                const adda = pri.newPrice * pri.quantity;
-                totalPricea += adda;
+                for (const prid of pri.articles) {
+                    const adda = prid.prix * prid.quantcho;
+                    totalPricea += adda;
+                };
+
+
             };
 
             const pantotalhtml = `
@@ -289,13 +259,39 @@ function getDasboardCustomer() {
                                 <span>${data.length}</span>
                             `;
             pannierNumber3.innerHTML += panniernumHTML3;
-        }
-    };
+        }).catch(error => {
+            console.error("Error getting data:", error);
+        });
 
-    transaction.onerror = (event) => {
-        console.error("Transaction error:", event.target.error);
-    };
 
-    return "data"
-};
+    } catch (error) {
+        console.error('Error in OrderLoad:', error.message);
+        throw error;
+    }
+}
+
+async function getDasboardCustomer() {
+    return new Promise((resolve, reject) => {
+        const transaction = orderdb.transaction(["OrderdStore"], "readonly");
+        const objectStore = transaction.objectStore("OrderdStore");
+        const data = [];
+
+        transaction.onerror = (event) => {
+            console.error("Error accessing object store:", event.target.error);
+            reject("Error accessing object store");
+        };
+
+        objectStore.openCursor().onsuccess = (event) => {
+            const cursor = event.target.result;
+            if (cursor) {
+                data.push(cursor.value);
+                cursor.continue();
+            } else {
+                resolve(data);
+            }
+        };
+    });
+}
+
+
 

@@ -1,8 +1,8 @@
 
 
 
-const apiUrl = 'http://localhost:3000/'; // Replace with your API endpoint
-const apiUrlq = 'https://zany-plum-bear.cyclic.cloud/'; // Replace with your API endpoint
+const apiUrl = 'https://zany-plum-bear.cyclic.cloud/'; //http://localhost:3000/';
+const apiUrlq = 'https://zany-plum-bear.cyclic.cloud/';
 
 const sendRequestnoto = async (method, endpoint, data = null) => {
     const options = {
@@ -87,6 +87,7 @@ function loGin() {
                 try {
                     const response = await sendRequestnoto('POST', 'people/login', person);
                     sessionStorage.setItem('tibule', response.token);
+                    console.log(response);
                     const splo = response.token.split("°");
                     /*const _id = splo[0];
                     const name = splo[1];
