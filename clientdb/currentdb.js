@@ -554,17 +554,37 @@ function clearData() {
     return answer
 }
 
-function getPanierSend() {
+function getPanierSend(tocompl) {
     const transaction = db.transaction(["PannierContent"], "readonly");
     const objectStore = transaction.objectStore("PannierContent");
-    const data = [];
-
     objectStore.openCursor().onsuccess = (event) => {
         const cursor = event.target.result;
         if (cursor) {
-            data.push(cursor.value);
+            tocompl.articles.push({
+                arti_id: cursor.value._id,
+                quantcho: cursor.value.quantcho,
+                image: cursor.value.imago,
+                color: cursor.value.color,
+                size: cursor.value.size,
+                prix: cursor.value.prix
+            });
             cursor.continue();
         } else {
+            //sendRequestnoto
+            (async () => {
+                try {
+                    const response = await sendRequestnoto('POST', 'orders', tocompl);
+                    if (response.done == "done") {
+                        TotalAll("clear", "");
+                        pannierCotent.length = 0;
+                        window.location.href = "./track-order.html"
+                    };
+
+                } catch (error) {
+                    console.error('Error creating item:', error.message);
+                    throw error; // Re-throw the error to handle it in the calling function if needed
+                }
+            })();
 
         }
     };
@@ -573,7 +593,7 @@ function getPanierSend() {
         console.error("Transaction error:", event.target.error);
     };
 
-    return data
+    return done
 };
 
 function getallCheckou() {
