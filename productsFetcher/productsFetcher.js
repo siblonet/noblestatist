@@ -55,8 +55,8 @@ function addArticles(data) {
 
 
 
-const apiUrla = 'http://localhost:3000/'; // Replace with your API endpoint
-const apiUrlaq = 'https://zany-plum-bear.cyclic.cloud/'; // Replace with your API endpoint
+const apiUrlaq = 'http://localhost:3000/'; // Replace with your API endpoint
+const apiUrla = 'https://zany-plum-bear.cyclic.cloud/'; // Replace with your API endpoint
 
 const sendRequestnot = async (method, endpoint, data = null) => {
     const options = {
