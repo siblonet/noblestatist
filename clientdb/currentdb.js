@@ -73,9 +73,9 @@ function previewImage(event) {
     }
 };
 
-const apiUrl = 'http://localhost:3000/'; // Replace with your API endpoint
+const apiUrla = 'http://localhost:3000/'; // Replace with your API endpoint
 const token = 'YOUR_TOKEN_HERE'; // Replace with your actual token
-const apiUrlf = 'https://zany-plum-bear.cyclic.cloud/'; // Replace with your API endpoint
+const apiUrl = 'https://zany-plum-bear.cyclic.cloud/'; // Replace with your API endpoint
 
 // Helper function to send authenticated requests
 const sendRequest = async (method, endpoint, data = null) => {
