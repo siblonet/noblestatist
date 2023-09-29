@@ -1,7 +1,7 @@
 
 
 
-const apiUrl = 'https://zany-plum-bear.cyclic.cloud/'; //http://localhost:3000/';
+const apiUrl = 'http://localhost:3000/';
 const apiUrlq = 'https://zany-plum-bear.cyclic.cloud/';
 
 const sendRequestnoto = async (method, endpoint, data = null) => {

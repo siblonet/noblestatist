@@ -51,7 +51,7 @@ async function sendCommen() {
 };
 
 
-const apiUrl1 = 'https://zany-plum-bear.cyclic.cloud/'; //http://localhost:3000/';
+const apiUrl1 = 'http://localhost:3000/';
 
 const sendRequestOrder = async (method, endpoint, data = null) => {
     const options = {

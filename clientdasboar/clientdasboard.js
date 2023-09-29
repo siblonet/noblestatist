@@ -21,8 +21,8 @@ function getAdmin() {
 Dasboard("commande");
 
 
-const apiUrlxxs = 'http://localhost:3000/'; // Replace with your API endpoint
-const apiUrlxx = 'https://zany-plum-bear.cyclic.cloud/'; // Replace with your API endpoint
+const apiUrlxx = 'http://localhost:3000/'; // Replace with your API endpoint
+const apiUrlxxs = 'https://zany-plum-bear.cyclic.cloud/'; // Replace with your API endpoint
 
 const sendRequestforOrder = async (method, endpoint, data = null) => {
     const options = {
@@ -37,25 +37,150 @@ const sendRequestforOrder = async (method, endpoint, data = null) => {
     }
 
     const response = await fetch(apiUrlxx + endpoint, options);
-    const responseData = await response.json();
 
-    if (!response.ok) {
-        throw new Error(responseData.message || 'Request failed!');
+    return response;
+
+};
+
+
+async function optionCancileView(_id, proid) {
+    await openOrdersDatabase();
+
+    getDasbordById(_id).then(result => {
+        const product = result.articles.find(po => po._id == proid);
+        //console.log(result);
+        //console.log(product);
+
+        if (product) {
+            const splo = product.arti_id.addcoul.split(",") ? product.arti_id.addcoul.split(",") : "#eeeeee";
+            const colora = splo[0] == "null" ? "#eeeeee" : splo[0];
+            const colorb = splo[1] == "null" ? "#eeeeee" : splo[1];
+            const colorc = splo[2] == "null" ? "#eeeeee" : splo[2];
+            const colord = splo[3] == "null" ? "#eeeeee" : splo[3];
+            const colore = splo[4] == "null" ? "#eeeeee" : splo[4];
+
+            const sploa = product.arti_id.addtail.split(",") ? product.arti_id.addtail.split(",") : "-";
+            const qsizea = sploa[0] == "null" ? "-" : sploa[0];
+            const qsizeb = sploa[1] == "null" ? "-" : sploa[1];
+            const qsizec = sploa[2] == "null" ? "-" : sploa[2];
+            const qsized = sploa[3] == "null" ? "-" : sploa[3];
+            const qsizee = sploa[4] == "null" ? "-" : sploa[4];
+
+            document.getElementById('optionCancilename').innerText = product.arti_id.addarticle;
+            document.getElementById('optionViewNewPrice').innerText = `${product.arti_id.addprix} F.CFA`;
+            document.getElementById('rating').innerText = `5 avis`;
+            document.getElementById('quickFour').innerText = `${product.arti_id.addfour}`;
+            document.getElementById('quickDispo').innerText = `${product.arti_id.adddispo}`;
+            document.getElementById('quickType').innerText = `${product.arti_id.addtype}`;
+            document.getElementById('productQuantity').value = product.quantcho;
+
+
+            const quickCouleuHtml = document.getElementById('quickCouleu');
+            const quickTailHtml = document.getElementById('quickTail');
+            quickCouleuHtml.innerHTML = '';
+            quickTailHtml.innerHTML = '';
+
+            const quickColoHTML = `
+                                    <li><a onclick="quiColorfuna('0', '${colora}', '${product.arti_id.image[0].ima}')" style="cursor: pointer !important; background-color: ${colora} !important; border: 1px solid #f8f8f8 !important"></a></li>
+                                    <li><a onclick="quiColorfuna('1', '${colorb}', '${product.arti_id.image[1].ima}')" style="cursor: pointer !important; background-color: ${colorb} !important; border: 1px solid #f8f8f8 !important"></a></li>
+                                    <li><a onclick="quiColorfuna('2', '${colorc}', '${product.arti_id.image[2].ima}')" style="cursor: pointer !important; background-color: ${colorc} !important; border: 1px solid #f8f8f8 !important"></a></li>
+                                    <li><a onclick="quiColorfuna('3', '${colord}', '${product.arti_id.image[3].ima}')" style="cursor: pointer !important; background-color: ${colord} !important; border: 1px solid #f8f8f8 !important"></a></li>
+                                    <li><a onclick="quiColorfuna('4', '${colore}', '${product.arti_id.image[4].ima}')" style="cursor: pointer !important; background-color: ${colore} !important; border: 1px solid #f8f8f8 !important"></a></li>
+                                    `;
+            quickCouleuHtml.innerHTML = quickColoHTML;
+
+            const quickSizeHTML = `
+                                    <li id="quisizeli0"><a onclick="quiSizefuna('0', '${qsizea}')" style="cursor: pointer !important">${qsizea}</a></li>
+                                    <li id="quisizeli1"><a onclick="quiSizefuna('1', '${qsizeb}')" style="cursor: pointer !important">${qsizeb}</a></li>
+                                    <li id="quisizeli2"><a onclick="quiSizefuna('2', '${qsizec}')" style="cursor: pointer !important">${qsizec}</a></li>
+                                    <li id="quisizeli3"><a onclick="quiSizefuna('3', '${qsized}')" style="cursor: pointer !important">${qsized}</a></li>
+                                    <li id="quisizeli4"><a onclick="quiSizefuna('4', '${qsizee}')" style="cursor: pointer !important">${qsizee}</a></li>
+                                    `;
+            quickTailHtml.innerHTML = quickSizeHTML;
+
+            const orderStatuHtml = document.getElementById('statusOrder');
+            orderStatuHtml.innerHTML = '';
+            const orderStatus = product.statut === "done" ? "livré" : product.statut == "review" ? "en attente" : product.statut === "onway" ? "en cours" : "échoué";
+            const orderStatu = ` <span style="color: ${orderStatus === 'livré' ? 'green' : orderStatus === 'en attente' ? 'orange' : orderStatus === 'en cours' ? 'pink' : 'red'}">Commande ${orderStatus}</span>
+                                    `;
+            orderStatuHtml.innerHTML = orderStatu;
+
+
+            document.getElementById('ido').value = `${_id}`;
+            document.getElementById('proid').value = `${proid}`;
+
+            const element = document.getElementById('hidlater');
+            element.classList.remove('hiddendhid');
+            element.classList.add('hiddendshow');
+
+            const bacgro = document.getElementById('bagron');
+            bacgro.style.backgroundColor = product.backgroundColor;
+            const modalImage = document.getElementById('ipage');
+            modalImage.src = product.arti_id.image[0].ima;
+            const colSizeImage = product.image.split(",");
+            const quickColose = document.getElementById('quickColose');
+            quickColose.innerHTML = '';
+            selctSizea = [];
+            selcta = [];
+            for (let poa = 0; poa < colSizeImage.length; poa++) {
+                quiColorfunb(poa, splo[parseInt(colSizeImage[poa])], product.arti_id.image[parseInt(colSizeImage[poa])].ima)
+                quiSizefunab(parseInt(colSizeImage[poa]), sploa[parseInt(colSizeImage[poa])])
+            }
+
+        };
+
+    }).catch();
+
+};
+
+async function cancelItemById() {
+    const ido = document.getElementById('ido').value;
+    const proid = document.getElementById('proid').value;
+    await sendRequestforOrder('DELETE', `orders/oarderar/${ido}/${proid}`);
+    await openOrdersDatabase();
+    await clearOrder().then()
+        .catch(error => {
+            console.error('Error executing OrderLoad:', error.message);
+        });
+
+
+    window.location.reload()
+};
+
+
+async function updateOrderById() {
+    const ido = document.getElementById('ido').value;
+    const proid = document.getElementById('proid').value;
+    const quantity = document.getElementById('productQuantity').value;
+
+    let sizo = "";
+    let imago = "";
+    selcta.forEach((si, index) => sizo += index + 1 == selcta.length ? si.size : si.size + ",");
+
+    let cilor = "";
+    selctSizea.forEach((si, index) => {
+        cilor += index + 1 == selctSizea.length ? si.col : si.col + ",";
+        imago += index + 1 == selctSizea.length ? si.id : si.id + ","
+    });
+
+    const upda = {
+        quantcho: quantity,
+        imago: selctSizea.length > 0 ? imago : "0",
+        color: selctSizea.length > 0 ? cilor : addcoul.substring(0, 7),
+        size: selcta.length > 0 ? sizo : addtail[2] == "," ? addtail[0] + addtail[1] : addtail[0]
     }
-
-    return responseData;
+    
+    
+    
+    /*await sendRequestforOrder('DELETE', `orders/oarderar/${ido}/${proid}`);
+    await openOrdersDatabase();
+    await clearOrder().then()
+        .catch(error => {
+            console.error('Error executing OrderLoad:', error.message);
+        });
+    window.location.reload()*/
 };
 
-
-function optionCancileView(productId) {
-    TotalAll("getid", productId);
-};
-
-function cancelItemById() {
-    const ido = parseInt(document.getElementById('ido').value);
-    TotalAll("del", ido);
-    TotalAll('dasboard', "");
-};
 
 function decreaseQuantity(id) {
     TotalAll('get', { id: id, even: "" });
@@ -143,7 +268,7 @@ function clearOrder() {
 
 
 async function OrderLoad() {
-    const apU = 'https://zany-plum-bear.cyclic.cloud/';
+    const apU = 'http://localhost:3000/'; //https://zany-plum-bear.cyclic.cloud/';
     const sendRequestforO = async (method, endpoint, data = null) => {
         const options = {
             method,
@@ -182,7 +307,7 @@ async function OrderLoad() {
                     const deliveryStatus = pani.statut === "done" ? "livré" : pani.statut == "review" ? "en attente" : pani.statut === "onway" ? "en cours" : "échoué";
                     const panierTBODY =
                         `
-                            <tr onclick="optionCancileView(${pani._id})" style="cursor: pointer !important;" onmouseover="this.style.backgroundColor='#f8f8f8'" onmouseout="this.style.backgroundColor='#fff'"  data-bs-toggle="modal" data-bs-target="#optionCancile">
+                            <tr onclick="optionCancileView('${pan._id}', '${pani._id}')" style="cursor: pointer !important;" onmouseover="this.style.backgroundColor='#f8f8f8'" onmouseout="this.style.backgroundColor='#fff'"  data-bs-toggle="modal" data-bs-target="#optionCancile">
                                 <td class="product-thumbnail">
                                     <a>
                                         <img src="${pani.arti_id.image[parseInt(pani.image[0])].ima}" alt="item">
@@ -294,4 +419,123 @@ async function getDasboardCustomer() {
 }
 
 
+async function getDasbordById(_id) {
+    return new Promise((resolve, reject) => {
+        const transaction = orderdb.transaction(["OrderdStore"], "readonly");
+        const objectStore = transaction.objectStore("OrderdStore");
+        const getRequest = objectStore.get(_id);
 
+        transaction.onerror = (event) => {
+            console.error("Error accessing object store:", event.target.error);
+            reject("Error accessing object store");
+        };
+
+        getRequest.onsuccess = (event) => {
+            const actioa = event.target.result;
+            resolve(actioa)
+        };
+
+
+    });
+}
+
+
+
+let selcta = [];
+
+function quiSizefunab(id, siz) {
+    const one = document.getElementById(`quisizeli${id}`);
+    one.classList.add('active');
+    selcta.push({ id: `quisizeli${id}`, size: siz });
+};
+
+function quiSizefuna(id, siz) {
+    if (selcta.length == 0 && `quisizeli${id}` !== "quisizelia") {
+        const onea = document.getElementById("quisizelia");
+        const one = document.getElementById(`quisizeli${id}`);
+        onea.classList.remove('active');
+        one.classList.add('active');
+        selcta.push({ id: `quisizeli${id}`, size: siz });
+    } else {
+        let prodque = document.getElementById('productQuantity').value;
+        if (parseInt(prodque) + 1 > selcta.length + 1) {
+            const one = document.getElementById(`quisizeli${id}`);
+            one.classList.add('active');
+            selcta.push({ id: `quisizeli${id}`, size: siz });
+        } else {
+            selcta.forEach(ee => {
+                const one = document.getElementById(`${ee.id}`);
+                one.classList.remove('active');
+            });
+            selcta = [];
+            const one = document.getElementById(`quisizeli${id}`);
+            one.classList.add('active');
+            selcta.push({ id: `quisizeli${id}`, size: siz });
+        };
+    }
+
+};
+
+let selctSizea = [];
+function quiColorfunb(impo, id, im) {
+    const bacgro = document.getElementById('bagron');
+    bacgro.style.backgroundColor = id;
+    const modalImage = document.getElementById('ipage');
+    modalImage.src = im;
+
+    const quickTailHtml = document.getElementById('quickColose');
+
+    selctSizea.push({ col: id, id: impo });
+
+    const quickSizeHTML = `<li style="background-color: ${id};"><a onclick="quiColoremoa(${impo})" style="cursor: pointer !important"></a></li>`;
+    quickTailHtml.innerHTML += quickSizeHTML;
+};
+
+
+function quiColorfuna(impo, id, im) {
+    const bacgro = document.getElementById('bagron');
+    bacgro.style.backgroundColor = id;
+    const modalImage = document.getElementById('ipage');
+    modalImage.src = im;
+    let proquant = document.getElementById('productQuantity').value;
+
+    const quickTailHtml = document.getElementById('quickColose');
+    quickTailHtml.innerHTML = '';
+
+    if (selctSizea.length == 0 && parseInt(proquant) == 1) {
+        selctSizea.push({ col: id, id: impo });
+
+        const quickSizeHTML = `<li style="background-color: ${id};"><a onclick="quiColoremoa(${0})" style="cursor: pointer !important"></a></li>`;
+        quickTailHtml.innerHTML = quickSizeHTML;
+
+    } else {
+        if (parseInt(proquant) > selctSizea.length) {
+            selctSizea.push({ col: id, id: impo });
+            let quickSizeHTML = '';
+            selctSizea.forEach((coa, index) => {
+                quickSizeHTML += `<li style="background-color: ${coa.col};"><a onclick="quiColoremoa('${index}')" style="cursor: pointer !important"></a></li>`;
+            });
+            quickTailHtml.innerHTML = quickSizeHTML;
+        } else {
+            selctSizea = [];
+            selctSizea.push({ col: id, id: impo });
+            const quickSizeHTML = `<li style="background-color: ${id};"><a onclick="quiColoremoa(${0})" style="cursor: pointer !important"></a></li>`;
+            quickTailHtml.innerHTML = quickSizeHTML;
+        }
+    }
+}
+
+function quiColoremoa(pos) {
+    const quickTailHtml = document.getElementById('quickColose');
+    quickTailHtml.innerHTML = '';
+    if (pos >= 0 && pos < selctSizea.length) {
+        selctSizea.splice(pos, 1);
+        let quickSizeHTML = '';
+        selctSizea.forEach((coa, index) => {
+            quickSizeHTML += `<li style="background-color: ${coa.col};"><a onclick="quiColoremoa('${index}')" style="cursor: pointer !important"></a></li>`;
+        });
+        quickTailHtml.innerHTML = quickSizeHTML;
+
+    }
+
+}

@@ -199,7 +199,7 @@
                 <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true"><i class="bx bx-x"></i></span>
                 </button>
-               
+
                 <div class="row align-items-center">
                     <div class="col-lg-6 col-md-6">
                         <div class="products-image" id="bagron" style="">
@@ -208,67 +208,72 @@
                     </div>
 
                     <input type="hidden" id="ido" value="0">
+                    <input type="hidden" id="proid" value="0">
 
-                   <div class="col-lg-6 col-md-6">
+                    <div class="col-lg-6 col-md-6">
                         <div class="products-content">
                             <h3>
                                 <a id="optionCancilename">
                                 </a>
                             </h3>
-                           
-                                <div class="price">
-                                    <span class="new-price" id="optionViewNewPrice"></span>
-                                </div>
-                                <div class="products-review">
-                                    <div class="rating">
-                                        <i class="bx bxs-star"></i>
-                                        <i class="bx bxs-star"></i>
-                                        <i class="bx bxs-star"></i>
-                                        <i class="bx bxs-star"></i>
-                                        <i class="bx bxs-star"></i>
-                                    </div>
-                                    <a href="#" class="rating-count" id="rating"></a>
-                                </div>
-                                <ul class="products-info">
-                                    <li><span>Vendeur:</span> <a href="#">Lereve</a></li>
-                                    <li><span>Disponibilité:</span> <a href="#">En stock (7 articles) </a></li>
-                                    <li><span>Type de produits:</span> <a href="#">T-Shirt</a></li>
-                                </ul>
-                                <div class="products-color-switch">
-                                    <h4>Couleur:</h4>
-                                    <ul>
-                                        <li><a href="#" data-bs-toggle="tooltip" data-placement="top" title="Black"
-                                                class="color-black"></a></li>
-                                        <li><a href="#" data-bs-toggle="tooltip" data-placement="top" title="White"
-                                                class="color-white"></a></li>
-                                        <li><a href="#" data-bs-toggle="tooltip" data-placement="top" title="Green"
-                                                class="color-green"></a></li>
-                                        <li><a href="#" data-bs-toggle="tooltip" data-placement="top" title="Yellow Green"
-                                                class="color-yellowgreen"></a></li>
-                                        <li><a href="#" data-bs-toggle="tooltip" data-placement="top" title="Teal"
-                                                class="color-teal"></a></li>
-                                    </ul>
-                                </div>
-                                <div class="products-size-wrapper">
-                                    <h4>Taille:</h4>
-                                    <ul>
-                                        <li><a href="#">XS</a></li>
-                                        <li class="active"><a href="#">S</a></li>
-                                        <li><a href="#">M</a></li>
-                                        <li><a href="#">XL</a></li>
-                                        <li><a href="#">XXL</a></li>
-                                    </ul>
-                                </div>
 
-                                <div class="products-add-to-cart hiddendshow">
-                                    <div class="input-counter" id="quantity-manipulate">
-                                     
-                                    </div>
+                            <div class="price">
+                                <span class="new-price" id="optionViewNewPrice"></span>
+                            </div>
+                            <div class="products-review">
+                                <div class="rating">
+                                    <i class="bx bxs-star"></i>
+                                    <i class="bx bxs-star"></i>
+                                    <i class="bx bxs-star"></i>
+                                    <i class="bx bxs-star"></i>
+                                    <i class="bx bxs-star"></i>
                                 </div>
+                                <a class="rating-count" id="rating"></a>
+                            </div>
+                            <ul class="products-info">
+                                <li><span>Vendeur:</span> <a id="quickFour"></a></li>
+                                <li><span>Disponibilité:</span> <a id="quickDispo"></a></li>
+                                <li><span>Type de produits:</span> <a id="quickType"></a></li>
+                            </ul>
+                            <div class="products-color-switch">
+                                <h4>Couleur:</h4>
+                                <ul id="quickCouleu">
+
+                                </ul>
+                            </div>
+                            <div class="products-color-switch">
+                                <h4>Couleur Selectionné:</h4>
+                                <ul id="quickColose">
+
+                                </ul>
+                            </div>
+                            <div class="products-size-wrapper">
+                                <h4>Taille:</h4>
+                                <ul id="quickTail">
+
+                                </ul>
+                            </div>
+                            <div class="products-add-to-cart" id="hidlater">
+                                <div class="input-counter">
+                                    <span class="minus-btn">
+                                        <i class="bx bx-minus"></i>
+                                    </span>
+                                    <input type="text" id="productQuantity" value="1">
+                                    <span class="plus-btn">
+                                        <i class="bx bx-plus"></i>
+                                    </span>
+                                </div>
+                            </div>
                             <div class="products-add-to-cart">
-                                <button type="submit" class="default-btn" id="addToCartBtn"
-                                    onclick="cancelItemById()" data-bs-dismiss="modal" aria-label="Close">Retirer
+                                <button type="submit" class="default-btn" id="addToCartBtn" onclick="cancelItemById()"
+                                    data-bs-dismiss="modal" aria-label="Close">Retirer
                                 </button>
+                                <button type="submit" class="default-btn" id="addToCartBtn" onclick=""
+                                    data-bs-dismiss="modal" aria-label="Close">Modifier
+                                </button>
+                                <div id="statusOrder">
+
+                                </div>
                             </div>
                         </div>
                     </div>

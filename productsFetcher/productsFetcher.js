@@ -55,7 +55,7 @@ function addArticles(data) {
 
 
 
-const apiUrla = 'https://zany-plum-bear.cyclic.cloud/'; //http://localhost:3000/';
+const apiUrla = 'http://localhost:3000/';
 const apiUrlad = 'https://zany-plum-bear.cyclic.cloud/';
 
 const sendRequestnot = async (method, endpoint, data = null) => {

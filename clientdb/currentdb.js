@@ -74,7 +74,7 @@ function previewImage(event) {
     }
 };
 
-const apiUrl = 'https://zany-plum-bear.cyclic.cloud/'; //http://localhost:3000/';
+const apiUrl = 'http://localhost:3000/';
 const token = 'YOUR_TOKEN_HERE'; // Replace with your actual token
 const apiUrle = 'https://zany-plum-bear.cyclic.cloud/'; // Replace with your API endpoint
 
@@ -256,22 +256,9 @@ function getDataById(id) {
     return "answer";
 };
 
-function getDasbordById(id) {
-    const transaction = db.transaction(["PannierContent"], "readonly");
-    const objectStore = transaction.objectStore("PannierContent");
-
-    const getRequest = objectStore.get(id);
-
-    getRequest.onsuccess = (event) => {
-        const result = event.target.result;
-        document.getElementById('optionCancilename').innerText = result.articleName;
-        document.getElementById('ido').value = result._id;
-        const bacgro = document.getElementById('bagron');
-        bacgro.style.backgroundColor = result.backgroundColor;
-        const modalImage = document.getElementById('ipage');
-        modalImage.src = result.image1;
 
 
+/*
         const optionid = document.getElementById('quantity-manipulate');
         optionid.innerHTML = '';
         const optionQuanhtml =
@@ -284,17 +271,7 @@ function getDasbordById(id) {
 
         document.getElementById('optionViewNewPrice').innerText = `${result.newPrice} F.CFA`;
         document.getElementById('optionQuantity').value = result.quantity;
-
-    };
-
-
-    transaction.onerror = (event) => {
-        console.log(event.target.error);
-    };
-
-    return "answer";
-};
-
+    */
 //cart data entering
 function getallData() {
     const transaction = db.transaction(["PannierContent"], "readonly");
@@ -572,9 +549,32 @@ function getPanierSend(tocompl) {
             });
             cursor.continue();
         } else {
-            //sendRequestnoto
+
+            const sendReque = async (method, endpoint, data = null) => {
+                const options = {
+                    method,
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                };
+            
+                if (data) {
+                    options.body = JSON.stringify(data);
+                }
+            
+                const response = await fetch(apiUrl + endpoint, options);
+                const responseData = await response.json();
+            
+                if (!response.ok) {
+                    throw new Error(responseData.message || 'Request failed!');
+                }
+            
+                return responseData;
+            };
+
+
             try {
-                const response = await sendRequestnoto('POST', 'orders', tocompl);
+                const response = await sendReque('POST', 'orders', tocompl);
                 if (response.done == "done") {
                     TotalAll("clear", "");
                     pannierCotent.length = 0;
@@ -1170,11 +1170,7 @@ function TotalAll(who, data) {
                     getDataById(data)
                         .then(result => resolve(result))
                         .catch(error => reject(error));
-                } else if (who === "getid" && getAdmin) {
-                    getDasbordById(data)
-                        .then(result => resolve(result))
-                        .catch(error => reject(error));
-                } else if (who === "all") {
+                }else if (who === "all") {
                     getallData()
                         .then(result => resolve(result))
                         .catch(error => reject(error));

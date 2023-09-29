@@ -83,6 +83,8 @@ function recentProduct(recenPr) {
 
 
 function showProductQuickView(productId) {
+    selct = [];
+    selctSize = [];
     const product = recenProd.find(item => item._id === productId);
     const exista = pannierCotent.find(dd => dd._id === productId);
     if (product && !exista) {
@@ -177,7 +179,7 @@ function showProductQuickView(productId) {
         const modalImage = document.getElementById('ipage');
         modalImage.src = product.image[0].ima;
 
-        const newURL = `products-type-1.html?ov=${product._id}?vo=${product.who}`;  // Replace with the desired new URL
+        const newURL = `products-type-1.html?ov=${product._id}?vo=${product.who}`;
 
         const linkElement = document.getElementById('change-url');
 
