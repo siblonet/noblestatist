@@ -16,7 +16,7 @@ const sendRequestnoto = async (method, endpoint, data = null) => {
         options.body = JSON.stringify(data);
     }
 
-    const response = await fetch(apiUrl + endpoint, options);
+    const response = await fetch(apiUrlfine + endpoint, options);
     const responseData = await response.json();
 
     if (!response.ok) {
