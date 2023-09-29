@@ -1,34 +1,5 @@
-let articldb;
-
 const pannierCotent = [];
 const pannierPrin = [];
-
-function openArticleDatabase() {
-    return new Promise((resolve, reject) => {
-        const dbName = "Articles";
-        const dbVersion = 1;
-
-        const request = indexedDB.open(dbName, dbVersion);
-
-        request.onerror = (event) => {
-            reject("Database error: " + event.target.errorCode);
-        };
-
-        request.onsuccess = (event) => {
-            articldb = event.target.result;
-            resolve();
-        };
-
-        request.onupgradeneeded = (event) => {
-            articldb = event.target.result;
-
-            if (!articldb.objectStoreNames.contains("ArticleStore")) {
-                articldb.createObjectStore("ArticleStore", { keyPath: "_id" });
-            }
-        };
-    });
-}
-
 
 function addArticles(data) {
     return new Promise((resolve, reject) => {
@@ -50,14 +21,6 @@ function addArticles(data) {
 }
 
 
-
-
-
-
-
-const apiUrla = 'http://localhost:3000/';
-const apiUrlad = 'https://zany-plum-bear.cyclic.cloud/';
-
 const sendRequestnot = async (method, endpoint, data = null) => {
     const options = {
         method,
@@ -70,7 +33,7 @@ const sendRequestnot = async (method, endpoint, data = null) => {
         options.body = JSON.stringify(data);
     }
 
-    const response = await fetch(apiUrla + endpoint, options);
+    const response = await fetch(apiUrlfine + endpoint, options);
     const responseData = await response.json();
 
     if (!response.ok) {
@@ -81,6 +44,8 @@ const sendRequestnot = async (method, endpoint, data = null) => {
 };
 
 function clearArticle() {
+    pannierPrin.length = 0;
+    pannierCotent.length = 0;
     const transaction = articldb.transaction(["ArticleStore"], "readwrite");
     const objectStore = transaction.objectStore("ArticleStore");
 
@@ -95,7 +60,7 @@ function clearArticle() {
         answer = event.target.error;
     };
 
-    return answer
+    TotalAll("clear", {});
 }
 
 
@@ -107,12 +72,12 @@ async function DataLoad() {
             openArticleDatabase().then(() => addArticles(items).then(result => resolve(result)).catch(error => reject(error)));
             recentProduct(items);
             populaProduct(items);
-        }).catch(error => reject(error));
-        
+        }).catch(error => console.log(error));
+
     } catch (error) {
         console.error('Error fetching items:', error.message);
     };
-    
+
 };
 DataLoad();
 
@@ -136,40 +101,3 @@ function getallArticles() {
         }
     }
 }
-
-/*
- 
-// Create item
-const createItem = async itemName => {
-  const newItem = { name: itemName };
-  try {
-    const response = await sendRequest('POST', '', newItem);
-    console.log('Item created:', response);
-  } catch (error) {
-    console.error('Error creating item:', error.message);
-  }
-};
- 
-// Read items
-const fetchItems = async () => {
-  try {
-    const items = await sendRequest('GET', '');
-    const itemList = document.getElementById('itemList');
-    itemList.innerHTML = items.map(item => `<li>${item.name}</li>`).join('');
-  } catch (error) {
-    console.error('Error fetching items:', error.message);
-  }
-};
- 
-// Attach event listener for item creation
-const itemForm = document.getElementById('itemForm');
-itemForm.addEventListener('submit', event => {
-  event.preventDefault();
-  const itemName = document.getElementById('itemName').value;
-  createItem(itemName);
-});
- 
-fetchItems();
- 
-"done" ? "livré" : pani.statut == "review" ? "en attente" : pani.statut === "onway" ? "en cours" : "échoué";
-*/

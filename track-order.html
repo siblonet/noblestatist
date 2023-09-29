@@ -264,19 +264,75 @@
                                     </span>
                                 </div>
                             </div>
-                            <div class="products-add-to-cart">
-                                <button type="submit" class="default-btn" id="addToCartBtn" onclick="cancelItemById()"
-                                    data-bs-dismiss="modal" aria-label="Close">Retirer
-                                </button>
-                                <button type="submit" class="default-btn" id="addToCartBtn" onclick=""
-                                    data-bs-dismiss="modal" aria-label="Close">Modifier
-                                </button>
-                                <div id="statusOrder">
+                            <div class="products-add-to-cart" id="cacelandupadte">
+                               
+                                
+                            </div>
+                        </div>
 
+                    </div>
+
+
+
+                </div>
+
+                <br>
+                <br>
+                <div id="statusOrder">
+
+                </div>
+                <div class="row align-items-center">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="products-image" style="">
+
+                            <div class="billing-details">
+
+                                <div class="col-lg-12 col-md-6">
+                                    <div class="form-group">
+                                        <label>Ville </label>
+                                        <input type="text" class="form-control" id="villeValue">
+                                    </div>
                                 </div>
+                                <div class="col-lg-12 col-md-6">
+                                    <div class="form-group">
+                                        <label>Commune </label>
+                                        <input type="text" class="form-control" id="communeValue">
+                                    </div>
+                                </div>
+
+
+
                             </div>
                         </div>
                     </div>
+
+
+                    <div class="col-lg-6 col-md-6">
+                        <div class="products-content">
+
+                            <div class="billing-details">
+                               
+                                <div class="col-lg-12 col-md-6">
+                                    <div class="form-group">
+                                        <label>Adresse précis</label>
+                                        <input type="text" class="form-control" id="adresseValue">
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-md-6">
+                                    <div class="form-group">
+                                        <label>Téléphone</label>
+                                        <input type="text" class="form-control" id="telephoneValue">
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
                 </div>
             </div>
         </div>
@@ -384,7 +440,8 @@
         </div>
     </footer>
 
-
+    <script src="./router.js"></script>
+    <script src="./productsFetcher/database_handl.js"></script>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/popper.min.html"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>

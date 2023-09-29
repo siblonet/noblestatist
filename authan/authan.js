@@ -1,9 +1,3 @@
-
-
-
-const apiUrl = 'http://localhost:3000/';
-const apiUrlq = 'https://zany-plum-bear.cyclic.cloud/';
-
 const sendRequestnoto = async (method, endpoint, data = null) => {
     const options = {
         method,
@@ -52,7 +46,7 @@ function Inscription() {
                         sessionStorage.setItem('tibule', response.token);
                         const splo = response.token.split("°");
                         const admin = splo[5];
-                        window.location.href = admin == "GIFV" ? "./admin/admindasdboard.html" : "./checkout.html"
+                        window.location.href = admin == "GIFV" ? "./admin/admindasdboard.html" : "./track-order.html"
 
                     } catch (error) {
                         console.error('Error creating item:', error.message);
@@ -87,7 +81,6 @@ function loGin() {
                 try {
                     const response = await sendRequestnoto('POST', 'people/login', person);
                     sessionStorage.setItem('tibule', response.token);
-                    console.log(response);
                     const splo = response.token.split("°");
                     /*const _id = splo[0];
                     const name = splo[1];
@@ -96,7 +89,7 @@ function loGin() {
                     const mail = splo[4];*/
                     const admin = splo[5];
                     //const mynam = thisiswhat(`${_id}â${name}â${lastname}â${phone}â${mail}â${admin}`)
-                    window.location.href = admin == "GIFV" ? "./admin/admindasdboard.html" : "./checkout.html"
+                    window.location.href = admin == "GIFV" ? "./admin/admindasdboard.html" : "./track-order.html"
                 } catch (error) {
                     console.error('Error creating item:', error.message);
                 }

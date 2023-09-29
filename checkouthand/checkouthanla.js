@@ -1,4 +1,4 @@
-.function totalManager() {
+function totalManager() {
     TotalAll('all2', "")
 };
 totalManager();
@@ -51,7 +51,6 @@ async function sendCommen() {
 };
 
 
-const apiUrl1 = 'http://localhost:3000/';
 
 const sendRequestOrder = async (method, endpoint, data = null) => {
     const options = {

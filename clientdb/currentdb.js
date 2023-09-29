@@ -1,41 +1,3 @@
-let db;
-
-function openDatabase() {
-    return new Promise((resolve, reject) => {
-        const dbName = "panierDatabase";
-        const dbVersion = 2;
-
-        const request = indexedDB.open(dbName, dbVersion);
-
-        request.onerror = (event) => {
-            reject("Database error: " + event.target.errorCode);
-        };
-
-        request.onsuccess = (event) => {
-            db = event.target.result;
-            resolve();
-        };
-
-        request.onupgradeneeded = (event) => {
-            db = event.target.result;
-
-            if (!db.objectStoreNames.contains("PannierContent")) {
-                db.createObjectStore("PannierContent", { keyPath: "_id" });
-            }
-        };
-    });
-}
-
-
-function adminDasboard(what) {
-    if (getAdmin()) {
-        AdminAdministrtion(what, "");
-    }
-};
-
-
-adminDasboard("commande");
-
 function getAdmin() {
     const token = sessionStorage.getItem('tibule');
     const splo = token.split("°");
@@ -74,11 +36,7 @@ function previewImage(event) {
     }
 };
 
-const apiUrl = 'http://localhost:3000/';
-const token = 'YOUR_TOKEN_HERE'; // Replace with your actual token
-const apiUrle = 'https://zany-plum-bear.cyclic.cloud/'; // Replace with your API endpoint
 
-// Helper function to send authenticated requests
 const sendRequest = async (method, endpoint, data = null) => {
     const options = {
         method,
@@ -92,7 +50,7 @@ const sendRequest = async (method, endpoint, data = null) => {
         options.body = JSON.stringify(data);
     }
 
-    const response = await fetch(apiUrl + endpoint, options);
+    const response = await fetch(apiUrlfine + endpoint, options);
     const responseData = await response.json();
 
     if (!response.ok) {
@@ -114,7 +72,7 @@ const sendRequestnoto = async (method, endpoint, data = null) => {
         options.body = JSON.stringify(data);
     }
 
-    const response = await fetch(apiUrl + endpoint, options);
+    const response = await fetch(apiUrlfine + endpoint, options);
     const responseData = await response.json();
 
     if (!response.ok) {
@@ -173,30 +131,6 @@ function AddArticle(who) {
     } catch (error) {
         console.log(error)
     }
-}
-
-function AdminAdministrtion(who, data) {
-    return new Promise((resolve, reject) => {
-        openDatabase()
-            .then(() => {
-                if (who === "commande") {
-                    getAdminDasboard()
-                        .then(result => resolve(result))
-                        .catch(error => reject(error));
-                } else if (who === "article") {
-                    getAdminDasboardproduc()
-                        .then(result => resolve(result))
-                        .catch(error => reject(error));
-                } else if (who === "client") {
-                    getAdminDasboarduser()
-                        .then(result => resolve(result))
-                        .catch(error => reject(error));
-                } else {
-                    reject(new Error("Invalid operation"));
-                }
-            })
-            .catch(error => reject(error));
-    });
 }
 
 
@@ -562,7 +496,7 @@ function getPanierSend(tocompl) {
                     options.body = JSON.stringify(data);
                 }
             
-                const response = await fetch(apiUrl + endpoint, options);
+                const response = await fetch(apiUrlfine + endpoint, options);
                 const responseData = await response.json();
             
                 if (!response.ok) {
@@ -781,382 +715,6 @@ function getDasboard() {
     return "data"
 };
 
-function selectStatus(ido, sat) {
-    TotalAll('action', { id: ido, status: sat });
-};
-
-function getselectDataById(id) {
-    const transaction = db.transaction(["PannierContent"], "readonly");
-    const objectStore = transaction.objectStore("PannierContent");
-
-    const getRequest = objectStore.get(id._id);
-
-    getRequest.onsuccess = (event) => {
-        const actioa = event.target.result;
-        actioa.statut = id.status;
-        TotalAll('put', actioa);
-        adminDasboard('commande');
-    };
-
-    transaction.onerror = (event) => {
-        consolelog(event.target.error);
-    };
-
-    return "answer";
-};
-
-function getAdminDasboard() {
-    const transaction = db.transaction(["PannierContent"], "readonly");
-    const objectStore = transaction.objectStore("PannierContent");
-    const data = [];
-
-    objectStore.openCursor().onsuccess = (event) => {
-        const cursor = event.target.result;
-        if (cursor) {
-            if (cursor.value._id == 50 || cursor.value._id == 51) {
-                data.push(cursor.value);
-            }
-            cursor.continue();
-        } else {
-            const one = document.getElementById('adminitrationproduc');
-            const two = document.getElementById('adminitrationuser');
-            one.classList.remove('active');
-            two.classList.remove('active');
-            one.innerHTML = '';
-            two.innerHTML = '';
-
-            const adminitrationId = document.getElementById('adminitration');
-            adminitrationId.classList.add('active');
-            adminitrationId.innerHTML = '';
-            const adminbody = `
-                                    <div class="container">
-                                        <form>
-                                            <div class="cart-table table-responsive">
-                                                <table class="table table-bordered">
-                                                    <thead>
-                                                        <tr>
-                                                            <th scope="col">Client</th>
-                                                            <th scope="col">Article</th>
-                                                            <th scope="col">Téléphone</th>
-                                                            <th scope="col">Quantité</th>
-                                                            <th scope="col">Statut</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody id="tbody-data">
-
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    `;
-
-            adminitrationId.innerHTML += adminbody;
-
-            const tbodyId = document.getElementById('tbody-data');
-            tbodyId.innerHTML = '';
-
-            data.forEach(pani => {
-                const deliveryStatus = pani.statut === "done" ? "livré" : pani.statut == "review" ? "en attente" : pani.statut === "onway" ? "en cours" : "échoué";
-
-                const panierTBODY =
-                    `
-                        <tr style="cursor: pointer !important;" onmouseover="this.style.backgroundColor='#f8f8f8'" onmouseout="this.style.backgroundColor='#fff'">
-                        <td class="product-price">
-                            <span class="unit-amount">${pani.client}</span>
-                        </td>
-                            <td class="product-name">
-                                <a>${pani.article}</a>
-                                <ul>
-                                    <li>Color: <span>ani.color</span></li>
-                                    <li>Size: <span>pani.size</span></li>
-                                    <li>Material: <span>pani.material</span></li>
-                                </ul>
-                            </td>
-                            <td class="product-price">
-                                <span class="unit-amount">${pani.phone}</span>
-                            </td>
-                            <td class="product-quantity">
-                                   <div class="input-counter">
-                                      <input type="text" min="1" value="${pani.aquantity}">
-                                   </div>
-                            </td>
-                            <!--<td class="product-subtotal">
-                                <span class="subtotal-amount">${pani.newPrice * pani.aquantity} F.CFA</span>
-                            </td>-->
-                            <td class="product-subtotal">
-                                <div class="dropdown">
-                                    <a class="dropdown-toggle remove${deliveryStatus === 'livré' ? 'c' : deliveryStatus === 'en attente' ? 'a' : deliveryStatus === 'en cours' ? 'b' : 'd'}" onclick="toggleDropdown(event)">
-                                        ${deliveryStatus}
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li><span onclick="selectStatus(${pani._id}, 'done')">Livré</span></li>
-                                        <li><span onclick="selectStatus(${pani._id}, 'review')">En attente</span></li>
-                                        <li><span onclick="selectStatus(${pani._id}, 'onway')">En cours</span></li>
-                                        <li><span onclick="selectStatus(${pani._id}, 'fail')">Échoué</span></li>
-                                    </ul>
-                                </div>
-                            </td>
-                            
-                        </tr>
-                        
-                    `;
-
-                tbodyId.innerHTML += panierTBODY;
-
-            });
-
-
-        }
-    };
-
-    transaction.onerror = (event) => {
-        console.error("Transaction error:", event.target.error);
-    };
-
-    return "data"
-};
-
-
-function getAdminDasboardproduc() {
-    const transaction = db.transaction(["PannierContent"], "readonly");
-    const objectStore = transaction.objectStore("PannierContent");
-    const data = [];
-
-    objectStore.openCursor().onsuccess = (event) => {
-        const cursor = event.target.result;
-        if (cursor) {
-            if (cursor.value._id == 50 || cursor.value._id == 51) {
-                data.push(cursor.value);
-
-            }
-            cursor.continue();
-        } else {
-            const one = document.getElementById('adminitration');
-            const two = document.getElementById('adminitrationuser');
-            one.classList.remove('active');
-            two.classList.remove('active');
-            one.innerHTML = '';
-            two.innerHTML = '';
-
-            const adminitrationId = document.getElementById('adminitrationproduc');
-            adminitrationId.classList.add('active');
-            adminitrationId.innerHTML = '';
-            const adminbody = `
-                                    <div class="container">
-                                        <form>
-                                            <div class="cart-table table-responsive">
-                                                <table class="table table-bordered">
-                                                    <thead>
-                                                        <tr>
-                                                            <th scope="col">Produit</th>
-                                                            <th scope="col">Nom</th>
-                                                            <th scope="col">Prix unitaire</th>
-                                                            <th scope="col">Quantité</th>
-                                                            <th scope="col">Total</th>
-                                                            <th scope="col">Statut</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody id="tbody-data">
-
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div class="cart-buttons">
-                                            <div class="row align-items-center">
-                                                <div class="col-lg-5 col-sm-5 col-md-5">
-                                                    <a></a>
-                                                </div>
-                                                <div class="col-lg-7 col-sm-7 col-md-7  text-end">
-                                                <a   data-bs-toggle="modal" data-bs-target="#addArticle" style="cursor: pointer !important;" class="optional-btn">Ajouter un article</a>
-                                            </div>
-                                            </div>
-                                        </div>
-                                        </form>
-                                    </div>
-                                    `;
-
-            adminitrationId.innerHTML += adminbody;
-
-            const tbodyId = document.getElementById('tbody-data');
-            tbodyId.innerHTML = '';
-
-            data.forEach(pani => {
-                const deliveryStatus = pani.statut === "done" ? "livré" : pani.statut == "review" ? "en attente" : pani.statut === "onway" ? "en cours" : "échoué";
-
-                const panierTBODY =
-                    `
-                        <tr style="cursor: pointer !important;" onmouseover="this.style.backgroundColor='#f8f8f8'" onmouseout="this.style.backgroundColor='#fff'">
-                        <td class="product-price">
-                            <span class="unit-amount">${pani.client}</span>
-                        </td>
-                            <td class="product-name">
-                                <a>${pani.article}</a>
-                                <ul>
-                                    <li>Color: <span>ani.color</span></li>
-                                    <li>Size: <span>pani.size</span></li>
-                                    <li>Material: <span>pani.material</span></li>
-                                </ul>
-                            </td>
-                            <td class="product-price">
-                                <span class="unit-amount">${pani.phone}</span>
-                            </td>
-                            <td class="product-quantity">
-                                   <div class="input-counter">
-                                      <input type="text" min="1" value="${pani.aquantity}">
-                                   </div>
-                            </td>
-                            <!--<td class="product-subtotal">
-                                <span class="subtotal-amount">${pani.newPrice * pani.aquantity} F.CFA</span>
-                            </td>-->
-                            <td class="product-subtotal">
-                                <div class="dropdown">
-                                    <a class="dropdown-toggle remove${deliveryStatus === 'livré' ? 'c' : deliveryStatus === 'en attente' ? 'a' : deliveryStatus === 'en cours' ? 'b' : 'd'}" onclick="toggleDropdown(event)">
-                                        ${deliveryStatus}
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li><span onclick="selectStatus(${pani._id}, 'done')">Livré</span></li>
-                                        <li><span onclick="selectStatus(${pani._id}, 'review')">En attente</span></li>
-                                        <li><span onclick="selectStatus(${pani._id}, 'onway')">En cours</span></li>
-                                        <li><span onclick="selectStatus(${pani._id}, 'fail')">Échoué</span></li>
-                                    </ul>
-                                </div>
-                            </td>
-                            
-                        </tr>
-                        
-                    `;
-
-                tbodyId.innerHTML += panierTBODY;
-
-            });
-
-
-        }
-    };
-
-    transaction.onerror = (event) => {
-        console.error("Transaction error:", event.target.error);
-    };
-
-    return "data"
-};
-
-
-
-function getAdminDasboarduser() {
-    const transaction = db.transaction(["PannierContent"], "readonly");
-    const objectStore = transaction.objectStore("PannierContent");
-    const data = [];
-
-    objectStore.openCursor().onsuccess = (event) => {
-        const cursor = event.target.result;
-        if (cursor) {
-            if (cursor.value._id == 50 || cursor.value._id == 51) {
-                data.push(cursor.value);
-
-            }
-            cursor.continue();
-        } else {
-            const one = document.getElementById('adminitration');
-            const two = document.getElementById('adminitrationproduc');
-            one.classList.remove('active');
-            two.classList.remove('active');
-            one.innerHTML = '';
-            two.innerHTML = '';
-
-            const adminitrationId = document.getElementById('adminitrationuser');
-            adminitrationId.classList.add('active');
-            adminitrationId.innerHTML = '';
-            const adminbody = `
-                                    <div class="container">
-                                        <form>
-                                            <div class="cart-table table-responsive">
-                                                <table class="table table-bordered">
-                                                    <thead>
-                                                        <tr>
-                                                            <th scope="col">Produit</th>
-                                                            <th scope="col">Nom</th>
-                                                            <th scope="col">Prix unitaire</th>
-                                                            <th scope="col">Quantité</th>
-                                                            <th scope="col">Total</th>
-                                                            <th scope="col">Statut</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody id="tbody-data">
-
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    `;
-
-            adminitrationId.innerHTML += adminbody;
-
-            const tbodyId = document.getElementById('tbody-data');
-            tbodyId.innerHTML = '';
-
-            data.forEach(pani => {
-                const deliveryStatus = pani.statut === "done" ? "livré" : pani.statut == "review" ? "en attente" : pani.statut === "onway" ? "en cours" : "échoué";
-
-                const panierTBODY =
-                    `
-                        <tr style="cursor: pointer !important;" onmouseover="this.style.backgroundColor='#f8f8f8'" onmouseout="this.style.backgroundColor='#fff'">
-                        <td class="product-price">
-                            <span class="unit-amount">${pani.client}</span>
-                        </td>
-                            <td class="product-name">
-                                <a>${pani.article}</a>
-                                <ul>
-                                    <li>Color: <span>ani.color</span></li>
-                                    <li>Size: <span>pani.size</span></li>
-                                    <li>Material: <span>pani.material</span></li>
-                                </ul>
-                            </td>
-                            <td class="product-price">
-                                <span class="unit-amount">${pani.phone}</span>
-                            </td>
-                            <td class="product-quantity">
-                                   <div class="input-counter">
-                                      <input type="text" min="1" value="${pani.aquantity}">
-                                   </div>
-                            </td>
-                            <!--<td class="product-subtotal">
-                                <span class="subtotal-amount">${pani.newPrice * pani.aquantity} F.CFA</span>
-                            </td>-->
-                            <td class="product-subtotal">
-                                <div class="dropdown">
-                                    <a class="dropdown-toggle remove${deliveryStatus === 'livré' ? 'c' : deliveryStatus === 'en attente' ? 'a' : deliveryStatus === 'en cours' ? 'b' : 'd'}" onclick="toggleDropdown(event)">
-                                        ${deliveryStatus}
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li><span onclick="selectStatus(${pani._id}, 'done')">Livré</span></li>
-                                        <li><span onclick="selectStatus(${pani._id}, 'review')">En attente</span></li>
-                                        <li><span onclick="selectStatus(${pani._id}, 'onway')">En cours</span></li>
-                                        <li><span onclick="selectStatus(${pani._id}, 'fail')">Échoué</span></li>
-                                    </ul>
-                                </div>
-                            </td>
-                            
-                        </tr>
-                        
-                    `;
-
-                tbodyId.innerHTML += panierTBODY;
-
-            });
-
-
-        }
-    };
-
-    transaction.onerror = (event) => {
-        console.error("Transaction error:", event.target.error);
-    };
-
-    return "data"
-};
 
 function TotalAll(who, data) {
     return new Promise((resolve, reject) => {

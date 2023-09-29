@@ -1,10 +1,5 @@
-let orderdb;
-
 function Dasboard(what) {
     if (getAdmin()) {
-
-
-        //OrderLoad(what, "");
         OrderLoad()
             .then()
             .catch(error => {
@@ -20,9 +15,6 @@ function getAdmin() {
 
 Dasboard("commande");
 
-
-const apiUrlxx = 'http://localhost:3000/'; // Replace with your API endpoint
-const apiUrlxxs = 'https://zany-plum-bear.cyclic.cloud/'; // Replace with your API endpoint
 
 const sendRequestforOrder = async (method, endpoint, data = null) => {
     const options = {
@@ -113,6 +105,27 @@ async function optionCancileView(_id, proid) {
             element.classList.remove('hiddendhid');
             element.classList.add('hiddendshow');
 
+            const cacelandupadteHtml = document.getElementById('cacelandupadte');
+            cacelandupadteHtml.innerHTML = '';
+
+            if (product.statut == "review") {
+                const cacelandupad = `
+                                    <button type="submit" class="default-btn" id="addToCartBtn" onclick="cancelItemById()"
+                                        data-bs-dismiss="modal" aria-label="Close">Retirer
+                                    </button>
+                                    <button type="submit" class="default-btn" id="addToCartBtn" onclick="updateOrderById()"
+                                        data-bs-dismiss="modal" aria-label="Close">Modifier
+                                    </button>
+                                    `;
+                cacelandupadteHtml.innerHTML = cacelandupad;
+            }
+
+
+            document.getElementById('villeValue').value = `${result.ville}`;
+            document.getElementById('communeValue').value = `${result.commune}`;
+            document.getElementById('adresseValue').value = `${result.lieu}`;
+            document.getElementById('telephoneValue').value = `${result.phone}`;
+
             const bacgro = document.getElementById('bagron');
             bacgro.style.backgroundColor = product.backgroundColor;
             const modalImage = document.getElementById('ipage');
@@ -153,6 +166,15 @@ async function updateOrderById() {
     const proid = document.getElementById('proid').value;
     const quantity = document.getElementById('productQuantity').value;
 
+
+
+    const villeValue = document.getElementById('villeValue').value;
+    const communeValue = document.getElementById('communeValue').value;
+    const adresseValue = document.getElementById('adresseValue').value;
+    const telephoneValue = document.getElementById('telephoneValue').value;
+
+
+
     let sizo = "";
     let imago = "";
     selcta.forEach((si, index) => sizo += index + 1 == selcta.length ? si.size : si.size + ",");
@@ -164,21 +186,19 @@ async function updateOrderById() {
     });
 
     const upda = {
-        quantcho: quantity,
-        imago: selctSizea.length > 0 ? imago : "0",
-        color: selctSizea.length > 0 ? cilor : addcoul.substring(0, 7),
-        size: selcta.length > 0 ? sizo : addtail[2] == "," ? addtail[0] + addtail[1] : addtail[0]
-    }
-    
-    
-    
-    /*await sendRequestforOrder('DELETE', `orders/oarderar/${ido}/${proid}`);
-    await openOrdersDatabase();
-    await clearOrder().then()
-        .catch(error => {
-            console.error('Error executing OrderLoad:', error.message);
-        });
-    window.location.reload()*/
+        quantcho: parseInt(quantity),
+        image: imago,
+        color: cilor,
+        size: sizo,//dividing here
+        ville: villeValue,
+        commune: communeValue,
+        lieu: adresseValue,
+        phone: telephoneValue
+    };
+
+    //console.log(upda);
+    await sendRequestforOrder('PUT', `orders/${ido}/${proid}`, upda);
+    window.location.reload();
 };
 
 
@@ -197,32 +217,6 @@ function increaseQuantity(id) {
     doo += 1;
     document.getElementById('optionQuantity').value = doo;
 };
-
-function openOrdersDatabase() {
-    return new Promise((resolve, reject) => {
-        const dbName = "OrderdContent";
-        const dbVersion = 3;
-
-        const request = indexedDB.open(dbName, dbVersion);
-
-        request.onerror = (event) => {
-            reject("Database error: " + event.target.errorCode);
-        };
-
-        request.onsuccess = (event) => {
-            orderdb = event.target.result;
-            resolve();
-        };
-
-        request.onupgradeneeded = (event) => {
-            orderdb = event.target.result;
-
-            if (!orderdb.objectStoreNames.contains("OrderdStore")) {
-                orderdb.createObjectStore("OrderdStore", { keyPath: "_id" });
-            }
-        };
-    });
-}
 
 
 function addOrders(data) {
@@ -249,26 +243,27 @@ function addOrders(data) {
 
 
 function clearOrder() {
-    const transaction = articldb.transaction(["OrderdStore"], "readwrite");
-    const objectStore = transaction.objectStore("OrderdStore");
+    return new Promise((resolve, reject) => {
+        const transaction = orderdb.transaction(["OrderdStore"], "readwrite");
+        const objectStore = transaction.objectStore("OrderdStore");
+        const clearRequest = objectStore.clear();
 
-    const clearRequest = objectStore.clear();
-    let answer;
+        clearRequest.onsuccess = (event) => {
+            resolve("cleared")
+        };
 
-    clearRequest.onsuccess = (event) => {
-        answer = "cleared"
-    };
+        transaction.onerror = (event) => {
+            console.error("Error accessing object store:", event.target.error);
+            reject("Error accessing object store");
+        };
 
-    clearRequest.onerror = (event) => {
-        answer = event.target.error;
-    };
 
-    return answer
+    });
+
 }
 
 
 async function OrderLoad() {
-    const apU = 'http://localhost:3000/'; //https://zany-plum-bear.cyclic.cloud/';
     const sendRequestforO = async (method, endpoint, data = null) => {
         const options = {
             method,
@@ -281,7 +276,7 @@ async function OrderLoad() {
             options.body = JSON.stringify(data);
         }
 
-        const response = await fetch(apU + endpoint, options);
+        const response = await fetch(apiUrlfine + endpoint, options);
         const responseData = await response.json();
 
         if (!response.ok) {
@@ -293,6 +288,8 @@ async function OrderLoad() {
 
     try {
         await openOrdersDatabase();
+
+        clearOrder().then().catch();
 
         const items = await sendRequestforO('GET', 'orders');
 
