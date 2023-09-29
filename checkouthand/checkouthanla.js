@@ -1,4 +1,4 @@
-function totalManager() {
+.function totalManager() {
     TotalAll('all2', "")
 };
 totalManager();
@@ -65,7 +65,7 @@ const sendRequestOrder = async (method, endpoint, data = null) => {
         options.body = JSON.stringify(data);
     }
 
-    const response = await fetch(apiUrl1 + endpoint, options);
+    const response = await fetch(apiUrlfine + endpoint, options);
     const responseData = await response.json();
 
     if (!response.ok) {
