@@ -36,7 +36,7 @@ const sendRequestforOrder = async (method, endpoint, data = null) => {
         options.body = JSON.stringify(data);
     }
 
-    const response = await fetch(apiUrlxx + endpoint, options);
+    const response = await fetch(apiUrlfine + endpoint, options);
 
     return response;
 
