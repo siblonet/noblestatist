@@ -125,8 +125,7 @@ async function optionCancileView(_id, proid) {
 
     getDasbordById(_id).then(result => {
         const product = result.articles.find(po => po._id == proid);
-        //console.log(result);
-        //console.log(product);
+
 
         if (product) {
             const splo = product.arti_id.addcoul.split(",") ? product.arti_id.addcoul.split(",") : "#eeeeee";
@@ -216,100 +215,27 @@ async function optionCancileView(_id, proid) {
 
 };
 
-async function optionEditeView(_id, proid) {
-    await openOrdersDatabase();
+async function optionEditeView(_id) {
+    await openArticleDatabase();
 
-    getDasbordById(_id).then(result => {
-        const product = result.articles.find(po => po._id == proid);
-        //console.log(result);
-        //console.log(product);
-
-        if (product) {
-            const splo = product.arti_id.addcoul.split(",") ? product.arti_id.addcoul.split(",") : "#eeeeee";
-            const colora = splo[0] == "null" ? "#eeeeee" : splo[0];
-            const colorb = splo[1] == "null" ? "#eeeeee" : splo[1];
-            const colorc = splo[2] == "null" ? "#eeeeee" : splo[2];
-            const colord = splo[3] == "null" ? "#eeeeee" : splo[3];
-            const colore = splo[4] == "null" ? "#eeeeee" : splo[4];
-
-            const sploa = product.arti_id.addtail.split(",") ? product.arti_id.addtail.split(",") : "-";
-            const qsizea = sploa[0] == "null" ? "-" : sploa[0];
-            const qsizeb = sploa[1] == "null" ? "-" : sploa[1];
-            const qsizec = sploa[2] == "null" ? "-" : sploa[2];
-            const qsized = sploa[3] == "null" ? "-" : sploa[3];
-            const qsizee = sploa[4] == "null" ? "-" : sploa[4];
-
-            document.getElementById('optionCancilename').innerText = product.arti_id.addarticle;
-            document.getElementById('optionViewNewPrice').innerText = `${product.arti_id.addprix} F.CFA`;
-            document.getElementById('rating').innerText = `5 avis`;
-            document.getElementById('quickFour').innerText = `${product.arti_id.addfour}`;
-            document.getElementById('quickDispo').innerText = `${product.arti_id.adddispo}`;
-            document.getElementById('quickType').innerText = `${product.arti_id.addtype}`;
-            document.getElementById('productQuantity').value = product.quantcho;
-
-
-            const quickCouleuHtml = document.getElementById('quickCouleu');
-            const quickTailHtml = document.getElementById('quickTail');
-            quickCouleuHtml.innerHTML = '';
-            quickTailHtml.innerHTML = '';
-
-            const quickColoHTML = `
-                                    <li><a style="background-color: ${colora} !important; border: 1px solid #f8f8f8 !important"></a></li>
-                                    <li><a style="background-color: ${colorb} !important; border: 1px solid #f8f8f8 !important"></a></li>
-                                    <li><a style="background-color: ${colorc} !important; border: 1px solid #f8f8f8 !important"></a></li>
-                                    <li><a style="background-color: ${colord} !important; border: 1px solid #f8f8f8 !important"></a></li>
-                                    <li><a style="background-color: ${colore} !important; border: 1px solid #f8f8f8 !important"></a></li>
-                                    `;
-            quickCouleuHtml.innerHTML = quickColoHTML;
-
-            const quickSizeHTML = `
-                                    <li id="quisizeli0"><a>${qsizea}</a></li>
-                                    <li id="quisizeli1"><a>${qsizeb}</a></li>
-                                    <li id="quisizeli2"><a>${qsizec}</a></li>
-                                    <li id="quisizeli3"><a>${qsized}</a></li>
-                                    <li id="quisizeli4"><a>${qsizee}</a></li>
-                                    `;
-            quickTailHtml.innerHTML = quickSizeHTML;
-
-            const orderStatuHtml = document.getElementById('statusOrder');
-            orderStatuHtml.innerHTML = '';
-            const orderStatus = product.statut === "done" ? "livré" : product.statut == "review" ? "en attente" : product.statut === "onway" ? "en cours" : "échoué";
-            const orderStatu = ` <span style="color: ${orderStatus === 'livré' ? 'green' : orderStatus === 'en attente' ? 'orange' : orderStatus === 'en cours' ? 'pink' : 'red'}">Commande ${orderStatus}</span>
-                                    `;
-            orderStatuHtml.innerHTML = orderStatu;
-
-
-            document.getElementById('ido').value = `${_id}`;
-            document.getElementById('proid').value = `${proid}`;
-
-            const element = document.getElementById('hidlater');
-            element.classList.remove('hiddendhid');
-            element.classList.add('hiddendshow');
-
-
-            document.getElementById('villeValue').value = `${result.ville}`;
-            document.getElementById('communeValue').value = `${result.commune}`;
-            document.getElementById('adresseValue').value = `${result.lieu}`;
-            document.getElementById('telephoneValue').value = `${result.phone}`;
-
-            const bacgro = document.getElementById('bagron');
-            bacgro.style.backgroundColor = product.backgroundColor;
-            const modalImage = document.getElementById('ipage');
-            modalImage.src = product.arti_id.image[0].ima;
-            const colSizeImage = product.image.split(",");
-            const quickColose = document.getElementById('quickColose');
-            quickColose.innerHTML = '';
-            selctSizea = [];
-            selcta = [];
-            for (let poa = 0; poa < colSizeImage.length; poa++) {
-                quiColorfunb(poa, splo[parseInt(colSizeImage[poa])], product.arti_id.image[parseInt(colSizeImage[poa])].ima)
-                quiSizefunab(parseInt(colSizeImage[poa]), sploa[parseInt(colSizeImage[poa])])
-            }
-
-        };
-
-    }).catch();
-
+    getArticleById(_id).then(product => {
+        console.log(product);
+        let image;
+        document.getElementById('Editearticle').value = product.addarticle;
+        document.getElementById('Editequant').value  = parseInt(product.quantity);
+        document.getElementById('Editeprixpro').value  = product.addprixpro;
+        document.getElementById('Editeprix').value  = product.addprix;
+        document.getElementById('Editefour').value  = product.addfour;
+        document.getElementById('Editedispo').value  = product.adddispo;
+        document.getElementById('Editecoul').value  = product.addcoul;
+        document.getElementById('Editetail').value  = product.addtail;
+        document.getElementById('Editemateri').value  = product.addmateri;
+        document.getElementById('Editetype').value  = product.addtype;
+        document.getElementById('Editephone').value  = product.addphone;
+        document.getElementById('Editeexpe').value  = product.addexpe;
+        document.getElementById('Editenotes').value  = product.notes;
+        
+    });
 };
 
 const sendRequestforOrder = async (method, endpoint, data = null) => {
@@ -361,6 +287,27 @@ async function getDasbordById(_id) {
     return new Promise((resolve, reject) => {
         const transaction = orderdb.transaction(["OrderdStore"], "readonly");
         const objectStore = transaction.objectStore("OrderdStore");
+        const getRequest = objectStore.get(_id);
+
+        transaction.onerror = (event) => {
+            console.error("Error accessing object store:", event.target.error);
+            reject("Error accessing object store");
+        };
+
+        getRequest.onsuccess = (event) => {
+            const actioa = event.target.result;
+            resolve(actioa)
+        };
+
+
+    });
+}
+
+
+async function getArticleById(_id) {
+    return new Promise((resolve, reject) => {
+        const transaction = articldb.transaction(["ArticleStore"], "readonly");
+        const objectStore = transaction.objectStore("ArticleStore");
         const getRequest = objectStore.get(_id);
 
         transaction.onerror = (event) => {
@@ -459,16 +406,15 @@ async function getAdminDasboardproduc() {
                 tbodyId.innerHTML = '';
 
                 data.forEach(pani => {
-                    console.log(pani);
                     const panierTBODY =
                         `
                             <tr onmouseover="this.style.backgroundColor='#f8f8f8'" onmouseout="this.style.backgroundColor='#fff'" style="cursor: pointer !important;">
-                                <td onclick="optionEditeView(${pani._id})" class="product-thumbnail" data-bs-toggle="modal" data-bs-target="#modArticle">
+                                <td onclick="optionEditeView('${pani._id}')" class="product-thumbnail" data-bs-toggle="modal" data-bs-target="#modArticle">
                                     <a href="#">
                                         <img src="${pani.image[0].ima}" alt="item">
                                     </a>
                                 </td>
-                                <td onclick="optionEditeView(${pani._id})" class="product-name" data-bs-toggle="modal" data-bs-target="#modArticle">
+                                <td onclick="optionEditeView('${pani._id}')" class="product-name" data-bs-toggle="modal" data-bs-target="#modArticle">
                                     <a href="#">${pani.addarticle}</a>
                                     <ul>
                                         <li>Color: <span style="background-color: ${pani.addcoul.substring(0, 7)}; color: ${pani.addcoul.substring(0, 7)}">${pani.addcoul.substring(0, 7)}</span></li>
@@ -477,7 +423,7 @@ async function getAdminDasboardproduc() {
                                         <li>Type de produit: <span>${pani.addtype}</span></li>
                                     </ul>
                                 </td>
-                                <td onclick="optionEditeView(${pani._id})" class="product-price" data-bs-toggle="modal" data-bs-target="#modArticle">
+                                <td onclick="optionEditeView('${pani._id}')" class="product-price" data-bs-toggle="modal" data-bs-target="#modArticle">
                                     <span class="unit-amount">${pani.addprix} F</span>
                                 </td>
                                 <td class="product-quantity">
@@ -488,7 +434,7 @@ async function getAdminDasboardproduc() {
                                     </div>
                                 </td>
                                 <td class="product-subtotal">
-                                    <span onclick="optionEditeView(${pani._id})" data-bs-toggle="modal" data-bs-target="#modArticle" class="subtotal-amount">${parseInt(pani.addprix) * parseInt(pani.quantity)} F.CFA</span>
+                                    <span onclick="optionEditeView('${pani._id}')" data-bs-toggle="modal" data-bs-target="#modArticle" class="subtotal-amount">${parseInt(pani.addprix) * parseInt(pani.quantity)} F.CFA</span>
                                     <a class="remove" style="cursor: pointer !important;" onclick="removePanierById('${pani._id}')"><i class="bx bx-trash"></i></a>
                                 </td>
                             </tr>
@@ -677,7 +623,6 @@ async function AdminAdministrtion(who, data) {
         await addOrders(items);
         await getAdminDasboard();
     } else if (who === "article") {
-        await openOrdersDatabase();
         await openArticleDatabase();
         await getAdminDasboardproduc()
     } else if (who === "client") {
