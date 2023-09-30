@@ -29,6 +29,9 @@ function previewImage(event) {
                 img.src = e.target.result;
                 img.style.height = '300px';
                 img.style.width = '200px';
+                img.setAttribute('onclick', 'removeImageCreate(event)');
+                img.setAttribute('id', `todeleId${imas.length + 1}`);
+                imagePreview.appendChild(img);
                 imagePreview.appendChild(img);
             };
             reader.readAsDataURL(file);
@@ -36,6 +39,35 @@ function previewImage(event) {
     }
 };
 
+
+function removeImageCreate(event) {
+    const clickedElementId = event.target.id;
+    if (clickedElementId.startsWith('todeleId')) {
+        const imageNumber = parseInt(clickedElementId.replace('todeleId', '')) - 1;
+        if (imageNumber >= 0 && imageNumber) {
+            imas.splice(imageNumber, 1);
+          
+
+            // Clear the image previews
+            const imagePreviews = document.querySelectorAll('[id^="imagePreview"]');
+            imagePreviews.forEach((preview) => {
+                preview.innerHTML = '';
+            });
+
+            // Update the remaining image previews
+            imas.forEach((ed, index) => {
+                const imagePreview = document.getElementById(`imagePreview${index + 1}`);
+                const img = document.createElement('img');
+                img.src = ed.ima;
+                img.style.height = '300px';
+                img.style.width = '200px';
+                img.setAttribute('onclick', 'removeImageCreate(event)');
+                img.setAttribute('id', `todeleId${index + 1}`);
+                imagePreview.appendChild(img);
+            });
+        }
+    }
+}
 
 const sendRequest = async (method, endpoint, data = null) => {
     const options = {
@@ -82,6 +114,14 @@ const sendRequestnoto = async (method, endpoint, data = null) => {
     return responseData;
 };
 
+function ClearImage() {
+    imas.forEach((ef, da) => {
+        const imagePreview = document.getElementById(`imagePreview${da + 1}`);
+        imagePreview.innerHTML = '';
+    });
+    imas.length = 0;
+}
+
 function AddArticle(who) {
     try {
         const addarticle = document.getElementById('addarticle').value;
@@ -98,7 +138,7 @@ function AddArticle(who) {
         const addexpe = document.getElementById('addexpe').value;
         const notes = document.getElementById('notes').value;
 
-        if (addarticle && addprixpro && addprix && addfour && adddispo && addcoul && addtail && addmateri && addtype && addphone && addexpe && notes) {
+        if (addarticle && addprixpro && addprix && addfour && adddispo && addcoul && addtail && addmateri && addtype && addphone && addexpe && notes && imas.length > 4) {
             const product = {
                 addarticle: addarticle,
                 addprixpro: parseInt(addprixpro),
@@ -120,9 +160,9 @@ function AddArticle(who) {
                 try {
                     const response = await sendRequestnoto('POST', 'boutique', product);
 
-                    console.log('Item created:', response);
+                    console.log('product created:', response);
                 } catch (error) {
-                    console.error('Error creating item:', error.message);
+                    console.error('Error creating product:', error.message);
                 }
             };
 
@@ -207,6 +247,7 @@ function getDataById(id) {
         document.getElementById('optionQuantity').value = result.quantity;
     */
 //cart data entering
+
 function getallData() {
     const transaction = db.transaction(["PannierContent"], "readonly");
     const objectStore = transaction.objectStore("PannierContent");
@@ -216,7 +257,7 @@ function getallData() {
         const cursor = event.target.result;
         if (cursor) {
             data.push(cursor.value);
-            pannierPrin.push(cursor.value);
+            //pannierPrin.push(cursor.value);
             cursor.continue();
         } else {
             const tbodyId = document.getElementById('tbody-data');
@@ -297,10 +338,10 @@ function getallDataa() {
         const cursor = event.target.result;
         if (cursor) {
             data.push(cursor.value);
-            pannier.push(cursor.value);
+            //pannier.push(cursor.value);
             cursor.continue();
         } else {
-            if (pannier.length > 0) {
+            if (data.length > 0) {
                 const productContainer = document.getElementById('pannier');
                 productContainer.innerHTML = ''; // Clear previous content
 
@@ -377,6 +418,15 @@ function getallDataa() {
                     subtotal.innerText = `${totalPrice} F.CFA`;
                 }
             } else {
+                const pannierNumber1 = document.getElementById('paniernumber1');
+
+
+
+                const pannierNumber2 = document.getElementById('paniernumber2');
+
+
+                const pannierNumber3 = document.getElementById('paniernumber3');
+
 
 
                 pannierNumber1.innerHTML = ''; // Clear previous content
@@ -491,18 +541,18 @@ function getPanierSend(tocompl) {
                         'Content-Type': 'application/json'
                     }
                 };
-            
+
                 if (data) {
                     options.body = JSON.stringify(data);
                 }
-            
+
                 const response = await fetch(apiUrlfine + endpoint, options);
                 const responseData = await response.json();
-            
+
                 if (!response.ok) {
                     throw new Error(responseData.message || 'Request failed!');
                 }
-            
+
                 return responseData;
             };
 
@@ -728,7 +778,7 @@ function TotalAll(who, data) {
                     getDataById(data)
                         .then(result => resolve(result))
                         .catch(error => reject(error));
-                }else if (who === "all") {
+                } else if (who === "all") {
                     getallData()
                         .then(result => resolve(result))
                         .catch(error => reject(error));

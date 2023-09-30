@@ -9,79 +9,74 @@ async function getAdminDasboard() {
             data.push(cursor.value);
             cursor.continue();
         } else {
-
             const adminitrationId = document.getElementById('adminitration');
             adminitrationId.innerHTML = '';
-            const adminbody = `
-                                    <div class="container">
-                                        <form>
-                                            <div class="cart-table table-responsive">
-                                                <table class="table table-bordered">
-                                                    <thead>
-                                                        <tr>
-                                                            <th scope="col">Client</th>
-                                                            <th scope="col">Article</th>
-                                                            <th scope="col">Quantité</th>
-                                                            <th scope="col">Statut</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody id="tbody-dataad">
 
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    `;
+            const adminbody = `
+                <div class="container">
+                    <form>
+                        <div class="cart-table table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Client</th>
+                                        <th scope="col">Article</th>
+                                        <th scope="col">Quantité</th>
+                                        <th scope="col">Statut</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbody-dataad">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </form>
+                </div>
+            `;
 
             adminitrationId.innerHTML += adminbody;
 
             const tbodyId = document.getElementById('tbody-dataad');
             tbodyId.innerHTML = '';
 
-
-            data.forEach(pan => {
-                pan.articles.forEach((pani, inde) => {
+            data.forEach((pan) => {
+                pan.articles.forEach((pani) => {
                     const deliveryStatus = pani.statut === "done" ? "livré" : pani.statut == "review" ? "en attente" : pani.statut === "onway" ? "en cours" : "échoué";
-                    const panierTBODY =
-                        /*
-                        
-                        onclick="optionCancileView('${pan._id}', '${pani._id}')" style="cursor: pointer !important;"
-    
-                        */
-                        `
-                            <tr onmouseover="this.style.backgroundColor='#f8f8f8'" onmouseout="this.style.backgroundColor='#fff'">
-                                <td data-bs-toggle="modal" data-bs-target="#optionCancile" onclick="optionCancileView('${pan._id}', '${pani._id}')" class="product-name" style="cursor: pointer !important; max-width: 40px !important; overflow: hidden !important">
-                                   <a>${pan.client.nom} ${pan.client.prenom}</a>
-                                    <ul>
-                                        <li>
-                                            <span>${pan.phone}</span>
-                                        </li>
-                                        <li>
-                                            <span>${pan.ville}</span>
-                                        </li>
-                                        <li>
-                                            <span">${pan.lieu}</span>
-                                        </li>
-                                    </ul>
+                    const panierTBODY = `
+                        <tr onmouseover="this.style.backgroundColor='#f8f8f8'" onmouseout="this.style.backgroundColor='#fff'">
 
-                                </td>
-                                
-                                <td   data-bs-toggle="modal" data-bs-target="#optionCancile" onclick="optionCancileView('${pan._id}', '${pani._id}')" class="product-name" style="cursor: pointer !important; max-width: 40px !important; overflow: hidden !important">
-                                    <a>${pani.arti_id.addarticle}</a>
-                                    <ul>
-                                        <li>Color: <span style="background-color: ${pani.color.substring(0, 7)}; color: ${pani.color.substring(0, 7)}">${pani.color.substring(0, 7)}</span></li>
-                                        <li>Size: <span>${pani.size}</span></li>
-                                        <li>Material: <span>${pani.arti_id.addmateri}</span></li>
-                                    </ul>
-                                </td>
-                                <td   data-bs-toggle="modal" data-bs-target="#optionCancile" onclick="optionCancileView('${pan._id}', '${pani._id}')" class="product-quantity"  style="cursor: pointer !important; max-width: 40px !important; overflow: hidden !important">
-                                    <div class="input-counter">
-                                        <input type="text" min="1" value="${pani.quantcho}">
-                                    </div>
-                                </td>
-                               
-                                <td class="product-subtotal"  style="max-width: 40px !important; overflow: hidden !important">
+
+                            <td data-bs-toggle="modal" data-bs-target="#optionCancile" onclick="optionCancileView('${pan._id}', '${pani._id}')" class="product-name" style="cursor: pointer !important; max-width: 40px !important; overflow: hidden !important">
+                                <a>${pan.client.nom} ${pan.client.prenom}</a>
+                                <ul>
+                                    <li>
+                                        <span>${pan.phone}</span>
+                                    </li>
+                                    <li>
+                                        <span>${pan.ville}</span>
+                                    </li>
+                                    <li>
+                                        <span">${pan.lieu}</span>
+                                    </li>
+                                </ul>
+
+                            </td>
+                            
+                            <td   data-bs-toggle="modal" data-bs-target="#optionCancile" onclick="optionCancileView('${pan._id}', '${pani._id}')" class="product-name" style="cursor: pointer !important; max-width: 40px !important; overflow: hidden !important">
+                                <a>${pani.arti_id.addarticle}</a>
+                                <ul>
+                                    <li>Color: <span style="background-color: ${pani.color.substring(0, 7)}; color: ${pani.color.substring(0, 7)}">${pani.color.substring(0, 7)}</span></li>
+                                    <li>Size: <span>${pani.size}</span></li>
+                                    <li>Material: <span>${pani.arti_id.addmateri}</span></li>
+                                </ul>
+                            </td>
+                            <td   data-bs-toggle="modal" data-bs-target="#optionCancile" onclick="optionCancileView('${pan._id}', '${pani._id}')" class="product-quantity"  style="cursor: pointer !important; max-width: 40px !important; overflow: hidden !important">
+                                <div class="input-counter">
+                                    <input type="text" min="1" value="${pani.quantcho}">
+                                </div>
+                            </td>
+                            
+                            <td class="product-subtotal"  style="max-width: 40px !important; overflow: hidden !important">
                                 <div class="dropdown">
                                     <a class="dropdown-toggle remove${deliveryStatus === 'livré' ? 'c' : deliveryStatus === 'en attente' ? 'a' : deliveryStatus === 'en cours' ? 'b' : 'd'}" onclick="toggleDropdown(event)">
                                         ${deliveryStatus}
@@ -94,25 +89,22 @@ async function getAdminDasboard() {
                                     </ul>
                                 </div>
                             </td>
-                            </tr>
-                            
-                        `;
+
+
+                        </tr>
+                    `;
 
                     tbodyId.innerHTML += panierTBODY;
                 });
             });
-
-
-
         }
     };
 
     transaction.onerror = (event) => {
         console.error("Transaction error:", event.target.error);
     };
+}
 
-    return "data"
-};
 
 async function selectStatus(ido, idar, sta) {
     await sendRequestforOrder('PUT', `orders/statoo/${ido}/${idar}`, { statut: sta });
@@ -215,26 +207,164 @@ async function optionCancileView(_id, proid) {
 
 };
 
+const imasEdi = [];
+
+function previewImageEdite(event) {
+    if (imasEdi.length < 5) {
+        const imagePreview = document.getElementById(`Editeimage${imasEdi.length + 1}`);
+        imagePreview.innerHTML = '';
+
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+                imasEdi.push({ _id: imasEdi[0].id, ima: e.target.result });
+                newim.push({ _id: imasEdi[0].id, ima: e.target.result });
+                _idim.splice(0, 1);
+                const img = document.createElement('img');
+                img.src = e.target.result;
+                img.style.height = '300px';
+                img.style.width = '200px';
+                img.setAttribute('onclick', 'removeImageEdite(event)');
+                img.setAttribute('id', `EdieId${imasEdi.length}`);
+                imagePreview.appendChild(img);
+
+            };
+            reader.readAsDataURL(file);
+        };
+    }
+};
+
+const _idim = [];
+const newim = [];
+
+function removeImageEdite(event) {
+    const clickedElementId = event.target.id;
+    if (clickedElementId.startsWith('EdieId')) {
+        const imageNumber = parseInt(clickedElementId.replace('EdieId', '')) - 1;
+        if (imageNumber >= 0 && imageNumber < imasEdi.length) {
+            // Remove the item from the array at the specified index
+            _idim.push({ id: imasEdi[imageNumber]._id })
+            imasEdi.splice(imageNumber, 1);
+            if (newim.length > 0) {
+                const imid = newim.findIndex(im => im._id === imasEdi[imageNumber]._id);
+                if (imid !== -1) {
+                    newim.splice(imid, 1);
+                }
+
+            }
+
+            // Clear the image previews
+            const imagePreviews = document.querySelectorAll('[id^="Editeimage"]');
+            imagePreviews.forEach((preview) => {
+                preview.innerHTML = '';
+            });
+
+            // Update the remaining image previews
+            imasEdi.forEach((ed, index) => {
+                const imagePreview = document.getElementById(`Editeimage${index + 1}`);
+                const img = document.createElement('img');
+                img.src = ed.ima;
+                img.style.height = '300px';
+                img.style.width = '200px';
+                img.setAttribute('onclick', 'removeImageEdite(event)');
+                img.setAttribute('id', `EdieId${index + 1}`);
+                imagePreview.appendChild(img);
+            });
+        }
+    }
+}
+
+async function EditeViewArticle() {
+    const _id = document.getElementById('ediatiid').value;
+    try {
+        const addarticle = document.getElementById('Editearticle').value;
+        const addprixpro = document.getElementById('Editeprixpro').value;
+        const addprix = document.getElementById('Editeprix').value;
+        const addfour = document.getElementById('Editefour').value;
+        const adddispo = document.getElementById('Editedispo').value;
+        const addcoul = document.getElementById('Editecoul').value;
+        const addtail = document.getElementById('Editetail').value;
+        const addmateri = document.getElementById('Editemateri').value;
+        const addtype = document.getElementById('Editetype').value;
+        const addphone = document.getElementById('Editephone').value;
+        const addquant = parseInt(document.getElementById('Editequant').value);
+        const addexpe = document.getElementById('Editeexpe').value;
+        const notes = document.getElementById('Editenotes').value;
+
+
+        if (addarticle && addprixpro && addprix && addfour && adddispo && addcoul && addtail && addmateri && addtype && addphone && addexpe && notes) {
+            const product = {
+                addarticle: addarticle,
+                addprixpro: parseInt(addprixpro),
+                addprix: parseInt(addprix),
+                addfour: addfour,
+                adddispo: adddispo,
+                addcoul: addcoul,
+                addtail: addtail,
+                addmateri: addmateri,
+                addtype: addtype,
+                addphone: addphone,
+                quantity: parseInt(addquant),
+                addexpe: addexpe,
+                notes: notes,
+            };
+            if (newim.length > 0) {
+                product.image = newim
+
+            }
+
+            const createItem = async () => {
+                try {
+                    await sendRequestforOrder('PUT', `boutique/${_id}`, product);
+                } catch (error) {
+                    console.error('Error updating product:', error.message);
+                }
+            };
+
+            createItem();
+        }
+    } catch (error) {
+        console.log(error)
+    }
+
+
+};
+
+
 async function optionEditeView(_id) {
     await openArticleDatabase();
 
+    const imagePreview = document.getElementById(`Editeimage${imasEdi.length + 1}`);
+    imagePreview.innerHTML = '';
+
     getArticleById(_id).then(product => {
-        console.log(product);
-        let image;
+        document.getElementById('ediatiid').value = _id;
         document.getElementById('Editearticle').value = product.addarticle;
-        document.getElementById('Editequant').value  = parseInt(product.quantity);
-        document.getElementById('Editeprixpro').value  = product.addprixpro;
-        document.getElementById('Editeprix').value  = product.addprix;
-        document.getElementById('Editefour').value  = product.addfour;
-        document.getElementById('Editedispo').value  = product.adddispo;
-        document.getElementById('Editecoul').value  = product.addcoul;
-        document.getElementById('Editetail').value  = product.addtail;
-        document.getElementById('Editemateri').value  = product.addmateri;
-        document.getElementById('Editetype').value  = product.addtype;
-        document.getElementById('Editephone').value  = product.addphone;
-        document.getElementById('Editeexpe').value  = product.addexpe;
-        document.getElementById('Editenotes').value  = product.notes;
-        
+        document.getElementById('Editequant').value = parseInt(product.quantity);
+        document.getElementById('Editeprixpro').value = product.addprixpro;
+        document.getElementById('Editeprix').value = product.addprix;
+        document.getElementById('Editefour').value = product.addfour;
+        document.getElementById('Editedispo').value = product.adddispo;
+        document.getElementById('Editecoul').value = product.addcoul;
+        document.getElementById('Editetail').value = product.addtail;
+        document.getElementById('Editemateri').value = product.addmateri;
+        document.getElementById('Editetype').value = product.addtype;
+        document.getElementById('Editephone').value = product.addphone;
+        document.getElementById('Editeexpe').value = product.addexpe;
+        document.getElementById('Editenotes').value = product.notes;
+        product.image.forEach((ed, index) => {
+            imasEdi.push(ed);
+            const img = document.createElement('img');
+            img.src = ed.ima;
+            img.style.height = '300px';
+            img.style.width = '200px';
+            img.setAttribute('onclick', 'removeImageEdite(event)');
+            img.setAttribute('id', `EdieId${index + 1}`);
+            imagePreview.appendChild(img);
+        });
+
     });
 };
 

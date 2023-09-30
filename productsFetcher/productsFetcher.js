@@ -1,6 +1,3 @@
-const pannierCotent = [];
-const pannierPrin = [];
-
 function addArticles(data) {
     return new Promise((resolve, reject) => {
         const transaction = articldb.transaction(["ArticleStore"], "readwrite");
@@ -46,10 +43,10 @@ const sendRequestnot = async (method, endpoint, data = null) => {
 function clearArticle() {
     pannierPrin.length = 0;
     pannierCotent.length = 0;
-    const transaction = articldb.transaction(["ArticleStore"], "readwrite");
-    const objectStore = transaction.objectStore("ArticleStore");
+    const transacti = articldb.transaction(["ArticleStore"], "readwrite");
+    const objectAr = transacti.objectStore("ArticleStore");
 
-    const clearRequest = objectStore.clear();
+    const clearRequest = objectAr.clear();
     let answer;
 
     clearRequest.onsuccess = (event) => {
@@ -60,7 +57,7 @@ function clearArticle() {
         answer = event.target.error;
     };
 
-    TotalAll("clear", {});
+    //TotalAll("clear", {});
 }
 
 

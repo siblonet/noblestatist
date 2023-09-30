@@ -3,11 +3,11 @@ const populaProd = [];
 function populaProduct(popuPro) {
     const productContainer = document.getElementById('product-popula');
     productContainer.innerHTML = '';
-
-    popuPro.forEach(producta => {
-        if(producta.who === "populaProd"){
-        populaProd.push(producta);
-        const productHTML = `
+    if (popuPro){
+        popuPro.forEach(producta => {
+            if (producta.who === "populaProd") {
+                populaProd.push(producta);
+                const productHTML = `
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="single-products-box">
                             <div class="products-image" style="background-color: ${producta.backgroundColor};">
@@ -64,9 +64,11 @@ function populaProduct(popuPro) {
                     </div>
         `;
 
-        productContainer.innerHTML += productHTML;
-        }
-    });
+                productContainer.innerHTML += productHTML;
+            }
+        });
+
+}
 };
 
 

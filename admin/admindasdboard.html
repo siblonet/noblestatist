@@ -230,7 +230,9 @@
     <div class="modal fade productsQuickView" id="addArticle" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
-
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="bx bx-x"></i></span>
+                </button>
                 <form>
                     <div class="row">
                         <div class="col-lg-6 col-md-12">
@@ -338,8 +340,12 @@
                                 <div>
                                     <a style="cursor: pointer !important;" class="default-btn"
                                         onclick="AddArticle('recenProd')">Ajouter</a>
-
+                                       
+                                        <a style="cursor: pointer !important; background-color: #bb1f1f !important;" class="default-btn"
+                                        onclick="ClearImage('recenProd')">Vider image</a>
                                 </div>
+
+                             
                             </div>
                         </div>
                     </div>
@@ -498,13 +504,16 @@
     <div class="modal fade productsQuickView" id="modArticle" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
-
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="bx bx-x"></i></span>
+                </button>
                 <form>
                     <div class="row">
                         <div class="col-lg-6 col-md-12">
                             <div class="billing-details">
                                 <h3 class="title">Détails de l'article</h3>
                                 <div class="row">
+                                    <input type="hidden" id="ediatiid" value="">
                                     <div class="col-lg-6 col-md-6">
                                         <div class="form-group">
                                             <label>Article <span class="required">*</span></label>
@@ -514,7 +523,7 @@
                                     <div class="col-lg-6 col-md-6">
                                         <div class="form-group">
                                             <label>Quantité<span class="required">*</span></label>
-                                            <input type="number" class="form-control" id="addquant">
+                                            <input type="number" class="form-control" id="Editequant">
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6">
@@ -591,21 +600,21 @@
                             <div class="order-details">
                                 <h3 class="title">Suite de l'article</h3>
                                 <div class="order-table table-responsive">
-                                    <div id="imagePreview1"></div>
-                                    <div id="imagePreview2"></div>
-                                    <div id="imagePreview3"></div>
-                                    <div id="imagePreview4"></div>
-                                    <div id="imagePreview5"></div>
+                                    <div style="cursor: pointer !important;" id="Editeimage1"></div>
+                                    <div style="cursor: pointer !important;" id="Editeimage2"></div>
+                                    <div style="cursor: pointer !important;" id="Editeimage3"></div>
+                                    <div style="cursor: pointer !important;" id="Editeimage4"></div>
+                                    <div style="cursor: pointer !important;" id="Editeimage5"></div>
                                 </div>
                                 <div class="order-table table-responsive">
-                                    <input type="file" id="imageInput" accept="image/*" onchange="previewImage(event)">
+                                    <input type="file" id="imageInput" accept="image/*" onchange="previewImageEdite(event)">
 
                                 </div>
                                 <br>
 
                                 <div>
-                                    <a style="cursor: pointer !important;" class="default-btn"
-                                        onclick="AddArticle('recenProd')">Ajouter</a>
+                                    <a data-bs-dismiss="modal" aria-label="Close" style="cursor: pointer !important;" class="default-btn"
+                                        onclick="EditeViewArticle()">Modifier</a>
 
                                 </div>
                             </div>

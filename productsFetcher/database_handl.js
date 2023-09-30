@@ -1,6 +1,9 @@
 let orderdb;
 let articldb;
 let db;
+const pannierCotent = [];
+const pannierPrin = [];
+const pannier = [];
 
 function openArticleDatabase() {
     return new Promise((resolve, reject) => {
