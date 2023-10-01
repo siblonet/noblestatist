@@ -142,18 +142,18 @@ async function getArticleByIdforpanier(_id) {
     const objectStorea = transactiona.objectStore("ArticleStore");
     const getRequesta = objectStorea.get(_id);
     getRequesta.onsuccess = (event) => {
-        const prod = event.target.result;
-
-        //prod.quantcho = 1;
-        alert("quantcho done");
-        prod.prix = prod.addprix;
-        alert("addprix done");
-        prod.imago = "0";
-        alert("imago done");
-        prod.color = prod.addcoul.substring(0, 7);
-        alert("color prod.addcoul.substring(0, 7) done");
-        prod.size = prod.addtail[2] == "," ? prod.addtail[0] + prod.addtail[1] : prod.addtail[0];
-        alert("size = prod.addtail[2]  done");
+        const prod = {};
+        const proda = event.target.result;
+        alert(proda.addprix);
+        const prodb = { 
+            quantcho: 1, 
+            prix: proda.addprix,
+            imago: "0",
+            color: proda.addcoul.substring(0, 7),
+            size: proda.addtail[2] == "," ? proda.addtail[0] + proda.addtail[1] : proda.addtail[0],
+        };
+        Object.assign(prod, proda, prodb);
+        alert("concentination");   
         TotalAll("post", prod);
     };
 
