@@ -85,15 +85,21 @@ function recentProduct(recenPr) {
 async function showProductQuickView(productId) {
     selct = [];
     selctSize = [];
+    //await openDatabase();
     const transaction = panierdb.transaction(["PannierContent"], "readonly");
     const objectStore = transaction.objectStore("PannierContent");
-
+    let result;
     const getRequest = objectStore.get(productId);
-    getRequest.onsuccess = async (event) => {
-        const result = event.target.result;
+    getRequest.onsuccess = (event) => {
+        result = event.target.result;
 
+    };
 
-        await openArticleDatabase();
+    transaction.onerror = (event) => {
+        console.log(event.target.error);
+    };
+
+    await openArticleDatabase();
         const transactiona = articldb.transaction(["ArticleStore"], "readonly");
         const objectStorea = transactiona.objectStore("ArticleStore");
         const getRequesta = objectStorea.get(productId);
@@ -246,13 +252,6 @@ async function showProductQuickView(productId) {
         getRequesta.onerror = (event) => {
             console.error("Error accessing object store:", event.target.error);
         };
-
-
-    };
-
-    transaction.onerror = (event) => {
-        console.log(event.target.error);
-    };
 };
 
 let selct = [];

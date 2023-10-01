@@ -113,6 +113,7 @@ async function getDataById(id) {
     let answer;
     getRequest.onsuccess = (event) => {
         const result = event.target.result;
+
         if (id.even === "incre") {
             result.aquantity = parseInt(result.aquantity) + 1;
             TotalAll('put', result);
@@ -143,23 +144,13 @@ async function getArticleByIdforpanier(_id) {
     const getRequesta = objectStorea.get(_id);
     getRequesta.onsuccess = (event) => {
         const prod = event.target.result;
+
         prod.quantcho = 1;
         prod.prix = prod.addprix;
         prod.imago = "0";
         prod.color = prod.addcoul.substring(0, 7);
         prod.size = prod.addtail[2] == "," ? prod.addtail[0] + prod.addtail[1] : prod.addtail[0];
         TotalAll("post", prod);
-
-        /*alert("proda.addprix");
-        const prodb = { 
-            quantcho: 1, 
-            prix: proda.addprix,
-            imago: "0",
-            color: proda.addcoul.substring(0, 7),
-            size: proda.addtail[2] == "," ? proda.addtail[0] + proda.addtail[1] : proda.addtail[0],
-        };
-        Object.assign(prod, proda, prodb);
-        alert("concentination");*/
     };
 
 
