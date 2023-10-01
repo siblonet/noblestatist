@@ -176,7 +176,7 @@ function AddArticle(who) {
 
 //addtoPanier
 function addtoPanier(data) {
-    //console.log(data);
+    alert("data");
     const transaction = panierdb.transaction(["PannierContent"], "readwrite");
     const objectStore = transaction.objectStore("PannierContent");
 
@@ -188,6 +188,7 @@ function addtoPanier(data) {
     };
 
     addRequest.onerror = () => {
+        alert("not panier added");
         console.log("not panier added");
     };
 
