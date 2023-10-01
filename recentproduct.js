@@ -35,7 +35,7 @@ function recentProduct(recenPr) {
                                 <a style="cursor: pointer !important;" 
                                     data-bs-toggle="${isMobileDevice() ? 'modal' : ''}" 
                                     data-bs-target="${isMobileDevice() ? '#productsQuickView' : ''}" 
-                                    href="${isMobileDevice() ? '' : `products-type-1.html?ov=${product._id}`}"  onclick="${isMobileDevice() ? `showProductQuickView('${product._id})` : ''}">
+                                    href="${isMobileDevice() ? '' : `products-type-1.html?ov=${product._id}`}"  onclick="${isMobileDevice() ? `showProductQuickView('${product._id})'` : ''}">
                                 <img src="${product.image[0].ima}" class="main-image" alt="image">
                                 <img src="${product.image[1].ima}" class="hover-image" alt="image">
                                 </a>
