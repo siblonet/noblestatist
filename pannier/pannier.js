@@ -144,7 +144,7 @@ async function getArticleByIdforpanier(_id) {
     getRequesta.onsuccess = (event) => {
         const prod = {};
         const proda = event.target.result;
-        alert(proda.addprix);
+        alert("proda.addprix");
         const prodb = { 
             quantcho: 1, 
             prix: proda.addprix,
