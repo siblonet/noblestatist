@@ -176,24 +176,21 @@ function AddArticle(who) {
 
 //addtoPanier
 function addtoPanier(data) {
-    alert("data");
+    //console.log(data);
     const transaction = panierdb.transaction(["PannierContent"], "readwrite");
     const objectStore = transaction.objectStore("PannierContent");
 
     const addRequest = objectStore.add(data);
 
     addRequest.onsuccess = () => {
-        alert("added successfully");
         getallDataa();
     };
 
     addRequest.onerror = () => {
-        alert("not panier added");
         console.log("not panier added");
     };
 
     transaction.onerror = (event) => {
-        alert("not panier added");
         setTimeout(() => alert("Exist déjà dans le panier!"), 10);
     };
 
@@ -450,13 +447,10 @@ function getDasboard() {
 
 
 function TotalAll(who, data) {
-    alert("TotalAll");
-
     return new Promise((resolve, reject) => {
         openDatabase()
             .then(() => {
                 if (who === "post") {
-                    alert("TotalAllin");
                     addtoPanier(data);
                 } else if (who === "all") {
                     getallData()

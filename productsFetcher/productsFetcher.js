@@ -41,8 +41,6 @@ const sendRequestnot = async (method, endpoint, data = null) => {
 };
 
 function clearArticle() {
-    pannierPrin.length = 0;
-    pannierCotent.length = 0;
     const transacti = articldb.transaction(["ArticleStore"], "readwrite");
     const objectAr = transacti.objectStore("ArticleStore");
 
