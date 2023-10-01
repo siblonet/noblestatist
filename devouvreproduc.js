@@ -70,5 +70,4 @@ function decouvreProduct() {
     });
 };
 
-
-decouvreProduct();
+//decouvreProduct();

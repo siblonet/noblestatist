@@ -25,6 +25,7 @@
 
 <body>
 
+
     <div class="top-header">
         <div class="container">
             <div class="row align-items-center">
@@ -39,7 +40,7 @@
                 </div>
                 <div class="col-lg-6 col-md-12">
                     <ul class="header-top-menu">
-                        <li><a href="admin/admindasdboard.html"><i class="bx bxs-user"></i> Mon compte</a></li>
+                        <li><a style="cursor: pointer !important;" onclick="navigateAdminCLient()"><i class="bx bxs-user"></i> Mon compte</a></li>
                         <!--<li>
                             <a href="#" data-bs-toggle="modal" id="souhaitnumber" class="souhaitnumber"
                                 data-bs-target="#shoppingWishlistModal">
@@ -401,8 +402,10 @@
                             </div>
                             <div class="option-item">
                                 <div class="cart-btn">
-                                    <a href="#" data-bs-toggle="modal" data-bs-target="#shoppingCartModal"><i
-                                            class="bx bx-shopping-bag"></i><span>3</span></a>
+                                    <a href="#" data-bs-toggle="modal" id="paniernumber2"
+                                        data-bs-target="#shoppingCartModal">
+                                        <i class="bx bx-shopping-bag"></i>
+                                    </a>
                                 </div>
                             </div>
                             <div class="option-item">
@@ -719,8 +722,10 @@
                             </div>
                             <div class="option-item">
                                 <div class="cart-btn">
-                                    <a href="#" data-bs-toggle="modal" data-bs-target="#shoppingCartModal"><i
-                                            class="bx bx-shopping-bag"></i><span>3</span></a>
+                                    <a href="#" data-bs-toggle="modal" id="paniernumber3"
+                                        data-bs-target="#shoppingCartModal">
+                                        <i class="bx bx-shopping-bag"></i>
+                                    </a>
                                 </div>
                             </div>
                             <div class="option-item">
@@ -757,6 +762,8 @@
             </div>
         </div>
     </div>
+
+
 
 
     <div class="page-title-area">
@@ -1486,65 +1493,7 @@
     </section>
 
 
-    <div class="instagram-area">
-        <div class="container-fluid">
-            <div class="instagram-title">
-                <a href="#" target="_blank"><i class="bx bxl-instagram"></i> Suivez nous sur @Noble</a>
-            </div>
-            <div class="instagram-slides owl-carousel owl-theme">
-                <div class="single-instagram-post">
-                    <img src="assets/img/instagram/img1.jpg" alt="image">
-                    <i class="bx bxl-instagram"></i>
-                    <a href="#" target="_blank" class="link-btn"></a>
-                </div>
-                <div class="single-instagram-post">
-                    <img src="assets/img/instagram/img2.jpg" alt="image">
-                    <i class="bx bxl-instagram"></i>
-                    <a href="#" target="_blank" class="link-btn"></a>
-                </div>
-                <div class="single-instagram-post">
-                    <img src="assets/img/instagram/img3.jpg" alt="image">
-                    <i class="bx bxl-instagram"></i>
-                    <a href="#" target="_blank" class="link-btn"></a>
-                </div>
-                <div class="single-instagram-post">
-                    <img src="assets/img/instagram/img4.jpg" alt="image">
-                    <i class="bx bxl-instagram"></i>
-                    <a href="#" target="_blank" class="link-btn"></a>
-                </div>
-                <div class="single-instagram-post">
-                    <img src="assets/img/instagram/img10.jpg" alt="image">
-                    <i class="bx bxl-instagram"></i>
-                    <a href="#" target="_blank" class="link-btn"></a>
-                </div>
-                <div class="single-instagram-post">
-                    <img src="assets/img/instagram/img6.jpg" alt="image">
-                    <i class="bx bxl-instagram"></i>
-                    <a href="#" target="_blank" class="link-btn"></a>
-                </div>
-                <div class="single-instagram-post">
-                    <img src="assets/img/instagram/img7.jpg" alt="image">
-                    <i class="bx bxl-instagram"></i>
-                    <a href="#" target="_blank" class="link-btn"></a>
-                </div>
-                <div class="single-instagram-post">
-                    <img src="assets/img/instagram/img8.jpg" alt="image">
-                    <i class="bx bxl-instagram"></i>
-                    <a href="#" target="_blank" class="link-btn"></a>
-                </div>
-                <div class="single-instagram-post">
-                    <img src="assets/img/instagram/img9.jpg" alt="image">
-                    <i class="bx bxl-instagram"></i>
-                    <a href="#" target="_blank" class="link-btn"></a>
-                </div>
-                <div class="single-instagram-post">
-                    <img src="assets/img/instagram/img5.jpg" alt="image">
-                    <i class="bx bxl-instagram"></i>
-                    <a href="#" target="_blank" class="link-btn"></a>
-                </div>
-            </div>
-        </div>
-    </div>
+    
 
 
     <div class="modal right fade sidebarModal" id="sidebarModal" tabindex="-1" role="dialog">
@@ -1704,57 +1653,12 @@
                     <span aria-hidden="true"><i class="bx bx-x"></i></span>
                 </button>
                 <div class="modal-body">
-                    <h3>Mon Panier (3)</h3>
-                    <div class="products-cart-content">
-                        <div class="products-cart">
-                            <div class="products-image">
-                                <a href="#"><img src="assets/img/products/img1.jpg" alt="image"></a>
-                            </div>
-                            <div class="products-content">
-                                <h3><a href="#">T-shirt à manches longues léopard</a></h3>
-                                <span>Bleu / XS</span>
-                                <div class="products-price">
-                                    <span>1</span>
-                                    <span>x</span>
-                                    <span class="price">$250.00</span>
-                                </div>
-                                <a href="#" class="remove-btn"><i class="bx bx-trash"></i></a>
-                            </div>
-                        </div>
-                        <div class="products-cart">
-                            <div class="products-image">
-                                <a href="#"><img src="assets/img/products/img2.jpg" alt="image"></a>
-                            </div>
-                            <div class="products-content">
-                                <h3><a href="#">Raglan décontracté à col V doux</a></h3>
-                                <span>Bleu / XS</span>
-                                <div class="products-price">
-                                    <span>1</span>
-                                    <span>x</span>
-                                    <span class="price">$200.00</span>
-                                </div>
-                                <a href="#" class="remove-btn"><i class="bx bx-trash"></i></a>
-                            </div>
-                        </div>
-                        <div class="products-cart">
-                            <div class="products-image">
-                                <a href="#"><img src="assets/img/products/img3.jpg" alt="image"></a>
-                            </div>
-                            <div class="products-content">
-                                <h3><a href="#">Pull Hanes pour hommes</a></h3>
-                                <span>Bleu / XS</span>
-                                <div class="products-price">
-                                    <span>1</span>
-                                    <span>x</span>
-                                    <span class="price">$200.00</span>
-                                </div>
-                                <a href="#" class="remove-btn"><i class="bx bx-trash"></i></a>
-                            </div>
-                        </div>
+                    <h3 id="monpanier">Mon Panier (0)</h3>
+                    <div class="products-cart-content" id="pannierid">
                     </div>
                     <div class="products-cart-subtotal">
                         <span>sous-total</span>
-                        <span class="subtotal">$650.00</span>
+                        <span class="subtotal" id="subtotal"></span>
                     </div>
                     <div class="products-cart-btn">
                         <a href="checkout.html" class="default-btn">Passer à la caisse</a>
@@ -1765,71 +1669,6 @@
         </div>
     </div>
 
-
-    <div class="modal right fade shoppingWishlistModal" id="shoppingWishlistModal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true"><i class="bx bx-x"></i></span>
-                </button>
-                <div class="modal-body">
-                    <h3>Ma liste de souhaits (3)</h3>
-                    <div class="products-cart-content">
-                        <div class="products-cart">
-                            <div class="products-image">
-                                <a href="#">
-                                    <img src="assets/img/products/img1.jpg" alt="image">
-                                </a>
-                            </div>
-                            <div class="products-content">
-                                <h3><a href="#">T-shirt léopard à manches longues</a></h3>
-                                <span>Bleu / XS</span>
-                                <div class="products-price">
-                                    <span>1</span>
-                                    <span>x</span>
-                                    <span class="price">$250.00</span>
-                                </div>
-                                <a href="#" class="remove-btn"><i class="bx bx-trash"></i></a>
-                            </div>
-                        </div>
-                        <div class="products-cart">
-                            <div class="products-image">
-                                <a href="#"><img src="assets/img/products/img2.jpg" alt="image"></a>
-                            </div>
-                            <div class="products-content">
-                                <h3><a href="#">Raglan doux décontracté à col en V</a></h3>
-                                <span>Bleu / XS</span>
-                                <div class="products-price">
-                                    <span>1</span>
-                                    <span>x</span>
-                                    <span class="price">$200.00</span>
-                                </div>
-                                <a href="#" class="remove-btn"><i class="bx bx-trash"></i></a>
-                            </div>
-                        </div>
-                        <div class="products-cart">
-                            <div class="products-image">
-                                <a href="#"><img src="assets/img/products/img3.jpg" alt="image"></a>
-                            </div>
-                            <div class="products-content">
-                                <h3><a href="#">Pull Hanes pour hommes</a></h3>
-                                <span>Bleu / XS</span>
-                                <div class="products-price">
-                                    <span>1</span>
-                                    <span>x</span>
-                                    <span class="price">$200.00</span>
-                                </div>
-                                <a href="#" class="remove-btn"><i class="bx bx-trash"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="products-cart-btn">
-                        <a href="#" class="optional-btn">Voir le panier</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
 
     <div class="modal fade sizeGuideModal" id="sizeGuideModal" tabindex="-1" role="dialog" aria-hidden="true">
@@ -2230,7 +2069,7 @@
     <script src="retriveid.js"></script>
     <script src="./clientdb/currentdb.js"></script>
     <script src="./pannier/pannier.js"></script>
-
+    <script src="./pannier/callpanindex.js"></script>
 </body>
 
 </html>
