@@ -109,6 +109,12 @@ async function getAdminDasboard() {
                     `;
                 odernotifi.innerHTML += odernotifiHTML;
                 odernotifia.innerHTML += odernotifiHTML;
+            } else {
+                const odernotifiHTML = `
+                <i class="bx bx-notification"></i>
+            `;
+                odernotifi.innerHTML += odernotifiHTML;
+                odernotifia.innerHTML += odernotifiHTML;
             }
         }
     };
@@ -372,9 +378,32 @@ async function optionEditeView(_id) {
 
 async function deleteArticleById(_ide) {
     await sendRequestforOrder('DELETE', `boutique/${_ide}`);
+    await openArticleDatabase();
+    await clearArticlea();
+    const items = await sendRequestforOrderget('GET', 'boutique');
+    await addArticlesa(items);
+    await getAdminDasboardproduc()
+
 }
 
+function addArticlesa(data) {
+    return new Promise((resolve, reject) => {
+        const transaction = articldb.transaction(["ArticleStore"], "readwrite");
+        const objectStore = transaction.objectStore("ArticleStore");
 
+        const requests = data.map(article => {
+            return new Promise((innerResolve, innerReject) => {
+                const request = objectStore.add(article);
+                request.onsuccess = () => innerResolve();
+                request.onerror = (event) => innerReject(event.target.error);
+            });
+        });
+
+        Promise.all(requests)
+            .then(() => resolve('done'))
+            .catch(error => reject(error));
+    });
+}
 
 const sendRequestforOrder = async (method, endpoint, data = null) => {
     const options = {

@@ -8,9 +8,36 @@ function getAdmin() {
     const admin = splo[5];
     //const mynam = thisiswhat(`${name}â${lastname}â${phone}â${mail}â${admin}`)
     //sessionStorage.clear();
+
+    /*(async () => {
+        await openOrdersDatabase();
+        await clearOrder();
+        await openArticleDatabase();
+        await clearArticle();
+    });*/
+
     return admin == "GIFV" ? true : false
 
-}
+};
+
+
+async function clearArticlea() {
+    const transacti = articldb.transaction(["ArticleStore"], "readwrite");
+    const objectAr = transacti.objectStore("ArticleStore");
+
+    const clearRequest = objectAr.clear();
+    let answer;
+
+    clearRequest.onsuccess = (event) => {
+        answer = "cleared"
+    };
+
+    clearRequest.onerror = (event) => {
+        answer = event.target.error;
+    };
+
+};
+
 
 const imas = [];
 
@@ -158,9 +185,15 @@ function AddArticle(who) {
             };
             const createItem = async () => {
                 try {
-                    const response = await sendRequestnotoa('POST', 'boutique', product);
+                    await sendRequestnotoa('POST', 'boutique', product);
 
-                    console.log('product created:', response);
+                    await openArticleDatabase();
+                    await clearArticlea();
+                    const items = await sendRequestforOrderget('GET', 'boutique');
+                    await addArticlesa(items);
+                    await openOrdersDatabase();
+                    await getAdminDasboard();
+
                 } catch (error) {
                     console.error('Error creating product:', error.message);
                 }
