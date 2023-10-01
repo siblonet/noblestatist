@@ -18,6 +18,13 @@ function recentProduct(recenPr) {
         notes: notes,
         image: imas
     */
+
+        function isMobileDevice() {
+            const userAgent = navigator.userAgent.toLowerCase();
+            return userAgent.includes('mobile');
+          }
+          
+          
     recenPr.forEach(product => {
         if (product.who === "recenProd") {
             recenProd.push(product);
@@ -25,7 +32,10 @@ function recentProduct(recenPr) {
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="single-products-box">
                             <div class="products-image" style="background-color: ${'#fff'};">
-                               <a href="products-type-1.html?ov=${product._id}">
+                                <a style="cursor: pointer !important;" 
+                                    data-bs-toggle="${isMobileDevice() ? 'modal' : ''}" 
+                                    data-bs-target="${isMobileDevice() ? '#productsQuickView' : ''}" 
+                                    href="${isMobileDevice() ? '' : `products-type-1.html?ov=${product._id}`}">
                                 <img src="${product.image[0].ima}" class="main-image" alt="image">
                                 <img src="${product.image[1].ima}" class="hover-image" alt="image">
                                 </a>
