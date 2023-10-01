@@ -143,13 +143,13 @@ async function getArticleByIdforpanier(_id) {
     const getRequesta = objectStorea.get(_id);
     getRequesta.onsuccess = (event) => {
         const prod = event.target.result;
-        alert("getArticleByIdforpanier");
 
         prod.quantcho = 1;
         prod.prix = prod.addprix;
         prod.imago = "0";
         prod.color = prod.addcoul.substring(0, 7);
         prod.size = prod.addtail[2] == "," ? prod.addtail[0] + prod.addtail[1] : prod.addtail[0];
+        alert("getArticleByIdforpanier");
         TotalAll("post", prod);
     };
 
