@@ -193,6 +193,7 @@ function addtoPanier(data) {
     };
 
     transaction.onerror = (event) => {
+        alert("not panier added");
         setTimeout(() => alert("Exist déjà dans le panier!"), 10);
     };
 
