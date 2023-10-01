@@ -145,11 +145,15 @@ async function getArticleByIdforpanier(_id) {
         const prod = event.target.result;
 
         prod.quantcho = 1;
+        alert("quantcho done");
         prod.prix = prod.addprix;
+        alert("addprix done");
         prod.imago = "0";
+        alert("imago done");
         prod.color = prod.addcoul.substring(0, 7);
+        alert("color prod.addcoul.substring(0, 7) done");
         prod.size = prod.addtail[2] == "," ? prod.addtail[0] + prod.addtail[1] : prod.addtail[0];
-        alert("getArticleByIdforpanier");
+        alert("size = prod.addtail[2]  done");
         TotalAll("post", prod);
     };
 
