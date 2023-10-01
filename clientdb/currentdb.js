@@ -241,7 +241,6 @@ function getPanierSend(tocompl) {
                 const response = await sendReque('POST', 'orders', tocompl);
                 if (response.done == "done") {
                     TotalAll("clear", "");
-                    pannierCotent.length = 0;
                     window.location.href = "./track-order.html"
                 };
 
