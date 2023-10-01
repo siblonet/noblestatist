@@ -143,6 +143,7 @@ async function getArticleByIdforpanier(_id) {
     const getRequesta = objectStorea.get(_id);
     getRequesta.onsuccess = (event) => {
         const prod = event.target.result;
+        alert("getArticleByIdforpanier");
 
         prod.quantcho = 1;
         prod.prix = prod.addprix;
