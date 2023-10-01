@@ -1,9 +1,6 @@
 let orderdb;
 let articldb;
-let db;
-const pannierCotent = [];
-const pannierPrin = [];
-const pannier = [];
+let panierdb;
 
 function openArticleDatabase() {
     return new Promise((resolve, reject) => {
@@ -43,15 +40,15 @@ function openDatabase() {
         };
 
         request.onsuccess = (event) => {
-            db = event.target.result;
+            panierdb = event.target.result;
             resolve();
         };
 
         request.onupgradeneeded = (event) => {
-            db = event.target.result;
+            panierdb = event.target.result;
 
-            if (!db.objectStoreNames.contains("PannierContent")) {
-                db.createObjectStore("PannierContent", { keyPath: "_id" });
+            if (!panierdb.objectStoreNames.contains("PannierContent")) {
+                panierdb.createObjectStore("PannierContent", { keyPath: "_id" });
             }
         };
     });

@@ -38,9 +38,10 @@ async function getAdminDasboard() {
 
             const tbodyId = document.getElementById('tbody-dataad');
             tbodyId.innerHTML = '';
-
+            let odernotnu = 0
             data.forEach((pan) => {
                 pan.articles.forEach((pani) => {
+                    odernotnu += pani.statut == "review" ? 1 : 0;
                     const deliveryStatus = pani.statut === "done" ? "livré" : pani.statut == "review" ? "en attente" : pani.statut === "onway" ? "en cours" : "échoué";
                     const panierTBODY = `
                         <tr onmouseover="this.style.backgroundColor='#f8f8f8'" onmouseout="this.style.backgroundColor='#fff'">
@@ -63,11 +64,11 @@ async function getAdminDasboard() {
                             </td>
                             
                             <td   data-bs-toggle="modal" data-bs-target="#optionCancile" onclick="optionCancileView('${pan._id}', '${pani._id}')" class="product-name" style="cursor: pointer !important; max-width: 40px !important; overflow: hidden !important">
-                                <a>${pani.arti_id.addarticle}</a>
+                                <a>${pani.arti_id ? pani.arti_id.addarticle : 'Article Supprimé'}</a>
                                 <ul>
                                     <li>Color: <span style="background-color: ${pani.color.substring(0, 7)}; color: ${pani.color.substring(0, 7)}">${pani.color.substring(0, 7)}</span></li>
                                     <li>Size: <span>${pani.size}</span></li>
-                                    <li>Material: <span>${pani.arti_id.addmateri}</span></li>
+                                    <li>Material: <span>${pani.arti_id ? pani.arti_id.addmateri : 'Article Supprimé'}</span></li>
                                 </ul>
                             </td>
                             <td   data-bs-toggle="modal" data-bs-target="#optionCancile" onclick="optionCancileView('${pan._id}', '${pani._id}')" class="product-quantity"  style="cursor: pointer !important; max-width: 40px !important; overflow: hidden !important">
@@ -97,6 +98,18 @@ async function getAdminDasboard() {
                     tbodyId.innerHTML += panierTBODY;
                 });
             });
+            const odernotifi = document.getElementById('odernotifi');
+            odernotifi.innerHTML = '';
+            const odernotifia = document.getElementById('odernotifia');
+            odernotifia.innerHTML = '';
+            if (odernotnu > 1) {
+                const odernotifiHTML = `
+                        <i class="bx bx-notification"></i>
+                        <span>${odernotnu}</span>
+                    `;
+                odernotifi.innerHTML += odernotifiHTML;
+                odernotifia.innerHTML += odernotifiHTML;
+            }
         }
     };
 
@@ -119,7 +132,7 @@ async function optionCancileView(_id, proid) {
         const product = result.articles.find(po => po._id == proid);
 
 
-        if (product) {
+        if (product && product.arti_id) {
             const splo = product.arti_id.addcoul.split(",") ? product.arti_id.addcoul.split(",") : "#eeeeee";
             const colora = splo[0] == "null" ? "#eeeeee" : splo[0];
             const colorb = splo[1] == "null" ? "#eeeeee" : splo[1];
@@ -201,6 +214,9 @@ async function optionCancileView(_id, proid) {
                 quiSizefunab(parseInt(colSizeImage[poa]), sploa[parseInt(colSizeImage[poa])])
             }
 
+        } else {
+            document.getElementById('optionCancilename').innerText = "Article Supprimé";
+
         };
 
     }).catch();
@@ -219,9 +235,8 @@ function previewImageEdite(event) {
             const reader = new FileReader();
 
             reader.onload = function (e) {
-                imasEdi.push({ _id: imasEdi[0].id, ima: e.target.result });
-                newim.push({ _id: imasEdi[0].id, ima: e.target.result });
-                _idim.splice(0, 1);
+                imasEdi.push({ _id: _idim[0] ? _idim[0].id : imasEdi[0].id, ima: e.target.result });
+                _idim.length > 0 ? _idim.splice(0, 1) : null;
                 const img = document.createElement('img');
                 img.src = e.target.result;
                 img.style.height = '300px';
@@ -237,7 +252,6 @@ function previewImageEdite(event) {
 };
 
 const _idim = [];
-const newim = [];
 
 function removeImageEdite(event) {
     const clickedElementId = event.target.id;
@@ -247,13 +261,6 @@ function removeImageEdite(event) {
             // Remove the item from the array at the specified index
             _idim.push({ id: imasEdi[imageNumber]._id })
             imasEdi.splice(imageNumber, 1);
-            if (newim.length > 0) {
-                const imid = newim.findIndex(im => im._id === imasEdi[imageNumber]._id);
-                if (imid !== -1) {
-                    newim.splice(imid, 1);
-                }
-
-            }
 
             // Clear the image previews
             const imagePreviews = document.querySelectorAll('[id^="Editeimage"]');
@@ -309,12 +316,8 @@ async function EditeViewArticle() {
                 quantity: parseInt(addquant),
                 addexpe: addexpe,
                 notes: notes,
+                image: imasEdi
             };
-            if (newim.length > 0) {
-                product.image = newim
-
-            }
-
             const createItem = async () => {
                 try {
                     await sendRequestforOrder('PUT', `boutique/${_id}`, product);
@@ -332,13 +335,9 @@ async function EditeViewArticle() {
 
 };
 
-
 async function optionEditeView(_id) {
+    imasEdi.length = 0
     await openArticleDatabase();
-
-    const imagePreview = document.getElementById(`Editeimage${imasEdi.length + 1}`);
-    imagePreview.innerHTML = '';
-
     getArticleById(_id).then(product => {
         document.getElementById('ediatiid').value = _id;
         document.getElementById('Editearticle').value = product.addarticle;
@@ -354,7 +353,10 @@ async function optionEditeView(_id) {
         document.getElementById('Editephone').value = product.addphone;
         document.getElementById('Editeexpe').value = product.addexpe;
         document.getElementById('Editenotes').value = product.notes;
+
         product.image.forEach((ed, index) => {
+            const imagePreview = document.getElementById(`Editeimage${index + 1}`);
+            imagePreview.innerHTML = '';
             imasEdi.push(ed);
             const img = document.createElement('img');
             img.src = ed.ima;
@@ -367,6 +369,12 @@ async function optionEditeView(_id) {
 
     });
 };
+
+async function deleteArticleById(_ide) {
+    await sendRequestforOrder('DELETE', `boutique/${_ide}`);
+}
+
+
 
 const sendRequestforOrder = async (method, endpoint, data = null) => {
     const options = {
@@ -565,7 +573,7 @@ async function getAdminDasboardproduc() {
                                 </td>
                                 <td class="product-subtotal">
                                     <span onclick="optionEditeView('${pani._id}')" data-bs-toggle="modal" data-bs-target="#modArticle" class="subtotal-amount">${parseInt(pani.addprix) * parseInt(pani.quantity)} F.CFA</span>
-                                    <a class="remove" style="cursor: pointer !important;" onclick="removePanierById('${pani._id}')"><i class="bx bx-trash"></i></a>
+                                    <a class="remove" style="cursor: pointer !important;" onclick="deleteArticleById('${pani._id}')"><i class="bx bx-trash"></i></a>
                                 </td>
                             </tr>
                         `;
@@ -588,112 +596,6 @@ async function getAdminDasboardproduc() {
 };
 
 
-
-function getAdminDasboarduser() {
-    const transaction = orderdb.transaction(["OrderdStore"], "readonly");
-    const objectStore = transaction.objectStore("OrderdStore");
-    const data = [];
-
-    objectStore.openCursor().onsuccess = (event) => {
-        const cursor = event.target.result;
-        if (cursor) {
-            if (cursor.value._id == 50 || cursor.value._id == 51) {
-                data.push(cursor.value);
-
-            }
-            cursor.continue();
-        } else {
-            const adminitrationId = document.getElementById('adminitration');
-            adminitrationId.innerHTML = '';
-            const adminbody = `
-                                    <div class="container">
-                                        <form>
-                                            <div class="cart-table table-responsive">
-                                                <table class="table table-bordered">
-                                                    <thead>
-                                                        <tr>
-                                                            <th scope="col">Produit</th>
-                                                            <th scope="col">Nom</th>
-                                                            <th scope="col">Prix unitaire</th>
-                                                            <th scope="col">Quantité</th>
-                                                            <th scope="col">Total</th>
-                                                            <th scope="col">Statut</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody id="tbody-data">
-
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    `;
-
-            adminitrationId.innerHTML += adminbody;
-
-            const tbodyId = document.getElementById('tbody-data');
-            tbodyId.innerHTML = '';
-
-            data.forEach(pani => {
-                const deliveryStatus = pani.statut === "done" ? "livré" : pani.statut == "review" ? "en attente" : pani.statut === "onway" ? "en cours" : "échoué";
-
-                const panierTBODY =
-                    `
-                        <tr style="cursor: pointer !important;" onmouseover="this.style.backgroundColor='#f8f8f8'" onmouseout="this.style.backgroundColor='#fff'">
-                        <td class="product-price">
-                            <span class="unit-amount">${pani.client}</span>
-                        </td>
-                            <td class="product-name">
-                                <a>${pani.article}</a>
-                                <ul>
-                                    <li>Color: <span>ani.color</span></li>
-                                    <li>Size: <span>pani.size</span></li>
-                                    <li>Material: <span>pani.material</span></li>
-                                </ul>
-                            </td>
-                            <td class="product-price">
-                                <span class="unit-amount">${pani.phone}</span>
-                            </td>
-                            <td class="product-quantity">
-                                   <div class="input-counter">
-                                      <input type="text" min="1" value="${pani.aquantity}">
-                                   </div>
-                            </td>
-                            <!--<td class="product-subtotal">
-                                <span class="subtotal-amount">${pani.newPrice * pani.aquantity} F.CFA</span>
-                            </td>-->
-                            <td class="product-subtotal">
-                                <div class="dropdown">
-                                    <a class="dropdown-toggle remove${deliveryStatus === 'livré' ? 'c' : deliveryStatus === 'en attente' ? 'a' : deliveryStatus === 'en cours' ? 'b' : 'd'}" onclick="toggleDropdown(event)">
-                                        ${deliveryStatus}
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li><span onclick="selectStatus(${pani._id}, 'done')">Livré</span></li>
-                                        <li><span onclick="selectStatus(${pani._id}, 'review')">En attente</span></li>
-                                        <li><span onclick="selectStatus(${pani._id}, 'onway')">En cours</span></li>
-                                        <li><span onclick="selectStatus(${pani._id}, 'fail')">Échoué</span></li>
-                                    </ul>
-                                </div>
-                            </td>
-                            
-                        </tr>
-                        
-                    `;
-
-                tbodyId.innerHTML += panierTBODY;
-
-            });
-
-
-        }
-    };
-
-    transaction.onerror = (event) => {
-        console.error("Transaction error:", event.target.error);
-    };
-
-    return "data"
-};
 
 function addOrders(data) {
     return new Promise((resolve, reject) => {
@@ -755,8 +657,6 @@ async function AdminAdministrtion(who, data) {
     } else if (who === "article") {
         await openArticleDatabase();
         await getAdminDasboardproduc()
-    } else if (who === "client") {
-        await getAdminDasboarduser();
     } else {
         reject(new Error("Invalid operation"));
     }
@@ -771,15 +671,25 @@ function adminDasboard(what) {
 function getAdmin() {
     const token = sessionStorage.getItem('tibule');
     const splo = token.split("°");
-    /*const name = splo[0];
-    const lastname = splo[1];
+    const nam = splo[1];
+    const lastname = splo[2];
+    document.getElementById('adminnom').innerText = thisiswhat(`${nam}â${lastname}`);
+    /*
     const phone = splo[2];
-    const mail = splo[3];*/
+    const mail = splo[3];
     const admin = splo[5];
-    //const mynam = thisiswhat(`${name}â${lastname}â${phone}â${mail}â${admin}`)
-    //sessionStorage.clear();
-    return admin == "GIFV" ? true : false
+    const mynam = thisiswhat(`${name}â${lastname}â${phone}â${mail}â${admin}`)
+    sessionStorage.clear();
+    */
+    return splo[5] == "GIFV" ? true : false
 
+};
+async function Disconexion() {
+    await openOrdersDatabase();
+    await clearOrder();
+    sessionStorage.clear();
+    localStorage.clear();
+    window.location.href = "../login.html"
 }
 
 adminDasboard("commande");

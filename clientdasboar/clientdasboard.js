@@ -7,10 +7,23 @@ function Dasboard(what) {
             });
     }
 };
-
+let myid;
 function getAdmin() {
     const token = sessionStorage.getItem('tibule');
-    return token ? true : false
+    const splo = token.split("°");
+    const ids = splo[0];
+    const nam = splo[1];
+    const lastname = splo[2];
+    myid = thisiswhat(`${ids}`);
+    document.getElementById('monnom').innerText = thisiswhat(`${nam}â${lastname}`);
+    /*const name = splo[0];
+    const lastname = splo[1];
+    const phone = splo[2];
+    const mail = splo[3];*/
+    //const admin = splo[5];
+    //const mynam = thisiswhat(`${name}â${lastname}â${phone}â${mail}â${admin}`)
+    //sessionStorage.clear();
+    return token && splo[5] == "UZOHV" ? true : false
 }
 
 Dasboard("commande");
@@ -136,7 +149,7 @@ async function optionCancileView(_id, proid) {
             selctSizea = [];
             selcta = [];
             for (let poa = 0; poa < colSizeImage.length; poa++) {
-                quiColorfunb(poa, splo[parseInt(colSizeImage[poa])], product.arti_id.image[parseInt(colSizeImage[poa])].ima)
+                quiColorfunb(parseInt(colSizeImage[poa]), splo[parseInt(colSizeImage[poa])], product.arti_id.image[parseInt(colSizeImage[poa])].ima)
                 quiSizefunab(parseInt(colSizeImage[poa]), sploa[parseInt(colSizeImage[poa])])
             }
 
@@ -159,7 +172,6 @@ async function cancelItemById() {
 
     window.location.reload()
 };
-
 
 async function updateOrderById() {
     const ido = document.getElementById('ido').value;
@@ -196,7 +208,6 @@ async function updateOrderById() {
         phone: telephoneValue
     };
 
-    //console.log(upda);
     await sendRequestforOrder('PUT', `orders/${ido}/${proid}`, upda);
     window.location.reload();
 };
@@ -291,7 +302,7 @@ async function OrderLoad() {
 
         clearOrder().then().catch();
 
-        const items = await sendRequestforO('GET', 'orders');
+        const items = await sendRequestforO('GET', `orders/myorder/${myid}`);
 
         await addOrders(items);
 
@@ -349,8 +360,10 @@ async function OrderLoad() {
 
             for (const pri of data) {
                 for (const prid of pri.articles) {
-                    const adda = prid.prix * prid.quantcho;
-                    totalPricea += adda;
+                    if (prid.statut == "review") {
+                        const adda = prid.prix * prid.quantcho;
+                        totalPricea += adda;
+                    }
                 };
 
 
@@ -363,7 +376,7 @@ async function OrderLoad() {
                             `;
             pantotalid.innerHTML += pantotalhtml;
 
-
+/*
 
 
             const pannierNumber2 = document.getElementById('paniernumber2');
@@ -380,7 +393,7 @@ async function OrderLoad() {
                                 <i class="bx bx-shopping-bag"></i>
                                 <span>${data.length}</span>
                             `;
-            pannierNumber3.innerHTML += panniernumHTML3;
+            pannierNumber3.innerHTML += panniernumHTML3;*/
         }).catch(error => {
             console.error("Error getting data:", error);
         });

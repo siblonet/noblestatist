@@ -46,7 +46,7 @@ function removeImageCreate(event) {
         const imageNumber = parseInt(clickedElementId.replace('todeleId', '')) - 1;
         if (imageNumber >= 0 && imageNumber) {
             imas.splice(imageNumber, 1);
-          
+
 
             // Clear the image previews
             const imagePreviews = document.querySelectorAll('[id^="imagePreview"]');
@@ -174,351 +174,31 @@ function AddArticle(who) {
 }
 
 
-
-function addData(data) {
+//addtoPanier
+function addtoPanier(data) {
     //console.log(data);
-    const transaction = db.transaction(["PannierContent"], "readwrite");
+    const transaction = panierdb.transaction(["PannierContent"], "readwrite");
     const objectStore = transaction.objectStore("PannierContent");
 
     const addRequest = objectStore.add(data);
-    let answer;
 
-    addRequest.onsuccess = (event) => {
-        answer = "created";
+    addRequest.onsuccess = () => {
+        getallDataa();
     };
 
-    addRequest.onerror = (event) => {
-        answer = event.target.error;
+    addRequest.onerror = () => {
+        console.log("not panier added");
     };
 
     transaction.onerror = (event) => {
-        answer = event.target.error;
+        setTimeout(() => alert("Exist déjà dans le panier!"), 10);
     };
 
-    return answer
 }
 
-
-
-function getDataById(id) {
-    const transaction = db.transaction(["PannierContent"], "readonly");
-    const objectStore = transaction.objectStore("PannierContent");
-
-    const getRequest = objectStore.get(id._id);
-
-    getRequest.onsuccess = (event) => {
-        const result = event.target.result;
-
-        if (id.even === "incre") {
-            result.aquantity = parseInt(result.aquantity) + 1;
-            TotalAll('put', result);
-            TotalAll('dasboard', "");
-
-        } else {
-            result.aquantity = parseInt(result.aquantity) - 1;
-            TotalAll('put', result);
-            TotalAll('dasboard', "");
-
-        }
-
-    };
-
-    transaction.onerror = (event) => {
-        consolelog(event.target.error);
-    };
-
-    return "answer";
-};
-
-
-
-/*
-        const optionid = document.getElementById('quantity-manipulate');
-        optionid.innerHTML = '';
-        const optionQuanhtml =
-            `
-                                <span class="minus-btn" onclick="decreaseQuantity(${result._id})"><i class="bx bx-minus"></i></span>
-                                <input type="text" min="1" id="optionQuantity" value="${result.quantity}">
-                                <span class="plus-btn" onclick="increaseQuantity(${result._id})"><i class="bx bx-plus"></i></span>
-                             `;
-        optionid.innerHTML += optionQuanhtml;
-
-        document.getElementById('optionViewNewPrice').innerText = `${result.newPrice} F.CFA`;
-        document.getElementById('optionQuantity').value = result.quantity;
-    */
-//cart data entering
-
-function getallData() {
-    const transaction = db.transaction(["PannierContent"], "readonly");
-    const objectStore = transaction.objectStore("PannierContent");
-    const data = [];
-
-    objectStore.openCursor().onsuccess = (event) => {
-        const cursor = event.target.result;
-        if (cursor) {
-            data.push(cursor.value);
-            //pannierPrin.push(cursor.value);
-            cursor.continue();
-        } else {
-            const tbodyId = document.getElementById('tbody-data');
-            tbodyId.innerHTML = '';
-
-            data.forEach(pani => {
-                const panierTBODY =
-                    `
-                        <tr>
-                            <td class="product-thumbnail">
-                                <a href="#">
-                                    <img src="${pani.image[parseInt(pani.imago[0])].ima}" alt="item">
-                                </a>
-                            </td>
-                            <td class="product-name">
-                                <a href="#">${pani.addarticle}</a>
-                                <ul>
-                                    <li>Color: <span style="background-color: ${pani.color.substring(0, 7)}; color: ${pani.color.substring(0, 7)}">${pani.color.substring(0, 7)}</span></li>
-                                    <li>Size: <span>${pani.size}</span></li>
-                                    <li>Material: <span>${pani.addmateri}</span></li>
-                                </ul>
-                            </td>
-                            <td class="product-price">
-                                <span class="unit-amount">${pani.prix} F</span>
-                            </td>
-                            <td class="product-quantity">
-                                <div class="input-counter" id="quantity-manipulate">
-                                    <div class="input-counter">
-                                        <span class="minus-btn" onclick="decreaseQuantity('${pani._id}')">-</span>
-                                        <input type="text" min="1" id="${pani._id}" value="${parseInt(pani.quantcho)}">
-                                        <span class="plus-btn" onclick="increaseQuantity('${pani._id}')">+</span>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="product-subtotal">
-                                <span class="subtotal-amount">${parseInt(pani.prix) * parseInt(pani.quantcho)} F.CFA</span>
-                                <a class="remove" style="cursor: pointer !important;" onclick="removePanierById('${pani._id}')"><i class="bx bx-trash"></i></a>
-                            </td>
-                        </tr>
-                    `;
-
-                tbodyId.innerHTML += panierTBODY;
-
-            });
-
-            const pantotalid = document.getElementById('toteaux');
-            pantotalid.innerHTML = '';
-
-            let totalPricea = 0; // Initialize to 1 so that the first multiplication works
-
-            for (const pri of data) {
-                const adda = parseInt(pri.prix) * parseInt(pri.quantcho);
-                totalPricea += adda;
-            };
-
-            const pantotalhtml = `
-                            <li>Sous-total <span>${totalPricea} F</span></li>
-                            <li>Livraison <span>1000 F</span></li>
-                            <li>Total <span>${totalPricea + 1000} F.CFA</span></li>
-                            `;
-            pantotalid.innerHTML += pantotalhtml;
-        }
-    };
-
-    transaction.onerror = (event) => {
-        console.error("Transaction error:", event.target.error);
-    };
-
-    return "data"
-}
-
-function getallDataa() {
-    const transaction = db.transaction(["PannierContent"], "readonly");
-    const objectStore = transaction.objectStore("PannierContent");
-    const data = [];
-
-    objectStore.openCursor().onsuccess = (event) => {
-        const cursor = event.target.result;
-        if (cursor) {
-            data.push(cursor.value);
-            //pannier.push(cursor.value);
-            cursor.continue();
-        } else {
-            if (data.length > 0) {
-                const productContainer = document.getElementById('pannier');
-                productContainer.innerHTML = ''; // Clear previous content
-
-
-                const pannierNumber1 = document.getElementById('paniernumber1');
-                pannierNumber1.innerHTML = ''; // Clear previous content
-                const panniernumHTML1 = `
-                                    <i class="bx bx-shopping-bag"></i>
-                                    <span>${data.length}</span>
-                                `;
-                pannierNumber1.innerHTML += panniernumHTML1;
-
-
-                const pannierNumber2 = document.getElementById('paniernumber2');
-                pannierNumber2.innerHTML = ''; // Clear previous content
-                const panniernumHTML2 = `
-                                    <i class="bx bx-shopping-bag"></i>
-                                    <span>${data.length}</span>
-                                `;
-                pannierNumber2.innerHTML += panniernumHTML2;
-
-                const pannierNumber3 = document.getElementById('paniernumber3');
-                pannierNumber3.innerHTML = ''; // Clear previous content
-                const panniernumHTML3 = `
-                                    <i class="bx bx-shopping-bag"></i>
-                                    <span>${data.length}</span>
-                                `;
-                pannierNumber3.innerHTML += panniernumHTML3;
-
-
-
-
-                data.forEach(pro => {
-                    const productHTML = `
-                                <div class="products-cart">
-                                    <div class="products-image">
-                                        <a href="#"><img src="${pro.image1}" alt="image"></a>
-                                    </div>
-                                    <div class="products-content">
-                                        <h3><a href="#">${pro.articleName}</a></h3>
-                                        <span>Bleu / XS</span>
-                                        <div class="products-price">
-                                            <span>${pro.quantity}</span>
-                                            <span>x</span>
-                                            <span class="price">${pro.newPrice}</span>
-                                            <span>=</span>
-                                            <span class="price">${pro.newPrice * pro.quantity}</span>
-                                        </div>
-                                        <a style="cursor: pointer !important;" class="remove-btn" onclick="removeItemById(${pro._id})"><i class="bx bx-trash"></i></a>
-                                    </div>
-                                </div>
-                `;
-                    productContainer.innerHTML += productHTML;
-
-                });
-
-                const h3Element = document.getElementById('monpanier');
-
-                if (h3Element) {
-                    h3Element.innerText = `Mon Panier (${data.length})`;
-                }
-
-
-
-                let totalPrice = 0; // Initialize to 1 so that the first multiplication works
-
-                for (const pri of data) {
-                    totalPrice += pri.newPrice * pri.quantity;
-                };
-
-                const subtotal = document.getElementById('subtotal');
-
-                if (subtotal) {
-                    subtotal.innerText = `${totalPrice} F.CFA`;
-                }
-            } else {
-                const pannierNumber1 = document.getElementById('paniernumber1');
-
-
-
-                const pannierNumber2 = document.getElementById('paniernumber2');
-
-
-                const pannierNumber3 = document.getElementById('paniernumber3');
-
-
-
-                pannierNumber1.innerHTML = ''; // Clear previous content
-                const panniernumHTML1 = `
-                                    <i class="bx bx-shopping-bag"></i>
-                                `;
-                pannierNumber1.innerHTML += panniernumHTML1;
-
-
-                pannierNumber2.innerHTML = ''; // Clear previous content
-                const panniernumHTML2 = `
-                                    <i class="bx bx-shopping-bag"></i>
-                                `;
-                pannierNumber2.innerHTML += panniernumHTML2;
-
-                pannierNumber3.innerHTML = ''; // Clear previous content
-                const panniernumHTML3 = `
-                                    <i class="bx bx-shopping-bag"></i>
-                                `;
-                pannierNumber3.innerHTML += panniernumHTML3;
-            }
-        };
-    };
-
-    return "data";
-};
-
-
-function updateData(data) {
-    const transaction = db.transaction(["PannierContent"], "readwrite");
-    const objectStore = transaction.objectStore("PannierContent");
-
-    const updateRequest = objectStore.put(data);
-    let answer;
-
-    updateRequest.onsuccess = (event) => {
-        answer = "updated";
-    };
-
-    updateRequest.onerror = (event) => {
-        answer = event.target.error;
-    };
-
-    transaction.onerror = (event) => {
-        answer = event.target.error;
-    };
-
-    return answer
-};
-
-function deleteData(id) {
-    const transaction = db.transaction(["PannierContent"], "readwrite");
-    const objectStore = transaction.objectStore("PannierContent");
-
-    const deleteRequest = objectStore.delete(id);
-    let answer;
-
-    deleteRequest.onsuccess = (event) => {
-        answer = "deleted";
-    };
-
-    deleteRequest.onerror = (event) => {
-        answer = event.target.error;
-    };
-
-    transaction.onerror = (event) => {
-        answer = event.target.error;
-    };
-
-    return answer
-};
-
-function clearData() {
-    const transaction = db.transaction(["PannierContent"], "readwrite");
-    const objectStore = transaction.objectStore("PannierContent");
-
-    const clearRequest = objectStore.clear();
-    let answer;
-
-    clearRequest.onsuccess = (event) => {
-        answer = "cleared"
-    };
-
-    clearRequest.onerror = (event) => {
-        answer = event.target.error;
-    };
-
-    return answer
-}
 
 function getPanierSend(tocompl) {
-    const transaction = db.transaction(["PannierContent"], "readonly");
+    const transaction = panierdb.transaction(["PannierContent"], "readonly");
     const objectStore = transaction.objectStore("PannierContent");
     objectStore.openCursor().onsuccess = async (event) => {
         const cursor = event.target.result;
@@ -581,7 +261,7 @@ function getPanierSend(tocompl) {
 };
 
 function getallCheckou() {
-    const transaction = db.transaction(["PannierContent"], "readonly");
+    const transaction = panierdb.transaction(["PannierContent"], "readonly");
     const objectStore = transaction.objectStore("PannierContent");
     const data = [];
 
@@ -664,7 +344,7 @@ function getallCheckou() {
 
 
 function getDasboard() {
-    const transaction = db.transaction(["PannierContent"], "readonly");
+    const transaction = panierdb.transaction(["PannierContent"], "readonly");
     const objectStore = transaction.objectStore("PannierContent");
     const data = [];
 
@@ -771,13 +451,7 @@ function TotalAll(who, data) {
         openDatabase()
             .then(() => {
                 if (who === "post") {
-                    addData(data)
-                        .then(result => resolve(result))
-                        .catch(error => reject(error));
-                } else if (who === "get") {
-                    getDataById(data)
-                        .then(result => resolve(result))
-                        .catch(error => reject(error));
+                    addtoPanier(data);
                 } else if (who === "all") {
                     getallData()
                         .then(result => resolve(result))
@@ -804,8 +478,6 @@ function TotalAll(who, data) {
                         .catch(error => reject(error));
                 } else if (who === "del") {
                     deleteData(data)
-                        .then(result => resolve(result))
-                        .catch(error => reject(error));
                 } else if (who === "clear") {
                     clearData()
                         .then(result => resolve(result))
@@ -824,7 +496,12 @@ function TotalAll(who, data) {
 
 function navigateAdminCLient() {
     const token = sessionStorage.getItem('tibule');
-    const splo = token.split("°");
-    const admin = splo[5];
-    window.location.href = admin == "GIFV" ? "./admin/admindasdboard.html" : "./track-order.html"
+    if (token) {
+        const splo = token.split("°");
+        const admin = splo[5];
+        window.location.href = admin == "GIFV" ? "./admin/admindasdboard.html" : "./track-order.html"
+    } else {
+        window.location.href = "login.html"
+    }
+
 }

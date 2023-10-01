@@ -106,16 +106,10 @@
                     <div class="collapse navbar-collapse mean-menu">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a onclick="adminDasboard('commande')" class="nav-link"
-                                    style="cursor: pointer !important;">Commandes</a>
+                                <a class="nav-link"></a>
                             </li>
                             <li class="nav-item megamenu">
-                                <a onclick="adminDasboard('article')" class="nav-link"
-                                    style="cursor: pointer !important;">Articles</a>
-                            </li>
-                            <li class="nav-item megamenu">
-                                <a onclick="adminDasboard('client')" class="nav-link"
-                                    style="cursor: pointer !important;">CLients</a>
+                                <a class="nav-link"></a>
                             </li>
                         </ul>
                         <div class="others-option">
@@ -126,9 +120,9 @@
                             </div>
                             <div class="option-item">
                                 <div class="cart-btn">
-                                    <a id="paniernumber2">
-                                        <i class="bx bx-user"></i>
-                                        Faveur
+                                    <a id="odernotifi" onclick="adminDasboard('commande')"
+                                    style="cursor: pointer !important;">
+                                        <i class="bx bx-notification"></i>
                                     </a>
                                 </div>
                             </div>
@@ -150,20 +144,7 @@
                         <img src="../assets/img/logo.jpg" class="white-logo" alt="logo">
                     </a>
                     <div class="collapse navbar-collapse mean-menu">
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a onclick="adminDasboard('commande')" class="nav-link"
-                                    style="cursor: pointer !important;">Commandes</a>
-                            </li>
-                            <li class="nav-item megamenu">
-                                <a onclick="adminDasboard('article')" class="nav-link"
-                                    style="cursor: pointer !important;">Articles</a>
-                            </li>
-                            <li class="nav-item megamenu">
-                                <a onclick="adminDasboard('client')" class="nav-link"
-                                    style="cursor: pointer !important;">CLients</a>
-                            </li>
-                        </ul>
+
                         <div class="others-option">
                             <div class="option-item">
                                 <div class="search-btn-box">
@@ -172,9 +153,9 @@
                             </div>
                             <div class="option-item">
                                 <div class="cart-btn">
-                                    <a id="paniernumber3">
-                                        <i class="bx bx-user"></i>
-                                        Faveur
+                                    <a id="odernotifia" onclick="adminDasboard('commande')"
+                                    style="cursor: pointer !important;">
+                                        <i class="bx bx-notification"></i>
                                     </a>
                                 </div>
                             </div>
@@ -211,10 +192,25 @@
     <div class="page-title-area">
         <div class="container">
             <div class="page-title-content">
-                <h2>Contenu à administrer</h2>
+                <h2>Espace Administratif</h2>
+                <p id="adminnom"></p>
                 <ul>
-                    <li><a href="../index.html">Boutique</a></li>
-                    <li>Admin</li>
+                    <li>
+                        <a href="../index.html">Boutique</a>
+                    </li>
+                    <li>
+                        <a onclick="adminDasboard('article')"
+                            style="cursor: pointer !important; color: #333 !important" onmouseover="this.style.color='#b59e18'" onmouseout="this.style.color='#333'">Articles</a>
+                    </li>
+                    <li>
+                        <a onclick="adminDasboard('commande')"
+                            style="cursor: pointer !important; color: #333 !important;" onmouseover="this.style.color='#b59e18'" onmouseout="this.style.color='#333'">Commandes</a>
+                    </li>
+
+                    <li>
+                        <a onclick="Disconexion()"
+                            style="cursor: pointer !important; color: #aaa !important;" onmouseover="this.style.color='red'" onmouseout="this.style.color='#aaa'">Déconecter</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -340,12 +336,12 @@
                                 <div>
                                     <a style="cursor: pointer !important;" class="default-btn"
                                         onclick="AddArticle('recenProd')">Ajouter</a>
-                                       
-                                        <a style="cursor: pointer !important; background-color: #bb1f1f !important;" class="default-btn"
-                                        onclick="ClearImage('recenProd')">Vider image</a>
+
+                                    <a style="cursor: pointer !important; background-color: #bb1f1f !important;"
+                                        class="default-btn" onclick="ClearImage('recenProd')">Vider image</a>
                                 </div>
 
-                             
+
                             </div>
                         </div>
                     </div>
@@ -607,14 +603,15 @@
                                     <div style="cursor: pointer !important;" id="Editeimage5"></div>
                                 </div>
                                 <div class="order-table table-responsive">
-                                    <input type="file" id="imageInput" accept="image/*" onchange="previewImageEdite(event)">
+                                    <input type="file" id="imageInput" accept="image/*"
+                                        onchange="previewImageEdite(event)">
 
                                 </div>
                                 <br>
 
                                 <div>
-                                    <a data-bs-dismiss="modal" aria-label="Close" style="cursor: pointer !important;" class="default-btn"
-                                        onclick="EditeViewArticle()">Modifier</a>
+                                    <a data-bs-dismiss="modal" aria-label="Close" style="cursor: pointer !important;"
+                                        class="default-btn" onclick="EditeViewArticle()">Modifier</a>
 
                                 </div>
                             </div>
@@ -732,6 +729,8 @@
 
     <script src="../router.js"></script>
     <script src="../productsFetcher/database_handl.js"></script>
+    <script src="../convertisseur.js"></script>
+    <script src="../disconnexion.js"></script>
     <script src="../assets/js/jquery.min.js"></script>
     <script src="../assets/js/popper.min.html"></script>
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
