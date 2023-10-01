@@ -183,6 +183,7 @@ function addtoPanier(data) {
     const addRequest = objectStore.add(data);
 
     addRequest.onsuccess = () => {
+        alert("added successfully");
         getallDataa();
     };
 

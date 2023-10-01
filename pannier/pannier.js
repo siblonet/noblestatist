@@ -1,5 +1,4 @@
 async function Pannier(ad) {
-    alert(ad);
     const exista = await getDataById({ _id: ad, even: "get" });
 
 
@@ -114,8 +113,6 @@ async function getDataById(id) {
     let answer;
     getRequest.onsuccess = (event) => {
         const result = event.target.result;
-        alert(id._id);
-
         if (id.even === "incre") {
             result.aquantity = parseInt(result.aquantity) + 1;
             TotalAll('put', result);
