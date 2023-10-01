@@ -144,7 +144,7 @@ async function getArticleByIdforpanier(_id) {
     getRequesta.onsuccess = (event) => {
         const prod = {};
         const proda = event.target.result;
-        alert("proda.addprix");
+        /*alert("proda.addprix");
         const prodb = { 
             quantcho: 1, 
             prix: proda.addprix,
@@ -153,8 +153,11 @@ async function getArticleByIdforpanier(_id) {
             size: proda.addtail[2] == "," ? proda.addtail[0] + proda.addtail[1] : proda.addtail[0],
         };
         Object.assign(prod, proda, prodb);
-        alert("concentination");   
-        TotalAll("post", prod);
+        alert("concentination");  
+        */ 
+        TotalAll("post", proda);
+        alert("concentination");  
+
     };
 
 
