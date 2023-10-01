@@ -449,10 +449,13 @@ function getDasboard() {
 
 
 function TotalAll(who, data) {
+    alert("TotalAll");
+
     return new Promise((resolve, reject) => {
         openDatabase()
             .then(() => {
                 if (who === "post") {
+                    alert("TotalAllin");
                     addtoPanier(data);
                 } else if (who === "all") {
                     getallData()
