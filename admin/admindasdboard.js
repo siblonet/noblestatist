@@ -102,7 +102,7 @@ async function getAdminDasboard() {
             odernotifi.innerHTML = '';
             const odernotifia = document.getElementById('odernotifia');
             odernotifia.innerHTML = '';
-            if (odernotnu > 1) {
+            if (odernotnu > 0) {
                 const odernotifiHTML = `
                         <i class="bx bx-notification"></i>
                         <span>${odernotnu}</span>

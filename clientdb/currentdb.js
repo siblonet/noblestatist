@@ -92,7 +92,7 @@ const sendRequest = async (method, endpoint, data = null) => {
     return responseData;
 };
 
-const sendRequestnoto = async (method, endpoint, data = null) => {
+const sendRequestnotoa = async (method, endpoint, data = null) => {
     const options = {
         method,
         headers: {
@@ -158,7 +158,7 @@ function AddArticle(who) {
             };
             const createItem = async () => {
                 try {
-                    const response = await sendRequestnoto('POST', 'boutique', product);
+                    const response = await sendRequestnotoa('POST', 'boutique', product);
 
                     console.log('product created:', response);
                 } catch (error) {

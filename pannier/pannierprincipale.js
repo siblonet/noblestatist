@@ -5,35 +5,55 @@ function PannierPrincipal() {
 PannierPrincipal();
 
 function removePanierById(id) {
-    const index = pannierPrin.findIndex(item => item._id === id);
 
-    if (index !== -1) {
-        TotalAll("del", id);
-        TotalAll('all', '');
-    };
+    TotalAll("del", id);
+    TotalAll('all', '');
+
 };
 
 
-function decreaseQuantity(inputId) {
-    const index = pannierPrin.find(item => item._id === inputId);
+async function decreaseQuantity(inputId) {
+    await openDatabase()
+    const transaction = panierdb.transaction(["PannierContent"], "readonly");
+    const objectStore = transaction.objectStore("PannierContent");
 
-    const inputElement = document.getElementById(inputId);
-    if (inputElement.value > 1) {
-        inputElement.value = parseInt(inputElement.value) - 1;
-        index.quantcho = inputElement.value;
-        TotalAll('put', index);
-        TotalAll('all', '');
+    const getRequest = objectStore.get(inputId);
+    getRequest.onsuccess = (event) => {
+        const result = event.target.result;
+        const inputElement = document.getElementById(inputId);
+        if (inputElement.value > 1) {
+            inputElement.value = parseInt(inputElement.value) - 1;
+            result.quantcho = inputElement.value;
+            TotalAll('put', result);
+            TotalAll('all', '');
+        };
+    };
+
+    transaction.onerror = (event) => {
+        console.log(event.target.error);
     };
 }
 
-function increaseQuantity(inputId) {
-    const index = pannierPrin.find(item => item._id === inputId);
+async function increaseQuantity(inputId) {
+    await openDatabase()
+    const transaction = panierdb.transaction(["PannierContent"], "readonly");
+    const objectStore = transaction.objectStore("PannierContent");
 
-    const inputElement = document.getElementById(inputId);
-    inputElement.value = parseInt(inputElement.value) + 1;
-    index.quantcho = inputElement.value;
-    TotalAll('put', index);
-    TotalAll('all', '');
+    const getRequest = objectStore.get(inputId);
+    getRequest.onsuccess = (event) => {
+        const result = event.target.result;
+
+
+        const inputElement = document.getElementById(inputId);
+        inputElement.value = parseInt(inputElement.value) + 1;
+        result.quantcho = inputElement.value;
+        TotalAll('put', result);
+        TotalAll('all', '');
+    };
+
+    transaction.onerror = (event) => {
+        console.log(event.target.error);
+    };
 }
 
 function clearPanier() {

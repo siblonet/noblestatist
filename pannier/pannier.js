@@ -120,6 +120,7 @@ async function getDataById(id) {
             TotalAll('dasboard', "");
 
         } else if (id.even == "get") {
+            console.log(result)
             answer = result
         } else {
             result.aquantity = parseInt(result.aquantity) - 1;

@@ -41,9 +41,9 @@
 
     <section class="checkout-area ptb-100">
         <div class="container">
-            <div class="user-actions">
+            <div class="user-actions" id="connectedor">
                 <i class="bx bx-log-in"></i>
-                <span>Client déjà enregistré ? <a href="login.html">Cliquez ici pour vous connecter</a></span>
+                <span>Client déjà enregistré ? <a style="cursor: pointer !important; color: black !important;" onmouseover="this.style.color='#007bff'" onmouseout="this.style.color='#000'" data-bs-toggle="modal" data-bs-target="#connexionComade">Cliquez ici pour vous connecter</a></span>
             </div>
             <form>
                 <div class="row">
@@ -193,6 +193,47 @@
     </section>
 
 
+    <div class="modal fade productsQuickView" id="connexionComade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="bx bx-x"></i></span>
+                </button>
+                <form>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-12">
+                            <div class="billing-details">
+                                <h3 class="title">Connexion</h3>
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="form-group">
+                                            <label>Téléphone <span class="required">*</span></label>
+                                            <input type="tel" class="form-control" id="phone">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="form-group">
+                                            <label>Mot de passe<span class="required">*</span></label>
+                                            <input type="password" class="form-control" id="password">
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <a data-bs-dismiss="modal" aria-label="Close" style="cursor: pointer !important;"
+                                            class="default-btn" onclick="loginCommage()">Connexion</a>
+    
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                      
+                    </div>
+                </form>
+
+
+            </div>
+        </div>
+    </div>
 
 
 
@@ -318,9 +359,10 @@
     <script src="assets/js/ajaxchimp.min.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="./clientdb/currentdb.js"></script>
-    <script src="./checkouthand/checkouthanla.js"></script>
-    <script src="./productsFetcher/productsFetcher.js"></script>
     <script src="./convertisseur.js"></script>
+    <script src="./checkouthand/checkouthanla.js"></script>
+    <script src="./authan/authan.js"></script>
+    <script src="./productsFetcher/productsFetcher.js"></script>
     <script src="./pannier/pannier.js"></script>
 </body>
 

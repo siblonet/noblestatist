@@ -101,3 +101,55 @@ function loGin() {
         console.log(error)
     }
 }
+
+
+function loginCommage() {
+    try {
+        const phone = document.getElementById('phone').value;
+        const password = document.getElementById('password').value;
+
+        if (phone != "" && password != "") {
+            const person = {
+                phone: phone,
+                motdepass: password,
+            };
+
+            const createItem = async () => {
+                try {
+                    const response = await sendRequestnoto('POST', 'people/login', person);
+                    sessionStorage.setItem('tibule', response.token);
+                    const splo = response.token.split("°");
+                    const name = splo[1];
+                    const lastname = splo[2];
+                    const mail = splo[4];
+                    const mynam = thisiswhat(`${name}â${lastname}â${mail}`)
+                    const myspl = mynam.split(" ");
+
+
+                    document.getElementById('prenomValue').value = myspl[0];
+                    document.getElementById('prenomValue').disabled = true;
+                    
+                    document.getElementById('nomValue').value = myspl[1];
+                    document.getElementById('nomValue').disabled = true;
+
+                    document.getElementById('motValue').value = password;
+                    document.getElementById('motValue').disabled = true;
+
+                    document.getElementById('confirmezValue').value = password;
+                    document.getElementById('confirmezValue').disabled = true;
+
+                    document.getElementById('emailValue').value = myspl[2];
+                    document.getElementById('emailValue').disabled = true;
+
+                    document.getElementById('telephoneValue').value = phone;
+                } catch (error) {
+                    console.error('Error creating item:', error.message);
+                }
+            };
+
+            createItem();
+        }
+    } catch (error) {
+        console.log(error)
+    }
+}
