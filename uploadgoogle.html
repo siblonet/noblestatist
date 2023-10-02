@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Image Upload to Google Cloud Storage</title>
+</head>
+
+<body>
+  <h1>Upload Image to Google Cloud Storage</h1>
+  <input type="file" id="imageFile" accept="image/*" />
+  <button onclick="getSignedUrlAndUpload()">Upload Image</button>
+
+  <img id="uploadedImage" style="display: none;" />
+  <script>
+
+
+    async function getSignedUrlAndUpload() {
+      const fileInput = document.getElementById('imageFile');
+      const file = fileInput.files[0];
+
+      if (!file) {
+        alert('Please select an image file.');
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = async function (event) {
+        const base64Data = event.target.result.split(',')[1];
+        await sendBase64ToServer(base64Data, file.name);
+      };
+      reader.readAsDataURL(file);
+    }
+
+    async function sendBase64ToServer(base64Data, fileName) {
+      const endpointUrl = 'http://localhost:3000/boutique/uploadImage'; // Replace with your actual server endpoint
+
+      const response = await fetch(endpointUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ base64Data, fileName }),
+      });
+
+      if (response.ok) {
+        const url = await response.json();
+        console.log('Signed URL:', url);
+        // Use the signed URL to upload the image to Google Cloud Storage (not shown here)
+      } else {
+        console.error('Error getting signed URL:', response.statusText);
+      }
+    }
+
+
+
+  </script>
+</body>
+
+</html>
