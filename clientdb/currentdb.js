@@ -51,7 +51,7 @@ function previewImage(event) {
             const reader = new FileReader();
 
             reader.onload = function (e) {
-                imas.push({ ima: e.target.result });
+                imas.push({ ima: e.target.result, nam: file.name });
                 const img = document.createElement('img');
                 img.src = e.target.result;
                 img.style.height = '300px';
