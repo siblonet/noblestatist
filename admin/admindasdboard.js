@@ -241,7 +241,7 @@ function previewImageEdite(event) {
             const reader = new FileReader();
 
             reader.onload = function (e) {
-                imasEdi.push({ _id: _idim[0] ? _idim[0].id : imasEdi[0].id, ima: e.target.result });
+                imasEdi.push({ _id: _idim[0] ? _idim[0].id : imasEdi[0].id, ima: e.target.result, nam: file.name, status: "update"});
                 _idim.length > 0 ? _idim.splice(0, 1) : null;
                 const img = document.createElement('img');
                 img.src = e.target.result;
@@ -265,7 +265,16 @@ function removeImageEdite(event) {
         const imageNumber = parseInt(clickedElementId.replace('EdieId', '')) - 1;
         if (imageNumber >= 0 && imageNumber < imasEdi.length) {
             // Remove the item from the array at the specified index
-            _idim.push({ id: imasEdi[imageNumber]._id })
+            _idim.push({ id: imasEdi[imageNumber]._id });
+            const createItem = async () => {
+                try {
+                    await sendRequestforOrder('POST', `boutique/deleteim`, {name: imasEdi[imageNumber].ima});
+                } catch (error) {
+                    console.error('Error updating product:', error.message);
+                }
+            };
+
+            createItem();
             imasEdi.splice(imageNumber, 1);
 
             // Clear the image previews
