@@ -145,8 +145,8 @@ async function CreatClientd(client) {
                     throw new Error(responseData.message || 'Request failed!');
                 }
 
-                sessionStorage.setItem('tibule', response.token);
-                const splo = response.token.split("°");
+                sessionStorage.setItem('tibule', responseData.token);
+                const splo = responseData.token.split("°");
                 return thisiswhat(splo[0]);
             } catch (error) {
                 console.error('Error creating item:', error.message);
