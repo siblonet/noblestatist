@@ -125,7 +125,7 @@ const sendRequestOrder = async (method, endpoint, data = null) => {
 
 async function CreatClientd(client) {
     try {
-        const createItem = async () => {
+        const createItem = async (method, endpoint) => {
             try {
                 const options = {
                     method,
@@ -134,7 +134,7 @@ async function CreatClientd(client) {
                     }
                 };
             
-                if (data) {
+                if (client) {
                     options.body = JSON.stringify(client);
                 }
             
@@ -154,7 +154,7 @@ async function CreatClientd(client) {
             }
         };
 
-        const createdItemId = await createItem(); // Await the result of createItem()
+        const createdItemId = await createItem('POST', 'people'); // Await the result of createItem()
         return createdItemId;
     } catch (error) {
         console.log(error);
