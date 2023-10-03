@@ -22,8 +22,9 @@ async function sendCommen() {
     try {
 
         const token = sessionStorage.getItem('tibule');
-        const splo = token.split("°");
-        if (splo) {
+        if (token) {
+            const splo = token.split("°");
+
             const _id = splo[0];
             const mynam = thisiswhat(`${_id}`);
             const villeValue = document.getElementById('villeValue').value;
@@ -126,8 +127,24 @@ async function CreatClientd(client) {
     try {
         const createItem = async () => {
             try {
-                const response = await sendRequestOrder('POST', 'people', client);
-                //return response.id;
+                const options = {
+                    method,
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                };
+            
+                if (data) {
+                    options.body = JSON.stringify(client);
+                }
+            
+                const response = await fetch(apiUrlfine + endpoint, options);
+                const responseData = await response.json();
+            
+                if (!response.ok) {
+                    throw new Error(responseData.message || 'Request failed!');
+                }
+
                 sessionStorage.setItem('tibule', response.token);
                 const splo = response.token.split("°");
                 return thisiswhat(splo[0]);
