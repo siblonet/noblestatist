@@ -1,4 +1,7 @@
 const recenProd = [];
+let selct = [];
+let selctSize = [];
+
 function getUsenam() {
     const tokens = sessionStorage.getItem('tibule');
     if (tokens.split("°")) {
@@ -301,7 +304,6 @@ async function showProductQuickView(productId) {
     };
 };
 
-let selct = [];
 function quiSizefun(id, siz) {
     if (selct.length == 0 && `quisizeli${id}` !== "quisizelia") {
         const onea = document.getElementById("quisizelia");
@@ -329,7 +331,6 @@ function quiSizefun(id, siz) {
 
 };
 
-let selctSize = [];
 
 function quiColorfun(impo, id, im) {
     const bacgro = document.getElementById('bagron');

@@ -41,7 +41,7 @@ async function clearArticlea() {
 
 const imas = [];
 
-function previewImage(event) {
+function previewImagef(event) {
     if (imas.length < 5) {
         const imagePreview = document.getElementById(`imagePreview${imas.length + 1}`);
         imagePreview.innerHTML = '';
@@ -51,7 +51,6 @@ function previewImage(event) {
             const reader = new FileReader();
 
             reader.onload = function (e) {
-                imas.push({ ima: e.target.result, nam: file.name });
                 const img = document.createElement('img');
                 img.src = e.target.result;
                 img.style.height = '300px';
@@ -66,6 +65,61 @@ function previewImage(event) {
     }
 };
 
+async function previewImage() {
+    if (imas.length < 5) {
+
+        const fileInput = document.getElementById('imageInput');
+        const file = fileInput.files[0];
+
+        if (!file) {
+            alert('Please select an image file.');
+            return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = async function (event) {
+            const base64Data = event.target.result.split(',')[1];
+            await sendBase64ToServer(base64Data, file.name);
+        };
+        reader.readAsDataURL(file);
+    }
+}
+
+async function sendBase64ToServer(base64Data, fileName) {
+
+    const imagePreview = document.getElementById(`imagePreview${imas.length + 1}`);
+    imagePreview.innerHTML = '';
+
+    const response = await fetch(apiUrlfine + "boutique/uploadImage", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ ima: base64Data, nam: fileName }),
+    });
+
+    if (response.ok) {
+        const url = await response.json();
+        imas.push(url);
+        setTimeout(() => {
+            const img = document.createElement('img');
+            img.src = url.ima;
+            img.style.height = '300px';
+            img.style.width = '200px';
+            img.setAttribute('onclick', 'removeImageCreate(event)');
+            img.setAttribute('id', `todeleId${imas.length + 1}`);
+            imagePreview.appendChild(img);
+            imagePreview.appendChild(img);
+        }, 2500);
+
+        // Use the signed URL to upload the image to Google Cloud Storage (not shown here)
+    } else {
+        console.error('Error getting signed URL:', response.statusText);
+    }
+
+    //previewImagef(evenct)
+
+}
 
 function removeImageCreate(event) {
     const clickedElementId = event.target.id;
