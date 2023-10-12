@@ -218,7 +218,7 @@ async function showProductQuickView(productId) {
             const modalImage = document.getElementById('ipage');
             modalImage.src = product.image[0].ima;
 
-            const newURL = `products-type-1.html?ov=${product._id}?vo=${product.who}`;  // Replace with the desired new URL
+            const newURL = `products-type-1.html?ov=${product._id}`;  // Replace with the desired new URL
 
             const linkElement = document.getElementById('change-url');
 
