@@ -8,5 +8,6 @@ function getUrlParameter(ov) {
 };
 
 const retriva = getUrlParameter('ov');
+productStypes1(retriva);
 document.getElementById('ido').value = retriva;
 

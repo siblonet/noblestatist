@@ -14,28 +14,6 @@ async function Pannier(ad) {
 };
 
 
-async function PannierOr() {
-    const ido = document.getElementById('ido').value;
-    await openDatabase();
-    const transaction = panierdb.transaction(["PannierContent"], "readonly");
-    const objectStore = transaction.objectStore("PannierContent");
-    const getRequest = objectStore.get(ido);
-
-    getRequest.onsuccess = async (event) => {
-        const result = event.target.result;
-        if (!result) {
-            await getArticleByIdforpanier(ido);
-
-        } else {
-            setTimeout(() => alert("Exist déjà dans le panier!"), 10);
-        };
-    };
-
-    transaction.onerror = (event) => {
-        console.log(event.target.error);
-    };
-};
-
 
 function removeItemById(id) {
     TotalAll("del", id);
@@ -160,7 +138,27 @@ async function getArticleByIdforpanier(_id) {
     };
 }
 
+async function getArticleByIdforpanierOr(_id) {
+    await openArticleDatabase()
+    const transactiona = articldb.transaction(["ArticleStore"], "readonly");
+    const objectStorea = transactiona.objectStore("ArticleStore");
+    const getRequesta = objectStorea.get(_id);
+    getRequesta.onsuccess = (event) => {
+        const prod = event.target.result;
 
+        prod.quantcho = 1;
+        prod.prix = prod.addprix;
+        prod.imago = "0";
+        prod.color = prod.addcoul.substring(0, 7);
+        prod.size = prod.addtail[2] == "," ? prod.addtail[0] + prod.addtail[1] : prod.addtail[0];
+        TotalAll("post", prod);
+    };
+
+
+    getRequesta.onerror = (event) => {
+        console.error("Error accessing object store:", event.target.error);
+    };
+}
 
 //cart data entering
 function getallData() {

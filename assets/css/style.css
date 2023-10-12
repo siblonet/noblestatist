@@ -4192,7 +4192,9 @@ Products Details CSS
   right: 0;
   top: 0;
   bottom: 0;
+  /*
   background: #eeeeee;
+  */
   border-radius: 50%;
   margin: 2px;
   -webkit-transition: 0.5s;
