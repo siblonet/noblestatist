@@ -43,14 +43,21 @@ function recentProduct(recenPr) {
     productContainer.innerHTML = '';
     /*
         addarticle: addarticle,
-        addprixpro: addprixpro,
+        addquant:,
+        addgenre
+        addtransage
+        addreduction: addreduction,
         addprix: addprix,
+        addoccasion
         addfour: addfour,
         adddispo: adddispo,
+        addnouveaute
         addcoul: addcoul,
         addtail: addtail,
         addmateri: addmateri,
+        addmarque
         addtype: addtype,
+        addtypepro
         addphone: addphone,
         addexpe: addexpe,
         who: '',
@@ -65,16 +72,15 @@ function recentProduct(recenPr) {
 
 
     recenPr.forEach(product => {
-        if (product.who === "recenProd") {
-            recenProd.push(product);
-            const percentDf = ((product.addprixpro - product.addprix) / product.addprix) * 100;
+        recenProd.push(product);
+        const percentDf = ((product.addreduction - product.addprix) / product.addprix) * 100;
 
-            const productHTML = `
+        const productHTML = `
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="products-box">
 
 
-                            <div class="products-image" style="background-color: ${'#fff'};">
+                            <div class="products-image" style="background-color: ${product.addcoul.substring(0, 7)};">
                                 <a style="cursor: pointer !important;" 
                                     data-bs-toggle="${isMobileDevice() ? 'modal' : ''}" 
                                     data-bs-target="${isMobileDevice() ? '#productsQuickView' : ''}" 
@@ -87,7 +93,7 @@ function recentProduct(recenPr) {
                                     <ul>
                                         <li>
                                             <div class="wishlist-btn">
-                                                <a style="cursor: pointer !important; color: #010fc8 !important" onclick="Pannier('${product._id}','${product.who}')">
+                                                <a style="cursor: pointer !important; color: #010fc8 !important" onclick="Pannier('${product._id}')">
                                                     <i class="bx bx-shopping-bag bx bx-heart"></i>
                                                     <span class="tooltip-label">Ajouter</span>
                                                 </a>
@@ -115,22 +121,22 @@ function recentProduct(recenPr) {
                 `
                                         <div class="new-tag">Promo</div>
                                     `
-                                    :
-                                    ""
-                }
+                :
+                ""
+            }
 
                                 ${product.occasion == "sold" ?
                 `
                                     <div class="sale-tag">Sold</div>
                                 `
-                                :
-                                ""
-                }
+                :
+                ""
+            }
                             </div>
 
 
                             <div class="products-content">
-                                <span class="category">${product.addtype}</span>
+                                <span class="category">${product.addtypepro}</span>
                                 <h3><a href="products-type-1.html">${product.addarticle}</a></h3>
                                 <div class="star-rating">
                                     <i class="bx bxs-star"></i>
@@ -140,36 +146,36 @@ function recentProduct(recenPr) {
                                     <i class="bx bxs-star"></i>
                                 </div>
                                 <div class="price">
-                                ${product.addprixpro > 0 ?
-                    `
-                                            <span class="old-price">${product.addprixpro} F.CFA</span>
+                                ${product.addreduction > 0 ?
+                `
+                                            <span class="old-price">${product.addreduction} F.CFA</span>
                                     `
-                    :
-                    ""
-                }
+                :
+                ""
+            }
                                     <span class="new-price">${product.addprix} F.CFA</span>
                                 </div>
-                                <a style="cursor: pointer !important;" class="add-to-cart" onclick="Pannier('${product._id}','${product.who}')">Ajouter au panier</a>
+                                <a style="cursor: pointer !important;" class="add-to-cart" onclick="Pannier('${product._id}')">Ajouter au panier</a>
                             </div>
-                            ${product.addprixpro > 0 ?
-                    `
+                            ${product.addreduction > 0 ?
+                `
                             <span class="products-discount">
                                 <span>
                                     -${percentDf.toFixed()}%
                                 </span>
                             </span>
                               `
-                    :
-                    ""
-                }
+                :
+                ""
+            }
                             
                         </div>
                     </div>
         `;
 
-            productContainer.innerHTML += productHTML;
+        productContainer.innerHTML += productHTML;
 
-        }
+
     });
 };
 
@@ -212,8 +218,34 @@ async function showProductQuickView(productId) {
             const qsized = sploa[3] == "null" ? "-" : sploa[3];
             const qsizee = sploa[4] == "null" ? "-" : sploa[4];
 
+
+            /*
+        addarticle: addarticle,
+        addquant:,
+        addgenre
+        addtransage
+        addreduction: addreduction,
+        addprix: addprix,
+        addoccasion
+        addfour: addfour,
+        adddispo: adddispo,
+        addnouveaute
+        addcoul: addcoul,
+        addtail: addtail,
+        addmateri: addmateri,
+        addmarque
+        addtype: addtype,
+        addtypepro
+        addphone: addphone,
+        addexpe: addexpe,
+        who: '',
+        notes: notes,
+        image: imas
+    */
+
+
             document.getElementById('quickViewProductName').innerText = product.addarticle;
-            document.getElementById('quickViewOldPrice').innerText = `${product.addprixpro} F.CFA`;
+            document.getElementById('quickViewOldPrice').innerText = `${product.addreduction} F.CFA`;
             document.getElementById('quickViewNewPrice').innerText = `${product.addprix} F.CFA`;
             document.getElementById('rating').innerText = `5 avis`;
             document.getElementById('quickFour').innerText = `${product.addfour}`;

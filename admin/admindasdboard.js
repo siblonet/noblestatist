@@ -161,7 +161,29 @@ async function optionCancileView(_id, proid) {
             document.getElementById('quickType').innerText = `${product.arti_id.addtype}`;
             document.getElementById('productQuantity').value = product.quantcho;
 
-
+ /*
+        addarticle: addarticle,
+        addquant:,
+        addgenre
+        addtransage
+        addreduction: addreduction,
+        addprix: addprix,
+        addoccasion
+        addfour: addfour,
+        adddispo: adddispo,
+        addnouveaute
+        addcoul: addcoul,
+        addtail: addtail,
+        addmateri: addmateri,
+        addmarque
+        addtype: addtype,
+        addtypepro
+        addphone: addphone,
+        addexpe: addexpe,
+        who: '',
+        notes: notes,
+        image: imas
+    */
             const quickCouleuHtml = document.getElementById('quickCouleu');
             const quickTailHtml = document.getElementById('quickTail');
             quickCouleuHtml.innerHTML = '';
@@ -354,10 +376,33 @@ async function optionEditeView(_id) {
     imasEdi.length = 0
     await openArticleDatabase();
     getArticleById(_id).then(product => {
+         /*
+        addarticle: addarticle,
+        addquant:,
+        addgenre
+        addtransage
+        addreduction: addreduction,
+        addprix: addprix,
+        addoccasion
+        addfour: addfour,
+        adddispo: adddispo,
+        addnouveaute
+        addcoul: addcoul,
+        addtail: addtail,
+        addmateri: addmateri,
+        addmarque
+        addtype: addtype,
+        addtypepro
+        addphone: addphone,
+        addexpe: addexpe,
+        who: '',
+        notes: notes,
+        image: imas
+    */
         document.getElementById('ediatiid').value = _id;
         document.getElementById('Editearticle').value = product.addarticle;
         document.getElementById('Editequant').value = parseInt(product.quantity);
-        document.getElementById('Editeprixpro').value = product.addprixpro;
+        document.getElementById('Editeprixpro').value = product.addreduction;
         document.getElementById('Editeprix').value = product.addprix;
         document.getElementById('Editefour').value = product.addfour;
         document.getElementById('Editedispo').value = product.adddispo;
