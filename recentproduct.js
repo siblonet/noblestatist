@@ -67,51 +67,71 @@ function recentProduct(recenPr) {
     recenPr.forEach(product => {
         if (product.who === "recenProd") {
             recenProd.push(product);
+            const percentDf = ((product.addprixpro - product.addprix) / product.addprix) * 100;
+
             const productHTML = `
                     <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="single-products-box">
+                        <div class="products-box">
+
+
                             <div class="products-image" style="background-color: ${'#fff'};">
-                            <a style="cursor: pointer !important;" 
-                                data-bs-toggle="${isMobileDevice() ? 'modal' : ''}" 
-                                data-bs-target="${isMobileDevice() ? '#productsQuickView' : ''}" 
-                                href="${isMobileDevice() ? '' : `products-type-1.html?ov=${product._id}`}"  
-                                onclick="${isMobileDevice() ? `showProductQuickView('${product._id}')` : ''}">
-                                <img src="${product.image[0].ima}" class="main-image" alt="image">
-                                <img src="${product.image[1].ima}" class="hover-image" alt="image">
+                                <a style="cursor: pointer !important;" 
+                                    data-bs-toggle="${isMobileDevice() ? 'modal' : ''}" 
+                                    data-bs-target="${isMobileDevice() ? '#productsQuickView' : ''}" 
+                                    href="${isMobileDevice() ? '' : `products-type-1.html?ov=${product._id}`}"  
+                                    onclick="${isMobileDevice() ? `showProductQuickView('${product._id}')` : ''}">
+                                    <img src="${product.image[0].ima}" class="main-image" alt="image">
+                                    <img src="${product.image[1].ima}" class="hover-image" alt="image"> 
                                 </a>
                                 <div class="products-button">
                                     <ul>
-                                    <!--<li>
+                                        <li>
                                             <div class="wishlist-btn">
-                                                
+                                                <a style="cursor: pointer !important; color: #010fc8 !important" onclick="Pannier('${product._id}','${product.who}')">
+                                                    <i class="bx bx-shopping-bag bx bx-heart"></i>
+                                                    <span class="tooltip-label">Ajouter</span>
+                                                </a>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="compare-btn">
-                                                <a href="#">
+                                                <a style="color: #010fc8 !important" href="products-type-1.html?ov=${product._id}}">
                                                     <i class="bx bx-refresh"></i>
-                                                    <span class="tooltip-label">Comparer</span>
+                                                    <span class="tooltip-label">Plus infos</span>
                                                 </a>
                                             </div>
-                                        </li>-->
+                                        </li>
                                         <li>
                                             <div class="quick-view-btn" onclick="showProductQuickView('${product._id}')">
-                                                <a style="cursor: pointer !important;" data-bs-toggle="modal" data-bs-target="#productsQuickView">
+                                                <a style="cursor: pointer !important; color: #010fc8 !important" data-bs-toggle="modal" data-bs-target="#productsQuickView">
                                                     <i class="bx bx-search-alt"></i>
                                                     <span class="tooltip-label">Vue rapide</span>
                                                 </a>
                                             </div>
                                         </li>
                                     </ul>
+                                </div>
+                                ${product.occasion == "promo" ?
+                `
+                                        <div class="new-tag">Promo</div>
+                                    `
+                                    :
+                                    ""
+                }
 
-                                </div>
+                                ${product.occasion == "sold" ?
+                `
+                                    <div class="sale-tag">Sold</div>
+                                `
+                                :
+                                ""
+                }
                             </div>
+
+
                             <div class="products-content">
+                                <span class="category">${product.addtype}</span>
                                 <h3><a href="products-type-1.html">${product.addarticle}</a></h3>
-                                <div class="price">
-                                <span class="old-price">$ ${product.addprixpro}</span>
-                                <span class="new-price">$ ${product.addprix}</span>
-                                </div>
                                 <div class="star-rating">
                                     <i class="bx bxs-star"></i>
                                     <i class="bx bxs-star"></i>
@@ -119,8 +139,30 @@ function recentProduct(recenPr) {
                                     <i class="bx bxs-star"></i>
                                     <i class="bx bxs-star"></i>
                                 </div>
+                                <div class="price">
+                                ${product.addprixpro > 0 ?
+                    `
+                                            <span class="old-price">${product.addprixpro} F.CFA</span>
+                                    `
+                    :
+                    ""
+                }
+                                    <span class="new-price">${product.addprix} F.CFA</span>
+                                </div>
                                 <a style="cursor: pointer !important;" class="add-to-cart" onclick="Pannier('${product._id}','${product.who}')">Ajouter au panier</a>
-                               </div>
+                            </div>
+                            ${product.addprixpro > 0 ?
+                    `
+                            <span class="products-discount">
+                                <span>
+                                    -${percentDf.toFixed()}%
+                                </span>
+                            </span>
+                              `
+                    :
+                    ""
+                }
+                            
                         </div>
                     </div>
         `;

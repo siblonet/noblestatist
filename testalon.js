@@ -132,27 +132,39 @@ const deed = {
     "°": "°"
 }
 
+
+function whatisthis(ee) {
+    const adaa = ee.replaceAll("/", "¨");
+    let dof = "";
+    [...adaa].forEach(en => {
+        dof += Upcased[`${en}`];
+        dof += Lowcasd[`${en}`];
+        dof += Nud[`${en}`];
+        dof += Sumd[`${en}`];
+        dof += deed[`${en}`];
+
+    });
+    const ada = dof.replaceAll("undefined", "");
+
+    return ada;
+}
+
+
 function thisiswhatd(eee) {
     let dof = "";
     [...eee].forEach(en => {
-        const upcasedChar = Upcased[en];
-        const lowcasdChar = Lowcasd[en];
-        const nudChar = Nud[en];
-        const sumdChar = Sumd[en];
-        const deedChar = deed[en];
-
-        if (upcasedChar || lowcasdChar || nudChar || sumdChar || deedChar) {
-            dof += upcasedChar || lowcasdChar || nudChar || sumdChar || deedChar;
-        } else {
-            console.log(`Character not found in mappings: ${en}`);
-            dof += en; // Keep the original character if not in the mappings
-        }
-    });
+        dof += Upcased[`${en}`];
+        dof += Lowcasd[`${en}`];
+        dof += Nud[`${en}`];
+        dof += Sumd[`${en}`];
+        dof += deed[`${en}`];
+    })
     const adaa = dof.replaceAll("undefined", "");
     console.log(adaa);
     return adaa;
-};
+}
 
-thisiswhatd("FMWVURMVW".toUpperCase());
+const sa = whatisthis("cyclic-zany-plum-bear-us-east-1");
+console.log(sa);
 
 

@@ -5,6 +5,7 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#d1be03" />
 
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/animate.min.css">
@@ -20,7 +21,7 @@
     <link rel="stylesheet" href="../assets/css/dark.css">
     <link rel="stylesheet" href="../assets/css/responsive.css">
     <title>Admin</title>
-    <link rel="icon" type="image/png" href="../assets/img/favicona.png">
+    <link rel="icon" type="image/png" href="../assets/img/favicon.png">
     <style>
         /* Styles for the dropdown */
         .dropdown {
@@ -89,8 +90,10 @@
                 <div class="xton-responsive-menu">
                     <div class="logo">
                         <a href="index.html">
-                            <img src="../assets/img/logo.jpg" class="main-logo" alt="logo">
-                            <img src="../assets/img/logo.jpg" class="white-logo" alt="logo">
+                            <img src="../assets/img/logo.png" class="main-logo" alt="logo"
+                                style="max-height:50px !important;">
+                            <img src="../assets/img/logo.png" class="white-logo" alt="logo"
+                                style="max-height:50px !important;">
                         </a>
                     </div>
                 </div>
@@ -100,8 +103,10 @@
             <div class="container">
                 <nav class="navbar navbar-expand-md navbar-light">
                     <a class="navbar-brand" href="index.html">
-                        <img src="../assets/img/logo.jpg" class="main-logo" alt="logo">
-                        <img src="../assets/img/logo.jpg" class="white-logo" alt="logo">
+                        <img src="../assets/img/logo.png" class="main-logo" alt="logo"
+                            style="max-height:50px !important;">
+                        <img src="../assets/img/logo.png" class="white-logo" alt="logo"
+                            style="max-height:50px !important;">
                     </a>
                     <div class="collapse navbar-collapse mean-menu">
                         <ul class="navbar-nav">
@@ -121,7 +126,7 @@
                             <div class="option-item">
                                 <div class="cart-btn">
                                     <a id="odernotifi" onclick="adminDasboard('commande')"
-                                    style="cursor: pointer !important;">
+                                        style="cursor: pointer !important;">
                                         <i class="bx bx-notification"></i>
                                     </a>
                                 </div>
@@ -140,11 +145,20 @@
             <div class="container">
                 <nav class="navbar navbar-expand-md navbar-light">
                     <a class="navbar-brand" href="index.html">
-                        <img src="../assets/img/logo.jpg" class="main-logo" alt="logo">
-                        <img src="../assets/img/logo.jpg" class="white-logo" alt="logo">
+                        <img src="../assets/img/logo.png" class="main-logo" alt="logo"
+                            style="max-height:50px !important;">
+                        <img src="../assets/img/logo.png" class="white-logo" alt="logo"
+                            style="max-height:50px !important;">
                     </a>
                     <div class="collapse navbar-collapse mean-menu">
-
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link"></a>
+                            </li>
+                            <li class="nav-item megamenu">
+                                <a class="nav-link"></a>
+                            </li>
+                        </ul>
                         <div class="others-option">
                             <div class="option-item">
                                 <div class="search-btn-box">
@@ -154,7 +168,7 @@
                             <div class="option-item">
                                 <div class="cart-btn">
                                     <a id="odernotifia" onclick="adminDasboard('commande')"
-                                    style="cursor: pointer !important;">
+                                        style="cursor: pointer !important;">
                                         <i class="bx bx-notification"></i>
                                     </a>
                                 </div>
@@ -199,17 +213,18 @@
                         <a href="../index.html">Boutique</a>
                     </li>
                     <li>
-                        <a onclick="adminDasboard('article')"
-                            style="cursor: pointer !important; color: #333 !important" onmouseover="this.style.color='#b59e18'" onmouseout="this.style.color='#333'">Articles</a>
+                        <a onclick="adminDasboard('article')" style="cursor: pointer !important; color: #333 !important"
+                            onmouseover="this.style.color='#b59e18'" onmouseout="this.style.color='#333'">Articles</a>
                     </li>
                     <li>
                         <a onclick="adminDasboard('commande')"
-                            style="cursor: pointer !important; color: #333 !important;" onmouseover="this.style.color='#b59e18'" onmouseout="this.style.color='#333'">Commandes</a>
+                            style="cursor: pointer !important; color: #333 !important;"
+                            onmouseover="this.style.color='#b59e18'" onmouseout="this.style.color='#333'">Commandes</a>
                     </li>
 
                     <li>
-                        <a onclick="Disconexion()"
-                            style="cursor: pointer !important; color: #aaa !important;" onmouseover="this.style.color='red'" onmouseout="this.style.color='#aaa'">Déconecter</a>
+                        <a onclick="Disconexion()" style="cursor: pointer !important; color: #aaa !important;"
+                            onmouseover="this.style.color='red'" onmouseout="this.style.color='#aaa'">Déconecter</a>
                     </li>
                 </ul>
             </div>
@@ -247,30 +262,55 @@
                                             <input type="number" class="form-control" id="addquant">
                                         </div>
                                     </div>
-                                    <div class="col-lg-6 col-md-6">
+                                    <div class="col-lg-12 col-md-6">
                                         <div class="form-group">
-                                            <label>Prix Promotionel<span class="required">*</span></label>
-                                            <input type="text" class="form-control" id="addprixpro">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6">
-                                        <div class="form-group">
-                                            <label>Prix Normal<span class="required">*</span></label>
-                                            <input type="text" class="form-control" id="addprix">
+                                            <label>Genre (Homme/Femme/Tout) <span class="required">*</span></label>
+                                            <input type="text" class="form-control" id="addgenre">
                                         </div>
                                     </div>
                                     <div class="col-lg-12 col-md-6">
+                                        <div class="form-group">
+                                            <label>transt d'âge (18-25)<span class="required">*</span></label>
+                                            <input type="text" class="form-control" id="addtransage">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="form-group">
+                                            <label>Prix<span class="required">*</span></label>
+                                            <input type="text" class="form-control" id="addprix">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="form-group">
+                                            <label>Réduction</label>
+                                            <input type="text" class="form-control" id="addreduction">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-6">
+                                        <div class="form-group">
+                                            <label>À quel occasion ? (Promo, Sold)</label>
+                                            <input type="text" class="form-control" id="addoccasion">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
                                         <div class="form-group">
                                             <label>Fournisseur <span class="required">*</span></label>
                                             <input type="text" class="form-control" id="addfour">
                                         </div>
                                     </div>
-                                    <div class="col-lg-12 col-md-6">
+                                    <div class="col-lg-6 col-md-6">
                                         <div class="form-group">
                                             <label>Disponibilité <span class="required">*</span></label>
                                             <input type="text" class="form-control" id="adddispo">
                                         </div>
                                     </div>
+                                    <div class="col-lg-12 col-md-6">
+                                        <div class="form-group">
+                                            <label>Status (Nouveauté)</label>
+                                            <input type="text" class="form-control" id="addnouveaute">
+                                        </div>
+                                    </div>
+
                                     <div class="col-lg-6 col-md-6">
                                         <div class="form-group">
                                             <label>Couleur <span class="required">*</span></label>
@@ -291,8 +331,22 @@
                                     </div>
                                     <div class="col-lg-6 col-md-6">
                                         <div class="form-group">
-                                            <label>Type de produit <span class="required">*</span></label>
+                                            <label>Marque <span class="required">*</span></label>
+                                            <input type="text" class="form-control" id="addmarque">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-6">
+                                        <div class="form-group">
+                                            <label>Type (Accoutrement/Accessoires) <span
+                                                    class="required">*</span></label>
                                             <input type="text" class="form-control" id="addtype">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-6">
+                                        <div class="form-group">
+                                            <label>Type de produit (T-Shirt/chemise)<span
+                                                    class="required">*</span></label>
+                                            <input type="text" class="form-control" id="addtypepro">
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6">
@@ -301,6 +355,7 @@
                                             <input type="tel" class="form-control" id="addphone">
                                         </div>
                                     </div>
+
                                     <div class="col-lg-6 col-md-6">
                                         <div class="form-group">
                                             <label>Expédition <span class="required">*</span></label>
@@ -334,8 +389,8 @@
                                 <br>
 
                                 <div>
-                                    <a style="cursor: pointer !important;" data-bs-dismiss="modal" aria-label="Close" class="default-btn"
-                                        onclick="AddArticle('recenProd')">Ajouter</a>
+                                    <a style="cursor: pointer !important;" data-bs-dismiss="modal" aria-label="Close"
+                                        class="default-btn" onclick="AddArticle()">Ajouter</a>
 
                                     <a style="cursor: pointer !important; background-color: #bb1f1f !important;"
                                         class="default-btn" onclick="ClearImage('recenProd')">Vider image</a>

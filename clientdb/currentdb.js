@@ -203,37 +203,51 @@ function ClearImage() {
     imas.length = 0;
 }
 
-function AddArticle(who) {
+function AddArticle() {
     try {
         const addarticle = document.getElementById('addarticle').value;
-        const addprixpro = document.getElementById('addprixpro').value;
+        const addquant = document.getElementById('addquant').value;
+        const addgenre = document.getElementById('addgenre').value;
+        const addtransage = document.getElementById('addtransage').value;
         const addprix = document.getElementById('addprix').value;
+        const addreduction = document.getElementById('addreduction').value;
+        const addoccasion = document.getElementById('addoccasion').value;
+
         const addfour = document.getElementById('addfour').value;
         const adddispo = document.getElementById('adddispo').value;
+        const addnouveaute = document.getElementById('addnouveaute').value;
+
         const addcoul = document.getElementById('addcoul').value;
         const addtail = document.getElementById('addtail').value;
         const addmateri = document.getElementById('addmateri').value;
+        const addmarque = document.getElementById('addmarque').value;
+
         const addtype = document.getElementById('addtype').value;
+        const addtypepro = document.getElementById('addtypepro').value;
         const addphone = document.getElementById('addphone').value;
-        const addquant = document.getElementById('addquant').value;
         const addexpe = document.getElementById('addexpe').value;
         const notes = document.getElementById('notes').value;
 
-        if (addarticle && addprixpro && addprix && addfour && adddispo && addcoul && addtail && addmateri && addtype && addphone && addexpe && notes && imas.length > 4) {
+        if (addarticle && quantity && addgenre && addtransage && addprix && addfour && adddispo && addcoul && addtail && addmateri && addmarque && addtype && addtypepro && addphone && addexpe && notes && imas.length > 4) {
             const product = {
                 addarticle: addarticle,
-                addprixpro: parseInt(addprixpro),
+                quantity: parseInt(addquant),
+                addgenre: addgenre,
+                addtransage: addtransage,
                 addprix: parseInt(addprix),
+                addreduction: parseInt(addreduction),
+                addoccasion: addoccasion,
                 addfour: addfour,
                 adddispo: adddispo,
+                addnouveaute: addnouveaute,
                 addcoul: addcoul,
                 addtail: addtail,
                 addmateri: addmateri,
+                addmarque: addmarque,
                 addtype: addtype,
+                addtypepro: addtypepro,
                 addphone: addphone,
-                quantity: parseInt(addquant),
                 addexpe: addexpe,
-                who: who,
                 notes: notes,
                 image: imas
             };
