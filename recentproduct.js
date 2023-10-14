@@ -72,15 +72,16 @@ function recentProduct(recenPr) {
 
 
     recenPr.forEach(product => {
-        recenProd.push(product);
-        const percentDf = ((product.addreduction - product.addprix) / product.addprix) * 100;
+        if (recenPr.length > 0) {
+            recenProd.push(product);
+            const percentDf = ((product.addreduction - product.addprix) / product.addprix) * 100;
 
-        const productHTML = `
+            const productHTML = `
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="products-box">
 
 
-                            <div class="products-image" style="background-color: ${product.addcoul.substring(0, 7)};">
+                        <div class="products-image" style="background-color: ${product.addcoul.substring(0, 7)};" onmouseover="this.style.backgroundColor='${product.addcoul.substring(8, 15)}'" onmouseout="this.style.backgroundColor='${product.addcoul.substring(0, 7)}'">
                                 <a style="cursor: pointer !important;" 
                                     data-bs-toggle="${isMobileDevice() ? 'modal' : ''}" 
                                     data-bs-target="${isMobileDevice() ? '#productsQuickView' : ''}" 
@@ -93,7 +94,7 @@ function recentProduct(recenPr) {
                                     <ul>
                                         <li>
                                             <div class="wishlist-btn">
-                                                <a style="cursor: pointer !important; color: #010fc8 !important" onclick="Pannier('${product._id}')">
+                                                <a style="cursor: pointer !important; color: ${product.addcoul.substring(8, 15)} !important" onclick="Pannier('${product._id}')">
                                                     <i class="bx bx-shopping-bag bx bx-heart"></i>
                                                     <span class="tooltip-label">Ajouter</span>
                                                 </a>
@@ -101,7 +102,7 @@ function recentProduct(recenPr) {
                                         </li>
                                         <li>
                                             <div class="compare-btn">
-                                                <a style="color: #010fc8 !important" href="products-type-1.html?ov=${product._id}}">
+                                                <a style="color: ${product.addcoul.substring(8, 15)} !important" href="products-type-1.html?ov=${product._id}}">
                                                     <i class="bx bx-refresh"></i>
                                                     <span class="tooltip-label">Plus infos</span>
                                                 </a>
@@ -109,7 +110,7 @@ function recentProduct(recenPr) {
                                         </li>
                                         <li>
                                             <div class="quick-view-btn" onclick="showProductQuickView('${product._id}')">
-                                                <a style="cursor: pointer !important; color: #010fc8 !important" data-bs-toggle="modal" data-bs-target="#productsQuickView">
+                                                <a style="cursor: pointer !important; color: ${product.addcoul.substring(8, 15)} !important" data-bs-toggle="modal" data-bs-target="#productsQuickView">
                                                     <i class="bx bx-search-alt"></i>
                                                     <span class="tooltip-label">Vue rapide</span>
                                                 </a>
@@ -117,27 +118,27 @@ function recentProduct(recenPr) {
                                         </li>
                                     </ul>
                                 </div>
-                                ${product.occasion == "promo" ?
-                `
+                                ${product.addoccasion == "promo" ?
+                    `
                                         <div class="new-tag">Promo</div>
                                     `
-                :
-                ""
-            }
+                    :
+                    ""
+                }
 
-                                ${product.occasion == "sold" ?
-                `
+                                ${product.addoccasion == "sold" ?
+                    `
                                     <div class="sale-tag">Sold</div>
                                 `
-                :
-                ""
-            }
+                    :
+                    ""
+                }
                             </div>
 
 
                             <div class="products-content">
-                                <span class="category">${product.addtypepro}</span>
-                                <h3><a href="products-type-1.html?ov=${product._id}" style="color: ${product.addcoul.substring(0, 7)};">${product.addarticle}</a></h3>
+                                <span class="category" style="color: ${product.addcoul.substring(0, 7)};">${product.addtypepro}</span>
+                                <h3><a href="products-type-1.html?ov=${product._id}">${product.addarticle}</a></h3>
                                 <div class="star-rating">
                                     <i class="bx bxs-star"></i>
                                     <i class="bx bxs-star"></i>
@@ -147,35 +148,65 @@ function recentProduct(recenPr) {
                                 </div>
                                 <div class="price">
                                 ${product.addreduction > 0 ?
-                `
+                    `
                                             <span class="old-price">${product.addreduction} F.CFA</span>
                                     `
-                :
-                ""
-            }
+                    :
+                    ""
+                }
                                     <span class="new-price">${product.addprix} F.CFA</span>
                                 </div>
                                 <a style="cursor: pointer !important;" class="add-to-cart" onclick="Pannier('${product._id}')">Ajouter au panier</a>
                             </div>
                             ${product.addreduction > 0 ?
-                `
+                    `
                             <span class="products-discount">
                                 <span>
                                     -${percentDf.toFixed()}%
                                 </span>
+                                ${product.addnouveaute == "Nouveau" ?
+                        `
+                                <i class="nouveau">Nouveautés</i>
+                                `
+                        :
+                        ""
+                    }
                             </span>
                               `
-                :
-                ""
-            }
+                    :
+                    ""
+                }
                             
                         </div>
                     </div>
         `;
 
-        productContainer.innerHTML += productHTML;
+            productContainer.innerHTML += productHTML;
 
+        } else {
+            const tokens = sessionStorage.getItem('tibule');
+            const productHTML = `
+            <div class="container">
+            <div class="section-title">
+            ${tokens && tokens.split("°") && tokens.split("°")[5] == "GIFV" ?
+                    `
+            <a class="sub-title" href="admin/admindasdboard.html"><i class="bx bx-log-in"></i> Ajouter un article</a>
+        
+        `
+                    :
+                    ""
+                }
+                <h2>Le magasin est vide pour l'instant</h2>
+            </div>
+            <div>
+                <img src="assets/img/vide.jpg" alt="image">
 
+            </div>
+        </div>
+            `;
+            productContainer.innerHTML += productHTML;
+
+        }
     });
 };
 

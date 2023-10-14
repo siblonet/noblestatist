@@ -324,36 +324,49 @@ async function EditeViewArticle() {
     const _id = document.getElementById('ediatiid').value;
     try {
         const addarticle = document.getElementById('Editearticle').value;
-        const addprixpro = document.getElementById('Editeprixpro').value;
+        const addquant = parseInt(document.getElementById('Editequant').value);
+        const addgenre = document.getElementById('Editegenre').value;
+        const addtransage = document.getElementById('Editetransage').value;
         const addprix = document.getElementById('Editeprix').value;
+        const addreduction = document.getElementById('Editereduction').value;
+        const addoccasion = document.getElementById('Editeoccasion').value;
         const addfour = document.getElementById('Editefour').value;
         const adddispo = document.getElementById('Editedispo').value;
+        const addnouveaute = document.getElementById('Editenouveaute').value;
         const addcoul = document.getElementById('Editecoul').value;
         const addtail = document.getElementById('Editetail').value;
         const addmateri = document.getElementById('Editemateri').value;
+        const addmarque = document.getElementById('Editemarque').value;
         const addtype = document.getElementById('Editetype').value;
+        const addtypepro = document.getElementById('Editetypepro').value;
         const addphone = document.getElementById('Editephone').value;
-        const addquant = parseInt(document.getElementById('Editequant').value);
         const addexpe = document.getElementById('Editeexpe').value;
         const notes = document.getElementById('Editenotes').value;
 
 
-        if (addarticle && addprixpro && addprix && addfour && adddispo && addcoul && addtail && addmateri && addtype && addphone && addexpe && notes) {
+        if (addarticle && addquant && addgenre && addtransage && addprix && addfour && adddispo && addcoul && addtail && addmateri && addmarque && addtype && addtypepro && addphone && addexpe && notes) {
             const product = {
                 addarticle: addarticle,
-                addprixpro: parseInt(addprixpro),
+                quantity: parseInt(addquant),
+                addgenre: addgenre,
+                addtransage: addtransage,
                 addprix: parseInt(addprix),
+                addreduction: parseInt(addreduction),
+                addoccasion: addoccasion,
                 addfour: addfour,
                 adddispo: adddispo,
+                addnouveaute: addnouveaute,
                 addcoul: addcoul,
                 addtail: addtail,
                 addmateri: addmateri,
+                addmarque: addmarque,
                 addtype: addtype,
+                addtypepro: addtypepro,
                 addphone: addphone,
-                quantity: parseInt(addquant),
                 addexpe: addexpe,
                 notes: notes,
                 image: imasEdi
+
             };
             const createItem = async () => {
                 try {
@@ -376,40 +389,23 @@ async function optionEditeView(_id) {
     imasEdi.length = 0
     await openArticleDatabase();
     getArticleById(_id).then(product => {
-         /*
-        addarticle: addarticle,
-        addquant:,
-        addgenre
-        addtransage
-        addreduction: addreduction,
-        addprix: addprix,
-        addoccasion
-        addfour: addfour,
-        adddispo: adddispo,
-        addnouveaute
-        addcoul: addcoul,
-        addtail: addtail,
-        addmateri: addmateri,
-        addmarque
-        addtype: addtype,
-        addtypepro
-        addphone: addphone,
-        addexpe: addexpe,
-        who: '',
-        notes: notes,
-        image: imas
-    */
         document.getElementById('ediatiid').value = _id;
         document.getElementById('Editearticle').value = product.addarticle;
         document.getElementById('Editequant').value = parseInt(product.quantity);
-        document.getElementById('Editeprixpro').value = product.addreduction;
+        document.getElementById('Editegenre').value = product.addgenre;
+        document.getElementById('Editetransage').value = product.addtransage;
+        document.getElementById('Editereduction').value = product.addreduction;
         document.getElementById('Editeprix').value = product.addprix;
+        document.getElementById('Editeoccasion').value = product.addoccasion;
         document.getElementById('Editefour').value = product.addfour;
         document.getElementById('Editedispo').value = product.adddispo;
+        document.getElementById('Editenouveaute').value = product.addnouveaute;
         document.getElementById('Editecoul').value = product.addcoul;
         document.getElementById('Editetail').value = product.addtail;
         document.getElementById('Editemateri').value = product.addmateri;
+        document.getElementById('Editemarque').value = product.addmarque;
         document.getElementById('Editetype').value = product.addtype;
+        document.getElementById('Editetypepro').value = product.addtypepro;
         document.getElementById('Editephone').value = product.addphone;
         document.getElementById('Editeexpe').value = product.addexpe;
         document.getElementById('Editenotes').value = product.notes;

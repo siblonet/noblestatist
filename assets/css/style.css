@@ -366,6 +366,14 @@ Top Header CSS
   color: #d1be03;
 }
 
+.nouveau {
+  background: green;
+  font-weight: bold;
+  color: #ffffff;
+  padding: 0px 8px 0px 8px;
+}
+
+
 .header-contact-info li a::before {
   content: '';
   position: absolute;
@@ -507,12 +515,12 @@ Top Header CSS
 }
 
 .backcoloo {
-  background: linear-gradient(to right, 
-    #faf129 0%, 
-    #d1be03 20%, 
-    #9f7403 40%, 
-    #d1be03 60%, 
-    #9f7403 70%) !important;
+  background: linear-gradient(to right,
+      #faf129 0%,
+      #d1be03 20%,
+      #9f7403 40%,
+      #d1be03 60%,
+      #9f7403 70%) !important;
 }
 
 
