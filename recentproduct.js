@@ -137,7 +137,7 @@ function recentProduct(recenPr) {
 
                             <div class="products-content">
                                 <span class="category">${product.addtypepro}</span>
-                                <h3><a href="products-type-1.html">${product.addarticle}</a></h3>
+                                <h3><a href="products-type-1.html?ov=${product._id}" style="color: ${product.addcoul.substring(0, 7)};">${product.addarticle}</a></h3>
                                 <div class="star-rating">
                                     <i class="bx bxs-star"></i>
                                     <i class="bx bxs-star"></i>
