@@ -72,7 +72,7 @@ async function previewImage() {
         const file = fileInput.files[0];
 
         if (!file) {
-            alert('Please select an image file.');
+            alert("Aucune image n'a été selectionné!");
             return;
         }
 
@@ -82,6 +82,8 @@ async function previewImage() {
             await sendBase64ToServer(base64Data, file.name);
         };
         reader.readAsDataURL(file);
+    }else if(imas.length>4){
+        document.getElementById('limitimag').style.display = "none";
     }
 }
 

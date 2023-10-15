@@ -11,10 +11,12 @@ async function productStypes1(viewid) {
         getRequesta.onsuccess = (event) => {
             const prod = event.target.result;
             document.getElementById('artiname').innerText = prod.addarticle;
+            document.getElementById('artiname').style.color = prod.addcoul.substring(0, 7);
             document.getElementById('description').innerText = prod.notes;
-            document.getElementById('addexpe').innerText = prod.addexpe            
-            document.getElementById('addexpea').innerText = prod.addexpe            
+            document.getElementById('addexpe').innerText = prod.addexpe
+            document.getElementById('addexpea').innerText = prod.addexpe
             document.getElementById('artinamea').innerText = prod.addarticle;
+            document.getElementById('artinamea').style.color = prod.addcoul.substring(0, 7);
             document.getElementById('rating').innerText = `4.9 avis`;
 
             const modalImage1 = document.getElementById('ima1');
@@ -23,10 +25,15 @@ async function productStypes1(viewid) {
             const modalImage4 = document.getElementById('ima4');
             const modalImage5 = document.getElementById('ima5');
             modalImage1.src = prod.image[0].ima;
+            modalImage1.style.backgroundColor = prod.addcoul.substring(0, 7);
             modalImage2.src = prod.image[1].ima;
+            modalImage2.style.backgroundColor = prod.addcoul.substring(8, 15);
             modalImage3.src = prod.image[2].ima;
+            modalImage3.style.backgroundColor = prod.addcoul.substring(16, 23);
             modalImage4.src = prod.image[3].ima;
+            modalImage4.style.backgroundColor = prod.addcoul.substring(24, 31);
             modalImage5.src = prod.image[4].ima;
+            modalImage5.style.backgroundColor = prod.addcoul.substring(32, 39);
 
             const modalImagea = document.getElementById('imaa');
             const modalImageb = document.getElementById('imab');
@@ -38,6 +45,11 @@ async function productStypes1(viewid) {
             modalImagec.src = prod.image[2].ima;
             modalImaged.src = prod.image[3].ima;
             modalImagee.src = prod.image[4].ima;
+            modalImagea.style.backgroundColor = prod.addcoul.substring(0, 7);
+            modalImageb.style.backgroundColor = prod.addcoul.substring(8, 15);
+            modalImagec.style.backgroundColor = prod.addcoul.substring(16, 23);
+            modalImaged.style.backgroundColor = prod.addcoul.substring(24, 31);
+            modalImagee.style.backgroundColor = prod.addcoul.substring(32, 39);
 
             const productInfo = document.getElementById('product-info');
             productInfo.innerHTML = '';
@@ -63,9 +75,16 @@ async function productStypes1(viewid) {
             const qsizec = sploa[2] == "null" ? "-" : sploa[2];
             const qsized = sploa[3] == "null" ? "-" : sploa[3];
             const qsizee = sploa[4] == "null" ? "-" : sploa[4];
+            document.getElementById('coloholder').innerText = prod.addcoul;
+            document.getElementById('achetematn').style.backgroundColor = prod.addcoul.substring(0, 7);
+            document.getElementById('achetematn').style.borderColor = prod.addcoul.substring(0, 7);
 
-            document.getElementById('quickViewOldPrice').innerText = `${prod.addprixpro} F.CFA`;
+            if (prod.addreduction > prod.addprix) {
+                document.getElementById('quickViewOldPrice').innerText = `${prod.addreduction} F.CFA`;
+            }
+
             document.getElementById('quickViewNewPrice').innerText = `${prod.addprix} F.CFA`;
+            document.getElementById('quickViewNewPrice').style.color = prod.addcoul.substring(0, 7);
 
             const quickCouleuHtml = document.getElementById('quickCouleu');
             const quickTailHtml = document.getElementById('quickTail');
@@ -82,11 +101,11 @@ async function productStypes1(viewid) {
             quickCouleuHtml.innerHTML = quickColoHTML;
 
             const quickSizeHTML = `
-                            <li class="active" id="quisizelia"><a onclick="quiSizefun('a', '${qsizea}')" style="cursor: pointer !important">${qsizea}</a></li>
-                            <li id="quisizelib"><a onclick="quiSizefun('b', '${qsizeb}')" style="cursor: pointer !important">${qsizeb}</a></li>
-                            <li id="quisizelic"><a onclick="quiSizefun('c', '${qsizec}')" style="cursor: pointer !important">${qsizec}</a></li>
-                            <li id="quisizelid"><a onclick="quiSizefun('d', '${qsized}')" style="cursor: pointer !important">${qsized}</a></li>
-                            <li id="quisizelie"><a onclick="quiSizefun('e', '${qsizee}')" style="cursor: pointer !important">${qsizee}</a></li>
+                            <li><a id="quisizelia" onclick="quiSizefun('a', '${qsizea}')" style="cursor: pointer !important; border-color: ${prod.addcoul.substring(0, 7)}; color: ${prod.addcoul.substring(0, 7)}">${qsizea}</a></li>
+                            <li><a id="quisizelib" onclick="quiSizefun('b', '${qsizeb}')" style="cursor: pointer !important;">${qsizeb}</a></li>
+                            <li><a id="quisizelic" onclick="quiSizefun('c', '${qsizec}')" style="cursor: pointer !important;">${qsizec}</a></li>
+                            <li><a id="quisizelid" onclick="quiSizefun('d', '${qsized}')" style="cursor: pointer !important;">${qsized}</a></li>
+                            <li><a id="quisizelie" onclick="quiSizefun('e', '${qsizee}')" style="cursor: pointer !important;">${qsizee}</a></li>
                             `
             quickTailHtml.innerHTML = quickSizeHTML;
         };
@@ -101,26 +120,112 @@ async function productStypes1(viewid) {
 
 
 function quiSizefun(id, siz) {
+    const colo = document.getElementById("coloholder").innerText;
+
     if (selct.length == 0 && `quisizeli${id}` !== "quisizelia") {
         const onea = document.getElementById("quisizelia");
         const one = document.getElementById(`quisizeli${id}`);
-        onea.classList.remove('active');
-        one.classList.add('active');
+        onea.style.color = "#858585";
+        onea.style.borderColor = "#eeeeee";
+        switch (id) {
+            case "a":
+                one.style.color = colo.substring(0, 7);
+                one.style.borderColor = colo.substring(0, 7);
+                break;
+            case "b":
+                one.style.color = colo.substring(8, 15);
+                one.style.borderColor = colo.substring(8, 15);
+                break;
+
+            case "c":
+                one.style.color = colo.substring(16, 23);
+                one.style.borderColor = colo.substring(16, 23);
+                break;
+
+            case "d":
+                one.style.color = colo.substring(24, 31);
+                one.style.borderColor = colo.substring(24, 31);
+                break;
+
+            case "e":
+                one.style.color = colo.substring(32, 39);
+                one.style.borderColor = colo.substring(32, 39);
+                break;
+
+            default:
+                break;
+        }
         selct.push({ id: `quisizeli${id}`, size: siz });
     } else {
         let prodque = document.getElementById('productQuantity').value;
         if (parseInt(prodque) + 1 > selct.length + 1) {
             const one = document.getElementById(`quisizeli${id}`);
-            one.classList.add('active');
+            switch (id) {
+                case "a":
+                    one.style.color = colo.substring(0, 7);
+                    one.style.borderColor = colo.substring(0, 7);
+                    break;
+                case "b":
+                    one.style.color = colo.substring(8, 15);
+                    one.style.borderColor = colo.substring(8, 15);
+                    break;
+
+                case "c":
+                    one.style.color = colo.substring(16, 23);
+                    one.style.borderColor = colo.substring(16, 23);
+                    break;
+
+                case "d":
+                    one.style.color = colo.substring(24, 31);
+                    one.style.borderColor = colo.substring(24, 31);
+                    break;
+
+                case "e":
+                    one.style.color = colo.substring(32, 39);
+                    one.style.borderColor = colo.substring(32, 39);
+                    break;
+
+                default:
+                    break;
+            }
+
             selct.push({ id: `quisizeli${id}`, size: siz });
         } else {
             selct.forEach(ee => {
                 const one = document.getElementById(`${ee.id}`);
-                one.classList.remove('active');
+                one.style.color = "#858585";
+                one.style.borderColor = "#eeeeee";
             });
             selct = [];
             const one = document.getElementById(`quisizeli${id}`);
-            one.classList.add('active');
+            switch (id) {
+                case "a":
+                    one.style.color = colo.substring(0, 7);
+                    one.style.borderColor = colo.substring(0, 7);
+                    break;
+                case "b":
+                    one.style.color = colo.substring(8, 15);
+                    one.style.borderColor = colo.substring(8, 15);
+                    break;
+
+                case "c":
+                    one.style.color = colo.substring(16, 23);
+                    one.style.borderColor = colo.substring(16, 23);
+                    break;
+
+                case "d":
+                    one.style.color = colo.substring(24, 31);
+                    one.style.borderColor = colo.substring(24, 31);
+                    break;
+
+                case "e":
+                    one.style.color = colo.substring(32, 39);
+                    one.style.borderColor = colo.substring(32, 39);
+                    break;
+
+                default:
+                    break;
+            }
             selct.push({ id: `quisizeli${id}`, size: siz });
         };
     }
@@ -168,7 +273,7 @@ function quiColoremo(pos) {
             quickSizeHTML += `<li style="background-color: ${coa.col};"><a onclick="quiColoremo('${index}')" style="cursor: pointer !important"></a></li>`;
         });
         quickTailHtml.innerHTML = quickSizeHTML;
-        if(selctSize.length < 1){
+        if (selctSize.length < 1) {
             document.getElementById('quickColTitle').innerText = "";
         }
     }

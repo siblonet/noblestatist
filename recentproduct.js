@@ -147,7 +147,7 @@ function recentProduct(recenPr) {
                                     <i class="bx bxs-star"></i>
                                 </div>
                                 <div class="price">
-                                ${product.addreduction > 0 ?
+                                ${product.addreduction > product.addprix ?
                     `
                                             <span class="old-price">${product.addreduction} F.CFA</span>
                                     `
