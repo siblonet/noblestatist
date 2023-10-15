@@ -118,7 +118,14 @@ function recentProduct(recenPr) {
                                         </li>
                                     </ul>
                                 </div>
-                                ${product.addoccasion == "promo" ?
+                                ${product.addnouveaute == "NOUVEAU" && product.addreduction < product.addprix ?
+                    `
+                        <div class="new-tag">Nouveautés</div>
+                        `
+                    :
+                    ""
+                } 
+                                ${product.addoccasion == "PROMO" ?
                     `
                                         <div class="new-tag">Promo</div>
                                     `
@@ -126,7 +133,7 @@ function recentProduct(recenPr) {
                     ""
                 }
 
-                                ${product.addoccasion == "sold" ?
+                                ${product.addoccasion == "SOLD" ?
                     `
                                     <div class="sale-tag">Sold</div>
                                 `
@@ -158,13 +165,13 @@ function recentProduct(recenPr) {
                                 </div>
                                 <a style="cursor: pointer !important;" class="add-to-cart" onclick="Pannier('${product._id}')">Ajouter au panier</a>
                             </div>
-                            ${product.addreduction > 0 ?
+                            ${product.addreduction > product.addprix ?
                     `
                             <span class="products-discount">
                                 <span>
                                     -${percentDf.toFixed()}%
                                 </span>
-                                ${product.addnouveaute == "Nouveau" ?
+                                ${product.addnouveaute == "NOUVEAU" ?
                         `
                                 <i class="nouveau">Nouveautés</i>
                                 `
@@ -176,7 +183,7 @@ function recentProduct(recenPr) {
                     :
                     ""
                 }
-                            
+                       
                         </div>
                     </div>
         `;
