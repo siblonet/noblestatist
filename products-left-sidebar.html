@@ -5,6 +5,7 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#d1be03" />
 
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/animate.min.css">
@@ -32,17 +33,22 @@
                     <ul class="header-contact-info">
                         <li>Bienvenue chez Noble</li>
                         <li>Appel :
-                            <a href="tel:0768020606">0768020606</a>
+                            <a href="tel:0768020606">07 68 02 06 06 / 01 43 31 93 93</a>
                         </li>
 
                     </ul>
                 </div>
                 <div class="col-lg-6 col-md-12">
                     <ul class="header-top-menu">
-                        <li><a href="signup.html"><i class="bx bxs-user"></i> Mon compte</a></li>
-                        <li><a href="#" data-bs-toggle="modal" data-bs-target="#shoppingWishlistModal"><i
-                                    class="bx bx-heart"></i> Liste de souhaits</a></li>
-                        <li><a href="signup.html"><i class="bx bx-log-in"></i> S'inscrire</a></li>
+                        <li><a style="cursor: pointer !important;" onclick="navigateAdminCLient()"><i
+                                    class="bx bxs-user"></i> Mon compte</a></li>
+                        <!--<li>
+                            <a href="#" data-bs-toggle="modal" id="souhaitnumber" class="souhaitnumber"
+                                data-bs-target="#shoppingWishlistModal">
+                                <i class="bx bx-heart"></i> Liste de souhaits
+                            </a>
+                        </li>-->
+                        <li><a href="login.html"><i class="bx bx-log-in"></i> Connexion</a></li>
                     </ul>
                     <ul class="header-top-others-option">
                         <div class="option-item">
@@ -52,8 +58,10 @@
                         </div>
                         <div class="option-item">
                             <div class="cart-btn">
-                                <a href="#" data-bs-toggle="modal" data-bs-target="#shoppingCartModal"><i
-                                        class="bx bx-shopping-bag"></i><span>0</span></a>
+                                <a href="#" data-bs-toggle="modal" id="paniernumber1"
+                                    data-bs-target="#shoppingCartModal">
+                                    <i class="bx bx-shopping-bag"></i>
+                                </a>
                             </div>
                         </div>
                     </ul>
@@ -69,8 +77,8 @@
                 <div class="xton-responsive-menu">
                     <div class="logo">
                         <a href="index.html">
-                            <img src="assets/img/favicon.png" class="main-logo" alt="logo">
-                            <img src="assets/img/favicon.png" class="white-logo" alt="logo">
+                            <img src="assets/img/favicon.png" class="main-logo" alt="logo" style="max-height:50px !important;">
+                            <img src="assets/img/favicon.png" class="white-logo" alt="logo" style="max-height:50px !important;">
                         </a>
                     </div>
                 </div>
@@ -80,17 +88,17 @@
             <div class="container">
                 <nav class="navbar navbar-expand-md navbar-light">
                     <a class="navbar-brand" href="index.html">
-                        <img src="assets/img/favicon.png" class="main-logo" alt="logo">
-                        <img src="assets/img/favicon.png" class="white-logo" alt="logo">
+                        <img src="assets/img/favicon.png" class="main-logo" alt="logo" style="max-height:50px !important;">
+                        <img src="assets/img/favicon.png" class="white-logo" alt="logo" style="max-height:50px !important;">
                     </a>
                     <div class="collapse navbar-collapse mean-menu">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a href="index.html" class="nav-link">Accueil
+                                <a href="index.html" class="nav-link active">Accueil
                                 </a>
                             </li>
                             <li class="nav-item megamenu">
-                                <a href="#" class="nav-link">Accessories
+                                <a href="#" class="nav-link">Accessoires
                                     <i class="bx bx-chevron-down"></i>
                                 </a>
                                 <ul class="dropdown-menu">
@@ -98,74 +106,54 @@
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col">
-                                                    <h6 class="submenu-title">Styles de la boutique</h6>
+                                                    <h6 class="submenu-title">Accessoires</h6>
                                                     <ul class="megamenu-submenu">
-                                                        <li><a href="products-left-sidebar.html">Barre latérale
-                                                                gauche</a></li>
-                                                        <li><a href="products-left-sidebar-with-categories.html">Barre
-                                                                latérale gauche avec catégories</a></li>
-                                                        <li><a href="products-right-sidebar.html">Barre latérale
-                                                                droite</a></li>
-                                                        <li><a href="products-right-sidebar-with-categories.html">Barre
-                                                                latérale droite avec catégories</a></li>
-                                                        <li><a href="products-one-row.html">1 Produit par rangée</a>
+                                                        <li>
+                                                            <a href="vide.html">Braccelet Or Pure</a>
                                                         </li>
-                                                        <li><a href="products-without-sidebar.html">Sans barre
-                                                                latérale</a></li>
-                                                        <li><a href="products-sidebar-fullwidth.html">Avec barre
-                                                                latérale en pleine largeur</a></li>
+                                                        <li>
+                                                            <a href="vide.html">Apple Watch</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="vide.html">Montre Connecté</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="vide.html">Chaussures</a>
+                                                        </li>
+                                                        <li><a href="vide.html">Chentures</a>
+                                                        </li>
+                                                        <li><a href="vide.html">Cravate</a></li>
+                                                        <li><a href="vide.html">Bayars</a></li>
                                                     </ul>
                                                 </div>
                                                 <div class="col">
-                                                    <h6 class="submenu-title">Styles de la boutique 2</h6>
+                                                    <h6 class="submenu-title">Accessoire Homme</h6>
                                                     <ul class="megamenu-submenu">
-                                                        <li><a href="products-left-sidebar-2.html">Barre latérale
-                                                                gauche</a></li>
-                                                        <li><a href="products-left-sidebar-with-categories-2.html">Barre
-                                                                latérale gauche avec catégories</a></li>
-                                                        <li><a href="products-right-sidebar-2.html">Barre latérale
-                                                                droite</a></li>
-                                                        <li><a href="products-right-sidebar-with-categories-2.html">Barre
-                                                                latérale droite avec catégories</a></li>
-                                                        <li><a href="products-one-row-2.html">1 Produit par rangée</a>
+                                                        <li>
+                                                            <a href="vide.html">Vide</a>
                                                         </li>
-                                                        <li><a href="products-without-sidebar-2.html">Sans barre
-                                                                latérale</a></li>
-                                                        <li><a href="products-sidebar-fullwidth-2.html">Avec barre
-                                                                latérale en pleine largeur</a></li>
                                                     </ul>
                                                 </div>
                                                 <div class="col">
-                                                    <h6 class="submenu-title">Styles de la boutique 3</h6>
+                                                    <h6 class="submenu-title">Accessoire Femme</h6>
                                                     <ul class="megamenu-submenu">
-                                                        <li><a href="products-left-sidebar-3.html">Barre latérale
-                                                                gauche</a></li>
-                                                        <li><a href="products-left-sidebar-with-categories-3.html">Barre
-                                                                latérale gauche avec catégories</a></li>
-                                                        <li><a href="products-right-sidebar-3.html">Barre latérale
-                                                                droite</a></li>
-                                                        <li><a href="products-right-sidebar-with-categories-3.html">Barre
-                                                                latérale droite avec catégories</a></li>
-                                                        <li><a href="products-one-row-3.html">1 Produit par rangée</a>
+                                                        <li>
+                                                            <a href="vide.html">Vide</a>
                                                         </li>
-                                                        <li><a href="products-without-sidebar-3.html">Sans barre
-                                                                latérale</a></li>
-                                                        <li><a href="products-sidebar-fullwidth-3.html">Avec barre
-                                                                latérale en pleine largeur</a></li>
                                                     </ul>
                                                 </div>
                                                 <div class="col">
                                                     <ul class="megamenu-submenu">
                                                         <li>
                                                             <div class="aside-trending-products">
-                                                                <img src="assets/img/categories/img2.jpg" alt="image">
+                                                                <img src="assets/img/vide.jpg" alt="image">
                                                                 <div class="category">
-                                                                    <h4>Produits populaires</h4>
+                                                                    <h4>À la Mode</h4>
                                                                 </div>
                                                                 <a href="#" class="link-btn"></a>
                                                             </div>
                                                             <div class="aside-trending-products">
-                                                                <img src="assets/img/categories/img1.jpg" alt="image">
+                                                                <img src="assets/img/vide.jpg" alt="image">
                                                                 <div class="category">
                                                                     <h4>Tendances</h4>
                                                                 </div>
@@ -189,74 +177,55 @@
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col">
-                                                    <h6 class="submenu-title">Styles de la Boutique</h6>
+                                                    <h6 class="submenu-title">Article Feminine</h6>
                                                     <ul class="megamenu-submenu">
-                                                        <li><a href="products-left-sidebar.html">Barre latérale
-                                                                gauche</a></li>
-                                                        <li><a href="products-left-sidebar-with-categories.html">Barre
-                                                                latérale gauche avec catégories</a></li>
-                                                        <li><a href="products-right-sidebar.html">Barre latérale
-                                                                droite</a></li>
-                                                        <li><a href="products-right-sidebar-with-categories.html">Barre
-                                                                latérale droite avec catégories</a></li>
-                                                        <li><a href="products-one-row.html">1 Produit par rangée</a>
+                                                        <li>
+                                                            <a href="vide.html">Robe de mariage</a>
                                                         </li>
-                                                        <li><a href="products-without-sidebar.html">Sans barre
-                                                                latérale</a></li>
-                                                        <li><a href="products-sidebar-fullwidth.html">Avec barre
-                                                                latérale en largeur totale</a></li>
+                                                        <li>
+                                                            <a href="vide.html">Robe
+                                                                Musulmen</a>
+                                                        </li>
+
+                                                        <li><a href="vide.html">Robe</a></li>
+                                                        <li>
+                                                            <a href="vide.html">Jupe</a>
+                                                        </li>
+                                                        <li><a href="vide.html">Collant</a>
+                                                        </li>
+                                                        <li><a href="vide.html">Pentalon</a></li>
+                                                        <li><a href="vide.html">Pagne</a></li>
                                                     </ul>
                                                 </div>
                                                 <div class="col">
-                                                    <h6 class="submenu-title">Styles de la Boutique 2</h6>
+                                                    <h6 class="submenu-title">Article jeune Fille</h6>
                                                     <ul class="megamenu-submenu">
-                                                        <li><a href="products-left-sidebar-2.html">Barre latérale
-                                                                gauche</a></li>
-                                                        <li><a href="products-left-sidebar-with-categories-2.html">Barre
-                                                                latérale gauche avec catégories</a></li>
-                                                        <li><a href="products-right-sidebar-2.html">Barre latérale
-                                                                droite</a></li>
-                                                        <li><a href="products-right-sidebar-with-categories-2.html">Barre
-                                                                latérale droite avec catégories</a></li>
-                                                        <li><a href="products-one-row-2.html">1 Produit par rangée</a>
+                                                        <li>
+                                                            <a href="vide.html">Vide</a>
                                                         </li>
-                                                        <li><a href="products-without-sidebar-2.html">Sans barre
-                                                                latérale</a></li>
-                                                        <li><a href="products-sidebar-fullwidth-2.html">Avec barre
-                                                                latérale en largeur totale</a></li>
                                                     </ul>
                                                 </div>
                                                 <div class="col">
-                                                    <h6 class="submenu-title">Styles de la Boutique 3</h6>
+                                                    <h6 class="submenu-title">Article de Bébé</h6>
                                                     <ul class="megamenu-submenu">
-                                                        <li><a href="products-left-sidebar-3.html">Barre latérale
-                                                                gauche</a></li>
-                                                        <li><a href="products-left-sidebar-with-categories-3.html">Barre
-                                                                latérale gauche avec catégories</a></li>
-                                                        <li><a href="products-right-sidebar-3.html">Barre latérale
-                                                                droite</a></li>
-                                                        <li><a href="products-right-sidebar-with-categories-3.html">Barre
-                                                                latérale droite avec catégories</a></li>
-                                                        <li><a href="products-one-row-3.html">1 Produit par rangée</a>
+                                                        <li>
+                                                            <a href="vide.html">Vide</a>
                                                         </li>
-                                                        <li><a href="products-without-sidebar-3.html">Sans barre
-                                                                latérale</a></li>
-                                                        <li><a href="products-sidebar-fullwidth-3.html">Avec barre
-                                                                latérale en largeur totale</a></li>
                                                     </ul>
                                                 </div>
                                                 <div class="col">
                                                     <ul class="megamenu-submenu">
                                                         <li>
                                                             <div class="aside-trending-products">
-                                                                <img src="assets/img/categories/img1.jpg" alt="image">
+                                                                <img src="assets/img/vide.jpg"
+                                                                    alt="Vide pour l'instant">
                                                                 <div class="category">
-                                                                    <h4>Tendances</h4>
+                                                                    <h4>Nouveautés</h4>
                                                                 </div>
                                                                 <a href="#" class="link-btn"></a>
                                                             </div>
                                                             <div class="aside-trending-products">
-                                                                <img src="assets/img/categories/img2.jpg" alt="image">
+                                                                <img src="assets/img/vide.jpg" alt="Pas de contenu">
                                                                 <div class="category">
                                                                     <h4>Produits populaires</h4>
                                                                 </div>
@@ -280,76 +249,60 @@
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col">
-                                                    <h6 class="submenu-title">Styles de la boutique</h6>
+                                                    <h6 class="submenu-title">Articles d'homme</h6>
                                                     <ul class="megamenu-submenu">
-                                                        <li><a href="products-left-sidebar.html">Barre latérale
-                                                                gauche</a></li>
-                                                        <li><a href="products-left-sidebar-with-categories.html">Barre
-                                                                latérale gauche avec catégories</a></li>
-                                                        <li><a href="products-right-sidebar.html">Barre latérale
-                                                                droite</a></li>
-                                                        <li><a href="products-right-sidebar-with-categories.html">Barre
-                                                                latérale droite avec catégories</a></li>
-                                                        <li><a href="products-one-row.html">1 Produit par rangée</a>
+                                                        <li>
+                                                            <a href="vide.html">Veste</a>
                                                         </li>
-                                                        <li><a href="products-without-sidebar.html">Sans barre
-                                                                latérale</a></li>
-                                                        <li><a href="products-sidebar-fullwidth.html">Avec barre
-                                                                latérale en pleine largeur</a></li>
+                                                        <li>
+                                                            <a href="vide.html">Boubou
+                                                                Traditionel</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="vide.html">Chemise</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="vide.html">Pentalon</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="vide.html">T-Shirt</a>
+                                                        </li>
                                                     </ul>
                                                 </div>
                                                 <div class="col">
-                                                    <h6 class="submenu-title">Styles de la boutique 2</h6>
+                                                    <h6 class="submenu-title">Articles d'homme africain</h6>
                                                     <ul class="megamenu-submenu">
-                                                        <li><a href="products-left-sidebar-2.html">Barre latérale
-                                                                gauche</a></li>
-                                                        <li><a href="products-left-sidebar-with-categories-2.html">Barre
-                                                                latérale gauche avec catégories</a></li>
-                                                        <li><a href="products-right-sidebar-2.html">Barre latérale
-                                                                droite</a></li>
-                                                        <li><a href="products-right-sidebar-with-categories-2.html">Barre
-                                                                latérale droite avec catégories</a></li>
-                                                        <li><a href="products-one-row-2.html">1 Produit par rangée</a>
+                                                        <li>
+                                                            <a>
+                                                                Vide
+                                                            </a>
                                                         </li>
-                                                        <li><a href="products-without-sidebar-2.html">Sans barre
-                                                                latérale</a></li>
-                                                        <li><a href="products-sidebar-fullwidth-2.html">Avec barre
-                                                                latérale en pleine largeur</a></li>
                                                     </ul>
                                                 </div>
                                                 <div class="col">
-                                                    <h6 class="submenu-title">Styles de la boutique 3</h6>
+                                                    <h6 class="submenu-title">Articles d'enfant</h6>
                                                     <ul class="megamenu-submenu">
-                                                        <li><a href="products-left-sidebar-3.html">Barre latérale
-                                                                gauche</a></li>
-                                                        <li><a href="products-left-sidebar-with-categories-3.html">Barre
-                                                                latérale gauche avec catégories</a></li>
-                                                        <li><a href="products-right-sidebar-3.html">Barre latérale
-                                                                droite</a></li>
-                                                        <li><a href="products-right-sidebar-with-categories-3.html">Barre
-                                                                latérale droite avec catégories</a></li>
-                                                        <li><a href="products-one-row-3.html">1 Produit par rangée</a>
+                                                        <li>
+                                                            <a>
+                                                                Vide
+                                                            </a>
                                                         </li>
-                                                        <li><a href="products-without-sidebar-3.html">Sans barre
-                                                                latérale</a></li>
-                                                        <li><a href="products-sidebar-fullwidth-3.html">Avec barre
-                                                                latérale en pleine largeur</a></li>
                                                     </ul>
                                                 </div>
                                                 <div class="col">
                                                     <ul class="megamenu-submenu">
                                                         <li>
                                                             <div class="aside-trending-products">
-                                                                <img src="assets/img/categories/img2.jpg" alt="image">
+                                                                <img src="assets/img/vide.jpg" alt="image">
                                                                 <div class="category">
                                                                     <h4>Produits populaires</h4>
                                                                 </div>
                                                                 <a href="#" class="link-btn"></a>
                                                             </div>
                                                             <div class="aside-trending-products">
-                                                                <img src="assets/img/categories/img1.jpg" alt="image">
+                                                                <img src="assets/img/vide.jpg" alt="image">
                                                                 <div class="category">
-                                                                    <h4>Tendances</h4>
+                                                                    <h4>Nouveautés</h4>
                                                                 </div>
                                                                 <a href="#" class="link-btn"></a>
                                                             </div>
@@ -361,31 +314,6 @@
                                     </li>
                                 </ul>
                             </li>
-
-                            <!--<li class="nav-item"><a href="#" class="nav-link">Blog <i
-                                        class="bx bx-chevron-down"></i></a>
-                                <ul class="dropdown-menu">
-                                    <li class="nav-item"><a href="blog-1.html" class="nav-link">Grid (2 in Row)</a></li>
-                                    <li class="nav-item"><a href="blog-2.html" class="nav-link">Grid (3 in Row)</a></li>
-                                    <li class="nav-item"><a href="blog-3.html" class="nav-link">Grid (4 in Row)</a></li>
-                                    <li class="nav-item"><a href="blog-4.html" class="nav-link">Grid (Full Width)</a>
-                                    </li>
-                                    <li class="nav-item"><a href="blog-5.html" class="nav-link">Right Sidebar</a></li>
-                                    <li class="nav-item"><a href="blog-6.html" class="nav-link">Masonry (3 in Row)</a>
-                                    </li>
-                                    <li class="nav-item"><a href="#" class="nav-link">Single Post <i
-                                                class="bx bx-chevron-right"></i></a>
-                                        <ul class="dropdown-menu">
-                                            <li class="nav-item"><a href="single-blog-1.html"
-                                                    class="nav-link">Default</a></li>
-                                            <li class="nav-item"><a href="single-blog-2.html" class="nav-link">With
-                                                    Video</a></li>
-                                            <li class="nav-item"><a href="single-blog-3.html" class="nav-link">With
-                                                    Image Slider</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>-->
                         </ul>
                         <div class="others-option">
                             <div class="option-item">
@@ -395,8 +323,10 @@
                             </div>
                             <div class="option-item">
                                 <div class="cart-btn">
-                                    <a href="#" data-bs-toggle="modal" data-bs-target="#shoppingCartModal"><i
-                                            class="bx bx-shopping-bag"></i><span>3</span></a>
+                                    <a href="#" data-bs-toggle="modal" id="paniernumber2"
+                                        data-bs-target="#shoppingCartModal">
+                                        <i class="bx bx-shopping-bag"></i>
+                                    </a>
                                 </div>
                             </div>
                             <div class="option-item">
@@ -419,98 +349,77 @@
             <div class="container">
                 <nav class="navbar navbar-expand-md navbar-light">
                     <a class="navbar-brand" href="index.html">
-                        <img src="assets/img/logo.png" class="main-logo" alt="logo">
-                        <img src="assets/img/white-logo.png" class="white-logo" alt="logo">
+                        <img src="assets/img/favicon.png" class="main-logo" alt="logo" style="max-height:50px !important;">
+                        <img src="assets/img/favicon.png" class="white-logo" alt="logo" style="max-height:50px !important;">
                     </a>
                     <div class="collapse navbar-collapse mean-menu">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a href="index.html" class="nav-link">Accueil
+                                <a href="index.html" class="nav-link active">Accueil
                                 </a>
                             </li>
 
 
 
                             <li class="nav-item megamenu">
-                                <a href="#" class="nav-link">Accessories
+                                <a href="#" class="nav-link">Accessoires
                                     <i class="bx bx-chevron-down"></i>
                                 </a>
-
                                 <ul class="dropdown-menu">
                                     <li class="nav-item">
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col">
-                                                    <h6 class="submenu-title">Styles de magasin</h6>
+                                                    <h6 class="submenu-title">Accessoires</h6>
                                                     <ul class="megamenu-submenu">
-                                                        <li><a href="products-left-sidebar.html">Barre latérale
-                                                                gauche</a></li>
-                                                        <li><a href="products-left-sidebar-with-categories.html">Barre
-                                                                latérale gauche avec catégories</a></li>
-                                                        <li><a href="products-right-sidebar.html">Barre latérale
-                                                                droite</a></li>
-                                                        <li><a href="products-right-sidebar-with-categories.html">Barre
-                                                                latérale droite avec catégories</a></li>
-                                                        <li><a href="products-one-row.html">1 Produits par rangée</a>
+                                                        <li>
+                                                            <a href="vide.html">Braccelet Or Pure</a>
                                                         </li>
-                                                        <li><a href="products-without-sidebar.html">Sans barre
-                                                                latérale</a></li>
-                                                        <li><a href="products-sidebar-fullwidth.html">Avec barre
-                                                                latérale pleine largeur</a></li>
+                                                        <li>
+                                                            <a href="vide.html">Apple Watch</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="vide.html">Montre Connecté</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="vide.html">Chaussures</a>
+                                                        </li>
+                                                        <li><a href="vide.html">Chentures</a>
+                                                        </li>
+                                                        <li><a href="vide.html">Cravate</a></li>
+                                                        <li><a href="vide.html">Bayars</a></li>
                                                     </ul>
                                                 </div>
                                                 <div class="col">
-                                                    <h6 class="submenu-title">Styles de magasin 2</h6>
+                                                    <h6 class="submenu-title">Accessoire Homme</h6>
                                                     <ul class="megamenu-submenu">
-                                                        <li><a href="products-left-sidebar-2.html">Barre latérale
-                                                                gauche</a></li>
-                                                        <li><a href="products-left-sidebar-with-categories-2.html">Barre
-                                                                latérale gauche avec catégories</a></li>
-                                                        <li><a href="products-right-sidebar-2.html">Barre latérale
-                                                                droite</a></li>
-                                                        <li><a href="products-right-sidebar-with-categories-2.html">Barre
-                                                                latérale droite avec catégories</a></li>
-                                                        <li><a href="products-one-row-2.html">1 Produits par rangée</a>
+                                                        <li>
+                                                            <a href="vide.html">Vide</a>
                                                         </li>
-                                                        <li><a href="products-without-sidebar-2.html">Sans barre
-                                                                latérale</a></li>
-                                                        <li><a href="products-sidebar-fullwidth-2.html">Avec barre
-                                                                latérale pleine largeur</a></li>
                                                     </ul>
                                                 </div>
                                                 <div class="col">
-                                                    <h6 class="submenu-title">Styles de magasin 3</h6>
+                                                    <h6 class="submenu-title">Accessoire Femme</h6>
                                                     <ul class="megamenu-submenu">
-                                                        <li><a href="products-left-sidebar-3.html">Barre latérale
-                                                                gauche</a></li>
-                                                        <li><a href="products-left-sidebar-with-categories-3.html">Barre
-                                                                latérale gauche avec catégories</a></li>
-                                                        <li><a href="products-right-sidebar-3.html">Barre latérale
-                                                                droite</a></li>
-                                                        <li><a href="products-right-sidebar-with-categories-3.html">Barre
-                                                                latérale droite avec catégories</a></li>
-                                                        <li><a href="products-one-row-3.html">1 Produits par rangée</a>
+                                                        <li>
+                                                            <a href="vide.html">Vide</a>
                                                         </li>
-                                                        <li><a href="products-without-sidebar-3.html">Sans barre
-                                                                latérale</a></li>
-                                                        <li><a href="products-sidebar-fullwidth-3.html">Avec barre
-                                                                latérale pleine largeur</a></li>
                                                     </ul>
                                                 </div>
                                                 <div class="col">
                                                     <ul class="megamenu-submenu">
                                                         <li>
                                                             <div class="aside-trending-products">
-                                                                <img src="assets/img/categories/img2.jpg" alt="image">
+                                                                <img src="assets/img/vide.jpg" alt="image">
                                                                 <div class="category">
-                                                                    <h4>Produits populaires</h4>
+                                                                    <h4>À la Mode</h4>
                                                                 </div>
                                                                 <a href="#" class="link-btn"></a>
                                                             </div>
                                                             <div class="aside-trending-products">
-                                                                <img src="assets/img/categories/img1.jpg" alt="image">
+                                                                <img src="assets/img/vide.jpg" alt="image">
                                                                 <div class="category">
-                                                                    <h4>Tendance</h4>
+                                                                    <h4>Tendances</h4>
                                                                 </div>
                                                                 <a href="#" class="link-btn"></a>
                                                             </div>
@@ -521,85 +430,66 @@
                                         </div>
                                     </li>
                                 </ul>
-
-
                             </li>
 
                             <li class="nav-item megamenu">
-                                <a href="#" class="nav-link">Femmes <i class="bx bx-chevron-down"></i></a>
+                                <a href="#" class="nav-link">Femmes
+                                    <i class="bx bx-chevron-down"></i>
+                                </a>
                                 <ul class="dropdown-menu">
                                     <li class="nav-item">
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col">
-                                                    <h6 class="submenu-title">Styles de magasin</h6>
+                                                    <h6 class="submenu-title">Article Feminine</h6>
                                                     <ul class="megamenu-submenu">
-                                                        <li><a href="products-left-sidebar.html">Barre latérale
-                                                                gauche</a></li>
-                                                        <li><a href="products-left-sidebar-with-categories.html">Barre
-                                                                latérale gauche avec catégories</a></li>
-                                                        <li><a href="products-right-sidebar.html">Barre latérale
-                                                                droite</a></li>
-                                                        <li><a href="products-right-sidebar-with-categories.html">Barre
-                                                                latérale droite avec catégories</a></li>
-                                                        <li><a href="products-one-row.html">1 Produits par rangée</a>
+                                                        <li>
+                                                            <a href="vide.html">Robe de mariage</a>
                                                         </li>
-                                                        <li><a href="products-without-sidebar.html">Sans barre
-                                                                latérale</a></li>
-                                                        <li><a href="products-sidebar-fullwidth.html">Avec barre
-                                                                latérale pleine largeur</a></li>
+                                                        <li>
+                                                            <a href="vide.html">Robe
+                                                                Musulmen</a>
+                                                        </li>
+
+                                                        <li><a href="vide.html">Robe</a></li>
+                                                        <li>
+                                                            <a href="vide.html">Jupe</a>
+                                                        </li>
+                                                        <li><a href="vide.html">Collant</a>
+                                                        </li>
+                                                        <li><a href="vide.html">Pentalon</a></li>
+                                                        <li><a href="vide.html">Pagne</a></li>
                                                     </ul>
                                                 </div>
                                                 <div class="col">
-                                                    <h6 class="submenu-title">Styles de magasin 2</h6>
+                                                    <h6 class="submenu-title">Article jeune Fille</h6>
                                                     <ul class="megamenu-submenu">
-                                                        <li><a href="products-left-sidebar-2.html">Barre latérale
-                                                                gauche</a></li>
-                                                        <li><a href="products-left-sidebar-with-categories-2.html">Barre
-                                                                latérale gauche avec catégories</a></li>
-                                                        <li><a href="products-right-sidebar-2.html">Barre latérale
-                                                                droite</a></li>
-                                                        <li><a href="products-right-sidebar-with-categories-2.html">Barre
-                                                                latérale droite avec catégories</a></li>
-                                                        <li><a href="products-one-row-2.html">1 Produits par rangée</a>
+                                                        <li>
+                                                            <a href="vide.html">Vide</a>
                                                         </li>
-                                                        <li><a href="products-without-sidebar-2.html">Sans barre
-                                                                latérale</a></li>
-                                                        <li><a href="products-sidebar-fullwidth-2.html">Avec barre
-                                                                latérale pleine largeur</a></li>
                                                     </ul>
                                                 </div>
                                                 <div class="col">
-                                                    <h6 class="submenu-title">Styles de magasin 3</h6>
+                                                    <h6 class="submenu-title">Article de Bébé</h6>
                                                     <ul class="megamenu-submenu">
-                                                        <li><a href="products-left-sidebar-3.html">Barre latérale
-                                                                gauche</a></li>
-                                                        <li><a href="products-left-sidebar-with-categories-3.html">Barre
-                                                                latérale gauche avec catégories</a></li>
-                                                        <li><a href="products-right-sidebar-3.html">Barre latérale
-                                                                droite</a></li>
-                                                        <li><a href="products-right-sidebar-with-categories-3.html">Barre
-                                                                latérale droite avec catégories</a></li>
-                                                        <li><a href="products-one-row-3.html">1 Produits par rangée</a>
+                                                        <li>
+                                                            <a href="vide.html">Vide</a>
                                                         </li>
-                                                        <li><a href="products-without-sidebar-3.html">Sans barre
-                                                                latérale</a></li>
-                                                        <li><a href="products-sidebar-fullwidth-3.html">Avec barre
-                                                                latérale pleine largeur</a></li>
                                                     </ul>
                                                 </div>
                                                 <div class="col">
                                                     <ul class="megamenu-submenu">
                                                         <li>
                                                             <div class="aside-trending-products">
-                                                                <img src="assets/img/categories/img1.jpg" alt="image">
+                                                                <img src="assets/img/vide.jpg"
+                                                                    alt="Vide pour l'instant">
                                                                 <div class="category">
-                                                                    <h4>Tendance</h4>
+                                                                    <h4>Nouveautés</h4>
                                                                 </div>
                                                                 <a href="#" class="link-btn"></a>
                                                             </div>
                                                             <div class="aside-trending-products">
-                                                                <img src="assets/img/categories/img2.jpg" alt="image">
+                                                                <img src="assets/img/vide.jpg" alt="Pas de contenu">
                                                                 <div class="category">
                                                                     <h4>Produits populaires</h4>
                                                                 </div>
@@ -615,82 +505,68 @@
                             </li>
 
                             <li class="nav-item megamenu">
-                                <a href="#" class="nav-link">Hommes <i class="bx bx-chevron-down"></i></a>
+                                <a href="#" class="nav-link">Hommes
+                                    <i class="bx bx-chevron-down"></i>
+                                </a>
                                 <ul class="dropdown-menu">
                                     <li class="nav-item">
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col">
-                                                    <h6 class="submenu-title">Styles de magasin</h6>
+                                                    <h6 class="submenu-title">Articles d'homme</h6>
                                                     <ul class="megamenu-submenu">
-                                                        <li><a href="products-left-sidebar.html">Barre latérale
-                                                                gauche</a></li>
-                                                        <li><a href="products-left-sidebar-with-categories.html">Barre
-                                                                latérale gauche avec catégories</a></li>
-                                                        <li><a href="products-right-sidebar.html">Barre latérale
-                                                                droite</a></li>
-                                                        <li><a href="products-right-sidebar-with-categories.html">Barre
-                                                                latérale droite avec catégories</a></li>
-                                                        <li><a href="products-one-row.html">1 Produits par rangée</a>
+                                                        <li>
+                                                            <a href="vide.html">Veste</a>
                                                         </li>
-                                                        <li><a href="products-without-sidebar.html">Sans barre
-                                                                latérale</a></li>
-                                                        <li><a href="products-sidebar-fullwidth.html">Avec barre
-                                                                latérale pleine largeur</a></li>
+                                                        <li>
+                                                            <a href="vide.html">Boubou
+                                                                Traditionel</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="vide.html">Chemise</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="vide.html">Pentalon</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="vide.html">T-Shirt</a>
+                                                        </li>
                                                     </ul>
                                                 </div>
                                                 <div class="col">
-                                                    <h6 class="submenu-title">Styles de magasin 2</h6>
+                                                    <h6 class="submenu-title">Articles d'homme africain</h6>
                                                     <ul class="megamenu-submenu">
-                                                        <li><a href="products-left-sidebar-2.html">Barre latérale
-                                                                gauche</a></li>
-                                                        <li><a href="products-left-sidebar-with-categories-2.html">Barre
-                                                                latérale gauche avec catégories</a></li>
-                                                        <li><a href="products-right-sidebar-2.html">Barre latérale
-                                                                droite</a></li>
-                                                        <li><a href="products-right-sidebar-with-categories-2.html">Barre
-                                                                latérale droite avec catégories</a></li>
-                                                        <li><a href="products-one-row-2.html">1 Produits par rangée</a>
+                                                        <li>
+                                                            <a>
+                                                                Vide
+                                                            </a>
                                                         </li>
-                                                        <li><a href="products-without-sidebar-2.html">Sans barre
-                                                                latérale</a></li>
-                                                        <li><a href="products-sidebar-fullwidth-2.html">Avec barre
-                                                                latérale pleine largeur</a></li>
                                                     </ul>
                                                 </div>
                                                 <div class="col">
-                                                    <h6 class="submenu-title">Styles de magasin 3</h6>
+                                                    <h6 class="submenu-title">Articles d'enfant</h6>
                                                     <ul class="megamenu-submenu">
-                                                        <li><a href="products-left-sidebar-3.html">Barre latérale
-                                                                gauche</a></li>
-                                                        <li><a href="products-left-sidebar-with-categories-3.html">Barre
-                                                                latérale gauche avec catégories</a></li>
-                                                        <li><a href="products-right-sidebar-3.html">Barre latérale
-                                                                droite</a></li>
-                                                        <li><a href="products-right-sidebar-with-categories-3.html">Barre
-                                                                latérale droite avec catégories</a></li>
-                                                        <li><a href="products-one-row-3.html">1 Produits par rangée</a>
+                                                        <li>
+                                                            <a>
+                                                                Vide
+                                                            </a>
                                                         </li>
-                                                        <li><a href="products-without-sidebar-3.html">Sans barre
-                                                                latérale</a></li>
-                                                        <li><a href="products-sidebar-fullwidth-3.html">Avec barre
-                                                                latérale pleine largeur</a></li>
                                                     </ul>
                                                 </div>
                                                 <div class="col">
                                                     <ul class="megamenu-submenu">
                                                         <li>
                                                             <div class="aside-trending-products">
-                                                                <img src="assets/img/categories/img2.jpg" alt="image">
+                                                                <img src="assets/img/vide.jpg" alt="image">
                                                                 <div class="category">
                                                                     <h4>Produits populaires</h4>
                                                                 </div>
                                                                 <a href="#" class="link-btn"></a>
                                                             </div>
                                                             <div class="aside-trending-products">
-                                                                <img src="assets/img/categories/img1.jpg" alt="image">
+                                                                <img src="assets/img/vide.jpg" alt="image">
                                                                 <div class="category">
-                                                                    <h4>Tendance</h4>
+                                                                    <h4>Nouveautés</h4>
                                                                 </div>
                                                                 <a href="#" class="link-btn"></a>
                                                             </div>
@@ -713,8 +589,10 @@
                             </div>
                             <div class="option-item">
                                 <div class="cart-btn">
-                                    <a href="#" data-bs-toggle="modal" data-bs-target="#shoppingCartModal"><i
-                                            class="bx bx-shopping-bag"></i><span>3</span></a>
+                                    <a href="#" data-bs-toggle="modal" id="paniernumber3"
+                                        data-bs-target="#shoppingCartModal">
+                                        <i class="bx bx-shopping-bag"></i>
+                                    </a>
                                 </div>
                             </div>
                             <div class="option-item">
@@ -752,14 +630,13 @@
         </div>
     </div>
 
-
     <div class="page-title-area">
         <div class="container">
             <div class="page-title-content">
-                <h2>Femmes</h2>
+                <h2 id="selecteditem"></h2>
                 <ul>
                     <li><a href="index.html">Accueil</a></li>
-                    <li>Produits</li>
+                    <li>Filtre</li>
                 </ul>
             </div>
         </div>
@@ -1587,7 +1464,6 @@
         </div>
     </section>
 
-
     <section class="facility-area pb-70">
         <div class="container">
             <div class="facility-slides owl-carousel owl-theme">
@@ -1638,65 +1514,7 @@
     </section>
 
 
-    <div class="instagram-area">
-        <div class="container-fluid">
-            <div class="instagram-title">
-                <a href="#" target="_blank"><i class="bx bxl-instagram"></i> Suivez nous sur @Noble</a>
-            </div>
-            <div class="instagram-slides owl-carousel owl-theme">
-                <div class="single-instagram-post">
-                    <img src="assets/img/instagram/img1.jpg" alt="image">
-                    <i class="bx bxl-instagram"></i>
-                    <a href="#" target="_blank" class="link-btn"></a>
-                </div>
-                <div class="single-instagram-post">
-                    <img src="assets/img/instagram/img2.jpg" alt="image">
-                    <i class="bx bxl-instagram"></i>
-                    <a href="#" target="_blank" class="link-btn"></a>
-                </div>
-                <div class="single-instagram-post">
-                    <img src="assets/img/instagram/img3.jpg" alt="image">
-                    <i class="bx bxl-instagram"></i>
-                    <a href="#" target="_blank" class="link-btn"></a>
-                </div>
-                <div class="single-instagram-post">
-                    <img src="assets/img/instagram/img4.jpg" alt="image">
-                    <i class="bx bxl-instagram"></i>
-                    <a href="#" target="_blank" class="link-btn"></a>
-                </div>
-                <div class="single-instagram-post">
-                    <img src="assets/img/instagram/img10.jpg" alt="image">
-                    <i class="bx bxl-instagram"></i>
-                    <a href="#" target="_blank" class="link-btn"></a>
-                </div>
-                <div class="single-instagram-post">
-                    <img src="assets/img/instagram/img6.jpg" alt="image">
-                    <i class="bx bxl-instagram"></i>
-                    <a href="#" target="_blank" class="link-btn"></a>
-                </div>
-                <div class="single-instagram-post">
-                    <img src="assets/img/instagram/img7.jpg" alt="image">
-                    <i class="bx bxl-instagram"></i>
-                    <a href="#" target="_blank" class="link-btn"></a>
-                </div>
-                <div class="single-instagram-post">
-                    <img src="assets/img/instagram/img8.jpg" alt="image">
-                    <i class="bx bxl-instagram"></i>
-                    <a href="#" target="_blank" class="link-btn"></a>
-                </div>
-                <div class="single-instagram-post">
-                    <img src="assets/img/instagram/img9.jpg" alt="image">
-                    <i class="bx bxl-instagram"></i>
-                    <a href="#" target="_blank" class="link-btn"></a>
-                </div>
-                <div class="single-instagram-post">
-                    <img src="assets/img/instagram/img5.jpg" alt="image">
-                    <i class="bx bxl-instagram"></i>
-                    <a href="#" target="_blank" class="link-btn"></a>
-                </div>
-            </div>
-        </div>
-    </div>
+
 
 
     <div class="modal right fade sidebarModal" id="sidebarModal" tabindex="-1" role="dialog">
@@ -1716,14 +1534,13 @@
                             <ul class="sidebar-contact-info">
                                 <li><i class="bx bx-map"></i> <a href="#" target="_blank">Abidjan, Cocody, Riviera II
                                         (CI)</a></li>
-                                <li><i class="bx bx-phone-call"></i> <a href="tel:+2250748643884">+225 0748 64 38 84</a>
+                                <li><i class="bx bx-phone-call"></i> <a href="tel:0768020606">0768020606</a>
                                 </li>
                                 <li>
                                     <i class="bx bx-envelope"></i>
-                                    <a
-                                        href="https://templates.hibootstrap.com/cdn-cgi/l/email-protection#38505d54545778404c5756165b5755">
-                                        <span class="__cf_email__" data-cfemail="b9d1dcd5d5d6f9c1cdd6d797dad6d4">
-                                            [email&#160;protected]
+                                    <a>
+                                        <span>
+                                            noble.boutikonline@gmail.com
                                         </span>
                                     </a>
                                 </li>
@@ -1856,274 +1673,22 @@
                     <span aria-hidden="true"><i class="bx bx-x"></i></span>
                 </button>
                 <div class="modal-body">
-                    <h3>Mon Panier (3)</h3>
-                    <div class="products-cart-content">
-                        <div class="products-cart">
-                            <div class="products-image">
-                                <a href="#"><img src="assets/img/products/img1.jpg" alt="image"></a>
-                            </div>
-                            <div class="products-content">
-                                <h3><a href="#">T-shirt à manches longues léopard</a></h3>
-                                <span>Bleu / XS</span>
-                                <div class="products-price">
-                                    <span>1</span>
-                                    <span>x</span>
-                                    <span class="price">$250.00</span>
-                                </div>
-                                <a href="#" class="remove-btn"><i class="bx bx-trash"></i></a>
-                            </div>
-                        </div>
-                        <div class="products-cart">
-                            <div class="products-image">
-                                <a href="#"><img src="assets/img/products/img2.jpg" alt="image"></a>
-                            </div>
-                            <div class="products-content">
-                                <h3><a href="#">Raglan décontracté à col V doux</a></h3>
-                                <span>Bleu / XS</span>
-                                <div class="products-price">
-                                    <span>1</span>
-                                    <span>x</span>
-                                    <span class="price">$200.00</span>
-                                </div>
-                                <a href="#" class="remove-btn"><i class="bx bx-trash"></i></a>
-                            </div>
-                        </div>
-                        <div class="products-cart">
-                            <div class="products-image">
-                                <a href="#"><img src="assets/img/products/img3.jpg" alt="image"></a>
-                            </div>
-                            <div class="products-content">
-                                <h3><a href="#">Pull Hanes pour hommes</a></h3>
-                                <span>Bleu / XS</span>
-                                <div class="products-price">
-                                    <span>1</span>
-                                    <span>x</span>
-                                    <span class="price">$200.00</span>
-                                </div>
-                                <a href="#" class="remove-btn"><i class="bx bx-trash"></i></a>
-                            </div>
-                        </div>
+                    <h3 id="monpanier">Mon Panier (0)</h3>
+                    <div class="products-cart-content" id="pannierid">
                     </div>
                     <div class="products-cart-subtotal">
                         <span>sous-total</span>
-                        <span class="subtotal">$650.00</span>
+                        <span class="subtotal" id="subtotal"></span>
                     </div>
                     <div class="products-cart-btn">
-                        <a href="#" class="default-btn">Passer à la caisse</a>
-                        <a href="#" class="optional-btn">Voir Panier d'achat</a>
+                        <a href="checkout.html" class="default-btn">Passer à la caisse</a>
+                        <a href="cart.html" class="optional-btn">Voir Panier d'achat</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-
-    <div class="modal right fade shoppingWishlistModal" id="shoppingWishlistModal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true"><i class="bx bx-x"></i></span>
-                </button>
-                <div class="modal-body">
-                    <h3>Ma liste de souhaits (3)</h3>
-                    <div class="products-cart-content">
-                        <div class="products-cart">
-                            <div class="products-image">
-                                <a href="#"><img src="assets/img/products/img1.jpg" alt="image"></a>
-                            </div>
-                            <div class="products-content">
-                                <h3><a href="#">T-shirt léopard à manches longues</a></h3>
-                                <span>Bleu / XS</span>
-                                <div class="products-price">
-                                    <span>1</span>
-                                    <span>x</span>
-                                    <span class="price">$250.00</span>
-                                </div>
-                                <a href="#" class="remove-btn"><i class="bx bx-trash"></i></a>
-                            </div>
-                        </div>
-                        <div class="products-cart">
-                            <div class="products-image">
-                                <a href="#"><img src="assets/img/products/img2.jpg" alt="image"></a>
-                            </div>
-                            <div class="products-content">
-                                <h3><a href="#">Raglan doux décontracté à col en V</a></h3>
-                                <span>Bleu / XS</span>
-                                <div class="products-price">
-                                    <span>1</span>
-                                    <span>x</span>
-                                    <span class="price">$200.00</span>
-                                </div>
-                                <a href="#" class="remove-btn"><i class="bx bx-trash"></i></a>
-                            </div>
-                        </div>
-                        <div class="products-cart">
-                            <div class="products-image">
-                                <a href="#"><img src="assets/img/products/img3.jpg" alt="image"></a>
-                            </div>
-                            <div class="products-content">
-                                <h3><a href="#">Pull Hanes pour hommes</a></h3>
-                                <span>Bleu / XS</span>
-                                <div class="products-price">
-                                    <span>1</span>
-                                    <span>x</span>
-                                    <span class="price">$200.00</span>
-                                </div>
-                                <a href="#" class="remove-btn"><i class="bx bx-trash"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="products-cart-btn">
-                        <a href="#" class="optional-btn">Voir le panier</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="modal fade sizeGuideModal" id="sizeGuideModal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true"><i class="bx bx-x"></i></span>
-                </button>
-                <div class="modal-sizeguide">
-                    <h3>Guide des tailles</h3>
-                    <p>Ceci est un tableau de conversion approximatif pour vous aider à trouver votre taille.</p>
-                    <div class="table-responsive">
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Italien</th>
-                                    <th>Espagnol</th>
-                                    <th>Allemand</th>
-                                    <th>Royaume-Uni</th>
-                                    <th>États-Unis</th>
-                                    <th>Japonais</th>
-                                    <th>Chinois</th>
-                                    <th>Russe</th>
-                                    <th>Coréen</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>34</td>
-                                    <td>30</td>
-                                    <td>28</td>
-                                    <td>4</td>
-                                    <td>00</td>
-                                    <td>3</td>
-                                    <td>155/75A</td>
-                                    <td>36</td>
-                                    <td>44</td>
-                                </tr>
-                                <tr>
-                                    <td>36</td>
-                                    <td>32</td>
-                                    <td>30</td>
-                                    <td>6</td>
-                                    <td>0</td>
-                                    <td>5</td>
-                                    <td>155/80A</td>
-                                    <td>38</td>
-                                    <td>44</td>
-                                </tr>
-                                <tr>
-                                    <td>38</td>
-                                    <td>34</td>
-                                    <td>32</td>
-                                    <td>8</td>
-                                    <td>2</td>
-                                    <td>7</td>
-                                    <td>160/84A</td>
-                                    <td>40</td>
-                                    <td>55</td>
-                                </tr>
-                                <tr>
-                                    <td>40</td>
-                                    <td>36</td>
-                                    <td>34</td>
-                                    <td>10</td>
-                                    <td>4</td>
-                                    <td>9</td>
-                                    <td>165/88A</td>
-                                    <td>42</td>
-                                    <td>55</td>
-                                </tr>
-                                <tr>
-                                    <td>42</td>
-                                    <td>38</td>
-                                    <td>36</td>
-                                    <td>12</td>
-                                    <td>6</td>
-                                    <td>11</td>
-                                    <td>170/92A</td>
-                                    <td>44</td>
-                                    <td>66</td>
-                                </tr>
-                                <tr>
-                                    <td>44</td>
-                                    <td>40</td>
-                                    <td>38</td>
-                                    <td>14</td>
-                                    <td>8</td>
-                                    <td>13</td>
-                                    <td>175/96A</td>
-                                    <td>46</td>
-                                    <td>66</td>
-                                </tr>
-                                <tr>
-                                    <td>46</td>
-                                    <td>42</td>
-                                    <td>40</td>
-                                    <td>16</td>
-                                    <td>10</td>
-                                    <td>15</td>
-                                    <td>170/98A</td>
-                                    <td>48</td>
-                                    <td>77</td>
-                                </tr>
-                                <tr>
-                                    <td>48</td>
-                                    <td>44</td>
-                                    <td>42</td>
-                                    <td>18</td>
-                                    <td>12</td>
-                                    <td>17</td>
-                                    <td>170/100B</td>
-                                    <td>50</td>
-                                    <td>77</td>
-                                </tr>
-                                <tr>
-                                    <td>50</td>
-                                    <td>46</td>
-                                    <td>44</td>
-                                    <td>20</td>
-                                    <td>14</td>
-                                    <td>19</td>
-                                    <td>175/100B</td>
-                                    <td>52</td>
-                                    <td>88</td>
-                                </tr>
-                                <tr>
-                                    <td>52</td>
-                                    <td>48</td>
-                                    <td>46</td>
-                                    <td>22</td>
-                                    <td>16</td>
-                                    <td>21</td>
-                                    <td>180/104B</td>
-                                    <td>54</td>
-                                    <td>88</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
 
     <div class="modal fade productsShippingModal" id="productsShippingModal" tabindex="-1" role="dialog"
@@ -2136,19 +1701,9 @@
                 <div class="shipping-content">
                     <h3>Expédition</h3>
                     <ul>
-                        <li>Expédition terrestre gratuite sous 1 à 7 jours ouvrés</li>
-                        <li>Retrait en magasin disponible sous 1 à 7 jours ouvrés</li>
-                        <li>Options de livraison le lendemain et express également disponibles</li>
-                        <li>Les achats sont livrés dans une boîte orange nouée d'un ruban Bolduc, à l'exception des
-                            certains éléments</li>
-                        <li>Consultez la FAQ sur la livraison pour plus de détails sur les méthodes d'expédition, les
-                            coûts et les délais de livraison.</li>
+                        <li id="addexpea"></li>
                     </ul>
-                    <h3>Retours et échanges</h3>
-                    <ul>
-                        <li>Facile et complémentaire, sous 14 jours</li>
-                        <li>Voir conditions et procédure dans notre FAQ retour</li>
-                    </ul>
+
                 </div>
             </div>
         </div>
@@ -2267,7 +1822,8 @@
                                         (CI)</a></li>
                                 <li><i class="bx bx-phone-call"></i> <a href="tel:0768020606">0768020606</a>
                                 </li>
-                                <li><i class="bx bx-envelope"></i> <a><span>noble.boutikonline@gmail.com</span></a>
+                                <li><i class="bx bx-envelope"></i> <a
+                                        href=""><span></span></a>
                                 </li>
                             </ul>
                         </div>
@@ -2352,9 +1908,16 @@
             <div class="line"></div>
         </div>
     </footer>
+
     <div class="go-top"><i class="bx bx-up-arrow-alt"></i></div>
 
-    <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="./productsFetcher/database_handl.js"></script>
+    <script src="./products-left-sidebar.js"></script>
+    <script src="./clientdb/currentdb.js"></script>
+    <script src="./pannier/callpanindex.js"></script>
+    <script src="./pannier/pannier.js"></script>
+    <script src="produitConnexe.js"></script>
+
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/popper.min.html"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
