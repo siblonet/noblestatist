@@ -339,7 +339,7 @@ Top Header CSS
 
 .header-contact-info li {
   display: inline-block;
-  color: #010fc8;
+  color: #ffffff;
   margin-right: 25px;
   position: relative;
   font-weight: 600;
@@ -358,7 +358,7 @@ Top Header CSS
 
 .header-contact-info li a {
   display: inline-block;
-  color: #010fc8;
+  color: #ffffff;
   position: relative;
 }
 
@@ -513,14 +513,6 @@ Top Header CSS
   color: #ffffff;
 }
 
-.backcoloo {
-  background: linear-gradient(to right,
-      #faf129 0%,
-      #d1be03 20%,
-      #9f7403 40%,
-      #d1be03 60%,
-      #9f7403 70%) !important;
-}
 
 
 
@@ -679,25 +671,36 @@ Navbar CSS
   display: none;
 }
 
+.navbar-area {
+  height: 87px;
+  background: linear-gradient(to right,
+      #007fbb 0%,
+      #010fc8 20%,
+      gold 40%,
+      #000000 80%,
+      #ff0000 90%) !important;
+
+}
+
 .navbar-area.header-sticky {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
+  height: 87px;
   z-index: 999;
   -webkit-box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.06);
   box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.06);
-  background: #ffffff !important;
   opacity: 0;
   visibility: hidden;
   -webkit-transition: 0.5s;
   transition: 0.5s;
+  overflow: hidden;
 }
 
 .navbar-area.header-sticky.is-sticky {
   opacity: 1;
   visibility: visible;
-  background: #d1be03 !important;
 }
 
 /*
@@ -1283,6 +1286,12 @@ Navbar CSS
 @media only screen and (max-width: 991px) {
   .xton-responsive-nav {
     display: block;
+    background: #ffffff;
+    height: 52px;
+    position: absolute;
+    width: 100%;
+    z-index: 99;
+    top: 155px;
   }
 
   .xton-responsive-nav .xton-responsive-menu {
@@ -2845,13 +2854,14 @@ Products CSS
 
 }
 
-.products-box .products-image img{
+.products-box .products-image img {
   height: 100% !important;
   width: 100% !important;
   align-self: center;
   align-items: center;
   justify-content: center;
 }
+
 .products-box .products-image a {
   position: relative;
   display: block;
@@ -3021,6 +3031,7 @@ Products CSS
   font-weight: 700;
   font-size: 14px;
 }
+
 .products-box .products-content {
   margin-top: 20px;
   position: relative;

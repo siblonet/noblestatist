@@ -1,4 +1,16 @@
 @media only screen and (max-width: 767px) {
+    .navbar-area {
+        height: 50px !important;
+        background: linear-gradient(to right,
+                #007fbb 0%,
+                #010fc8 20%,
+                gold 40%,
+                #000000 80%,
+                #ff0000 90%) !important;
+                height: 50px;
+                overflow: hidden;
+    }
+
     .products-box .products-image {
         height: 248.5px !important;
     }
