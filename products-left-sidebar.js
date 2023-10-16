@@ -11,9 +11,13 @@ function getUrlParameter(ov) {
 };
 
 const retriva = getUrlParameter('ov');
-productsLeftSidbar(retriva);
-//document.getElementById('ido').value = retriva;
-document.getElementById('selecteditem').innerText = retriva;
+const typoret = retriva.split("@");
+const typo = typoret[1];//t-shert/robe/patenlon
+const typopro = typoret[0];//homme/femme/assesoire
+productsLeftSidbar(typopro);
+
+
+document.getElementById('selecteditem').innerText = typopro;
 
 async function productsLeftSidbar(viewid) {
     if (viewid) {
