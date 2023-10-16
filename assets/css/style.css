@@ -695,7 +695,6 @@ Navbar CSS
   visibility: hidden;
   -webkit-transition: 0.5s;
   transition: 0.5s;
-  overflow: hidden;
 }
 
 .navbar-area.header-sticky.is-sticky {
