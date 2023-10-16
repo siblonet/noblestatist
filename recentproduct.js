@@ -264,7 +264,7 @@ function recentProduct(recenPr) {
                         } 
                     ${product.addoccasion == "PROMO" ?
                             `
-                            <div class="new-tag">Promo</div>
+                            <div class="new-tage">Promo</div>
                         `
                             :
                             ""
