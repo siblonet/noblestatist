@@ -13,8 +13,9 @@ function getUrlParameter(ov) {
 
 const retriva = getUrlParameter('ov');
 const typoret = retriva.split("@");
-const typo = typoret[1];//homme/femme/assesoire
-const typopro = typoret[0];//t-shert/robe/patenlon
+const typo = typoret[1];//"ACCOUTREMENT"/assesoire
+const typopro = typoret[0];//t-shert/robe/patenlon/Bailette
+const genre = typoret[2];//homme/femme/
 productsLeftSidbar();
 document.getElementById('selecteditem').innerText = typopro;
 
@@ -27,7 +28,8 @@ async function productsLeftSidbar() {
     objectStore.openCursor().onsuccess = (event) => {
         const cursor = event.target.result;
         if (cursor) {
-            if (cursor.value.addtype == typo && cursor.value.addtypepro == typopro) {
+            //console.log(cursor.value);
+            if (cursor.value.addgenre == genre && cursor.value.addtype == typo && cursor.value.addtypepro == typopro) {
                 dataFilter.push(cursor.value);
             }
             cursor.continue();
