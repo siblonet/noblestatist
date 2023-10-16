@@ -595,15 +595,3 @@ function TotalAll(who, data) {
             .catch(error => reject(error));
     });
 };
-
-function navigateAdminCLient() {
-    const token = sessionStorage.getItem('tibule');
-    if (token) {
-        const splo = token.split("°");
-        const admin = splo[5];
-        window.location.href = admin == "GIFV" ? "./admin/admindasdboard.html" : "./track-order.html"
-    } else {
-        window.location.href = "login.html"
-    }
-
-}

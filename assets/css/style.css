@@ -2841,8 +2841,17 @@ Products CSS
   text-align: center;
   position: relative;
   overflow: hidden;
+  height: 497px !important;
+
 }
 
+.products-box .products-image img{
+  height: 100% !important;
+  width: 100% !important;
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+}
 .products-box .products-image a {
   position: relative;
   display: block;

@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="assets/css/meanmenu.min.css">
     <link rel="stylesheet" href="assets/css/rangeSlider.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/mobilestile.css">
     <link rel="stylesheet" href="assets/css/dark.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
     <title>Noble</title>
@@ -41,10 +42,10 @@
                 </div>
                 <div class="col-lg-6 col-md-12">
                     <ul class="header-top-menu">
-                        <li><a style="cursor: pointer !important;" onclick="navigateAdminCLient()"><i
+                        <li id="usernam"><a style="cursor: pointer !important;"><i
                                     class="bx bxs-user"></i> Mon compte</a></li>
 
-                        <li id="usernam">
+                        <li id="usernama">
                             <a href="login.html"><i class="bx bx-log-in"></i> Connexion</a>
                         </li>
                     </ul>
@@ -1018,6 +1019,7 @@
                     </div>
                     <input type="hidden" id="ido" value="0">
                     <input type="hidden" id="idp" value="none">
+                    <input type="hidden" id="coloholder" value="">
 
                     <div class="col-lg-6 col-md-6">
                         <div class="products-content">

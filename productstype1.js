@@ -76,15 +76,15 @@ async function productStypes1(viewid) {
             const qsized = sploa[3] == "null" ? "-" : sploa[3];
             const qsizee = sploa[4] == "null" ? "-" : sploa[4];
             document.getElementById('coloholder').innerText = prod.addcoul;
-            document.getElementById('achetematn').style.backgroundColor = prod.addcoul.substring(0, 7);
-            document.getElementById('achetematn').style.borderColor = prod.addcoul.substring(0, 7);
+            document.getElementById('achetematn').style.backgroundColor = colora;
+            document.getElementById('achetematn').style.borderColor = colora;
 
             if (prod.addreduction > prod.addprix) {
                 document.getElementById('quickViewOldPrice').innerText = `${prod.addreduction} F.CFA`;
             }
 
             document.getElementById('quickViewNewPrice').innerText = `${prod.addprix} F.CFA`;
-            document.getElementById('quickViewNewPrice').style.color = prod.addcoul.substring(0, 7);
+            document.getElementById('quickViewNewPrice').style.color = colora;
 
             const quickCouleuHtml = document.getElementById('quickCouleu');
             const quickTailHtml = document.getElementById('quickTail');
@@ -101,7 +101,7 @@ async function productStypes1(viewid) {
             quickCouleuHtml.innerHTML = quickColoHTML;
 
             const quickSizeHTML = `
-                            <li><a id="quisizelia" onclick="quiSizefun('a', '${qsizea}')" style="cursor: pointer !important; border-color: ${prod.addcoul.substring(0, 7)}; color: ${prod.addcoul.substring(0, 7)}">${qsizea}</a></li>
+                            <li><a id="quisizelia" onclick="quiSizefun('a', '${qsizea}')" style="cursor: pointer !important; border-color: ${colora}; color: ${colora}">${qsizea}</a></li>
                             <li><a id="quisizelib" onclick="quiSizefun('b', '${qsizeb}')" style="cursor: pointer !important;">${qsizeb}</a></li>
                             <li><a id="quisizelic" onclick="quiSizefun('c', '${qsizec}')" style="cursor: pointer !important;">${qsizec}</a></li>
                             <li><a id="quisizelid" onclick="quiSizefun('d', '${qsized}')" style="cursor: pointer !important;">${qsized}</a></li>

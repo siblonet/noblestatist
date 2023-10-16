@@ -11,13 +11,21 @@ function getUsenam() {
         const admin = sploz[5];
         const mynam = thisiswhat(`${name}â${lastname}`)
         const usernam = document.getElementById('usernam');
+        const usernama = document.getElementById('usernama');
         usernam.innerHTML = '';
-        admin == "GIFV" ? true : false
+        admin == "GIFV" ? true : false;
+        usernama.innerHTML = `
+        <a><i class="bx bx-log-in"></i>Se Deconecter</a>
+        `;
+        usernama.onclick = navigateAdminCLient;
+        usernama.style.cursor = "pointer"
+
+
 
         if (admin == "GIFV") {
             const usernamBody =
                 `
-            <a href="admin/admindasdboard.html"><i class="bx bx-log-in"></i> ${mynam}</a>
+            <a href="admin/admindasdboard.html"><i class="bx bxs-user"></i> ${mynam}</a>
 
             `;
 
@@ -26,7 +34,7 @@ function getUsenam() {
 
             const usernamBody =
                 `
-            <a href="track-order.html"><i class="bx bx-log-in"></i> ${mynam}</a>
+            <a href="track-order.html"><i class="bx bxs-user"></i> ${mynam}</a>
 
             `;
 
@@ -37,6 +45,36 @@ function getUsenam() {
 };
 
 getUsenam();
+
+
+async function navigateAdminCLient() {
+    await openOrdersDatabase();
+    await clearOrder();
+    sessionStorage.clear();
+    localStorage.clear();
+    window.location.reload()
+}
+
+
+function clearOrder() {
+    return new Promise((resolve, reject) => {
+        const transaction = orderdb.transaction(["OrderdStore"], "readwrite");
+        const objectStore = transaction.objectStore("OrderdStore");
+        const clearRequest = objectStore.clear();
+
+        clearRequest.onsuccess = (event) => {
+            resolve("cleared")
+        };
+
+        transaction.onerror = (event) => {
+            console.error("Error accessing object store:", event.target.error);
+            reject("Error accessing object store");
+        };
+
+
+    });
+
+}
 
 function recentProduct(recenPr) {
     const productContainer = document.getElementById('product-container');
@@ -78,18 +116,31 @@ function recentProduct(recenPr) {
 
             const productHTML = `
                     <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="products-box">
 
 
-                        <div class="products-image" style="background-color: ${product.addcoul.substring(0, 7)};" onmouseover="this.style.backgroundColor='${product.addcoul.substring(8, 15)}'" onmouseout="this.style.backgroundColor='${product.addcoul.substring(0, 7)}'">
-                                <a style="cursor: pointer !important;" 
-                                    data-bs-toggle="${isMobileDevice() ? 'modal' : ''}" 
-                                    data-bs-target="${isMobileDevice() ? '#productsQuickView' : ''}" 
-                                    href="${isMobileDevice() ? '' : `products-type-1.html?ov=${product._id}`}"  
-                                    onclick="${isMobileDevice() ? `showProductQuickView('${product._id}')` : ''}">
-                                    <img src="${product.image[0].ima}" class="main-image" alt="image">
-                                    <img src="${product.image[1].ima}" class="hover-image" alt="image"> 
+                        ${isMobileDevice() ?
+                    `
+                            <div class="products-box">
+
+                            <div class="products-image" style="background-color: ${product.addcoul.substring(0, 7)};" onmouseover="this.style.backgroundColor='${product.addcoul.substring(8, 15)}'" onmouseout="this.style.backgroundColor='${product.addcoul.substring(0, 7)}'">
+
+                            <div class="products-imagea">
+                                <a class="imageahandlea" style="cursor: pointer !important;" 
+                                    data-bs-toggle="modal" 
+                                    data-bs-target="#productsQuickView" 
+                                    onclick="showProductQuickView('a', '${product._id}')">
+                                    <img class="one" src="${product.image[0].ima}" class="main-image" alt="image">
                                 </a>
+                                <a class="imageahandleb" style="cursor: pointer !important;" 
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#productsQuickView" 
+                                    onclick="showProductQuickView('b', '${product._id}')">
+                                    <img class="two" src="${product.image[1].ima}" class="hover-image" alt="image"> 
+                                </a>
+                            </div>
+                               
+                        
+
                                 <div class="products-button">
                                     <ul>
                                         <li>
@@ -119,27 +170,27 @@ function recentProduct(recenPr) {
                                     </ul>
                                 </div>
                                 ${product.addnouveaute == "NOUVEAU" && product.addreduction < product.addprix ?
-                    `
-                        <div class="new-tag">Nouveautés</div>
                         `
-                    :
-                    ""
-                } 
+                        <div class="promo">Nouveautés</div>
+                        `
+                        :
+                        ""
+                    } 
                                 ${product.addoccasion == "PROMO" ?
-                    `
-                                        <div class="new-tag">Promo</div>
+                        `
+                                        <div class="promo">Promo</div>
                                     `
-                    :
-                    ""
-                }
+                        :
+                        ""
+                    }
 
                                 ${product.addoccasion == "SOLD" ?
-                    `
-                                    <div class="sale-tag">Sold</div>
+                        `
+                                    <div class="sold">Solde</div>
                                 `
-                    :
-                    ""
-                }
+                        :
+                        ""
+                    }
                             </div>
 
 
@@ -155,36 +206,165 @@ function recentProduct(recenPr) {
                                 </div>
                                 <div class="price">
                                 ${product.addreduction > product.addprix ?
-                    `
+                        `
                                             <span class="old-price">${product.addreduction} F.CFA</span>
                                     `
-                    :
-                    ""
-                }
+                        :
+                        ""
+                    }
                                     <span class="new-price">${product.addprix} F.CFA</span>
                                 </div>
                                 <a style="cursor: pointer !important;" class="add-to-cart" onclick="Pannier('${product._id}')">Ajouter au panier</a>
                             </div>
                             ${product.addreduction > product.addprix ?
-                    `
-                            <span class="products-discount">
+                        `
+                            <span class="products-discounta">
                                 <span>
                                     -${percentDf.toFixed()}%
                                 </span>
-                                ${product.addnouveaute == "NOUVEAU" ?
-                        `
+                            </span>
+                            ${product.addnouveaute == "NOUVEAU" ?
+                            `
                                 <i class="nouveau">Nouveautés</i>
                                 `
+                            :
+                            ""
+                        }
+                              `
                         :
                         ""
                     }
-                            </span>
-                              `
-                    :
-                    ""
-                }
                        
                         </div>
+                        `
+                    :
+                    {/** @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+                        /** @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+                        /** @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+                        /** @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+                        /** @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+                        /** @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+                        /** @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+                        /** @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+                        /** @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+                        /** @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+                        /** @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+                        /** @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+                        /** @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+                        /** @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+                        /** @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+                        /** @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+}
+                        `
+
+                    <div class="products-box">
+
+                    <div class="products-image" style="background-color: ${product.addcoul.substring(0, 7)};" onmouseover="this.style.backgroundColor='${product.addcoul.substring(8, 15)}'" onmouseout="this.style.backgroundColor='${product.addcoul.substring(0, 7)}'">
+
+                        <a style="cursor: pointer !important;"
+                            href="products-type-1.html?ov=${product._id}">
+                            <img src="${product.image[0].ima}" class="main-image" alt="image">
+                            <img src="${product.image[1].ima}" class="hover-image" alt="image"> 
+                        </a>
+
+                        <div class="products-button">
+                        <ul>
+                            <li>
+                                <div class="wishlist-btn">
+                                    <a style="cursor: pointer !important; color: ${product.addcoul.substring(8, 15)} !important" onclick="Pannier('${product._id}')">
+                                        <i class="bx bx-shopping-bag bx bx-heart"></i>
+                                        <span class="tooltip-label">Ajouter</span>
+                                    </a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="compare-btn">
+                                    <a style="color: ${product.addcoul.substring(8, 15)} !important" href="products-type-1.html?ov=${product._id}}">
+                                        <i class="bx bx-refresh"></i>
+                                        <span class="tooltip-label">Plus infos</span>
+                                    </a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="quick-view-btn" onclick="showProductQuickView('a', '${product._id}')">
+                                    <a style="cursor: pointer !important; color: ${product.addcoul.substring(8, 15)} !important" data-bs-toggle="modal" data-bs-target="#productsQuickView">
+                                        <i class="bx bx-search-alt"></i>
+                                        <span class="tooltip-label">Vue rapide</span>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    ${product.addnouveaute == "NOUVEAU" && product.addreduction < product.addprix ?
+                            `
+            <div class="new-tag">Nouveautés</div>
+            `
+                            :
+                            ""
+                        } 
+                    ${product.addoccasion == "PROMO" ?
+                            `
+                            <div class="new-tag">Promo</div>
+                        `
+                            :
+                            ""
+                        }
+
+                    ${product.addoccasion == "SOLD" ?
+                            `
+                        <div class="sale-tag">Sold</div>
+                    `
+                            :
+                            ""
+                        }
+                </div>
+
+
+                <div class="products-content">
+                    <span class="category" style="color: ${product.addcoul.substring(0, 7)};">${product.addtypepro}</span>
+                    <h3><a href="products-type-1.html?ov=${product._id}">${product.addarticle}</a></h3>
+                    <div class="star-rating">
+                        <i class="bx bxs-star"></i>
+                        <i class="bx bxs-star"></i>
+                        <i class="bx bxs-star"></i>
+                        <i class="bx bxs-star"></i>
+                        <i class="bx bxs-star"></i>
+                    </div>
+                    <div class="price">
+                    ${product.addreduction > product.addprix ?
+                            `
+                                <span class="old-price">${product.addreduction} F.CFA</span>
+                        `
+                            :
+                            ""
+                        }
+                        <span class="new-price">${product.addprix} F.CFA</span>
+                    </div>
+                    <a style="cursor: pointer !important;" class="add-to-cart" onclick="Pannier('${product._id}')">Ajouter au panier</a>
+                </div>
+                ${product.addreduction > product.addprix ?
+                            `
+                <span class="products-discount">
+                    <span>
+                        -${percentDf.toFixed()}%
+                    </span>
+                    ${product.addnouveaute == "NOUVEAU" ?
+                                `
+                    <i class="nouveau">Nouveautés</i>
+                    `
+                                :
+                                ""
+                            }
+                </span>
+                  `
+                            :
+                            ""
+                        }
+           
+            </div>
+                        `
+                }
+
                     </div>
         `;
 
@@ -218,7 +398,7 @@ function recentProduct(recenPr) {
 };
 
 
-async function showProductQuickView(productId) {
+async function showProductQuickView(a, productId) {
     selct = [];
     selctSize = [];
     //await openDatabase();
@@ -256,34 +436,19 @@ async function showProductQuickView(productId) {
             const qsized = sploa[3] == "null" ? "-" : sploa[3];
             const qsizee = sploa[4] == "null" ? "-" : sploa[4];
 
+            document.getElementById('coloholder').innerText = product.addcoul;
 
-            /*
-        addarticle: addarticle,
-        addquant:,
-        addgenre
-        addtransage
-        addreduction: addreduction,
-        addprix: addprix,
-        addoccasion
-        addfour: addfour,
-        adddispo: adddispo,
-        addnouveaute
-        addcoul: addcoul,
-        addtail: addtail,
-        addmateri: addmateri,
-        addmarque
-        addtype: addtype,
-        addtypepro
-        addphone: addphone,
-        addexpe: addexpe,
-        who: '',
-        notes: notes,
-        image: imas
-    */
+            document.getElementById('addToCartBtn').style.backgroundColor = colora;
+            document.getElementById('addToCartBtn').style.borderColor = colora;
 
+            const quickChosingHtml = document.getElementById('quickColose');
+            quickChosingHtml.innerHTML = '';
 
             document.getElementById('quickViewProductName').innerText = product.addarticle;
-            document.getElementById('quickViewOldPrice').innerText = `${product.addreduction} F.CFA`;
+            document.getElementById('quickViewProductName').style.color = `${colora}`;
+
+            document.getElementById('quickViewOldPrice').innerText = product.addreduction > product.addprix ? `${product.addreduction} F.CFA` : "";
+
             document.getElementById('quickViewNewPrice').innerText = `${product.addprix} F.CFA`;
             document.getElementById('rating').innerText = `5 avis`;
             document.getElementById('quickFour').innerText = `${product.addfour}`;
@@ -310,11 +475,11 @@ async function showProductQuickView(productId) {
             quickCouleuHtml.innerHTML = quickColoHTML;
 
             const quickSizeHTML = `
-                            <li class="active" id="quisizelia"><a onclick="quiSizefun('a', '${qsizea}')" style="cursor: pointer !important">${qsizea}</a></li>
-                            <li id="quisizelib"><a onclick="quiSizefun('b', '${qsizeb}')" style="cursor: pointer !important">${qsizeb}</a></li>
-                            <li id="quisizelic"><a onclick="quiSizefun('c', '${qsizec}')" style="cursor: pointer !important">${qsizec}</a></li>
-                            <li id="quisizelid"><a onclick="quiSizefun('d', '${qsized}')" style="cursor: pointer !important">${qsized}</a></li>
-                            <li id="quisizelie"><a onclick="quiSizefun('e', '${qsizee}')" style="cursor: pointer !important">${qsizee}</a></li>
+                            <li><a id="quisizelia" onclick="quiSizefun('a', '${qsizea}')" style="cursor: pointer !important; border-color: ${colora}; color: ${colora}">${qsizea}</a></li>
+                            <li><a id="quisizelib" onclick="quiSizefun('b', '${qsizeb}')" style="cursor: pointer !important">${qsizeb}</a></li>
+                            <li><a id="quisizelic" onclick="quiSizefun('c', '${qsizec}')" style="cursor: pointer !important">${qsizec}</a></li>
+                            <li><a id="quisizelid" onclick="quiSizefun('d', '${qsized}')" style="cursor: pointer !important">${qsized}</a></li>
+                            <li><a id="quisizelie" onclick="quiSizefun('e', '${qsizee}')" style="cursor: pointer !important">${qsizee}</a></li>
                             `
             quickTailHtml.innerHTML = quickSizeHTML;
             document.getElementById('idp').value = product.who;
@@ -326,9 +491,9 @@ async function showProductQuickView(productId) {
 
 
             const bacgro = document.getElementById('bagron');
-            bacgro.style.backgroundColor = product.backgroundColor;
+            bacgro.style.backgroundColor = `${colora}`;
             const modalImage = document.getElementById('ipage');
-            modalImage.src = product.image[0].ima;
+            modalImage.src = a == "a" ? product.image[0].ima : product.image[1].ima;
 
             const newURL = `products-type-1.html?ov=${product._id}`;  // Replace with the desired new URL
 
@@ -351,9 +516,16 @@ async function showProductQuickView(productId) {
             const qsizec = sploa[2] == "null" ? "-" : sploa[2];
             const qsized = sploa[3] == "null" ? "-" : sploa[3];
             const qsizee = sploa[4] == "null" ? "-" : sploa[4];
+            document.getElementById('coloholder').innerText = product.addcoul;
 
+            document.getElementById('addToCartBtn').style.backgroundColor = colora;
+            document.getElementById('addToCartBtn').style.borderColor = colora;
+
+            const quickChosingHtml = document.getElementById('quickColose');
+            quickChosingHtml.innerHTML = '';
             document.getElementById('quickViewProductName').innerText = product.addarticle;
-            document.getElementById('quickViewOldPrice').innerText = `${product.addprixpro} F.CFA`;
+            document.getElementById('quickViewProductName').style.color = `${colora}`;
+            document.getElementById('quickViewOldPrice').innerText = product.addreduction > product.addprix ? `${product.addreduction} F.CFA` : "";
             document.getElementById('quickViewNewPrice').innerText = `${product.addprix} F.CFA`;
             document.getElementById('rating').innerText = `5 avis`;
             document.getElementById('quickFour').innerText = `${product.addfour}`;
@@ -380,11 +552,11 @@ async function showProductQuickView(productId) {
             quickCouleuHtml.innerHTML = quickColoHTML;
 
             const quickSizeHTML = `
-                            <li class="active" id="quisizelia"><a onclick="quiSizefun('a', '${qsizea}')" style="cursor: pointer !important">${qsizea}</a></li>
-                            <li id="quisizelib"><a onclick="quiSizefun('b', '${qsizeb}')" style="cursor: pointer !important">${qsizeb}</a></li>
-                            <li id="quisizelic"><a onclick="quiSizefun('c', '${qsizec}')" style="cursor: pointer !important">${qsizec}</a></li>
-                            <li id="quisizelid"><a onclick="quiSizefun('d', '${qsized}')" style="cursor: pointer !important">${qsized}</a></li>
-                            <li id="quisizelie"><a onclick="quiSizefun('e', '${qsizee}')" style="cursor: pointer !important">${qsizee}</a></li>
+                            <li><a id="quisizelia" onclick="quiSizefun('a', '${qsizea}')" style="cursor: pointer !important; border-color: ${colora}; color: ${colora}">${qsizea}</a></li>
+                            <li><a id="quisizelib" onclick="quiSizefun('b', '${qsizeb}')" style="cursor: pointer !important">${qsizeb}</a></li>
+                            <li><a id="quisizelic" onclick="quiSizefun('c', '${qsizec}')" style="cursor: pointer !important">${qsizec}</a></li>
+                            <li><a id="quisizelid" onclick="quiSizefun('d', '${qsized}')" style="cursor: pointer !important">${qsized}</a></li>
+                            <li><a id="quisizelie" onclick="quiSizefun('e', '${qsizee}')" style="cursor: pointer !important">${qsizee}</a></li>
                             `
             quickTailHtml.innerHTML = quickSizeHTML;
             document.getElementById('idp').value = product.who;
@@ -396,9 +568,10 @@ async function showProductQuickView(productId) {
 
 
             const bacgro = document.getElementById('bagron');
-            bacgro.style.backgroundColor = product.backgroundColor;
+            bacgro.style.backgroundColor = `${colora}`;
+
             const modalImage = document.getElementById('ipage');
-            modalImage.src = product.image[0].ima;
+            modalImage.src = a == "a" ? product.image[0].ima : product.image[1].ima;
 
             const newURL = `products-type-1.html?ov=${product._id}`;  // Replace with the desired new URL
 
@@ -416,33 +589,119 @@ async function showProductQuickView(productId) {
     };
 };
 
+
 function quiSizefun(id, siz) {
+    const colo = document.getElementById("coloholder").innerText;
+
     if (selct.length == 0 && `quisizeli${id}` !== "quisizelia") {
         const onea = document.getElementById("quisizelia");
         const one = document.getElementById(`quisizeli${id}`);
-        onea.classList.remove('active');
-        one.classList.add('active');
+        onea.style.color = "#858585";
+        onea.style.borderColor = "#eeeeee";
+        switch (id) {
+            case "a":
+                one.style.color = colo.substring(0, 7);
+                one.style.borderColor = colo.substring(0, 7);
+                break;
+            case "b":
+                one.style.color = colo.substring(8, 15);
+                one.style.borderColor = colo.substring(8, 15);
+                break;
+
+            case "c":
+                one.style.color = colo.substring(16, 23);
+                one.style.borderColor = colo.substring(16, 23);
+                break;
+
+            case "d":
+                one.style.color = colo.substring(24, 31);
+                one.style.borderColor = colo.substring(24, 31);
+                break;
+
+            case "e":
+                one.style.color = colo.substring(32, 39);
+                one.style.borderColor = colo.substring(32, 39);
+                break;
+
+            default:
+                break;
+        }
         selct.push({ id: `quisizeli${id}`, size: siz });
     } else {
         let prodque = document.getElementById('productQuantity').value;
         if (parseInt(prodque) + 1 > selct.length + 1) {
             const one = document.getElementById(`quisizeli${id}`);
-            one.classList.add('active');
+            switch (id) {
+                case "a":
+                    one.style.color = colo.substring(0, 7);
+                    one.style.borderColor = colo.substring(0, 7);
+                    break;
+                case "b":
+                    one.style.color = colo.substring(8, 15);
+                    one.style.borderColor = colo.substring(8, 15);
+                    break;
+
+                case "c":
+                    one.style.color = colo.substring(16, 23);
+                    one.style.borderColor = colo.substring(16, 23);
+                    break;
+
+                case "d":
+                    one.style.color = colo.substring(24, 31);
+                    one.style.borderColor = colo.substring(24, 31);
+                    break;
+
+                case "e":
+                    one.style.color = colo.substring(32, 39);
+                    one.style.borderColor = colo.substring(32, 39);
+                    break;
+
+                default:
+                    break;
+            }
+
             selct.push({ id: `quisizeli${id}`, size: siz });
         } else {
             selct.forEach(ee => {
                 const one = document.getElementById(`${ee.id}`);
-                one.classList.remove('active');
+                one.style.color = "#858585";
+                one.style.borderColor = "#eeeeee";
             });
             selct = [];
             const one = document.getElementById(`quisizeli${id}`);
-            one.classList.add('active');
+            switch (id) {
+                case "a":
+                    one.style.color = colo.substring(0, 7);
+                    one.style.borderColor = colo.substring(0, 7);
+                    break;
+                case "b":
+                    one.style.color = colo.substring(8, 15);
+                    one.style.borderColor = colo.substring(8, 15);
+                    break;
+
+                case "c":
+                    one.style.color = colo.substring(16, 23);
+                    one.style.borderColor = colo.substring(16, 23);
+                    break;
+
+                case "d":
+                    one.style.color = colo.substring(24, 31);
+                    one.style.borderColor = colo.substring(24, 31);
+                    break;
+
+                case "e":
+                    one.style.color = colo.substring(32, 39);
+                    one.style.borderColor = colo.substring(32, 39);
+                    break;
+
+                default:
+                    break;
+            }
             selct.push({ id: `quisizeli${id}`, size: siz });
         };
     }
 
 };
-
 
 function quiColorfun(impo, id, im) {
     const bacgro = document.getElementById('bagron');
@@ -450,6 +709,15 @@ function quiColorfun(impo, id, im) {
     const modalImage = document.getElementById('ipage');
     modalImage.src = im;
     let proquant = document.getElementById('productQuantity').value;
+
+
+
+    document.getElementById('quickViewProductName').style.color = id;
+    document.getElementById('addToCartBtn').style.backgroundColor = id;
+    document.getElementById('addToCartBtn').style.borderColor = id;
+
+
+
 
     const quickTailHtml = document.getElementById('quickColose');
     quickTailHtml.innerHTML = '';
