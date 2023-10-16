@@ -272,7 +272,7 @@ function recentProduct(recenPr) {
 
                     ${product.addoccasion == "SOLD" ?
                             `
-                        <div class="sale-tag">Sold</div>
+                        <div class="sale-tag">Solde</div>
                     `
                             :
                             ""
