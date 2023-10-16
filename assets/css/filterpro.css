@@ -1,0 +1,7 @@
+.wishlist-btn a, .compare-btn a, .quick-view-btn a{
+    background-color: #ffffff;
+    border-radius: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 3px;
+  }
