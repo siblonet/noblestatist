@@ -25,15 +25,15 @@
 
 table {
     width: 100%;
-    background-color: rgba(11, 55, 39, 0.333);
+    background-color: #054846;
     box-shadow: 0 .4rem .8rem #0005;
     border-radius: .8rem;
     overflow: hidden;
 }
 
 td img {
-    width: 50px;
-    height: 70px;
+    width: 70px;
+    height: 120px;
     margin-right: .5rem;
     vertical-align: middle;
 }
@@ -56,7 +56,7 @@ thead th {
 }
 
 tbody tr:nth-child(even) {
-    background-color: #0548460b;
+    background-color: rgb(19, 121, 137);
 }
 
 tbody tr {
@@ -70,7 +70,7 @@ tbody tr.hide {
 }
 
 tbody tr:hover {
-    background-color: #fff6 !important;
+    background-color: rgba(19, 121, 137, 0.643) !important;
 }
 
 tbody tr td,
@@ -157,4 +157,8 @@ thead th.asc span.icon-arrow {
 thead th.active,
 tbody td.active {
     color: #6c00bd;
+}
+
+li{
+    list-style-type: none;
 }

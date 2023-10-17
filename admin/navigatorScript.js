@@ -258,8 +258,8 @@ const NafigatioTo = (where) => {
                             <tr>
                                 <th>Image <span class="icon-arrow">&UpArrow;</span></th>
                                 <th>Détails <span class="icon-arrow">&UpArrow;</span></th>
-                                <th>Prix Unité <span class="icon-arrow">&UpArrow;</span></th>
-                                <th>Quantité <span class="icon-arrow">&UpArrow;</span></th>
+                                <th style="text-align: center !important;">Prix Unité <span class="icon-arrow">&UpArrow;</span></th>
+                                <th style="text-align: center !important;">Quantité <span class="icon-arrow">&UpArrow;</span></th>
                                 <th style="text-align: center !important;"> Action <span class="icon-arrow">&UpArrow;</span></th>
                             </tr>
                         </thead>
@@ -281,24 +281,24 @@ const NafigatioTo = (where) => {
             articlesData.forEach(pani => {
                 const panierTBODY =
                     `
-                    <tr onclick="optionEditeView('${pani._id}')">
+                    <tr  style="cursor: pointer" data-toggle="modal" data-target="#modArticle" onclick="optionEditeView('${pani._id}')" >
                         <td class=""> 
                             <img src="${pani.image[0].ima}" alt="">
                         </td>
-                        <td class="">
-                            <a href="#">${pani.addarticle}</a>
+                        <td class="" style="color: #ffffff !important">
+                            <a style="color: #ffffff !important">${pani.addarticle}</a>
                             <ul>
-                                <li>Color: <span>${pani.addcoul.substring(0, 7)}</span></li>
+                                <li>Color: <span style="background-color: ${pani.addcoul.substring(8, 15)} !important; color: #ffffff; padding-left: 5px; padding-right: 5px">${pani.addcoul.substring(8, 15)}</span></li>
                                 <li>Size: <span>${pani.addtail}</span></li>
                                 <li>Material: <span>${pani.addmateri}</span></li>
                                 <li>Type de produit: <span>${pani.addtype}</span></li>
                             </ul>
                         </td>
-                        <td> 
+                        <td style="color: #ffffff !important; text-align: center !important;"> 
                             <strong> ${pani.addprix} F </strong>
                         </td>
                 
-                        <td class="">
+                        <td class="" style="color: #ffffff !important; text-align: center !important;">
                             ${pani.quantity}
                         </td>
                     

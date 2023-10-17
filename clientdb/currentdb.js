@@ -262,7 +262,7 @@ function AddArticle() {
                     const items = await sendRequestforOrderget('GET', 'boutique');
                     await addArticlesa(items);
                     await openOrdersDatabase();
-                    await getAdminDasboard();
+                    NafigatioTo("commandes");
 
                 } catch (error) {
                     console.error('Error creating product:', error.message);

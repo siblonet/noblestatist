@@ -44,7 +44,7 @@ async function productsLeftSidbar() {
                 }
 
 
-                dataFilter.forEach(product => {
+                dataFilter.forEach((product, index) => {
                     const percentDf = ((product.addreduction - product.addprix) / product.addprix) * 100;
 
                     const productHTML = `
@@ -261,7 +261,7 @@ async function productsLeftSidbar() {
                         </div>
 
                 `;
-                    productContainer.innerHTML = productHTML;
+                    productContainer.innerHTML += productHTML;
 
                 });
             } else {

@@ -305,6 +305,7 @@ async function deleteArticleById(_ide) {
     await clearArticlea();
     const items = await sendRequestforOrderget('GET', 'boutique');
     await addArticlesa(items);
+    NafigatioTo("commandes")
 
 }
 
@@ -344,33 +345,6 @@ const sendRequestforOrder = async (method, endpoint, data = null) => {
     return response;
 
 };
-
-const sendRequestforOrderget = async (method, endpoint, data = null) => {
-    const options = {
-        method,
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    };
-
-    if (data) {
-        options.body = JSON.stringify(data);
-    }
-
-    const response = await fetch(apiUrlfine + endpoint, options);
-
-    // Check if the response is valid (status in the range 200-299)
-    if (!response.ok) {
-        throw new Error(`Request failed with status ${response.status}`);
-    }
-
-    // Convert the response to JSON
-    const responseData = await response.json();
-
-    return responseData;
-};
-
-
 
 async function getDasbordById(_id) {
     return new Promise((resolve, reject) => {
