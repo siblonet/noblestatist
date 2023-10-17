@@ -4,7 +4,7 @@ let selctSize = [];
 
 function getUsenam() {
     const tokens = sessionStorage.getItem('tibule');
-    if (tokens.split("°")) {
+    if (tokens && tokens.split("°")) {
         const sploz = tokens.split("°");
         const name = sploz[1];
         const lastname = sploz[2];

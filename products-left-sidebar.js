@@ -2,6 +2,83 @@ const dataFilter = [];
 let selct = [];
 let selctSize = [];
 
+
+function getUsenam() {
+    const tokens = sessionStorage.getItem('tibule');
+    if (tokens && tokens.split("°")) {
+        const sploz = tokens.split("°");
+        const name = sploz[1];
+        const lastname = sploz[2];
+        const admin = sploz[5];
+        const mynam = thisiswhat(`${name}â${lastname}`)
+        const usernam = document.getElementById('usernam');
+        const usernama = document.getElementById('usernama');
+        usernam.innerHTML = '';
+        admin == "GIFV" ? true : false;
+        usernama.innerHTML = `
+        <a><i class="bx bx-log-in"></i>Se Deconecter</a>
+        `;
+        usernama.onclick = navigateAdminCLient;
+        usernama.style.cursor = "pointer"
+
+
+
+        if (admin == "GIFV") {
+            const usernamBody =
+                `
+            <a href="admin/admindasdboard.html"><i class="bx bxs-user"></i> ${mynam}</a>
+
+            `;
+
+            usernam.innerHTML += usernamBody;
+        } else {
+
+            const usernamBody =
+                `
+            <a href="track-order.html"><i class="bx bxs-user"></i> ${mynam}</a>
+
+            `;
+
+            usernam.innerHTML += usernamBody;
+        }
+
+    }
+};
+
+getUsenam();
+
+
+async function navigateAdminCLient() {
+    await openOrdersDatabase();
+    await clearOrder();
+    sessionStorage.clear();
+    localStorage.clear();
+    window.location.reload();
+    getUsenam();
+}
+
+
+function clearOrder() {
+    return new Promise((resolve, reject) => {
+        const transaction = orderdb.transaction(["OrderdStore"], "readwrite");
+        const objectStore = transaction.objectStore("OrderdStore");
+        const clearRequest = objectStore.clear();
+
+        clearRequest.onsuccess = (event) => {
+            resolve("cleared")
+        };
+
+        transaction.onerror = (event) => {
+            console.error("Error accessing object store:", event.target.error);
+            reject("Error accessing object store");
+        };
+
+
+    });
+
+}
+
+
 function getUrlParameter(ov) {
     ov = ov.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
 
@@ -282,9 +359,6 @@ async function productsLeftSidbar() {
             `;
                 productContainer.innerHTML = productHTML;
             }
-
-
-            console.log(data);
         }
     }
 }
