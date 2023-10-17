@@ -1,3 +1,130 @@
+async function getAdminDasboard() {
+    const transaction = orderdb.transaction(["OrderdStore"], "readonly");
+    const objectStore = transaction.objectStore("OrderdStore");
+    const data = [];
+
+    objectStore.openCursor().onsuccess = (event) => {
+        const cursor = event.target.result;
+        if (cursor) {
+            data.push(cursor.value);
+            cursor.continue();
+        } else {
+            const adminitrationId = document.getElementById('adminitration');
+            adminitrationId.innerHTML = '';
+
+            const adminbody = `
+                <div class="container">
+                    <form>
+                        <div class="cart-table table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Client</th>
+                                        <th scope="col">Article</th>
+                                        <th scope="col">Quantité</th>
+                                        <th scope="col">Statut</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbody-dataad">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </form>
+                </div>
+            `;
+
+            adminitrationId.innerHTML += adminbody;
+
+            const tbodyId = document.getElementById('tbody-dataad');
+            tbodyId.innerHTML = '';
+            let odernotnu = 0
+            data.forEach((pan) => {
+                pan.articles.forEach((pani) => {
+                    odernotnu += pani.statut == "review" ? 1 : 0;
+                    const deliveryStatus = pani.statut === "done" ? "livré" : pani.statut == "review" ? "en attente" : pani.statut === "onway" ? "en cours" : "échoué";
+                    const panierTBODY = `
+                        <tr onmouseover="this.style.backgroundColor='#f8f8f8'" onmouseout="this.style.backgroundColor='#fff'">
+
+
+                            <td data-bs-toggle="modal" data-bs-target="#optionCancile" onclick="optionCancileView('${pan._id}', '${pani._id}')" class="product-name" style="cursor: pointer !important; max-width: 40px !important; overflow: hidden !important">
+                                <a>${pan.client.nom} ${pan.client.prenom}</a>
+                                <ul>
+                                    <li>
+                                        <span>${pan.phone}</span>
+                                    </li>
+                                    <li>
+                                        <span>${pan.ville}</span>
+                                    </li>
+                                    <li>
+                                        <span">${pan.lieu}</span>
+                                    </li>
+                                </ul>
+
+                            </td>
+                            
+                            <td   data-bs-toggle="modal" data-bs-target="#optionCancile" onclick="optionCancileView('${pan._id}', '${pani._id}')" class="product-name" style="cursor: pointer !important; max-width: 40px !important; overflow: hidden !important">
+                                <a>${pani.arti_id ? pani.arti_id.addarticle : 'Article Supprimé'}</a>
+                                <ul>
+                                    <li>Color: <span style="background-color: ${pani.color.substring(0, 7)}; color: ${pani.color.substring(0, 7)}">${pani.color.substring(0, 7)}</span></li>
+                                    <li>Size: <span>${pani.size}</span></li>
+                                    <li>Material: <span>${pani.arti_id ? pani.arti_id.addmateri : 'Article Supprimé'}</span></li>
+                                </ul>
+                            </td>
+                            <td   data-bs-toggle="modal" data-bs-target="#optionCancile" onclick="optionCancileView('${pan._id}', '${pani._id}')" class="product-quantity"  style="cursor: pointer !important; max-width: 40px !important; overflow: hidden !important">
+                                <div class="input-counter">
+                                    <input type="text" min="1" value="${pani.quantcho}">
+                                </div>
+                            </td>
+                            
+                            <td class="product-subtotal"  style="max-width: 40px !important; overflow: hidden !important">
+                                <div class="dropdown">
+                                    <a class="dropdown-toggle remove${deliveryStatus === 'livré' ? 'c' : deliveryStatus === 'en attente' ? 'a' : deliveryStatus === 'en cours' ? 'b' : 'd'}" onclick="toggleDropdown(event)">
+                                        ${deliveryStatus}
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><span onclick="selectStatus('${pan._id}', '${pani._id}','done')">Livré</span></li>
+                                        <li><span onclick="selectStatus('${pan._id}', '${pani._id}','review')">En attente</span></li>
+                                        <li><span onclick="selectStatus('${pan._id}', '${pani._id}','onway')">En cours</span></li>
+                                        <li><span onclick="selectStatus('${pan._id}', '${pani._id}','fail')">Échoué</span></li>
+                                    </ul>
+                                </div>
+                            </td>
+
+
+                        </tr>
+                    `;
+
+                    tbodyId.innerHTML += panierTBODY;
+                });
+            });
+            const odernotifi = document.getElementById('odernotifi');
+            odernotifi.innerHTML = '';
+            const odernotifia = document.getElementById('odernotifia');
+            odernotifia.innerHTML = '';
+            if (odernotnu > 0) {
+                const odernotifiHTML = `
+                        <i class="bx bx-notification"></i>
+                        <span>${odernotnu}</span>
+                    `;
+                odernotifi.innerHTML += odernotifiHTML;
+                odernotifia.innerHTML += odernotifiHTML;
+            } else {
+                const odernotifiHTML = `
+                <i class="bx bx-notification"></i>
+            `;
+                odernotifi.innerHTML += odernotifiHTML;
+                odernotifia.innerHTML += odernotifiHTML;
+            }
+        }
+    };
+
+    transaction.onerror = (event) => {
+        console.error("Transaction error:", event.target.error);
+    };
+}
+
+
 async function selectStatus(ido, idar, sta) {
     await sendRequestforOrder('PUT', `orders/statoo/${ido}/${idar}`, { statut: sta });
     AdminAdministrtion("commande", "");
@@ -305,6 +432,7 @@ async function deleteArticleById(_ide) {
     await clearArticlea();
     const items = await sendRequestforOrderget('GET', 'boutique');
     await addArticlesa(items);
+    await getAdminDasboardproduc()
 
 }
 
@@ -441,6 +569,112 @@ function quiColorfunb(impo, id, im) {
 
 
 
+async function getAdminDasboardproduc() {
+    const transaction = articldb.transaction(["ArticleStore"], "readonly");
+    const objectStore = transaction.objectStore("ArticleStore");
+    const data = [];
+
+    objectStore.openCursor().onsuccess = (event) => {
+        const cursor = event.target.result;
+        if (cursor) {
+            data.push(cursor.value);
+            cursor.continue();
+        } else {
+            const adminitrationId = document.getElementById('adminitration');
+            adminitrationId.innerHTML = '';
+            const adminbody = `
+                                    <div class="container">
+                                        <form>
+                                            <div class="cart-table table-responsive">
+                                                <table class="table table-bordered">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">Produit</th>
+                                                            <th scope="col">Nom</th>
+                                                            <th scope="col">Prix unitaire</th>
+                                                            <th scope="col">Quantité</th>
+                                                            <th scope="col">Total</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="tbody-data">
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="cart-buttons">
+                                            <div class="row align-items-center">
+                                                <div class="col-lg-5 col-sm-5 col-md-5">
+                                                    <a></a>
+                                                </div>
+                                                <div class="col-lg-7 col-sm-7 col-md-7  text-end">
+                                                <a   data-bs-toggle="modal" data-bs-target="#addArticle" style="cursor: pointer !important;" class="optional-btn">Ajouter un article</a>
+                                            </div>
+                                            </div>
+                                        </div>
+                                        </form>
+                                    </div>
+                                    `;
+
+            adminitrationId.innerHTML += adminbody;
+
+
+            {
+                const tbodyId = document.getElementById('tbody-data');
+                tbodyId.innerHTML = '';
+
+                data.forEach(pani => {
+                    const panierTBODY =
+                        `
+                            <tr onmouseover="this.style.backgroundColor='#f8f8f8'" onmouseout="this.style.backgroundColor='#fff'" style="cursor: pointer !important;">
+                                <td onclick="optionEditeView('${pani._id}')" class="product-thumbnail" data-bs-toggle="modal" data-bs-target="#modArticle">
+                                    <a href="#">
+                                        <img src="${pani.image[0].ima}" alt="item">
+                                    </a>
+                                </td>
+                                <td onclick="optionEditeView('${pani._id}')" class="product-name" data-bs-toggle="modal" data-bs-target="#modArticle">
+                                    <a href="#">${pani.addarticle}</a>
+                                    <ul>
+                                        <li>Color: <span style="background-color: ${pani.addcoul.substring(0, 7)}; color: ${pani.addcoul.substring(0, 7)}">${pani.addcoul.substring(0, 7)}</span></li>
+                                        <li>Size: <span>${pani.addtail}</span></li>
+                                        <li>Material: <span>${pani.addmateri}</span></li>
+                                        <li>Type de produit: <span>${pani.addtype}</span></li>
+                                    </ul>
+                                </td>
+                                <td onclick="optionEditeView('${pani._id}')" class="product-price" data-bs-toggle="modal" data-bs-target="#modArticle">
+                                    <span class="unit-amount">${pani.addprix} F</span>
+                                </td>
+                                <td class="product-quantity">
+                                    <div class="input-counter" id="quantity-manipulate">
+                                        <div class="input-counter">
+                                            <input type="text" min="1" id="${pani._id}" value="${parseInt(pani.quantity)}">
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="product-subtotal">
+                                    <span onclick="optionEditeView('${pani._id}')" data-bs-toggle="modal" data-bs-target="#modArticle" class="subtotal-amount">${parseInt(pani.addprix) * parseInt(pani.quantity)} F.CFA</span>
+                                    <a class="remove" style="cursor: pointer !important;" onclick="deleteArticleById('${pani._id}')"><i class="bx bx-trash"></i></a>
+                                </td>
+                            </tr>
+                        `;
+
+                    tbodyId.innerHTML += panierTBODY;
+
+                });
+
+            }
+
+
+        }
+    };
+
+    transaction.onerror = (event) => {
+        console.error("Transaction error:", event.target.error);
+    };
+
+    return "data"
+};
+
+
 
 function addOrders(data) {
     return new Promise((resolve, reject) => {
@@ -490,3 +724,51 @@ function clearOrder() {
     });
 
 }
+
+async function AdminAdministrtion(who, data) {
+    if (who === "commande") {
+
+        const items = await sendRequestforOrderget('GET', 'orders');
+        await openOrdersDatabase();
+        await clearOrder();
+        await addOrders(items);
+        await getAdminDasboard();
+    } else if (who === "article") {
+        await openArticleDatabase();
+        await getAdminDasboardproduc()
+    } else {
+        reject(new Error("Invalid operation"));
+    }
+};
+
+function adminDasboard(what) {
+    if (getAdmin()) {
+        AdminAdministrtion(what, "");
+    }
+};
+
+function getAdmin() {
+    const token = sessionStorage.getItem('tibule');
+    const splo = token.split("°");
+    const nam = splo[1];
+    const lastname = splo[2];
+    document.getElementById('adminnom').innerText = thisiswhat(`${nam}â${lastname}`);
+    /*
+    const phone = splo[2];
+    const mail = splo[3];
+    const admin = splo[5];
+    const mynam = thisiswhat(`${name}â${lastname}â${phone}â${mail}â${admin}`)
+    sessionStorage.clear();
+    */
+    return splo[5] == "GIFV" ? true : false
+
+};
+async function Disconexion() {
+    await openOrdersDatabase();
+    await clearOrder();
+    sessionStorage.clear();
+    localStorage.clear();
+    window.location.href = "../login.html"
+}
+
+adminDasboard("commande");
