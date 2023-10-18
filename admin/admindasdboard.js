@@ -303,9 +303,51 @@ async function deleteArticleById(_ide) {
     await sendRequestforOrder('DELETE', `boutique/${_ide}`);
     await openArticleDatabase();
     await clearArticlea();
-    const items = await sendRequestforOrder('GET', 'boutique');
+    const items = await sendRequestforOrderget('GET', 'boutique');
     await addArticlesa(items);
-    NafigatioTo("commandes")
+
+    
+
+
+
+    
+        const tbodyId = document.getElementById('tbody-data');
+        tbodyId.innerHTML = '';
+
+        articlesData.forEach(pani => {
+            const panierTBODY =
+                `
+                <tr  style="cursor: pointer" data-toggle="modal" data-target="#modArticle" onclick="optionEditeView('${pani._id}')" >
+                    <td class=""> 
+                        <img src="${pani.image[0].ima}" alt="">
+                    </td>
+                    <td class="" style="color: #ffffff !important">
+                        <a style="color: #ffffff !important">${pani.addarticle}</a>
+                        <ul>
+                            <li>Color: <span style="background-color: ${pani.addcoul.substring(8, 15)} !important; color: #ffffff; padding-left: 5px; padding-right: 5px">${pani.addcoul.substring(8, 15)}</span></li>
+                            <li>Size: <span>${pani.addtail}</span></li>
+                            <li>Material: <span>${pani.addmateri}</span></li>
+                            <li>Type de produit: <span>${pani.addtype}</span></li>
+                        </ul>
+                    </td>
+                    <td style="color: #ffffff !important; text-align: center !important;"> 
+                        <strong> ${pani.addprix} F </strong>
+                    </td>
+            
+                    <td class="" style="color: #ffffff !important; text-align: center !important;">
+                        ${pani.quantity}
+                    </td>
+                
+                    <td onclick="deleteArticleById('${pani._id}')" class="" style="cursor: pointer">
+                        <p class="status cancelled">Supprimer</p>
+                    </td>
+                </tr>
+                `;
+
+            tbodyId.innerHTML += panierTBODY;
+
+        });
+
 
 }
 
