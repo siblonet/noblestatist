@@ -1,5 +1,5 @@
 const articlesData = [];
-
+let ClientData = [];
 const sendRequestforOrderget = async (method, endpoint, data = null) => {
     const options = {
         method,
@@ -75,7 +75,7 @@ const NafigatioTo = (where) => {
                                 <div class="col-sm-6 pr-sm-2 statistics-grid">
                                     <div class="card card_border border-primary-topc p-4">
                                         <i class="lnr lnr-users" style="color:#000000 !important;"> </i>
-                                        <h3 class="text-success number"  style="color:#000000 !important;">0</h3>
+                                        <h3 class="text-success number"  style="color:#000000 !important;"id="ClientNum">0</h3>
                                         <p class="stat-text">Clients</p>
                                     </div>
                                 </div>
@@ -477,6 +477,10 @@ const NavBaractivity = async () => {
 
 async function getArticles() {
     let available = 0;
+    const ClientNum = await sendRequestforOrderget('GET', 'people/persons');
+    document.getElementById('ClientNum').innerText = ClientNum.length;
+    ClientData = ClientNum;
+
     await openArticleDatabase();
     const transaction = articldb.transaction(["ArticleStore"], "readonly");
     const objectStore = transaction.objectStore("ArticleStore");
