@@ -1,3 +1,5 @@
+let myOrderdata = [];
+
 function Dasboard() {
     if (getAdmin()) {
         OrderLoad()
@@ -53,7 +55,7 @@ const sendRequestforOrder = async (method, endpoint, data = null) => {
 };
 
 
-async function optionCancileView(_id, proid) {
+async function optionCancileView(_id, proid, arti_id) {
     await openOrdersDatabase();
 
     getDasbordById(_id).then(result => {
@@ -83,8 +85,9 @@ async function optionCancileView(_id, proid) {
             document.getElementById('quickDispo').innerText = `${product.arti_id.adddispo}`;
             document.getElementById('quickType').innerText = `${product.arti_id.addtype}`;
             document.getElementById('productQuantity').value = product.quantcho;
+            document.getElementById('arti_id').value = `${arti_id}`;
 
-
+            
             const quickCouleuHtml = document.getElementById('quickCouleu');
             const quickTailHtml = document.getElementById('quickTail');
             quickCouleuHtml.innerHTML = '';
@@ -167,7 +170,18 @@ async function optionCancileView(_id, proid) {
 async function cancelItemById() {
     const ido = document.getElementById('ido').value;
     const proid = document.getElementById('proid').value;
-    await sendRequestforOrder('DELETE', `orders/oarderar/${ido}/${proid}`);
+    const arti_id = document.getElementById('arti_id').value;
+    const quantity = document.getElementById('productQuantity').value;
+    const vin_or = myOrderdata.find(re => re._id === ido);
+    if (vin_or.articles.length > 1) {
+        await sendRequestforOrder('DELETE', `orders/oarderar/${ido}/${proid}/${arti_id}/${quantity}`);
+
+    } else {
+        await sendRequestforOrder('DELETE', `orders/${ido}/${arti_id}/${quantity}`);
+
+    }
+    
+    
     await openOrdersDatabase();
     await clearOrder().then()
         .catch(error => {
@@ -310,6 +324,7 @@ async function OrderLoad() {
         const items = await sendRequestforO('GET', `orders/myorder/${myid}`);
 
         await addOrders(items);
+        myOrderdata = items
 
         getDasboardCustomer().then(data => {
             const tbodyId = document.getElementById('tbody-data');
@@ -320,7 +335,7 @@ async function OrderLoad() {
                     const deliveryStatus = pani.statut === "done" ? "livré" : pani.statut == "review" ? "en attente" : pani.statut === "onway" ? "en cours" : "échoué";
                     const panierTBODY =
                         `
-                            <tr onclick="optionCancileView('${pan._id}', '${pani._id}')" style="cursor: pointer !important;" onmouseover="this.style.backgroundColor='#f8f8f8'" onmouseout="this.style.backgroundColor='#fff'"  data-bs-toggle="modal" data-bs-target="#optionCancile">
+                            <tr onclick="optionCancileView('${pan._id}', '${pani._id}', '${pani.arti_id._id}')" style="cursor: pointer !important;" onmouseover="this.style.backgroundColor='#f8f8f8'" onmouseout="this.style.backgroundColor='#fff'"  data-bs-toggle="modal" data-bs-target="#optionCancile">
                                 <td class="product-thumbnail">
                                     <a>
                                         <img src="${pani.arti_id.image[parseInt(pani.image[0])].ima}" alt="item">

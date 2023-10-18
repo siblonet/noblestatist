@@ -11,7 +11,14 @@ async function cancelItemById() {
     const proid = document.getElementById('proid').value;
     const arti_id = document.getElementById('arti_id').value;
     const quan = document.getElementById('productQuantity').value;
-    await sendRequestforOrder('DELETE', `orders/oarderar/${ido}/${proid}/${arti_id}/${quan}`);
+    const vin_or = Orderdata.find(re => re._id === ido);
+    if (vin_or.articles.length > 1) {
+        await sendRequestforOrder('DELETE', `orders/oarderar/${ido}/${proid}/${arti_id}/${quan}`);
+
+    } else {
+        await sendRequestforOrder('DELETE', `orders/${ido}/${arti_id}/${quan}`);
+
+    }
     window.location.reload()
 };
 

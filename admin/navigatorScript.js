@@ -1,6 +1,7 @@
 const articlesData = [];
 const ClientData = [];
 const AdminData = [];
+const Orderdata = [];
 
 const sendRequestforOrderget = async (method, endpoint, data = null) => {
     const options = {
@@ -285,19 +286,18 @@ const NafigatioTo = async (where) => {
 
         const transaction = orderdb.transaction(["OrderdStore"], "readonly");
         const objectStore = transaction.objectStore("OrderdStore");
-        const data = [];
 
         objectStore.openCursor().onsuccess = (event) => {
             const cursor = event.target.result;
             if (cursor) {
-                data.push(cursor.value);
+                Orderdata.push(cursor.value);
                 cursor.continue();
             } else {
 
                 const tbodyId = document.getElementById('tbody-data');
                 tbodyId.innerHTML = '';
 
-                data.forEach((pan) => {
+                Orderdata.forEach((pan) => {
                     pan.articles.forEach((pani) => {
                         const deliveryStatus = pani.statut === "done" ? "livré" : pani.statut == "review" ? "en attente" : pani.statut === "onway" ? "en cours" : "échoué";
                         const panierTBODY = `
