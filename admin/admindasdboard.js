@@ -303,7 +303,7 @@ async function deleteArticleById(_ide) {
     await sendRequestforOrder('DELETE', `boutique/${_ide}`);
     await openArticleDatabase();
     await clearArticlea();
-    const items = await sendRequestforOrderget('GET', 'boutique');
+    const items = await sendRequestforOrder('GET', 'boutique');
     await addArticlesa(items);
     NafigatioTo("commandes")
 
