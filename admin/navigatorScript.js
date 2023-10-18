@@ -780,7 +780,7 @@ async function changeStatus(sta) {
 async function deleteUser() {
     const clid = document.getElementById('clientid').value;
 
-    const myode = await sendRequestforOrder('GET', `orders/myorder/${clid}`);
+    const myode = await sendRequestforOrderget('GET', `orders/myorder/${clid}`);
 
     if (myode.length < 1) {
         await sendRequestforOrder('DELETE', `people/${clid}`);
