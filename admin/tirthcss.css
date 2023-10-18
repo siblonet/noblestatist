@@ -110,10 +110,14 @@ tbody tr.hide td img {
 
 .status.pending {
     background-color: #ebc474;
+    color: rgb(255, 0, 149);
+
 }
 
 .status.shipped {
     background-color: #6fcaea;
+    color: #00b395;
+
 }
 
 

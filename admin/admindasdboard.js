@@ -1,10 +1,21 @@
-async function selectStatus(ido, idar, sta) {
+async function selectStatus(sta) {
+    const ido = document.getElementById('ido').value;
+    const idar = document.getElementById('proid').value;
+
     await sendRequestforOrder('PUT', `orders/statoo/${ido}/${idar}`, { statut: sta });
-    AdminAdministrtion("commande", "");
+    window.location.reload()
 };
 
+async function cancelItemById() {
+    const ido = document.getElementById('ido').value;
+    const proid = document.getElementById('proid').value;
+    const arti_id = document.getElementById('arti_id').value;
+    const quan = document.getElementById('productQuantity').value;
+    await sendRequestforOrder('DELETE', `orders/oarderar/${ido}/${proid}/${arti_id}/${quan}`);
+    window.location.reload()
+};
 
-async function optionCancileView(_id, proid) {
+async function optionCancileView(_id, proid, arti_id) {
     await openOrdersDatabase();
 
     getDasbordById(_id).then(result => {
@@ -34,29 +45,29 @@ async function optionCancileView(_id, proid) {
             document.getElementById('quickType').innerText = `${product.arti_id.addtype}`;
             document.getElementById('productQuantity').value = product.quantcho;
 
- /*
-        addarticle: addarticle,
-        addquant:,
-        addgenre
-        addtransage
-        addreduction: addreduction,
-        addprix: addprix,
-        addoccasion
-        addfour: addfour,
-        adddispo: adddispo,
-        addnouveaute
-        addcoul: addcoul,
-        addtail: addtail,
-        addmateri: addmateri,
-        addmarque
-        addtype: addtype,
-        addtypepro
-        addphone: addphone,
-        addexpe: addexpe,
-        who: '',
-        notes: notes,
-        image: imas
-    */
+            /*
+                   addarticle: addarticle,
+                   addquant:,
+                   addgenre
+                   addtransage
+                   addreduction: addreduction,
+                   addprix: addprix,
+                   addoccasion
+                   addfour: addfour,
+                   adddispo: adddispo,
+                   addnouveaute
+                   addcoul: addcoul,
+                   addtail: addtail,
+                   addmateri: addmateri,
+                   addmarque
+                   addtype: addtype,
+                   addtypepro
+                   addphone: addphone,
+                   addexpe: addexpe,
+                   who: '',
+                   notes: notes,
+                   image: imas
+               */
             const quickCouleuHtml = document.getElementById('quickCouleu');
             const quickTailHtml = document.getElementById('quickTail');
             quickCouleuHtml.innerHTML = '';
@@ -90,6 +101,7 @@ async function optionCancileView(_id, proid) {
 
             document.getElementById('ido').value = `${_id}`;
             document.getElementById('proid').value = `${proid}`;
+            document.getElementById('arti_id').value = `${arti_id}`;
 
             const element = document.getElementById('hidlater');
             element.classList.remove('hiddendhid');
@@ -136,7 +148,7 @@ function previewImageEdite(event) {
             const reader = new FileReader();
 
             reader.onload = function (e) {
-                imasEdi.push({ _id: _idim[0] ? _idim[0].id : imasEdi[0].id, ima: e.target.result, nam: file.name, status: "update"});
+                imasEdi.push({ _id: _idim[0] ? _idim[0].id : imasEdi[0].id, ima: e.target.result, nam: file.name, status: "update" });
                 _idim.length > 0 ? _idim.splice(0, 1) : null;
                 const img = document.createElement('img');
                 img.src = e.target.result;
@@ -163,7 +175,7 @@ function removeImageEdite(event) {
             _idim.push({ id: imasEdi[imageNumber]._id });
             const createItem = async () => {
                 try {
-                    await sendRequestforOrder('POST', `boutique/deleteim`, {name: imasEdi[imageNumber].ima});
+                    await sendRequestforOrder('POST', `boutique/deleteim`, { name: imasEdi[imageNumber].ima });
                 } catch (error) {
                     console.error('Error updating product:', error.message);
                 }
@@ -306,17 +318,17 @@ async function deleteArticleById(_ide) {
     const items = await sendRequestforOrderget('GET', 'boutique');
     await addArticlesa(items);
 
-    
 
 
 
-    
-        const tbodyId = document.getElementById('tbody-data');
-        tbodyId.innerHTML = '';
 
-        articlesData.forEach(pani => {
-            const panierTBODY =
-                `
+
+    const tbodyId = document.getElementById('tbody-data');
+    tbodyId.innerHTML = '';
+
+    articlesData.forEach(pani => {
+        const panierTBODY =
+            `
                 <tr  style="cursor: pointer" data-toggle="modal" data-target="#modArticle" onclick="optionEditeView('${pani._id}')" >
                     <td class=""> 
                         <img src="${pani.image[0].ima}" alt="">
@@ -344,9 +356,9 @@ async function deleteArticleById(_ide) {
                 </tr>
                 `;
 
-            tbodyId.innerHTML += panierTBODY;
+        tbodyId.innerHTML += panierTBODY;
 
-        });
+    });
 
 
 }

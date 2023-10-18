@@ -79,7 +79,7 @@
 
                             <ul class="nofitications-dropdown">
                                 <li id="addAticlebtn">
-                                   
+
                                 </li>
 
                                 <li class="dropdown">
@@ -321,7 +321,7 @@
                                     <div id="imagePreview4"></div>
                                     <div id="imagePreview5"></div>
                                 </div>
-                                <div class="order-table table-responsive"  id="limitimag">
+                                <div class="order-table table-responsive" id="limitimag">
                                     <input type="file" id="imageInput" accept="image/*" onchange="previewImage(event)">
 
                                 </div>
@@ -500,13 +500,177 @@
                 </form>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-success" data-dismiss="modal" onclick="EditeViewArticle()">Modifer</button>
-                  </div>
+                    <button type="button" class="btn btn-success" data-dismiss="modal"
+                        onclick="EditeViewArticle()">Modifer</button>
+                </div>
             </div>
         </div>
     </div>
 
-    
+
+    <div class="modal fade productsQuickView" id="optionCancile" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="bx bx-x"></i></span>
+                </button>
+
+                <div class="row align-items-center">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="products-image" id="bagron" style="">
+                            <img src="" id="ipage" alt="image de larticle">
+                        </div>
+                    </div>
+
+                    <input type="hidden" id="ido" value="0">
+                    <input type="hidden" id="proid" value="0">
+                    <input type="hidden" id="arti_id" value="">
+
+                    <div class="col-lg-6 col-md-6">
+                        <div class="products-content">
+                            <h3>
+                                <a id="optionCancilename">
+                                </a>
+                            </h3>
+
+                            <div class="price">
+                                <span class="new-price" id="optionViewNewPrice"></span>
+                            </div>
+                            <div class="products-review">
+                                <div class="rating">
+                                    <i class="bx bxs-star"></i>
+                                    <i class="bx bxs-star"></i>
+                                    <i class="bx bxs-star"></i>
+                                    <i class="bx bxs-star"></i>
+                                    <i class="bx bxs-star"></i>
+                                </div>
+                                <a class="rating-count" id="rating"></a>
+                            </div>
+                            <ul class="products-info">
+                                <li><span>Vendeur:</span> <a id="quickFour"></a></li>
+                                <li><span>Disponibilité:</span> <a id="quickDispo"></a></li>
+                                <li><span>Type de produits:</span> <a id="quickType"></a></li>
+                            </ul>
+                            <div class="products-color-switch">
+                                <h4>Couleur:</h4>
+                                <ul id="quickCouleu">
+
+                                </ul>
+                            </div>
+                            <div class="products-color-switch">
+                                <h4>Couleur selectionné par client:</h4>
+                                <ul id="quickColose">
+
+                                </ul>
+                            </div>
+                            <br>
+                            <div class="products-size-wrapper">
+                                <h4>Taille selectionné par client:</h4>
+                                <ul id="quickTail">
+
+                                </ul>
+                            </div>
+                            <div class="products-add-to-cart" id="hidlater">
+                                <p>Quantité Demandé par client:</p>
+
+                                <div class="input-counter">
+                                    <span class="minus-btn">
+                                        <i class="bx bx-minus"></i>
+                                    </span>
+                                    <input type="text" id="productQuantity" value="1">
+                                    <span class="plus-btn">
+                                        <i class="bx bx-plus"></i>
+                                    </span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+
+                <br>
+                <br>
+                <div id="statusOrder">
+
+                </div>
+                <div class="row align-items-center">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="products-image" style="">
+
+                            <div class="billing-details">
+
+                                <div class="col-lg-12 col-md-6">
+                                    <div class="form-group">
+                                        <label>Ville </label>
+                                        <input type="text" class="form-control" id="villeValue">
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-md-6">
+                                    <div class="form-group">
+                                        <label>Commune </label>
+                                        <input type="text" class="form-control" id="communeValue">
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-6 col-md-6">
+                        <div class="products-content">
+
+                            <div class="billing-details">
+
+                                <div class="col-lg-12 col-md-6">
+                                    <div class="form-group">
+                                        <label>Adresse précis</label>
+                                        <input type="text" class="form-control" id="adresseValue">
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-md-6">
+                                    <div class="form-group">
+                                        <label>Téléphone</label>
+                                        <input type="text" class="form-control" id="telephoneValue">
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-info" data-dismiss="modal" onclick="selectStatus('onway')">En cours</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal" onclick="selectStatus('done')">Livré</button>
+                    <button type="button" class="btn btn-dangera" data-dismiss="modal" onclick="selectStatus('fail')">Échoué</button>
+                    <button type="button" class="btn btn-warning" data-dismiss="modal" style="color: #fff;" onclick="selectStatus('review')">En attente</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="cancelItemById()">Annuller</button>
+                    <!--
+                    <div class="dropdown">
+                        <ul class="dropdown-menu">
+                            <li><span onclick="selectStatus('${pan._id}', '${pani._id}','done')">Livré</span></li>
+                            <li><span onclick="selectStatus('${pan._id}', '${pani._id}','review')">En attente</span>
+                            </li>
+                            <li><span onclick="selectStatus('${pan._id}', '${pani._id}','onway')">En cours</span></li>
+                            <li><span onclick="selectStatus('${pan._id}', '${pani._id}','fail')">Échoué</span></li>
+                        </ul>
+                    </div>
+                -->
+                </div>
+            </div>
+
+        </div>
+    </div>
+
     <script src="../router.js"></script>
     <script src="../productsFetcher/database_handl.js"></script>
     <script src="../convertisseur.js"></script>

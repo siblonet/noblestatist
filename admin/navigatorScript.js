@@ -28,7 +28,7 @@ const sendRequestforOrderget = async (method, endpoint, data = null) => {
 
 
 
-const NafigatioTo = (where) => {
+const NafigatioTo = async (where) => {
     const addAticlebtn = document.getElementById('addAticlebtn');
     const adminiSpace = document.getElementById('main-content');
     adminiSpace.innerHTML = '';
@@ -55,14 +55,14 @@ const NafigatioTo = (where) => {
                         <div class="col-xl-6 pr-xl-2">
                             <div class="row">
                                 <div class="col-sm-6 pr-sm-2 statistics-grid">
-                                    <div class="card card_border border-primary-topa p-4">
+                                    <div class="card card_border border-primary-topa p-4" style="cursor: pointer" onclick="NafigatioTo('articles')">
                                         <i class="lnr lnr-cloud-download"> </i>
                                         <h3 class="text-primary number" id="availableArticle">0</h3>
                                         <p class="stat-text">Article Disponible</p>
                                     </div>
                                 </div>
                                 <div class="col-sm-6 pl-sm-2 statistics-grid">
-                                    <div class="card card_border border-primary-topb p-4">
+                                    <div class="card card_border border-primary-topb p-4" style="cursor: pointer" onclick="NafigatioTo('commandes')">
                                         <i class="lnr lnr-cart"> </i>
                                         <h3 class="text-secondary number" id="CommandesNum">0</h3>
                                         <p class="stat-text">Commandes</p>
@@ -73,7 +73,7 @@ const NafigatioTo = (where) => {
                         <div class="col-xl-6 pl-xl-2">
                             <div class="row">
                                 <div class="col-sm-6 pr-sm-2 statistics-grid">
-                                    <div class="card card_border border-primary-topc p-4">
+                                    <div class="card card_border border-primary-topc p-4" style="cursor: pointer" onclick="NafigatioTo('clients')">
                                         <i class="lnr lnr-users" style="color:#000000 !important;"> </i>
                                         <h3 class="text-success number"  style="color:#000000 !important;"id="ClientNum">0</h3>
                                         <p class="stat-text">Clients</p>
@@ -182,9 +182,9 @@ const NafigatioTo = (where) => {
         new Chart(document.getElementById("linechart"), {
             type: 'line',
             data: {
-                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                labels: ['Jan', 'Fev', 'Mars', 'Avr', 'Mai', 'Juin', 'Juillet'],
                 datasets: [{
-                    label: 'Utilisateur',
+                    label: 'Activités',
                     backgroundColor: "#20c997",
                     borderColor: "#28a745",
                     data: [0, 0, 0, 0, 0, 0, 0, 0],
@@ -216,7 +216,7 @@ const NafigatioTo = (where) => {
                         display: true,
                         scaleLabel: {
                             display: true,
-                            labelString: 'Month'
+                            labelString: 'Mois'
                         }
                     }],
                     yAxes: [{
@@ -229,11 +229,112 @@ const NafigatioTo = (where) => {
                 }
             }
         });
+        NavBaractivity();
+        getArticles();
     } else if (where === "commandes") {
-        addAticlebtn.innerHTML = "";
-        const commandesHTML = ``;
+        await openOrdersDatabase();
 
+        addAticlebtn.innerHTML = "";
+        const commandesHTML = `
+                <main class="main">
+                <br>
+                <br>
+                <br>
+                <section class="main__section">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Client <span class="icon-arrow">&UpArrow;</span></th>
+                                <th>Article <span class="icon-arrow">&UpArrow;</span></th>
+                                <th style="text-align: center !important;">Prix Unité <span class="icon-arrow">&UpArrow;</span></th>
+                                <th style="text-align: center !important;">Quantité <span class="icon-arrow">&UpArrow;</span></th>
+                                <th style="text-align: center !important;"> Statut <span class="icon-arrow">&UpArrow;</span></th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody-data">
+                          
+                            
+
+                        </tbody>
+                    </table>
+                </section>
+            </main>
+        `;
         adminiSpace.innerHTML = commandesHTML;
+
+        const transaction = orderdb.transaction(["OrderdStore"], "readonly");
+        const objectStore = transaction.objectStore("OrderdStore");
+        const data = [];
+
+        objectStore.openCursor().onsuccess = (event) => {
+            const cursor = event.target.result;
+            if (cursor) {
+                data.push(cursor.value);
+                cursor.continue();
+            } else {
+
+                const tbodyId = document.getElementById('tbody-data');
+                tbodyId.innerHTML = '';
+
+                data.forEach((pan) => {
+                    pan.articles.forEach((pani) => {
+                        const deliveryStatus = pani.statut === "done" ? "livré" : pani.statut == "review" ? "en attente" : pani.statut === "onway" ? "en cours" : "échoué";
+                        const panierTBODY = `
+                        <tr  style="cursor: pointer" data-toggle="modal" data-target="#optionCancile" onclick="optionCancileView('${pan._id}', '${pani._id}', '${pani.arti_id._id}')">
+
+                            <td style="color: #ffffff !important">
+                                <a>${pan.client.nom} ${pan.client.prenom}</a>
+                                <ul>
+                                    <li>
+                                        <span>${pan.phone}</span>
+                                    </li>
+                                    <li>
+                                        <span>${pan.ville}</span>
+                                    </li>
+                                    <li>
+                                        <span">${pan.lieu}</span>
+                                    </li>
+                                </ul>
+
+                            </td>
+                            
+                            <td style="color: #ffffff !important">
+                                <a>${pani.arti_id ? pani.arti_id.addarticle : 'Article Supprimé'}</a>
+                                <ul>
+                                    <li>Color: <span style="background-color: ${pani.color.substring(0, 7)}; color: ${pani.color.substring(0, 7)}">${pani.color.substring(0, 7)}</span></li>
+                                    <li>Size: <span>${pani.size}</span></li>
+                                    <li>Material: <span>${pani.arti_id ? pani.arti_id.addmateri : 'Article Supprimé'}</span></li>
+                                </ul>
+                            </td>
+                             
+                            <td style="color: #ffffff !important; text-align: center !important;"> 
+                                <strong> ${pani.prix} F </strong>
+                            </td>
+                    
+                            <td style="color: #ffffff !important; text-align: center !important;">
+                                ${pani.quantcho}
+                            </td>
+
+                            <td style="color: #ffffff !important; text-align: center !important;">
+                                <p style="cursor: pointer" class="status ${deliveryStatus === 'livré' ? 'delivered' : deliveryStatus === 'en attente' ? 'pending' : deliveryStatus === 'en cours' ? 'shipped' : 'cancelled'}">
+                                    ${deliveryStatus}
+                                </p>
+                               
+                            </td>
+                        </tr>
+                    `;
+
+                        tbodyId.innerHTML += panierTBODY;
+                    });
+                });
+
+            }
+        };
+
+        transaction.onerror = (event) => {
+            console.error("Transaction error:", event.target.error);
+        };
+
     } else if (where === "clients") {
         addAticlebtn.innerHTML = "";
         const clientsHTML = ``;
