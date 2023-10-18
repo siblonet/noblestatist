@@ -1284,16 +1284,6 @@ Navbar CSS
 }
 
 @media only screen and (max-width: 991px) {
-  .xton-responsive-nav {
-    display: block;
-    background: #ffffff;
-    height: 52px;
-    position: absolute;
-    width: 100%;
-    z-index: 99;
-    top: 155px;
-  }
-
   .xton-responsive-nav .xton-responsive-menu {
     position: relative;
   }

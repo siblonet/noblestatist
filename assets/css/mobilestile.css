@@ -1,4 +1,4 @@
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 991px) {
     .navbar-area {
         height: 50px !important;
         background: linear-gradient(to right,
@@ -7,8 +7,17 @@
                 gold 40%,
                 #000000 80%,
                 #ff0000 90%) !important;
-        height: 50px;
         overflow: hidden;
+    }
+
+    .xton-responsive-nav {
+        display: block;
+        background: #ffffff;
+        height: 52px;
+        position: absolute;
+        width: 100%;
+        z-index: 99;
+        top: 155px;
     }
 
     .products-box .products-image {

@@ -1,0 +1,25 @@
+@media only screen and (max-width: 991px) {
+    .navbar-area {
+        height: 53px !important;
+        background: linear-gradient(to right,
+                #007fbb 0%,
+                #010fc8 20%,
+                gold 40%,
+                #000000 80%,
+                #ff0000 90%) !important;
+        overflow: hidden;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding: 0px;
+        margin: 0px;
+    }
+
+    .xton-responsive-nav {
+        display: block;
+        background: #ffffff;
+        height: 95%;
+        position: relative;
+        width: 100%;
+        z-index: 0;
+    }
+}
