@@ -367,22 +367,26 @@ async function getArticleByIdforpanieOr(idm, quand) {
     const getRequesta = objectStorea.get(idm);
     getRequesta.onsuccess = (event) => {
         const prod = event.target.result;
+        
+        if (prod.quantity >= quand) {
+            let sizo = "";
+            let imago = "";
+            selct.forEach((si, index) => sizo += index + 1 == selct.length ? si.size : si.size + ",");
 
-        let sizo = "";
-        let imago = "";
-        selct.forEach((si, index) => sizo += index + 1 == selct.length ? si.size : si.size + ",");
-
-        let cilor = "";
-        selctSize.forEach((si, index) => {
-            cilor += index + 1 == selctSize.length ? si.col : si.col + ",";
-            imago += index + 1 == selctSize.length ? si.id : si.id + ","
-        });
-        prod.quantcho = quand;
-        prod.prix = prod.addprix;
-        prod.imago = selctSize.length > 0 ? imago : "0";
-        prod.color = selctSize.length > 0 ? cilor : prod.addcoul.substring(0, 7);
-        prod.size = selct.length > 0 ? sizo : prod.addtail[2] == "," ? prod.addtail[0] + prod.addtail[1] : prod.addtail[0];
-        TotalAll("post", prod);
+            let cilor = "";
+            selctSize.forEach((si, index) => {
+                cilor += index + 1 == selctSize.length ? si.col : si.col + ",";
+                imago += index + 1 == selctSize.length ? si.id : si.id + ","
+            });
+            prod.quantcho = quand;
+            prod.prix = prod.addprix;
+            prod.imago = selctSize.length > 0 ? imago : "0";
+            prod.color = selctSize.length > 0 ? cilor : prod.addcoul.substring(0, 7);
+            prod.size = selct.length > 0 ? sizo : prod.addtail[2] == "," ? prod.addtail[0] + prod.addtail[1] : prod.addtail[0];
+            TotalAll("post", prod);
+        } else {
+            alert(`Cet article ne rest que ${prod.quantity}`);
+        }
     };
 
 

@@ -1,4 +1,4 @@
-const recenProd = [];
+let recenProd = [];
 let selct = [];
 let selctSize = [];
 
@@ -77,6 +77,7 @@ function clearOrder() {
 }
 
 function recentProduct(recenPr) {
+    const ProdAvailable = [];
     const productContainer = document.getElementById('product-container');
     productContainer.innerHTML = '';
 
@@ -85,12 +86,17 @@ function recentProduct(recenPr) {
         return userAgent.includes('mobile');
     }
 
+    if (recenPr.length > 0) {
+        recenPr.forEach(prodAvailable => {
+            if (prodAvailable.quantity > 0) {
+                ProdAvailable.push(prodAvailable);
+            }
+         });
+    }
 
-    recenPr.forEach(product => {
-        if (recenPr.length > 0) {
-            recenProd.push(product);
+    if (ProdAvailable.length > 0) {
+        ProdAvailable.forEach(product => {
             const percentDf = ((product.addreduction - product.addprix) / product.addprix) * 100;
-
             const productHTML = `
                     <div class="col-lg-4 col-md-6 col-sm-6">
 
@@ -215,7 +221,7 @@ function recentProduct(recenPr) {
                         </div>
                         `
                     :
-                        `
+                    `
 
                     <div class="products-box">
 
@@ -256,27 +262,27 @@ function recentProduct(recenPr) {
                         </ul>
                     </div>
                     ${product.addnouveaute == "NOUVEAU" && product.addreduction < product.addprix ?
-                            `
+                        `
             <div class="new-tag">Nouveautés</div>
             `
-                            :
-                            ""
-                        } 
+                        :
+                        ""
+                    } 
                     ${product.addoccasion == "PROMO" ?
-                            `
+                        `
                             <div class="new-tage">Promo</div>
                         `
-                            :
-                            ""
-                        }
+                        :
+                        ""
+                    }
 
                     ${product.addoccasion == "SOLD" ?
-                            `
+                        `
                         <div class="sale-tag">Solde</div>
                     `
-                            :
-                            ""
-                        }
+                        :
+                        ""
+                    }
                 </div>
 
 
@@ -292,34 +298,34 @@ function recentProduct(recenPr) {
                     </div>
                     <div class="price">
                     ${product.addreduction > product.addprix ?
-                            `
+                        `
                                 <span class="old-price">${product.addreduction} F.CFA</span>
                         `
-                            :
-                            ""
-                        }
+                        :
+                        ""
+                    }
                         <span class="new-price">${product.addprix} F.CFA</span>
                     </div>
                     <a style="cursor: pointer !important;" class="add-to-cart" onclick="Pannier('${product._id}')">Ajouter au panier</a>
                 </div>
                 ${product.addreduction > product.addprix ?
-                            `
+                        `
                 <span class="products-discount">
                     <span>
                         -${percentDf.toFixed()}%
                     </span>
                     ${product.addnouveaute == "NOUVEAU" ?
-                                `
+                            `
                     <i class="nouveau">Nouveautés</i>
                     `
-                                :
-                                ""
-                            }
-                </span>
-                  `
                             :
                             ""
                         }
+                </span>
+                  `
+                        :
+                        ""
+                    }
            
             </div>
                         `
@@ -330,31 +336,32 @@ function recentProduct(recenPr) {
 
             productContainer.innerHTML += productHTML;
 
-        } else {
-            const tokens = sessionStorage.getItem('tibule');
-            const productHTML = `
-            <div class="container">
-            <div class="section-title">
-            ${tokens && tokens.split("°") && tokens.split("°")[5] == "GIFV" ?
-                    `
-            <a class="sub-title" href="admin/admindasdboard.html"><i class="bx bx-log-in"></i> Ajouter un article</a>
-        
-        `
-                    :
-                    ""
-                }
-                <h2>Le magasin est vide pour l'instant</h2>
-            </div>
-            <div>
-                <img src="assets/img/vide.jpg" alt="image">
 
-            </div>
-        </div>
-            `;
-            productContainer.innerHTML += productHTML;
+        });
+    } else {
+        const tokens = sessionStorage.getItem('tibule');
+        const productHTML = `
+    <div class="container">
+    <div class="section-title">
+    ${tokens && tokens.split("°") && tokens.split("°")[5] == "GIFV" ?
+                `
+    <a class="sub-title" href="admin/admindasdboard.html"><i class="bx bx-log-in"></i> Ajouter un article</a>
 
-        }
-    });
+`
+                :
+                ""
+            }
+        <h2>Le magasin est vide pour l'instant</h2>
+    </div>
+    <div>
+        <img src="assets/img/vide.jpg" alt="image">
+
+    </div>
+</div>
+    `;
+        productContainer.innerHTML += productHTML;
+
+    }
 };
 
 

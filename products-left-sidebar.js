@@ -105,8 +105,7 @@ async function productsLeftSidbar() {
     objectStore.openCursor().onsuccess = (event) => {
         const cursor = event.target.result;
         if (cursor) {
-            //console.log(cursor.value);
-            if (cursor.value.addgenre == genre && cursor.value.addtype == typo && cursor.value.addtypepro == typopro) {
+            if (cursor.value.addgenre == genre && cursor.value.addtype == typo && cursor.value.addtypepro == typopro && cursor.value.quantity > 0) {
                 dataFilter.push(cursor.value);
             }
             cursor.continue();
@@ -120,8 +119,7 @@ async function productsLeftSidbar() {
                     return userAgent.includes('mobile');
                 }
 
-
-                dataFilter.forEach((product, index) => {
+                dataFilter.forEach(product => {
                     const percentDf = ((product.addreduction - product.addprix) / product.addprix) * 100;
 
                     const productHTML = `
@@ -226,23 +224,23 @@ async function productsLeftSidbar() {
                                         <a style="cursor: pointer !important;" class="add-to-cart" onclick="Pannier('${product._id}')">Ajouter au panier</a>
                                     </div>
                                     ${product.addreduction > product.addprix ?
-                                        `
+                                `
                                             <span class="products-discounta">
                                                 <span>
                                                     -${percentDf.toFixed()}%
                                                 </span>
                                             </span>
                                             ${product.addnouveaute == "NOUVEAU" ?
-                                            `
+                                    `
                                                 <i class="nouveau">Nouveautés</i>
                                                 `
-                                            :
-                                            ""
-                                        }
+                                    :
+                                    ""
+                                }
                                               `
-                                        :
-                                        ""
-                                    }
+                                :
+                                ""
+                            }
                                 </div>
                                 `
                             :

@@ -417,7 +417,7 @@ const NavBaractivity = async () => {
                     </div>
                 </a>
             </li>
-            ${ordernotif[1] ?
+            ${ordernotif.length > 1 ?
                     `
                
             <li class="odd">
@@ -425,7 +425,7 @@ const NavBaractivity = async () => {
                     <div class="user_img"><img src="../assets/img/avatay.png" alt=""></div>
                     <div class="notification_desc">
                     <p>${ordernotif[1].client.nom + " " + ordernotif[1].client.prenom}</p>
-                    <span>${ordernotif[0].articles[1].arti_id.addarticle} ${ordernotif[1].articles[0].prix * ordernotif[1].articles[0].quantcho} F</span>
+                    <span>${ordernotif[1].articles[0].arti_id.addarticle} ${ordernotif[1].articles[0].prix * ordernotif[1].articles[0].quantcho} F</span>
                     </div>
                 </a>
             </li>
@@ -433,7 +433,7 @@ const NavBaractivity = async () => {
                     :
                     ""
                 }
-            ${ordernotif[2] ?
+            ${ordernotif.length > 2 ?
                     `
             <li>
                 <a href="#" class="grid">
