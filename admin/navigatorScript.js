@@ -551,8 +551,8 @@ const NafigatioTo = async (where) => {
                             ${pani.quantity}
                         </td>
                     
-                        <td onclick="deleteArticleById('${pani._id}')" class="" style="cursor: pointer">
-                            <p class="status cancelled">Supprimer</p>
+                        <td class="">
+                            <p class="status ${pani.quantity > 0 ? "shipped": "cancelled"}">${pani.quantity > 0 ? "Disponible" : "Finis"}</p>
                         </td>
                     </tr>
                     `;
