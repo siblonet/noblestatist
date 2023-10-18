@@ -34,23 +34,28 @@
             <div class="sidebar-menu-inner">
 
                 <ul class="nav nav-pills nav-stacked custom-nav">
-                    <li class="active">
+                    <li class="" id="ActiveDas">
                         <a style="cursor: pointer" onclick="NafigatioTo('dasboard')">
                             <i class="fa fa-tachometer"></i>
                             <span>Tableau de bord</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="active" id="ActiveCo">
                         <a style="cursor: pointer" onclick="NafigatioTo('commandes')"><i class="lnr lnr-cart"></i>
                             <span>Commamdes</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="active" id="ActiveCl">
                         <a style="cursor: pointer" onclick="NafigatioTo('clients')"><i class="lnr lnr-users"> </i>
                             <span>Clients</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="active" id="ActiveAd">
+                        <a style="cursor: pointer" onclick="NafigatioTo('admin')"><i class="fa fa-cogs"> </i>
+                            <span>Adminitrateurs</span>
+                        </a>
+                    </li>
+                    <li class="active" id="ActiveAr">
                         <a style="cursor: pointer" onclick="NafigatioTo('articles')"><i class="fa fa-th"> </i>
                             <span>Articles</span>
                         </a>
@@ -649,11 +654,16 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-info" data-dismiss="modal" onclick="selectStatus('onway')">En cours</button>
-                    <button type="button" class="btn btn-success" data-dismiss="modal" onclick="selectStatus('done')">Livré</button>
-                    <button type="button" class="btn btn-dangera" data-dismiss="modal" onclick="selectStatus('fail')">Échoué</button>
-                    <button type="button" class="btn btn-warning" data-dismiss="modal" style="color: #fff;" onclick="selectStatus('review')">En attente</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="cancelItemById()">Annuller</button>
+                    <button type="button" class="btn btn-info" data-dismiss="modal" onclick="selectStatus('onway')">En
+                        cours</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal"
+                        onclick="selectStatus('done')">Livré</button>
+                    <button type="button" class="btn btn-dangera" data-dismiss="modal"
+                        onclick="selectStatus('fail')">Échoué</button>
+                    <button type="button" class="btn btn-warning" data-dismiss="modal" style="color: #fff;"
+                        onclick="selectStatus('review')">En attente</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"
+                        onclick="cancelItemById()">Annuller</button>
                     <!--
                     <div class="dropdown">
                         <ul class="dropdown-menu">
@@ -671,6 +681,80 @@
         </div>
     </div>
 
+
+
+    <div class="modal fade productsQuickView" id="optionClient" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="bx bx-x"></i></span>
+                </button>
+                <input type="hidden" id="clientid" value="">
+
+                <div class="row align-items-center">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="products-image">
+
+                            <div class="billing-details">
+
+                                <div class="col-lg-12 col-md-6">
+                                    <div class="form-group">
+                                        <label>Nom </label>
+                                        <input type="text" class="form-control" id="clientNom">
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-md-6">
+                                    <div class="form-group">
+                                        <label>Prénom </label>
+                                        <input type="text" class="form-control" id="clientPrenom">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-6 col-md-6">
+                        <div class="products-content">
+
+                            <div class="billing-details">
+
+                                <div class="col-lg-12 col-md-6">
+                                    <div class="form-group">
+                                        <label>eMail</label>
+                                        <input type="text" class="form-control" id="clientEmail">
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-md-6">
+                                    <div class="form-group">
+                                        <label>Téléphone</label>
+                                        <input type="text" class="form-control" id="clientPhone">
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <button type="button" class="btn" data-dismiss="modal" id="userStatus"></button>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-info" data-dismiss="modal" onclick="changeStatus('false')">Client</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal"
+                        onclick="changeStatus('true')">Admin</button>
+                    <button type="button" class="btn btn-dangera" data-dismiss="modal"
+                        onclick="changeStatus('blocked')">Bloquer</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"
+                        onclick="deleteUser()">Supprimer</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
     <script src="../router.js"></script>
     <script src="../productsFetcher/database_handl.js"></script>
     <script src="../convertisseur.js"></script>

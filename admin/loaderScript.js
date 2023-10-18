@@ -15,8 +15,8 @@ const RenderFirst = () => {
     const adminiBody = document.getElementById('renderFirst');
     if (getAdmin()) {
         NafigatioTo("dasboard");
-        NavBaractivity();
-        getArticles();
+        //NavBaractivity();
+        //getArticles();
         $(window).load(function () {
             $(".se-pre-con").fadeOut("slow");;
         });

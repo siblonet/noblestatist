@@ -1,5 +1,7 @@
 const articlesData = [];
-let ClientData = [];
+const ClientData = [];
+const AdminData = [];
+
 const sendRequestforOrderget = async (method, endpoint, data = null) => {
     const options = {
         method,
@@ -29,11 +31,25 @@ const sendRequestforOrderget = async (method, endpoint, data = null) => {
 
 
 const NafigatioTo = async (where) => {
+    const ActiveDas = document.getElementById('ActiveDas');
+    const ActiveCo = document.getElementById('ActiveCo');
+    const ActiveCl = document.getElementById('ActiveCl');
+    const ActiveAd = document.getElementById('ActiveAd');
+    const ActiveAr = document.getElementById('ActiveAr');
+
+
+
     const addAticlebtn = document.getElementById('addAticlebtn');
     const adminiSpace = document.getElementById('main-content');
     adminiSpace.innerHTML = '';
 
     if (where === "dasboard") {
+        ActiveDas.classList.add('active');
+        ActiveCo.classList.remove('active');
+        ActiveCl.classList.remove('active');
+        ActiveAd.classList.remove('active');
+        ActiveAr.classList.remove('active');
+
         addAticlebtn.innerHTML = "";
         const dasboardHTML = `
         
@@ -232,6 +248,11 @@ const NafigatioTo = async (where) => {
         NavBaractivity();
         getArticles();
     } else if (where === "commandes") {
+        ActiveDas.classList.remove('active');
+        ActiveCo.classList.add('active');
+        ActiveCl.classList.remove('active');
+        ActiveAd.classList.remove('active');
+        ActiveAr.classList.remove('active');
         await openOrdersDatabase();
 
         addAticlebtn.innerHTML = "";
@@ -336,11 +357,138 @@ const NafigatioTo = async (where) => {
         };
 
     } else if (where === "clients") {
+        ActiveDas.classList.remove('active');
+        ActiveCo.classList.remove('active');
+        ActiveCl.classList.add('active');
+        ActiveAd.classList.remove('active');
+        ActiveAr.classList.remove('active');
+
         addAticlebtn.innerHTML = "";
-        const clientsHTML = ``;
+        const clientsHTML = `
+        
+        <main class="table">
+            <br>
+            <br>
+            <br>
+            <section class="table__body">
+            <table>
+                <thead>
+                <tr>
+                    <th>Nom et Prénom<span class="icon-arrow">&UpArrow;</span></th>
+                    <th style="text-align: center !important;">eMail<span class="icon-arrow">&UpArrow;</span></th>
+                    <th style="text-align: center !important;">Contacts<span class="icon-arrow">&phone;</span></th>
+                    <th style="text-align: center !important;">Statut<span class="icon-arrow">&UpArrow;</span></th>
+                </tr>
+                </thead>
+                <tbody id="tbody-client">
+                
+                </tbody>
+            </table>
+
+            </section>
+        </main>
+        `;
 
         adminiSpace.innerHTML = clientsHTML
+
+        {
+            const tbodyId = document.getElementById('tbody-client');
+            tbodyId.innerHTML = '';
+
+            ClientData.forEach(client => {
+                const clientTBODY =
+                    `
+                    <tr  style="cursor: pointer" data-toggle="modal" data-target="#optionClient" onclick="optionClientView('${client._id}', 'client')" >
+                        <td class="" style="color: #ffffff !important;"> 
+                        ${client.nom} ${client.prenom}
+                        </td>
+                        <td class="" style="color: #ffffff !important; text-align: center !important">
+                        ${client.email}
+                        </td>
+                        <td class="" style="color: #ffffff !important; text-align: center !important;">
+                        <strong>${client.phone}</strong>
+                        </td>
+                        <td class="" style="text-align: center !important;">
+                            <p class="status ${client.admin === 'false' ? 'shipped' : 'cancelled'}">${client.admin === 'false' ? 'Actif' : 'Bloqué'}</p>
+                        </td>
+                    </tr>
+                    `;
+
+                tbodyId.innerHTML += clientTBODY;
+
+            });
+
+        }
+    } else if (where === "admin") {
+        ActiveDas.classList.remove('active');
+        ActiveCo.classList.remove('active');
+        ActiveCl.classList.remove('active');
+        ActiveAd.classList.add('active');
+        ActiveAr.classList.remove('active');
+
+        addAticlebtn.innerHTML = "";
+        const adminHTML = `
+        
+                <main class="table">
+                <br>
+                <br>
+                <br>
+                <section class="table__body">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Nom et Prénom<span class="icon-arrow">&UpArrow;</span></th>
+                        <th style="text-align: center !important;">eMail<span class="icon-arrow">&UpArrow;</span></th>
+                        <th style="text-align: center !important;">Contacts<span class="icon-arrow">&phone;</span></th>
+                        <th style="text-align: center !important;">Statut<span class="icon-arrow">&UpArrow;</span></th>
+                    </tr>
+                    </thead>
+                    <tbody id="tbody-admin">
+                    
+                    </tbody>
+                </table>
+
+                </section>
+            </main>
+        `;
+
+        adminiSpace.innerHTML = adminHTML
+
+        {
+            const tbodyId = document.getElementById('tbody-admin');
+            tbodyId.innerHTML = '';
+
+            AdminData.forEach(admin => {
+                const adminTBODY =
+                    `
+                    <tr  style="cursor: pointer" data-toggle="modal" data-target="#optionClient" onclick="optionClientView('${admin._id}', 'admin')" >
+                        <td class="" style="color: #ffffff !important;"> 
+                        ${admin.nom} ${admin.prenom}
+                        </td>
+                        <td class="" style="color: #ffffff !important; text-align: center !important">
+                        ${admin.email}
+                        </td>
+                        <td class="" style="color: #ffffff !important; text-align: center !important;">
+                        <strong>${admin.phone}</strong>
+                        </td>
+                        <td class="" style="text-align: center !important;">
+                            <p class="status shipped">Actif</p>
+                        </td>
+                    </tr>
+                    `;
+
+                tbodyId.innerHTML += adminTBODY;
+
+            });
+
+        }
     } else if (where === "articles") {
+        ActiveDas.classList.remove('active');
+        ActiveCo.classList.remove('active');
+        ActiveCl.classList.remove('active');
+        ActiveAd.classList.remove('active');
+        ActiveAr.classList.add('active');
+
         addAticlebtn.innerHTML = `
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addArticle">
                     Ajouter
@@ -577,10 +725,19 @@ const NavBaractivity = async () => {
 
 
 async function getArticles() {
+    ClientData.length = 0;
+    AdminData.length = 0;
     let available = 0;
-    const ClientNum = await sendRequestforOrderget('GET', 'people/persons');
-    document.getElementById('ClientNum').innerText = ClientNum.length;
-    ClientData = ClientNum;
+    const User = await sendRequestforOrderget('GET', 'people/persons');
+    User.forEach(user => {
+        if (user.admin == "true") {
+            AdminData.push(user);
+        } else {
+            ClientData.push(user);
+        }
+    })
+
+    document.getElementById('ClientNum').innerText = ClientData.length;
 
     await openArticleDatabase();
     const transaction = articldb.transaction(["ArticleStore"], "readonly");
@@ -610,4 +767,43 @@ async function Disconexion() {
     sessionStorage.clear();
     localStorage.clear();
     window.location.href = "../login.html"
-}
+};
+
+
+
+async function changeStatus(sta) {
+    const clid = document.getElementById('clientid').value;
+    await sendRequestforOrder('PUT', `people/status/${clid}`, { admin: sta });
+    window.location.reload()
+};
+
+async function deleteUser() {
+    const clid = document.getElementById('clientid').value;
+
+    const myode = await sendRequestforOrder('GET', `orders/myorder/${clid}`);
+
+    if (myode.length < 1) {
+        await sendRequestforOrder('DELETE', `people/${clid}`);
+        window.location.reload()
+    } else {
+        alert("Supprimez dabord ses commandes")
+    }
+
+};
+
+function optionClientView(clid, whos) {
+    let client = {};
+    if (whos === "client") {
+        client = ClientData.find(cli => cli._id == clid);
+
+    } else {
+        client = AdminData.find(cli => cli._id == clid);
+    }
+    document.getElementById('clientid').value = clid;
+    document.getElementById('clientNom').value = client.nom;
+    document.getElementById('clientPrenom').value = client.prenom;
+    document.getElementById('clientEmail').value = client.email;
+    document.getElementById('clientPhone').value = client.phone;
+    document.getElementById('userStatus').classList.add(`${client.admin === 'false' ? 'btn-info' : client.admin === 'true' ? 'btn-success' : 'btn-dangera'}`);
+    document.getElementById('userStatus').innerText = `${client.admin === 'false' ? 'Clien' : client.admin === 'true' ? 'Adminitrateur' : 'Bloquer'}`;
+};

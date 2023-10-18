@@ -1,4 +1,4 @@
-function Dasboard(what) {
+function Dasboard() {
     if (getAdmin()) {
         OrderLoad()
             .then()
@@ -14,19 +14,24 @@ function getAdmin() {
     const ids = splo[0];
     const nam = splo[1];
     const lastname = splo[2];
+    const adm = splo[5];
+
+    const wha = thisiswhat(`${adm}`);
     myid = thisiswhat(`${ids}`);
+    const what = document.getElementById('blokeduser');
+    what.innerHTML = "";
     document.getElementById('monnom').innerText = thisiswhat(`${nam}â${lastname}`);
-    /*const name = splo[0];
-    const lastname = splo[1];
-    const phone = splo[2];
-    const mail = splo[3];*/
-    //const admin = splo[5];
-    //const mynam = thisiswhat(`${name}â${lastname}â${phone}â${mail}â${admin}`)
-    //sessionStorage.clear();
+    if (wha == "blocked") {
+        what.innerHTML = `
+        <a style="color: red; font-weight: bold">Access Restrein</a>
+        `;
+    } else {
+        what.innerHTML = "";
+    }
     return token && splo[5] == "UZOHV" ? true : false
 }
 
-Dasboard("commande");
+Dasboard();
 
 
 const sendRequestforOrder = async (method, endpoint, data = null) => {
@@ -376,24 +381,24 @@ async function OrderLoad() {
                             `;
             pantotalid.innerHTML += pantotalhtml;
 
-/*
-
-
-            const pannierNumber2 = document.getElementById('paniernumber2');
-            pannierNumber2.innerHTML = '';
-            const panniernumHTML2 = `
-                                <i class="bx bx-shopping-bag"></i>
-                                <span>${data.length}</span>
-                            `;
-            pannierNumber2.innerHTML += panniernumHTML2;
-
-            const pannierNumber3 = document.getElementById('paniernumber3');
-            pannierNumber3.innerHTML = '';
-            const panniernumHTML3 = `
-                                <i class="bx bx-shopping-bag"></i>
-                                <span>${data.length}</span>
-                            `;
-            pannierNumber3.innerHTML += panniernumHTML3;*/
+            /*
+            
+            
+                        const pannierNumber2 = document.getElementById('paniernumber2');
+                        pannierNumber2.innerHTML = '';
+                        const panniernumHTML2 = `
+                                            <i class="bx bx-shopping-bag"></i>
+                                            <span>${data.length}</span>
+                                        `;
+                        pannierNumber2.innerHTML += panniernumHTML2;
+            
+                        const pannierNumber3 = document.getElementById('paniernumber3');
+                        pannierNumber3.innerHTML = '';
+                        const panniernumHTML3 = `
+                                            <i class="bx bx-shopping-bag"></i>
+                                            <span>${data.length}</span>
+                                        `;
+                        pannierNumber3.innerHTML += panniernumHTML3;*/
         }).catch(error => {
             console.error("Error getting data:", error);
         });
