@@ -352,6 +352,10 @@
     .home-slides.owl-theme .owl-dots .owl-dot.active span {
         border-color: var(--companycoe);
     }
+
+    #emptyadd{
+        display: none !important;
+      }
 }
 
 @media only screen and (min-width: 992px) {
