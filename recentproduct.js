@@ -79,8 +79,10 @@ function clearOrder() {
 function recentProduct(recenPr) {
     const ProdAvailable = [];
     const productContainer = document.getElementById('product-container');
+    const toclear = document.getElementById('toclear');
+    toclear.innerHTML = '';
     productContainer.innerHTML = '';
-
+    
     function isMobileDevice() {
         const userAgent = navigator.userAgent.toLowerCase();
         return userAgent.includes('mobile');

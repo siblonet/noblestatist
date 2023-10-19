@@ -55,6 +55,36 @@ Default CSS
 @import url("https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&amp;display=swap");
 @import url("https://fonts.googleapis.com/css?family=Cabin:400,400i,500,500i,600,600i,700,700i&amp;display=swap");
 
+:root {
+  --companycoa: #0c6248;
+  --companycob: #d1be03;
+  --companycoc: #dc3545;
+  --companycod: #037703;
+  --companycoe: #006e65;
+  --warning: #ffc107;
+  --danger: #dc3545;
+  --black: #000000;
+  --greena: #82b440;
+  --blue007bb5: #007bb5;
+  --bluea: #010fc8;
+  --wt: white;
+  --rd: red;
+  --gr: green;
+  --bl: blue;
+  --pk: pink;
+  --org: orange;
+  --yw: yellow;
+  --gd: gold;
+  --rpik: #b51867;
+  --yfaa: #f49f0b;
+  --: #;
+  --: #;
+
+
+}
+
+
+
 body {
   padding: 0;
   margin: 0;
@@ -83,12 +113,12 @@ img {
 a {
   -webkit-transition: 0.5s;
   transition: 0.5s;
-  color: #000000;
+  color: var(--black);
   text-decoration: none;
 }
 
 a:hover {
-  color: #d1be03;
+  color: var(--companycob);
   text-decoration: none;
 }
 
@@ -115,7 +145,7 @@ h3,
 h4,
 h5,
 h6 {
-  color: #000000;
+  color: var(--black);
   font-family: "Cabin";
 }
 
@@ -152,40 +182,40 @@ h6 {
 /*default-btn&optional-btn*/
 .default-btn {
   display: inline-block;
-  border: 1px solid #d1be03;
+  border: 1px solid var(--companycob);
   padding: 10px 30px;
   -webkit-transition: 0.5s;
   transition: 0.5s;
   text-transform: uppercase;
-  background-color: #d1be03;
-  color: #ffffff;
+  background-color: var(--companycob);
+  color: var(--wt);
   font-size: 14px;
   font-weight: 600;
 }
 
 .default-btn:hover {
   background-color: transparent;
-  color: #000000;
-  border-color: #000000;
+  color: var(--black);
+  border-color: var(--black);
 }
 
 .optional-btn {
   display: inline-block;
-  border: 1px solid #000000;
+  border: 1px solid var(--black);
   padding: 10px 30px;
   -webkit-transition: 0.5s;
   transition: 0.5s;
   text-transform: uppercase;
   background-color: transparent;
-  color: #000000;
+  color: var(--black);
   font-size: 14px;
   font-weight: 600;
 }
 
 .optional-btn:hover {
-  background-color: #d1be03;
-  color: #ffffff;
-  border-color: #d1be03;
+  background-color: var(--companycob);
+  color: var(--wt);
+  border-color: var(--companycob);
 }
 
 /*section-title*/
@@ -200,7 +230,7 @@ h6 {
 .section-title span {
   display: block;
   margin-bottom: 8px;
-  color: #d1be03;
+  color: var(--companycob);
   font-weight: 600;
 }
 
@@ -233,15 +263,15 @@ h6 {
   box-shadow: unset !important;
   padding: 0 0 0 15px;
   border: 1px solid #f5f5f5;
-  color: #000000;
+  color: var(--black);
   font-size: 15px;
   -webkit-transition: 0.5s;
   transition: 0.5s;
 }
 
 .form-control:focus {
-  border-color: #d1be03;
-  background-color: #ffffff;
+  border-color: var(--companycob);
+  background-color: var(--wt);
 }
 
 .form-control:focus::-webkit-input-placeholder {
@@ -294,11 +324,11 @@ textarea.form-control {
   transform: translateY(-50%);
   border-radius: 30px;
   display: inline-block;
-  color: #ffffff;
-  background-color: #82b440;
+  color: var(--wt);
+  background-color: var(--greena);
   padding: 10px 20px 10px 42px;
-  -webkit-box-shadow: 0 1px 20px 1px #82b440;
-  box-shadow: 0 1px 20px 1px #82b440;
+  -webkit-box-shadow: 0 1px 20px 1px var(--greena);
+  box-shadow: 0 1px 20px 1px var(--greena);
   font-size: 13px;
   font-weight: 600;
 }
@@ -313,15 +343,15 @@ textarea.form-control {
 }
 
 .buy-now-btn:hover {
-  background-color: #d1be03;
-  color: #ffffff;
+  background-color: var(--companycob);
+  color: var(--wt);
 }
 
 /*================================================
 Top Header CSS
 =================================================*/
 .top-header {
-  background-color: #000000;
+  background-color: var(--black);
   padding-top: 12px;
   padding-bottom: 12px;
 }
@@ -339,7 +369,7 @@ Top Header CSS
 
 .header-contact-info li {
   display: inline-block;
-  color: #ffffff;
+  color: var(--wt);
   margin-right: 25px;
   position: relative;
   font-weight: 600;
@@ -353,22 +383,22 @@ Top Header CSS
   width: 1px;
   content: '';
   height: 12px;
-  background-color: #010fc8;
+  background-color: var(--companycod);
 }
 
 .header-contact-info li a {
   display: inline-block;
-  color: #ffffff;
+  color: var(--wt);
   position: relative;
 }
 
 .header-contact-info li a:hover {
-  color: #d1be03;
+  color: var(--companycod);
 }
 
 .nouveau {
-  background: #007bb5;
-  color: #ffffff;
+  background: var(--blue007bb5);
+  color: var(--wt);
   padding: 0px 8px 0px 8px;
 }
 
@@ -380,7 +410,7 @@ Top Header CSS
   left: 0;
   width: 0;
   height: 1px;
-  background: #d1be03;
+  background: var(--companycoe);
   -webkit-transition: 0.5s;
   transition: 0.5s;
 }
@@ -417,7 +447,7 @@ Top Header CSS
 .header-contact-info li .language-switcher .dropdown-toggle img {
   width: 35px;
   border-radius: 3px;
-  border: 2px solid #ffffff;
+  border: 2px solid var(--wt);
   position: relative;
   top: -2px;
 }
@@ -453,7 +483,7 @@ Top Header CSS
 
 .header-contact-info li .language-switcher .dropdown-menu .dropdown-item {
   padding: 0;
-  color: #000000;
+  color: var(--black);
   margin-bottom: 10px;
   font-weight: 600;
 }
@@ -469,7 +499,7 @@ Top Header CSS
 .header-contact-info li .language-switcher .dropdown-menu .dropdown-item img {
   width: 40px;
   border-radius: 5px;
-  border: 3px solid #ffffff;
+  border: 3px solid var(--wt);
 }
 
 .header-contact-info li .language-switcher .dropdown-menu .dropdown-item span {
@@ -484,7 +514,7 @@ Top Header CSS
 
 .header-contact-info li .language-switcher .dropdown-menu .dropdown-item:active,
 .header-contact-info li .language-switcher .dropdown-menu .dropdown-item.active {
-  color: #000000;
+  color: var(--black);
   background-color: transparent;
 }
 
@@ -503,14 +533,14 @@ Top Header CSS
   margin-bottom: 0;
   line-height: initial;
   font-size: 14.5px;
-  color: #ffffff;
+  color: var(--wt);
 }
 
 .top-header-discount-info p a {
   display: inline-block;
   font-weight: 700;
   position: relative;
-  color: #ffffff;
+  color: var(--wt);
 }
 
 
@@ -523,13 +553,13 @@ Top Header CSS
   left: 0;
   width: 0;
   height: 1px;
-  background: #d1be03;
+  background: var(--companycob);
   -webkit-transition: 0.5s;
   transition: 0.5s;
 }
 
 .top-header-discount-info p a:hover {
-  color: #d1be03;
+  color: var(--companycob);
 }
 
 .top-header-discount-info p a:hover::before {
@@ -559,7 +589,7 @@ Top Header CSS
   width: 1px;
   content: '';
   height: 12px;
-  background-color: #636161;
+  background-color: var(--companycoc);
 }
 
 .header-top-menu li i {
@@ -577,7 +607,7 @@ Top Header CSS
 }
 
 .header-top-menu li a:hover {
-  color: #d1be03;
+  color: var(--companycoc);
 }
 
 .header-top-menu li a::before {
@@ -587,7 +617,7 @@ Top Header CSS
   left: 0;
   width: 0;
   height: 1px;
-  background: #d1be03;
+  background: var(--companycob);
   -webkit-transition: 0.5s;
   transition: 0.5s;
 }
@@ -658,8 +688,8 @@ Top Header CSS
   text-align: center;
   line-height: 13.9px;
   border-radius: 50%;
-  color: #ffffff;
-  background-color: #b51867;
+  color: var(--wt);
+  background-color: var(--rpik);
   font-size: 10px;
   font-weight: 600;
 }
@@ -677,8 +707,8 @@ Navbar CSS
       #006e65 0%,
       #037703 20%,
       gold 40%,
-      #000000 80%,
-      #ff0000 90%) !important;
+      var(--black) 80%,
+      var(--rd) 90%) !important;
 
 }
 
@@ -725,7 +755,7 @@ Navbar CSS
 }
 
 .xton-nav {
-  background-color: #ffffff;
+  background-color: var(--wt);
 }
 
 .xton-nav .container-fluid {
@@ -764,7 +794,7 @@ Navbar CSS
 }
 
 .xton-nav .navbar .navbar-nav .nav-item a {
-  color: #000000;
+  color: var(--black);
   font-size: 16.5px;
   font-weight: 600;
   padding-left: 0;
@@ -787,7 +817,7 @@ Navbar CSS
 .xton-nav .navbar .navbar-nav .nav-item a:hover,
 .xton-nav .navbar .navbar-nav .nav-item a:focus,
 .xton-nav .navbar .navbar-nav .nav-item a.active {
-  color: #d1be03;
+  color: var(--companycob);
 }
 
 .xton-nav .navbar .navbar-nav .nav-item:last-child a {
@@ -800,13 +830,13 @@ Navbar CSS
 
 .xton-nav .navbar .navbar-nav .nav-item:hover a,
 .xton-nav .navbar .navbar-nav .nav-item.active a {
-  color: #d1be03;
+  color: var(--companycob);
 }
 
 .xton-nav .navbar .navbar-nav .nav-item .dropdown-menu {
   -webkit-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
   box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
-  background: #ffffff;
+  background: var(--wt);
   position: absolute;
   border: none;
   top: 70px;
@@ -849,7 +879,7 @@ Navbar CSS
 .xton-nav .navbar .navbar-nav .nav-item .dropdown-menu li a:hover,
 .xton-nav .navbar .navbar-nav .nav-item .dropdown-menu li a:focus,
 .xton-nav .navbar .navbar-nav .nav-item .dropdown-menu li a.active {
-  color: #d1be03;
+  color: var(--companycob);
 }
 
 .xton-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu {
@@ -868,7 +898,7 @@ Navbar CSS
 .xton-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li a:hover,
 .xton-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li a:focus,
 .xton-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li a.active {
-  color: #d1be03;
+  color: var(--companycob);
 }
 
 .xton-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu {
@@ -887,7 +917,7 @@ Navbar CSS
 .xton-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li a:hover,
 .xton-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li a:focus,
 .xton-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li a.active {
-  color: #d1be03;
+  color: var(--companycob);
 }
 
 .xton-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu {
@@ -906,7 +936,7 @@ Navbar CSS
 .xton-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li a:hover,
 .xton-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li a:focus,
 .xton-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li a.active {
-  color: #d1be03;
+  color: var(--companycob);
 }
 
 .xton-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu {
@@ -925,7 +955,7 @@ Navbar CSS
 .xton-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li a:hover,
 .xton-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li a:focus,
 .xton-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li a.active {
-  color: #d1be03;
+  color: var(--companycob);
 }
 
 .xton-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu {
@@ -944,7 +974,7 @@ Navbar CSS
 .xton-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li a:hover,
 .xton-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li a:focus,
 .xton-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li a.active {
-  color: #d1be03;
+  color: var(--companycob);
 }
 
 .xton-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu {
@@ -963,11 +993,11 @@ Navbar CSS
 .xton-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li a:hover,
 .xton-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li a:focus,
 .xton-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li a.active {
-  color: #d1be03;
+  color: var(--companycob);
 }
 
 .xton-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li.active a {
-  color: #d1be03;
+  color: var(--companycob);
 }
 
 .xton-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li:hover .dropdown-menu {
@@ -978,7 +1008,7 @@ Navbar CSS
 }
 
 .xton-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li.active a {
-  color: #d1be03;
+  color: var(--companycob);
 }
 
 .xton-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li:hover .dropdown-menu {
@@ -989,7 +1019,7 @@ Navbar CSS
 }
 
 .xton-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li.active a {
-  color: #d1be03;
+  color: var(--companycob);
 }
 
 .xton-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li:hover .dropdown-menu {
@@ -1000,7 +1030,7 @@ Navbar CSS
 }
 
 .xton-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li.active a {
-  color: #d1be03;
+  color: var(--companycob);
 }
 
 .xton-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li:hover .dropdown-menu {
@@ -1011,7 +1041,7 @@ Navbar CSS
 }
 
 .xton-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li.active a {
-  color: #d1be03;
+  color: var(--companycob);
 }
 
 .xton-nav .navbar .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li:hover .dropdown-menu {
@@ -1022,7 +1052,7 @@ Navbar CSS
 }
 
 .xton-nav .navbar .navbar-nav .nav-item .dropdown-menu li.active a {
-  color: #d1be03;
+  color: var(--companycob);
 }
 
 .xton-nav .navbar .navbar-nav .nav-item .dropdown-menu li:hover .dropdown-menu {
@@ -1067,7 +1097,7 @@ Navbar CSS
 }
 
 .xton-nav .navbar .navbar-nav .nav-item.megamenu .dropdown-menu .submenu-title {
-  color: #000000;
+  color: var(--black);
   position: relative;
   border-bottom: 1px solid #eeeeee;
   padding-bottom: 8px;
@@ -1085,7 +1115,7 @@ Navbar CSS
   position: absolute;
   left: 0;
   bottom: -1px;
-  background-color: #d1be03;
+  background-color: var(--companycob);
 }
 
 .xton-nav .navbar .navbar-nav .nav-item.megamenu .dropdown-menu .submenu-title:first-child {
@@ -1105,7 +1135,7 @@ Navbar CSS
 
 .xton-nav .navbar .navbar-nav .nav-item.megamenu .dropdown-menu .megamenu-submenu li a:hover,
 .xton-nav .navbar .navbar-nav .nav-item.megamenu .dropdown-menu .megamenu-submenu li a.active {
-  color: #d1be03;
+  color: var(--companycob);
 }
 
 .xton-nav .navbar .navbar-nav .nav-item.megamenu .dropdown-menu .megamenu-submenu .aside-trending-products {
@@ -1126,7 +1156,7 @@ Navbar CSS
   transition: 0.5s;
   right: 0;
   bottom: 0;
-  background-color: #ffffff;
+  background-color: var(--wt);
   padding: 15px;
   margin-left: 10px;
   margin-right: 10px;
@@ -1190,7 +1220,7 @@ Navbar CSS
 .xton-nav .navbar .others-option .option-item .search-btn-box .search-btn {
   font-size: 25px;
   cursor: pointer;
-  color: #000000;
+  color: var(--black);
   -webkit-transition: 0.5s;
   transition: 0.5s;
 }
@@ -1204,7 +1234,7 @@ Navbar CSS
 .xton-nav .navbar .others-option .option-item .cart-btn a {
   display: inline-block;
   position: relative;
-  color: #000000;
+  color: var(--black);
 }
 
 .xton-nav .navbar .others-option .option-item .cart-btn a span {
@@ -1216,8 +1246,8 @@ Navbar CSS
   text-align: center;
   line-height: 13.9px;
   border-radius: 50%;
-  color: #ffffff;
-  background-color: #b51867;
+  color: var(--wt);
+  background-color: var(--rpik);
   font-size: 10px;
   font-weight: 600;
 }
@@ -1239,8 +1269,8 @@ Navbar CSS
   text-align: center;
   line-height: 13.9px;
   border-radius: 50%;
-  color: #ffffff;
-  background-color: #b51867;
+  color: var(--wt);
+  background-color: var(--rpik);
   font-size: 10px;
   font-weight: 600;
 }
@@ -1257,7 +1287,7 @@ Navbar CSS
 .xton-nav .navbar .others-option .option-item .burger-menu span {
   height: 1px;
   width: 25px;
-  background: #000000;
+  background: var(--black);
   display: block;
   margin: 6px 0;
   -webkit-transition: all .50s ease-in-out;
@@ -1297,7 +1327,7 @@ Navbar CSS
   }
 
   .xton-responsive-nav .xton-responsive-menu.mean-container .mean-nav ul li a.active {
-    color: #d1be03;
+    color: var(--companycob);
   }
 
   .xton-responsive-nav .xton-responsive-menu.mean-container .mean-nav ul li li a {
@@ -1352,7 +1382,7 @@ Navbar CSS
   }
 
   .xton-responsive-nav .xton-responsive-menu.mean-container .navbar-nav .nav-item.megamenu .dropdown-menu .submenu-title {
-    color: #000000;
+    color: var(--black);
     position: relative;
     border-bottom: 1px solid #eeeeee;
     padding-bottom: 8px;
@@ -1372,7 +1402,7 @@ Navbar CSS
     position: absolute;
     left: 0;
     bottom: -1px;
-    background-color: #d1be03;
+    background-color: var(--companycob);
   }
 
   .xton-responsive-nav .xton-responsive-menu.mean-container .navbar-nav .nav-item.megamenu .dropdown-menu .submenu-title:first-child {
@@ -1405,7 +1435,7 @@ Navbar CSS
 
   .xton-responsive-nav .xton-responsive-menu.mean-container .navbar-nav .nav-item.megamenu .dropdown-menu .megamenu-submenu li a:hover,
   .xton-responsive-nav .xton-responsive-menu.mean-container .navbar-nav .nav-item.megamenu .dropdown-menu .megamenu-submenu li a.active {
-    color: #d1be03;
+    color: var(--companycob);
   }
 
   .xton-responsive-nav .xton-responsive-menu.mean-container .navbar-nav .nav-item.megamenu .dropdown-menu .megamenu-submenu .aside-trending-products {
@@ -1426,7 +1456,7 @@ Navbar CSS
     transition: 0.5s;
     right: 0;
     bottom: 0;
-    background-color: #ffffff;
+    background-color: var(--wt);
     padding: 15px;
     margin-left: 10px;
     margin-right: 10px;
@@ -1482,11 +1512,11 @@ Navbar CSS
   }
 
   .xton-responsive-nav .mean-container a.meanmenu-reveal {
-    color: #000000;
+    color: var(--black);
   }
 
   .xton-responsive-nav .mean-container a.meanmenu-reveal span {
-    background: #000000;
+    background: var(--black);
     position: relative;
     top: 8px;
     margin-top: -10px;
@@ -1580,7 +1610,7 @@ Search Overlay CSS
   height: 3px;
   float: left;
   margin-bottom: 5px;
-  background-color: #ffffff;
+  background-color: var(--wt);
   -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
 }
@@ -1597,7 +1627,7 @@ Search Overlay CSS
 }
 
 .search-overlay .search-overlay-close:hover .search-overlay-close-line {
-  background: #d1be03;
+  background: var(--companycob);
   -webkit-transform: rotate(180deg);
   transform: rotate(180deg);
 }
@@ -1628,7 +1658,7 @@ Search Overlay CSS
   border: none;
   border-radius: 30px;
   padding-left: 20px;
-  color: #000000;
+  color: var(--black);
   font-size: 15px;
 }
 
@@ -1637,10 +1667,10 @@ Search Overlay CSS
   right: 5px;
   top: 5px;
   width: 45px;
-  color: #ffffff;
+  color: var(--wt);
   height: 45px;
   border-radius: 50%;
-  background-color: #d1be03;
+  background-color: var(--companycob);
   -webkit-transition: 0.5s;
   transition: 0.5s;
   border: none;
@@ -1649,8 +1679,8 @@ Search Overlay CSS
 }
 
 .search-overlay .search-overlay-form form button:hover {
-  background-color: #000000;
-  color: #ffffff;
+  background-color: var(--black);
+  color: var(--wt);
 }
 
 .search-overlay.search-overlay-active.search-overlay {
@@ -1749,7 +1779,7 @@ Main Banner CSS
 }
 
 .main-banner-content p {
-  color: #000000;
+  color: var(--black);
   font-weight: 500;
   font-size: 17px;
 }
@@ -1763,39 +1793,39 @@ Main Banner CSS
 }
 
 .main-banner-content.text-white .submenu-title {
-  color: #ffffff;
+  color: var(--wt);
 }
 
 .main-banner-content.text-white h1 {
-  color: #ffffff;
+  color: var(--wt);
 }
 
 .main-banner-content.text-white p {
-  color: #ffffff;
+  color: var(--wt);
   opacity: 0.92;
 }
 
 .main-banner-content.text-white .btn-box .default-btn {
-  background-color: #ffffff;
-  color: #000000;
-  border-color: #ffffff;
+  background-color: var(--wt);
+  color: var(--black);
+  border-color: var(--wt);
 }
 
 .main-banner-content.text-white .btn-box .default-btn:hover {
-  color: #ffffff;
-  background-color: #000000;
-  border-color: #000000;
+  color: var(--wt);
+  background-color: var(--black);
+  border-color: var(--black);
 }
 
 .main-banner-content.text-white .btn-box .optional-btn {
-  border-color: #ffffff;
-  color: #ffffff;
+  border-color: var(--wt);
+  color: var(--wt);
 }
 
 .main-banner-content.text-white .btn-box .optional-btn:hover {
-  color: #ffffff;
-  background-color: #000000;
-  border-color: #000000;
+  color: var(--wt);
+  background-color: var(--black);
+  border-color: var(--black);
 }
 
 .main-banner-content.text-center .btn-box .optional-btn {
@@ -1824,7 +1854,7 @@ Main Banner CSS
   height: 100%;
   position: absolute;
   display: inline-block;
-  border: 9px solid #000000;
+  border: 9px solid var(--black);
   -webkit-clip-path: polygon(0 0, 60% 0, 36% 100%, 0 100%);
   clip-path: polygon(0 0, 60% 0, 36% 100%, 0 100%);
 }
@@ -1842,7 +1872,7 @@ Main Banner CSS
 }
 
 .banner-content p {
-  color: #000000;
+  color: var(--black);
   max-width: 495px;
   line-height: 1.6;
   font-size: 20px;
@@ -1858,43 +1888,43 @@ Main Banner CSS
 }
 
 .banner-content.text-white .submenu-title {
-  color: #ffffff;
+  color: var(--wt);
 }
 
 .banner-content.text-white .line {
-  border-color: #ffffff;
+  border-color: var(--wt);
 }
 
 .banner-content.text-white h1 {
-  color: #ffffff;
+  color: var(--wt);
 }
 
 .banner-content.text-white p {
-  color: #ffffff;
+  color: var(--wt);
   opacity: 0.92;
 }
 
 .banner-content.text-white .btn-box .default-btn {
-  background-color: #ffffff;
-  color: #000000;
-  border-color: #ffffff;
+  background-color: var(--wt);
+  color: var(--black);
+  border-color: var(--wt);
 }
 
 .banner-content.text-white .btn-box .default-btn:hover {
-  color: #ffffff;
-  background-color: #000000;
-  border-color: #000000;
+  color: var(--wt);
+  background-color: var(--black);
+  border-color: var(--black);
 }
 
 .banner-content.text-white .btn-box .optional-btn {
-  border-color: #ffffff;
-  color: #ffffff;
+  border-color: var(--wt);
+  color: var(--wt);
 }
 
 .banner-content.text-white .btn-box .optional-btn:hover {
-  color: #ffffff;
-  background-color: #000000;
-  border-color: #000000;
+  color: var(--wt);
+  background-color: var(--black);
+  border-color: var(--black);
 }
 
 .hero-banner {
@@ -1993,7 +2023,7 @@ Main Banner CSS
 }
 
 .home-slides.owl-theme .owl-nav [class*=owl-] {
-  color: #000000;
+  color: var(--black);
   font-size: 45px;
   margin: 0;
   padding: 0;
@@ -2017,7 +2047,7 @@ Main Banner CSS
 }
 
 .home-slides.owl-theme .owl-nav [class*=owl-]:hover {
-  color: #000000;
+  color: var(--black);
   -webkit-transform: translateX(-10px) translateY(-50%);
   transform: translateX(-10px) translateY(-50%);
 }
@@ -2054,13 +2084,13 @@ Main Banner CSS
   right: 0;
   bottom: 0;
   border-radius: 50%;
-  background-color: #000000;
+  background-color: var(--black);
   margin: 2px;
 }
 
 .home-slides.owl-theme .owl-dots .owl-dot:hover span,
 .home-slides.owl-theme .owl-dots .owl-dot.active span {
-  border-color: #000000;
+  border-color: var(--black);
 }
 
 .home-slides.owl-theme:hover .owl-nav [class*=owl-] {
@@ -2079,7 +2109,7 @@ Main Banner CSS
 }
 
 .home-slides-two.owl-theme .owl-nav [class*=owl-] {
-  color: #ffffff;
+  color: var(--wt);
   font-size: 45px;
   margin: 0;
   padding: 0;
@@ -2103,7 +2133,7 @@ Main Banner CSS
 }
 
 .home-slides-two.owl-theme .owl-nav [class*=owl-]:hover {
-  color: #ffffff;
+  color: var(--wt);
   -webkit-transform: translateX(-10px) translateY(-50%);
   transform: translateX(-10px) translateY(-50%);
 }
@@ -2140,13 +2170,13 @@ Main Banner CSS
   right: 0;
   bottom: 0;
   border-radius: 50%;
-  background-color: #000000;
+  background-color: var(--black);
   margin: 2px;
 }
 
 .home-slides-two.owl-theme .owl-dots .owl-dot:hover span,
 .home-slides-two.owl-theme .owl-dots .owl-dot.active span {
-  border-color: #000000;
+  border-color: var(--black);
 }
 
 .home-slides-two.owl-theme:hover .owl-nav [class*=owl-] {
@@ -2196,13 +2226,13 @@ Main Banner CSS
   right: 0;
   bottom: 0;
   border-radius: 50%;
-  background-color: #000000;
+  background-color: var(--black);
   margin: 2px;
 }
 
 .home-slides-three.owl-theme .owl-dots .owl-dot:hover span,
 .home-slides-three.owl-theme .owl-dots .owl-dot.active span {
-  border-color: #000000;
+  border-color: var(--black);
 }
 
 /*================================================
@@ -2237,7 +2267,7 @@ About CSS
 .about-content .sub-title {
   display: block;
   margin-bottom: 8px;
-  color: #d1be03;
+  color: var(--companycob);
   font-weight: 600;
 }
 
@@ -2273,10 +2303,10 @@ About CSS
   top: 0;
   width: 35px;
   height: 35px;
-  background-color: #d1be03;
+  background-color: var(--companycob);
   text-align: center;
   line-height: 35px;
-  color: #ffffff;
+  color: var(--wt);
   font-size: 20px;
   -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
@@ -2302,12 +2332,12 @@ About CSS
   left: 0;
   bottom: -1px;
   width: 50px;
-  background-color: #d1be03;
+  background-color: var(--companycob);
   height: 1px;
 }
 
 .about-text p {
-  color: #000000;
+  color: var(--black);
   font-size: 16px;
 }
 
@@ -2321,13 +2351,13 @@ About CSS
 .about-text .features-list li {
   position: relative;
   margin-bottom: 13px;
-  color: #000000;
+  color: var(--black);
   padding-left: 30px;
 }
 
 .about-text .features-list li i {
   font-size: 16px;
-  color: #000000;
+  color: var(--black);
   background-color: #eaeaf2;
   width: 20px;
   height: 20px;
@@ -2348,8 +2378,8 @@ About CSS
 }
 
 .about-text .features-list li:hover i {
-  background-color: #d1be03;
-  color: #ffffff;
+  background-color: var(--companycob);
+  color: var(--wt);
 }
 
 /*================================================
@@ -2382,7 +2412,7 @@ Categories Banner CSS
   margin-bottom: 8px;
   -webkit-transition: 0.5s;
   transition: 0.5s;
-  color: #d1be03;
+  color: var(--companycob);
   font-weight: 600;
   -webkit-transform: translateY(12px);
   transform: translateY(12px);
@@ -2400,8 +2430,8 @@ Categories Banner CSS
 
 .single-categories-box .content .default-btn {
   background-color: transparent;
-  color: #000000;
-  border-color: #000000;
+  color: var(--black);
+  border-color: var(--black);
   opacity: 0;
   visibility: hidden;
   -webkit-transform: translateY(10px);
@@ -2409,11 +2439,11 @@ Categories Banner CSS
 }
 
 .single-categories-box .content.text-white span {
-  color: #ffffff;
+  color: var(--wt);
 }
 
 .single-categories-box .content.text-white h3 {
-  color: #ffffff;
+  color: var(--wt);
 }
 
 .single-categories-box .link-btn {
@@ -2442,9 +2472,9 @@ Categories Banner CSS
 }
 
 .single-categories-box:hover .content .default-btn {
-  background-color: #d1be03;
-  color: #ffffff;
-  border-color: #d1be03;
+  background-color: var(--companycob);
+  color: var(--wt);
+  border-color: var(--companycob);
   opacity: 1;
   visibility: visible;
   -webkit-transform: translateY(-15px);
@@ -2479,7 +2509,7 @@ Categories Banner CSS
   left: 30px;
   -webkit-transition: 0.5s;
   transition: 0.5s;
-  background-color: #ffffff;
+  background-color: var(--wt);
   -webkit-box-shadow: 1px 1px 3px rgba(136, 136, 136, 0.19);
   box-shadow: 1px 1px 3px rgba(136, 136, 136, 0.19);
   padding-top: 8px;
@@ -2503,16 +2533,25 @@ Categories Banner CSS
 }
 
 .categories-box:hover .content {
-  background-color: #d1be03;
+  background-color: var(--companycob);
 }
 
 .categories-box:hover .content h3 {
-  color: #ffffff;
+  color: var(--wt);
 }
 
 /*================================================
 Products CSS
 =================================================*/
+.loadind-im {
+  width: 100%;
+  height: 350px;
+  align-self: center;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+
 .all-products-area .container .container {
   max-width: 100%;
   padding-left: 30px;
@@ -2521,28 +2560,28 @@ Products CSS
 
 .all-products-area .facility-area {
   margin-bottom: 30px;
-  background-color: #ffffff;
+  background-color: var(--wt);
 }
 
 .all-products-area .products-area {
   margin-bottom: 30px;
-  background-color: #ffffff;
+  background-color: var(--wt);
 }
 
 .all-products-area .facility-slides.owl-theme .owl-nav [class*=owl-] {
   color: #87a1c1;
-  background-color: #ffffff;
-  border-color: #ffffff;
+  background-color: var(--wt);
+  border-color: var(--wt);
 }
 
 .all-products-area .facility-slides.owl-theme .owl-nav [class*=owl-]:hover {
-  background-color: #d1be03;
-  color: #ffffff;
-  border-color: #d1be03;
+  background-color: var(--companycob);
+  color: var(--wt);
+  border-color: var(--companycob);
 }
 
 .all-products-area .brand-area {
-  background-color: #ffffff;
+  background-color: var(--wt);
 }
 
 .all-products-area .brand-item a {
@@ -2551,7 +2590,7 @@ Products CSS
 }
 
 .all-products-area .categories-banner-area {
-  background-color: #ffffff;
+  background-color: var(--wt);
   margin-bottom: 30px;
 }
 
@@ -2630,12 +2669,12 @@ Products CSS
   display: inline-block;
   font-size: 25px;
   line-height: 1;
-  color: #000000;
+  color: var(--black);
   position: relative;
 }
 
 .single-products-box .products-image .products-button ul li a:hover {
-  color: #d1be03;
+  color: var(--companycob);
 }
 
 .single-products-box .products-image .products-button ul li a .tooltip-label {
@@ -2655,13 +2694,13 @@ Products CSS
   background-color: transparent;
   -webkit-transition: all .2s ease-in-out;
   transition: all .2s ease-in-out;
-  background-color: #d1be03;
-  color: #ffffff;
+  background-color: var(--companycob);
+  color: var(--wt);
 }
 
 .single-products-box .products-image .products-button ul li a .tooltip-label::before {
   content: "\e9ff";
-  color: #d1be03;
+  color: var(--companycob);
   top: 50%;
   position: absolute;
   -webkit-transform: translateY(-50%);
@@ -2705,7 +2744,7 @@ Products CSS
   left: 20px;
   top: 20px;
   background-color: red;
-  color: #ffffff;
+  color: var(--wt);
   width: 55px;
   height: 55px;
   line-height: 55px;
@@ -2722,7 +2761,7 @@ Products CSS
   left: 20px;
   top: 20px;
   background-color: green;
-  color: #ffffff;
+  color: var(--wt);
   text-align: center;
   z-index: 2;
   padding: 1px 7px;
@@ -2744,11 +2783,11 @@ Products CSS
 
 .single-products-box .products-content h3 a {
   display: inline-block;
-  color: #000000;
+  color: var(--black);
 }
 
 .single-products-box .products-content h3 a:hover {
-  color: #d1be03;
+  color: var(--companycob);
 }
 
 .single-products-box .products-content .price {
@@ -2769,7 +2808,7 @@ Products CSS
   position: absolute;
   right: 0;
   bottom: 0;
-  color: #f49f0b;
+  color: var(--yfaa);
 }
 
 .single-products-box .products-content .star-rating i {
@@ -2795,7 +2834,7 @@ Products CSS
 }
 
 .single-products-box .products-content .add-to-cart:hover {
-  color: #d1be03;
+  color: var(--companycob);
 }
 
 .single-products-box:hover .products-content .price {
@@ -2903,20 +2942,20 @@ Products CSS
   display: inline-block;
   font-size: 22px;
   line-height: 1;
-  color: #000000;
+  color: var(--black);
   position: relative;
   width: 40px;
   border-radius: 50%;
   line-height: 43px;
   -webkit-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
   box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
-  background-color: #ffffff;
+  background-color: var(--wt);
   height: 40px;
 }
 
 .products-box .products-image .products-button ul li a:hover {
-  background-color: #d1be03;
-  color: #ffffff;
+  background-color: var(--companycob);
+  color: var(--wt);
 }
 
 .products-box .products-image .products-button ul li a .tooltip-label {
@@ -2936,13 +2975,13 @@ Products CSS
   background-color: transparent;
   -webkit-transition: all .2s ease-in-out;
   transition: all .2s ease-in-out;
-  background-color: #000000;
-  color: #ffffff;
+  background-color: var(--black);
+  color: var(--wt);
 }
 
 .products-box .products-image .products-button ul li a .tooltip-label::before {
   content: "\e9ff";
-  color: #000000;
+  color: var(--black);
   left: 50%;
   position: absolute;
   -webkit-transform: translateX(-50%) rotate(90deg);
@@ -2982,7 +3021,7 @@ Products CSS
   left: 20px;
   top: 20px;
   background-color: red;
-  color: #ffffff;
+  color: var(--wt);
   width: 55px;
   height: 55px;
   line-height: 55px;
@@ -2999,7 +3038,7 @@ Products CSS
   left: 20px;
   top: 20px;
   background-color: #007bff;
-  color: #ffffff;
+  color: var(--wt);
   text-align: center;
   z-index: 2;
   padding: 1px 7px;
@@ -3013,7 +3052,7 @@ Products CSS
   left: 20px;
   top: 20px;
   background-color: green;
-  color: #ffffff;
+  color: var(--wt);
   text-align: center;
   z-index: 2;
   padding: 1px 7px;
@@ -3028,7 +3067,7 @@ Products CSS
   left: 20px;
   top: 20px;
   background-color: red;
-  color: #ffffff;
+  color: var(--wt);
   width: 55px;
   height: 55px;
   line-height: 55px;
@@ -3045,7 +3084,7 @@ Products CSS
   left: 20px;
   top: 20px;
   background-color: #007bff;
-  color: #ffffff;
+  color: var(--wt);
   text-align: center;
   z-index: 2;
   padding: 1px 7px;
@@ -3059,7 +3098,7 @@ Products CSS
   left: 20px;
   top: 20px;
   background-color: green;
-  color: #ffffff;
+  color: var(--wt);
   text-align: center;
   z-index: 2;
   padding: 1px 7px;
@@ -3067,6 +3106,7 @@ Products CSS
   font-weight: 700;
   font-size: 14px;
 }
+
 .products-box .products-content {
   margin-top: 20px;
   position: relative;
@@ -3076,7 +3116,7 @@ Products CSS
   display: block;
   margin-bottom: 7px;
   text-transform: uppercase;
-  color: #d1be03;
+  color: var(--companycob);
   font-weight: 600;
   font-size: 14px;
 }
@@ -3089,11 +3129,11 @@ Products CSS
 
 .products-box .products-content h3 a {
   display: inline-block;
-  color: #000000;
+  color: var(--black);
 }
 
 .products-box .products-content h3 a:hover {
-  color: #d1be03;
+  color: var(--companycob);
 }
 
 .products-box .products-content .price {
@@ -3111,7 +3151,7 @@ Products CSS
 }
 
 .products-box .products-content .star-rating {
-  color: #f49f0b;
+  color: var(--yfaa);
   margin-top: 8px;
 }
 
@@ -3138,7 +3178,7 @@ Products CSS
 }
 
 .products-box .products-content .add-to-cart:hover {
-  color: #d1be03;
+  color: var(--companycob);
 }
 
 .products-box .products-discount {
@@ -3157,7 +3197,7 @@ Products CSS
   border-top-right-radius: 8px;
   width: 90px;
   background-color: red;
-  color: #ffffff;
+  color: var(--wt);
   text-transform: uppercase;
   font-weight: 600;
   font-size: 14px;
@@ -3279,20 +3319,20 @@ Products CSS
   display: inline-block;
   font-size: 22px;
   line-height: 1;
-  color: #000000;
+  color: var(--black);
   position: relative;
   width: 40px;
   border-radius: 50%;
   line-height: 43px;
   -webkit-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
   box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
-  background-color: #ffffff;
+  background-color: var(--wt);
   height: 40px;
 }
 
 .single-productsBox .products-image .products-button ul li a:hover {
-  background-color: #d1be03;
-  color: #ffffff;
+  background-color: var(--companycob);
+  color: var(--wt);
 }
 
 .single-productsBox .products-image .products-button ul li a .tooltip-label {
@@ -3312,13 +3352,13 @@ Products CSS
   background-color: transparent;
   -webkit-transition: all .2s ease-in-out;
   transition: all .2s ease-in-out;
-  background-color: #000000;
-  color: #ffffff;
+  background-color: var(--black);
+  color: var(--wt);
 }
 
 .single-productsBox .products-image .products-button ul li a .tooltip-label::before {
   content: "\e9ff";
-  color: #000000;
+  color: var(--black);
   left: 50%;
   position: absolute;
   -webkit-transform: translateX(-50%) rotate(90deg);
@@ -3358,7 +3398,7 @@ Products CSS
   left: 20px;
   top: 20px;
   background-color: red;
-  color: #ffffff;
+  color: var(--wt);
   width: 55px;
   height: 55px;
   line-height: 55px;
@@ -3375,7 +3415,7 @@ Products CSS
   left: 20px;
   top: 20px;
   background-color: green;
-  color: #ffffff;
+  color: var(--wt);
   text-align: center;
   z-index: 2;
   padding: 1px 7px;
@@ -3393,7 +3433,7 @@ Products CSS
   display: block;
   margin-bottom: 7px;
   text-transform: uppercase;
-  color: #d1be03;
+  color: var(--companycob);
   font-weight: 600;
   font-size: 14px;
 }
@@ -3406,11 +3446,11 @@ Products CSS
 
 .single-productsBox .products-content h3 a {
   display: inline-block;
-  color: #000000;
+  color: var(--black);
 }
 
 .single-productsBox .products-content h3 a:hover {
-  color: #d1be03;
+  color: var(--companycob);
 }
 
 .single-productsBox .products-content .price {
@@ -3428,7 +3468,7 @@ Products CSS
 }
 
 .single-productsBox .products-content .star-rating {
-  color: #f49f0b;
+  color: var(--yfaa);
   margin-top: 8px;
 }
 
@@ -3456,7 +3496,7 @@ Products CSS
 }
 
 .single-productsBox .products-content .add-to-cart:hover {
-  color: #d1be03;
+  color: var(--companycob);
 }
 
 .single-productsBox .products-discount {
@@ -3475,7 +3515,7 @@ Products CSS
   border-top-right-radius: 8px;
   width: 90px;
   background-color: red;
-  color: #ffffff;
+  color: var(--wt);
   text-transform: uppercase;
   font-weight: 600;
   font-size: 14px;
@@ -3546,7 +3586,7 @@ Products CSS
 .products-slides.owl-theme .owl-nav [class*=owl-] {
   color: #87a1c1;
   font-size: 20px;
-  background-color: #ffffff;
+  background-color: var(--wt);
   margin: 0;
   padding: 0;
   width: 50px;
@@ -3563,7 +3603,7 @@ Products CSS
   visibility: hidden;
   border-radius: 50%;
   border-style: solid;
-  border-color: #ffffff;
+  border-color: var(--wt);
   border-width: 1.5px;
 }
 
@@ -3573,9 +3613,9 @@ Products CSS
 }
 
 .products-slides.owl-theme .owl-nav [class*=owl-]:hover {
-  background-color: #d1be03;
-  color: #ffffff;
-  border-color: #d1be03;
+  background-color: var(--companycob);
+  color: var(--wt);
+  border-color: var(--companycob);
 }
 
 .products-slides.owl-theme:hover .owl-nav [class*=owl-] {
@@ -3622,7 +3662,7 @@ Products CSS
 }
 
 .products-filter-options .products-ordering-list .nice-select .list {
-  background-color: #ffffff;
+  background-color: var(--wt);
   border-radius: 0;
   -webkit-box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.1);
   box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.1);
@@ -3647,7 +3687,7 @@ Products CSS
 .products-filter-options .products-ordering-list .nice-select .list .option.focus,
 .products-filter-options .products-ordering-list .nice-select .list .option.selected.focus {
   background-color: transparent;
-  color: #d1be03;
+  color: var(--companycob);
 }
 
 .products-filter-options .products-ordering-list .nice-select .list .option.selected {
@@ -3661,7 +3701,7 @@ Products CSS
 }
 
 .products-filter-options .sub-title {
-  color: #000000;
+  color: var(--black);
   display: inline-block;
   padding-right: 5px;
   font-size: 15px;
@@ -3670,7 +3710,7 @@ Products CSS
 
 .products-filter-options .sub-title a {
   text-transform: uppercase;
-  color: #000000;
+  color: var(--black);
   font-weight: 700;
   margin-right: 15px;
   padding-left: 22px;
@@ -3686,7 +3726,7 @@ Products CSS
 }
 
 .products-filter-options .sub-title a:hover {
-  color: #d1be03;
+  color: var(--companycob);
 }
 
 .products-filter-options .view-list-row {
@@ -3711,7 +3751,7 @@ Products CSS
 
 .products-filter-options .view-list-row .view-column .icon-view-one.active span,
 .products-filter-options .view-list-row .view-column .icon-view-one:hover span {
-  border-color: #d1be03;
+  border-color: var(--companycob);
 }
 
 .products-filter-options .view-list-row .view-column .icon-view-two {
@@ -3735,7 +3775,7 @@ Products CSS
 
 .products-filter-options .view-list-row .view-column .icon-view-two.active span,
 .products-filter-options .view-list-row .view-column .icon-view-two:hover span {
-  border-color: #d1be03;
+  border-color: var(--companycob);
 }
 
 .products-filter-options .view-list-row .view-column .icon-view-three {
@@ -3758,7 +3798,7 @@ Products CSS
 
 .products-filter-options .view-list-row .view-column .icon-view-three.active span,
 .products-filter-options .view-list-row .view-column .icon-view-three:hover span {
-  border-color: #d1be03;
+  border-color: var(--companycob);
 }
 
 .products-filter-options .view-list-row .view-column .icon-view-four {
@@ -3781,7 +3821,7 @@ Products CSS
 
 .products-filter-options .view-list-row .view-column .icon-view-four.active span,
 .products-filter-options .view-list-row .view-column .icon-view-four:hover span {
-  border-color: #d1be03;
+  border-color: var(--companycob);
 }
 
 .products-filter-options .view-list-row .view-column .icon-view-five {
@@ -3804,7 +3844,7 @@ Products CSS
 
 .products-filter-options .view-list-row .view-column .icon-view-five.active span,
 .products-filter-options .view-list-row .view-column .icon-view-five:hover span {
-  border-color: #d1be03;
+  border-color: var(--companycob);
 }
 
 .products-filter-options .view-list-row .view-column .icon-view-six {
@@ -3827,7 +3867,7 @@ Products CSS
 
 .products-filter-options .view-list-row .view-column .icon-view-six.active span,
 .products-filter-options .view-list-row .view-column .icon-view-six:hover span {
-  border-color: #d1be03;
+  border-color: var(--companycob);
 }
 
 .products-filter-options .view-list-row .view-column .view-grid-switch {
@@ -3849,7 +3889,7 @@ Products CSS
   position: absolute;
   top: 0;
   left: 6px;
-  background-color: #ffffff;
+  background-color: var(--wt);
   display: block;
   width: 2px;
   height: 6px;
@@ -3861,7 +3901,7 @@ Products CSS
 
 .products-filter-options .view-list-row .view-column .view-grid-switch.active span,
 .products-filter-options .view-list-row .view-column .view-grid-switch:hover span {
-  background-color: #d1be03;
+  background-color: var(--companycob);
 }
 
 #products-collections-filter.products-col-one .products-col-item {
@@ -4126,7 +4166,7 @@ Products Details CSS
   font-size: 15px;
   margin: 0;
   padding: 0;
-  background: #ffffff;
+  background: var(--wt);
   width: 40px;
   height: 40px;
   line-height: 35px;
@@ -4140,7 +4180,7 @@ Products Details CSS
   transform: translateY(-50%);
   border-radius: 50%;
   border-style: solid;
-  border-color: #ffffff;
+  border-color: var(--wt);
   border-width: 1.5px;
 }
 
@@ -4152,9 +4192,9 @@ Products Details CSS
 }
 
 .products-details-image-slider.owl-theme .owl-nav [class*=owl-]:hover {
-  background-color: #d1be03;
-  color: #ffffff;
-  border-color: #d1be03;
+  background-color: var(--companycob);
+  color: var(--wt);
+  border-color: var(--companycob);
 }
 
 .products-details-desc h3 {
@@ -4165,7 +4205,7 @@ Products Details CSS
 
 .products-details-desc .price {
   margin-bottom: 15px;
-  color: #d1be03;
+  color: var(--companycob);
   font-size: 15px;
   font-weight: 600;
 }
@@ -4194,8 +4234,8 @@ Products Details CSS
 
 .products-details-desc .products-review .rating-count {
   display: inline-block;
-  color: #000000;
-  border-bottom: 1px solid #000000;
+  color: var(--black);
+  border-bottom: 1px solid var(--black);
   line-height: initial;
   position: relative;
   top: -2px;
@@ -4203,8 +4243,8 @@ Products Details CSS
 }
 
 .products-details-desc .products-review .rating-count:hover {
-  color: #d1be03;
-  border-color: #d1be03;
+  color: var(--companycob);
+  border-color: var(--companycob);
 }
 
 .products-details-desc .products-info {
@@ -4215,7 +4255,7 @@ Products Details CSS
 }
 
 .products-details-desc .products-info li {
-  color: #000000;
+  color: var(--black);
   margin-bottom: 8px;
   font-size: 16px;
 }
@@ -4231,11 +4271,11 @@ Products Details CSS
 .products-details-desc .products-info li a {
   display: inline-block;
   font-weight: 600;
-  color: #000000;
+  color: var(--black);
 }
 
 .products-details-desc .products-info li a:hover {
-  color: #d1be03;
+  color: var(--companycob);
 }
 
 .products-details-desc .products-color-switch {
@@ -4290,16 +4330,16 @@ Products Details CSS
 
 .products-details-desc .products-color-switch ul li a:hover,
 .products-details-desc .products-color-switch ul li a:focus {
-  border-color: #000000;
+  border-color: var(--black);
 }
 
 .products-details-desc .products-color-switch ul li a.color-white::before {
-  background: #ffffff;
+  background: var(--wt);
   border: 1px solid #eeeeee;
 }
 
 .products-details-desc .products-color-switch ul li a.color-black::before {
-  background: #000000;
+  background: var(--black);
 }
 
 .products-details-desc .products-color-switch ul li a.color-red::before {
@@ -4347,7 +4387,7 @@ Products Details CSS
 }
 
 .products-details-desc .products-color-switch ul li.active a {
-  border-color: #000000;
+  border-color: var(--black);
 }
 
 .products-details-desc .products-size-wrapper {
@@ -4389,13 +4429,13 @@ Products Details CSS
 }
 
 .products-details-desc .products-size-wrapper ul li a:hover {
-  border-color: #d1be03;
-  color: #d1be03;
+  border-color: var(--companycob);
+  color: var(--companycob);
 }
 
 .products-details-desc .products-size-wrapper ul li.active a {
-  border-color: #d1be03;
-  color: #d1be03;
+  border-color: var(--companycob);
+  color: var(--companycob);
 }
 
 .products-details-desc .products-info-btn {
@@ -4419,7 +4459,7 @@ Products Details CSS
   bottom: -2px;
   width: 0;
   height: 1.5px;
-  background: #d1be03;
+  background: var(--companycob);
   -webkit-transition: 0.5s;
   transition: 0.5s;
 }
@@ -4432,7 +4472,7 @@ Products Details CSS
 }
 
 .products-details-desc .products-info-btn a:hover {
-  color: #d1be03;
+  color: var(--companycob);
 }
 
 .products-details-desc .products-info-btn a:hover::before {
@@ -4475,12 +4515,12 @@ Products Details CSS
 }
 
 .products-details-desc .products-add-to-cart .input-counter span:hover {
-  color: #d1be03;
+  color: var(--companycob);
 }
 
 .products-details-desc .products-add-to-cart .input-counter input {
   height: 45px;
-  color: #000000;
+  color: var(--black);
   outline: 0;
   display: block;
   border: none;
@@ -4492,19 +4532,19 @@ Products Details CSS
 }
 
 .products-details-desc .products-add-to-cart .input-counter input::-webkit-input-placeholder {
-  color: #000000;
+  color: var(--black);
 }
 
 .products-details-desc .products-add-to-cart .input-counter input:-ms-input-placeholder {
-  color: #000000;
+  color: var(--black);
 }
 
 .products-details-desc .products-add-to-cart .input-counter input::-ms-input-placeholder {
-  color: #000000;
+  color: var(--black);
 }
 
 .products-details-desc .products-add-to-cart .input-counter input::placeholder {
-  color: #000000;
+  color: var(--black);
 }
 
 .products-details-desc .wishlist-compare-btn {
@@ -4570,7 +4610,7 @@ Products Details CSS
   top: 3px;
   left: 2px;
   fill: none;
-  stroke: #ffffff;
+  stroke: var(--wt);
   stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
@@ -4590,7 +4630,7 @@ Products Details CSS
   content: "";
   width: 100%;
   height: 100%;
-  background: #d1be03;
+  background: var(--companycob);
   display: block;
   -webkit-transform: scale(0);
   transform: scale(0);
@@ -4602,18 +4642,18 @@ Products Details CSS
 
 .products-details-desc .buy-checkbox-btn .cbx span:last-child {
   padding-left: 4px;
-  color: #000000;
+  color: var(--black);
   position: relative;
   top: -1px;
 }
 
 .products-details-desc .buy-checkbox-btn .cbx:hover span:first-child {
-  border-color: #d1be03;
+  border-color: var(--companycob);
 }
 
 .products-details-desc .buy-checkbox-btn .inp-cbx:checked+.cbx span:first-child {
-  background: #d1be03;
-  border-color: #d1be03;
+  background: var(--companycob);
+  border-color: var(--companycob);
   -webkit-animation: wave 0.4s ease;
   animation: wave 0.4s ease;
 }
@@ -4652,7 +4692,7 @@ Products Details CSS
 .products-details-desc .products-details-accordion .accordion .accordion-item {
   border-radius: 5px;
   display: block;
-  background: #ffffff;
+  background: var(--wt);
   margin-bottom: 15px;
   border: none;
 }
@@ -4663,7 +4703,7 @@ Products Details CSS
 
 .products-details-desc .products-details-accordion .accordion .accordion-title {
   padding-left: 28px;
-  color: #000000;
+  color: var(--black);
   text-decoration: none;
   position: relative;
   display: block;
@@ -4719,7 +4759,7 @@ Products Details CSS
   left: 0;
   width: 6px;
   height: 6px;
-  background: #d1be03;
+  background: var(--companycob);
   border-radius: 50%;
 }
 
@@ -4737,7 +4777,7 @@ Products Details CSS
   vertical-align: middle;
   white-space: nowrap;
   padding: 10px 15px;
-  color: #000000;
+  color: var(--black);
 }
 
 .products-details-desc .products-details-accordion .accordion .accordion-content .table.table-striped tbody tr td:first-child {
@@ -4754,7 +4794,7 @@ Products Details CSS
 }
 
 .products-details-desc .products-details-accordion .accordion .accordion-content .table.table-bordered tbody tr td:first-child {
-  color: #000000;
+  color: var(--black);
   font-weight: 500;
 }
 
@@ -4877,7 +4917,7 @@ Products Details CSS
 .products-details-tab .tabs li a {
   display: block;
   position: relative;
-  color: #000000;
+  color: var(--black);
   border: 1px dashed #eeeeee;
   padding: 13px 30px 13px 48px;
   font-weight: 600;
@@ -4892,7 +4932,7 @@ Products Details CSS
   left: 30px;
   width: 12px;
   height: 12px;
-  border: 1px solid #000000;
+  border: 1px solid var(--black);
   -webkit-transition: 0.5s;
   transition: 0.5s;
   border-radius: 50%;
@@ -4905,7 +4945,7 @@ Products Details CSS
   left: 0;
   right: 0;
   bottom: 0;
-  background: #000000;
+  background: var(--black);
   margin: 2px;
   border-radius: 50%;
   -webkit-transition: 0.5s;
@@ -4913,31 +4953,31 @@ Products Details CSS
 }
 
 .products-details-tab .tabs li a:hover {
-  color: #ffffff;
-  background-color: #d1be03;
-  border-color: #d1be03;
+  color: var(--wt);
+  background-color: var(--companycob);
+  border-color: var(--companycob);
 }
 
 .products-details-tab .tabs li a:hover .dot {
-  border-color: #ffffff;
+  border-color: var(--wt);
 }
 
 .products-details-tab .tabs li a:hover .dot::before {
-  background: #ffffff;
+  background: var(--wt);
 }
 
 .products-details-tab .tabs li.current a {
-  color: #ffffff;
-  background-color: #d1be03;
-  border-color: #d1be03;
+  color: var(--wt);
+  background-color: var(--companycob);
+  border-color: var(--companycob);
 }
 
 .products-details-tab .tabs li.current a .dot {
-  border-color: #ffffff;
+  border-color: var(--wt);
 }
 
 .products-details-tab .tabs li.current a .dot::before {
-  background: #ffffff;
+  background: var(--wt);
 }
 
 .products-details-tab .tabs li:last-child {
@@ -4972,7 +5012,7 @@ Products Details CSS
   left: 0;
   width: 6px;
   height: 6px;
-  background: #d1be03;
+  background: var(--companycob);
   border-radius: 50%;
 }
 
@@ -4990,7 +5030,7 @@ Products Details CSS
   vertical-align: middle;
   white-space: nowrap;
   padding: 10px 15px;
-  color: #000000;
+  color: var(--black);
 }
 
 .products-details-tab .tab-content .tabs-item .products-details-tab-content .table.table-striped tbody tr td:first-child {
@@ -5007,7 +5047,7 @@ Products Details CSS
 }
 
 .products-details-tab .tab-content .tabs-item .products-details-tab-content .table.table-bordered tbody tr td:first-child {
-  color: #000000;
+  color: var(--black);
   font-weight: 600;
 }
 
@@ -5133,7 +5173,7 @@ Offer CSS
 
 .offer-content {
   max-width: 550px;
-  border: 1px solid #ffffff;
+  border: 1px solid var(--wt);
   margin-left: auto;
   text-align: center;
   border-radius: 5px;
@@ -5145,7 +5185,7 @@ Offer CSS
 .offer-content span {
   display: block;
   margin-bottom: 10px;
-  color: #d1be03;
+  color: var(--companycob);
   font-weight: 600;
 }
 
@@ -5171,7 +5211,7 @@ Offer CSS
   right: 0;
   left: 0;
   bottom: 0;
-  background: #ffffff;
+  background: var(--wt);
   z-index: -1;
   border-radius: 5px;
   margin: 10px;
@@ -5187,20 +5227,20 @@ Offer CSS
 
 .offer-content-box span {
   display: block;
-  color: #ffffff;
+  color: var(--wt);
   font-weight: 300;
   font-size: 30px;
 }
 
 .offer-content-box h2 {
   margin: 10px 0 10px;
-  color: #ffffff;
+  color: var(--wt);
   font-size: 65px;
   font-weight: 700;
 }
 
 .offer-content-box p {
-  color: #ffffff;
+  color: var(--wt);
   font-size: 20px;
   font-weight: 300;
 }
@@ -5238,7 +5278,7 @@ Offer CSS
   right: 15px;
   -webkit-box-shadow: 0px 8px 16px 0px rgba(146, 184, 255, 0.2);
   box-shadow: 0px 8px 16px 0px rgba(146, 184, 255, 0.2);
-  background-color: #ffffff;
+  background-color: var(--wt);
   border-radius: 5px;
   padding: 40px;
   max-width: 415px;
@@ -5284,13 +5324,13 @@ Offer CSS
   right: 0;
   bottom: 0;
   border-radius: 50%;
-  background-color: #ffffff;
+  background-color: var(--wt);
   margin: 2px;
 }
 
 .offer-products-slides.owl-theme .owl-dots .owl-dot:hover span,
 .offer-products-slides.owl-theme .owl-dots .owl-dot.active span {
-  border-color: #ffffff;
+  border-color: var(--wt);
 }
 
 /*================================================
@@ -5331,7 +5371,7 @@ Facility CSS
 
 .single-facility-box h3 {
   display: block;
-  background-color: #ffffff;
+  background-color: var(--wt);
   position: relative;
   padding-top: 18px;
   z-index: 1;
@@ -5342,8 +5382,8 @@ Facility CSS
 }
 
 .single-facility-box:hover .icon {
-  background-color: #d1be03;
-  color: #ffffff;
+  background-color: var(--companycob);
+  color: var(--wt);
 }
 
 .facility-slides.owl-theme .owl-nav {
@@ -5380,9 +5420,9 @@ Facility CSS
 }
 
 .facility-slides.owl-theme .owl-nav [class*=owl-]:hover {
-  background-color: #d1be03;
-  color: #ffffff;
-  border-color: #d1be03;
+  background-color: var(--companycob);
+  color: var(--wt);
+  border-color: var(--companycob);
 }
 
 .facility-slides.owl-theme:hover .owl-nav [class*=owl-] {
@@ -5426,7 +5466,7 @@ Testimonials CSS
 }
 
 .single-testimonials-item {
-  background-color: #ffffff;
+  background-color: var(--wt);
   padding: 35px 30px 95px;
   -webkit-box-shadow: 6px 5px 25px rgba(0, 0, 0, 0.06);
   box-shadow: 6px 5px 25px rgba(0, 0, 0, 0.06);
@@ -5441,7 +5481,7 @@ Testimonials CSS
   margin-bottom: 0;
   -webkit-transition: 0.5s;
   transition: 0.5s;
-  color: #000000;
+  color: var(--black);
   font-style: italic;
   font-size: 17px;
   font-weight: 600;
@@ -5458,7 +5498,7 @@ Testimonials CSS
   width: 100px !important;
   height: 100px;
   display: inline-block !important;
-  border: 3px solid #ffffff;
+  border: 3px solid var(--wt);
 }
 
 .single-testimonials-item .info h3 {
@@ -5469,7 +5509,7 @@ Testimonials CSS
 }
 
 .single-testimonials-item .info span {
-  color: #d1be03;
+  color: var(--companycob);
   display: block;
   font-weight: 600;
   text-transform: uppercase;
@@ -5488,14 +5528,14 @@ Testimonials CSS
   -webkit-box-shadow: 6px 5px 25px rgba(0, 0, 0, 0.06);
   box-shadow: 6px 5px 25px rgba(0, 0, 0, 0.06);
   margin-top: 0;
-  background-color: #d1be03;
+  background-color: var(--companycob);
   -webkit-transition: 0.5s;
   transition: 0.5s;
   opacity: 1;
 }
 
 .owl-item.active.center .single-testimonials-item p {
-  color: #ffffff;
+  color: var(--wt);
 }
 
 .testimonials-slides.owl-theme .owl-dots {
@@ -5516,7 +5556,7 @@ Testimonials CSS
 
 .testimonials-slides.owl-theme .owl-dots .owl-dot:hover span,
 .testimonials-slides.owl-theme .owl-dots .owl-dot.active span {
-  background-color: #d1be03;
+  background-color: var(--companycob);
 }
 
 .testimonials-slides.owl-theme .owl-dots .owl-dot.active span {
@@ -5537,7 +5577,7 @@ Brand CSS
 
 .brand-item a {
   display: block;
-  background-color: #ffffff;
+  background-color: var(--wt);
   border-right: 1px solid #eeeeee;
   padding: 20px;
 }
@@ -5583,8 +5623,8 @@ Blog CSS
   position: absolute;
   right: -100%;
   top: 20px;
-  background-color: #ffffff;
-  color: #000000;
+  background-color: var(--wt);
+  color: var(--black);
   padding: 5px 10px 6px;
   -webkit-transition: 0.5s;
   transition: 0.5s;
@@ -5602,7 +5642,7 @@ Blog CSS
   display: block;
   margin-bottom: 10px;
   text-transform: uppercase;
-  color: #d1be03;
+  color: var(--companycob);
   font-weight: 600;
   font-size: 14px;
 }
@@ -5628,7 +5668,7 @@ Blog CSS
 .single-blog-post .post-content .details-btn::before {
   width: 100%;
   height: 1px;
-  background-color: #000000;
+  background-color: var(--black);
   content: '';
   position: absolute;
   -webkit-transition: 0.5s;
@@ -5638,11 +5678,11 @@ Blog CSS
 }
 
 .single-blog-post .post-content .details-btn:hover {
-  color: #d1be03;
+  color: var(--companycob);
 }
 
 .single-blog-post .post-content .details-btn:hover::before {
-  background-color: #d1be03;
+  background-color: var(--companycob);
 }
 
 .single-blog-post:hover .post-image img {
@@ -5682,18 +5722,18 @@ Blog CSS
   -webkit-transition: 0.5s;
   transition: 0.5s;
   border-radius: 50%;
-  background-color: #000000;
+  background-color: var(--black);
   margin: 2px;
 }
 
 .blog-slides.owl-theme .owl-dots .owl-dot:hover span,
 .blog-slides.owl-theme .owl-dots .owl-dot.active span {
-  border-color: #d1be03;
+  border-color: var(--companycob);
 }
 
 .blog-slides.owl-theme .owl-dots .owl-dot:hover span::before,
 .blog-slides.owl-theme .owl-dots .owl-dot.active span::before {
-  background-color: #d1be03;
+  background-color: var(--companycob);
 }
 
 .blog-items {
@@ -5722,7 +5762,7 @@ Blog Details CSS
   font-size: 18px;
   margin: 0;
   padding: 0;
-  background: #ffffff;
+  background: var(--wt);
   width: 45px;
   height: 45px;
   line-height: 40px;
@@ -5736,7 +5776,7 @@ Blog Details CSS
   transform: translateY(-50%);
   border-radius: 50%;
   border-style: solid;
-  border-color: #ffffff;
+  border-color: var(--wt);
   border-width: 1.5px;
 }
 
@@ -5748,9 +5788,9 @@ Blog Details CSS
 }
 
 .blog-details-desc .article-image-slides.owl-theme .owl-nav [class*=owl-]:hover {
-  background-color: #d1be03;
-  color: #ffffff;
-  border-color: #d1be03;
+  background-color: var(--companycob);
+  color: var(--wt);
+  border-color: var(--companycob);
 }
 
 .blog-details-desc .article-video iframe {
@@ -5792,7 +5832,7 @@ Blog Details CSS
 
 .blog-details-desc .article-content .entry-meta ul li span {
   display: block;
-  color: #d1be03;
+  color: var(--companycob);
   text-transform: uppercase;
   margin-bottom: 2px;
   font-size: 14px;
@@ -5860,7 +5900,7 @@ Blog Details CSS
 }
 
 .blog-details-desc .article-content .features-list li i {
-  color: #d1be03;
+  color: var(--companycob);
   display: inline-block;
   font-size: 20px;
   position: absolute;
@@ -5893,7 +5933,7 @@ Blog Details CSS
 
 .blog-details-desc .article-footer .article-tags span {
   display: inline-block;
-  color: #000000;
+  color: var(--black);
   margin-right: 3px;
   position: relative;
   top: 3px;
@@ -5937,9 +5977,9 @@ Blog Details CSS
   height: 32px;
   line-height: 32px;
   border-radius: 50%;
-  background-color: #d1be03;
-  color: #ffffff;
-  border: 1px solid #d1be03;
+  background-color: var(--companycob);
+  color: var(--wt);
+  border: 1px solid var(--companycob);
   text-align: center;
   font-size: 17px;
   margin-left: 2px;
@@ -5947,14 +5987,14 @@ Blog Details CSS
 
 .blog-details-desc .article-footer .article-share .social li a:hover,
 .blog-details-desc .article-footer .article-share .social li a:focus {
-  color: #d1be03;
+  color: var(--companycob);
   background-color: transparent;
 }
 
 .blog-details-desc .article-footer .article-share .social li a.facebook {
   background-color: #3b5998;
   border-color: #3b5998;
-  color: #ffffff;
+  color: var(--wt);
 }
 
 .blog-details-desc .article-footer .article-share .social li a.facebook:hover,
@@ -5966,7 +6006,7 @@ Blog Details CSS
 .blog-details-desc .article-footer .article-share .social li a.twitter {
   background-color: #1da1f2;
   border-color: #1da1f2;
-  color: #ffffff;
+  color: var(--wt);
 }
 
 .blog-details-desc .article-footer .article-share .social li a.twitter:hover,
@@ -5976,21 +6016,21 @@ Blog Details CSS
 }
 
 .blog-details-desc .article-footer .article-share .social li a.linkedin {
-  background-color: #007bb5;
-  border-color: #007bb5;
-  color: #ffffff;
+  background-color: var(--blue007bb5);
+  border-color: var(--blue007bb5);
+  color: var(--wt);
 }
 
 .blog-details-desc .article-footer .article-share .social li a.linkedin:hover,
 .blog-details-desc .article-footer .article-share .social li a.linkedin:focus {
-  color: #007bb5;
+  color: var(--blue007bb5);
   background-color: transparent;
 }
 
 .blog-details-desc .article-footer .article-share .social li a.instagram {
   background-color: #c13584;
   border-color: #c13584;
-  color: #ffffff;
+  color: var(--wt);
 }
 
 .blog-details-desc .article-footer .article-share .social li a.instagram:hover,
@@ -6008,7 +6048,7 @@ Blog Details CSS
 .blog-details-desc .article-author .author-profile-header {
   height: 115px;
   border-radius: 5px 5px 0 0;
-  background-color: #d1be03;
+  background-color: var(--companycob);
   background-image: url(../img/bg.jpg);
   background-position: center center;
   background-size: cover;
@@ -6028,7 +6068,7 @@ Blog Details CSS
 
 .blog-details-desc .article-author .author-profile .author-profile-title img {
   display: inline-block;
-  border: 3px solid #ffffff;
+  border: 3px solid var(--wt);
   width: 100px;
   height: 100px;
 }
@@ -6048,7 +6088,7 @@ Blog Details CSS
 }
 
 .blog-details-desc .article-author .author-profile .author-profile-title .author-profile-raque-profile a {
-  color: #000000;
+  color: var(--black);
   padding: 5px 12px 4px;
   border-radius: 2px;
   display: inline-block;
@@ -6057,8 +6097,8 @@ Blog Details CSS
 
 .blog-details-desc .article-author .author-profile .author-profile-title .author-profile-raque-profile a:hover,
 .blog-details-desc .article-author .author-profile .author-profile-title .author-profile-raque-profile a:focus {
-  background-color: #d1be03;
-  color: #ffffff;
+  background-color: var(--companycob);
+  color: var(--wt);
 }
 
 blockquote,
@@ -6075,7 +6115,7 @@ blockquote,
 
 blockquote p,
 .blockquote p {
-  color: #000000;
+  color: var(--black);
   line-height: 1.6;
   margin-bottom: 0;
   font-style: italic;
@@ -6113,7 +6153,7 @@ blockquote::after,
   top: 0;
   bottom: 0;
   width: 3px;
-  background-color: #d1be03;
+  background-color: var(--companycob);
   margin-top: 20px;
   margin-bottom: 20px;
 }
@@ -6159,7 +6199,7 @@ blockquote::after,
 }
 
 .prev-link-wrapper a:hover .prev-link-info-wrapper {
-  color: #d1be03;
+  color: var(--companycob);
 }
 
 .prev-link-wrapper .image-prev {
@@ -6189,7 +6229,7 @@ blockquote::after,
   left: 0;
   border-radius: 5px;
   opacity: 0;
-  background-color: #d1be03;
+  background-color: var(--companycob);
   visibility: hidden;
   -webkit-transition: 0.5s;
   transition: 0.5s;
@@ -6206,7 +6246,7 @@ blockquote::after,
   text-align: center;
   text-transform: uppercase;
   z-index: 2;
-  color: #ffffff;
+  color: var(--wt);
   opacity: 0;
   visibility: hidden;
   -webkit-transition: 0.5s;
@@ -6216,7 +6256,7 @@ blockquote::after,
 }
 
 .prev-link-wrapper .prev-link-info-wrapper {
-  color: #000000;
+  color: var(--black);
   -webkit-transition: 0.5s;
   transition: 0.5s;
 }
@@ -6265,7 +6305,7 @@ blockquote::after,
 }
 
 .next-link-wrapper a:hover .next-link-info-wrapper {
-  color: #d1be03;
+  color: var(--companycob);
 }
 
 .next-link-wrapper .image-next {
@@ -6295,7 +6335,7 @@ blockquote::after,
   left: 0;
   border-radius: 5px;
   opacity: 0;
-  background-color: #d1be03;
+  background-color: var(--companycob);
   visibility: hidden;
   -webkit-transition: 0.5s;
   transition: 0.5s;
@@ -6312,7 +6352,7 @@ blockquote::after,
   text-align: center;
   text-transform: uppercase;
   z-index: 2;
-  color: #ffffff;
+  color: var(--wt);
   opacity: 0;
   visibility: hidden;
   -webkit-transition: 0.5s;
@@ -6324,7 +6364,7 @@ blockquote::after,
 .next-link-wrapper .next-link-info-wrapper {
   -webkit-transition: 0.5s;
   transition: 0.5s;
-  color: #000000;
+  color: var(--black);
 }
 
 .next-link-wrapper .next-title {
@@ -6373,7 +6413,7 @@ blockquote::after,
 .comments-area .comment-body {
   border-bottom: 1px dashed #eeeeee;
   padding-left: 65px;
-  color: #000000;
+  color: var(--black);
   font-size: 14px;
   margin-bottom: 20px;
   padding-bottom: 20px;
@@ -6385,7 +6425,7 @@ blockquote::after,
 
 .comments-area .comment-body .reply a {
   border: 1px dashed #ded9d9;
-  color: #000000;
+  color: var(--black);
   display: inline-block;
   padding: 5px 20px;
   border-radius: 30px;
@@ -6395,9 +6435,9 @@ blockquote::after,
 }
 
 .comments-area .comment-body .reply a:hover {
-  color: #ffffff;
-  background-color: #d1be03;
-  border-color: #d1be03;
+  color: var(--wt);
+  background-color: var(--companycob);
+  border-color: var(--companycob);
 }
 
 .comments-area .comment-author {
@@ -6437,7 +6477,7 @@ blockquote::after,
 }
 
 .comments-area .comment-metadata a:hover {
-  color: #d1be03;
+  color: var(--companycob);
 }
 
 .comments-area .comment-respond {
@@ -6497,7 +6537,7 @@ blockquote::after,
   height: 50px;
   outline: 0;
   border-radius: 3px;
-  color: #000000;
+  color: var(--black);
   font-weight: 500;
   font-size: 15px;
 }
@@ -6694,9 +6734,9 @@ blockquote::after,
 }
 
 .comments-area .comment-respond .form-submit input {
-  background: #d1be03;
+  background: var(--companycob);
   border: none;
-  color: #ffffff;
+  color: var(--wt);
   padding: 10px 30px 9px;
   display: inline-block;
   cursor: pointer;
@@ -6710,8 +6750,8 @@ blockquote::after,
 
 .comments-area .comment-respond .form-submit input:hover,
 .comments-area .comment-respond .form-submit input:focus {
-  color: #ffffff;
-  background-color: #000000;
+  color: var(--wt);
+  background-color: var(--black);
 }
 
 /*================================================
@@ -6767,7 +6807,7 @@ Instagram CSS
   height: 32px;
   text-align: center;
   line-height: 32px;
-  color: #ffffff;
+  color: var(--wt);
   font-size: 30px;
   border-radius: 2px;
   opacity: 0;
@@ -6795,7 +6835,7 @@ Instagram CSS
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: #000000;
+  background-color: var(--black);
   -webkit-transition: 0.5s;
   transition: 0.5s;
   opacity: 0;
@@ -6833,7 +6873,7 @@ Modal CSS
   top: 0;
   outline: 0;
   opacity: 1;
-  color: #000000;
+  color: var(--black);
   -webkit-transition: 0.5s;
   transition: 0.5s;
   line-height: 35px;
@@ -6849,7 +6889,7 @@ Modal CSS
 
 .productsQuickView .modal-content button.close:hover {
   background-color: red;
-  color: #ffffff;
+  color: var(--wt);
 }
 
 .productsQuickView .modal-content .products-content h3 {
@@ -6859,11 +6899,11 @@ Modal CSS
 }
 
 .productsQuickView .modal-content .products-content h3 a {
-  color: #000000;
+  color: var(--black);
 }
 
 .productsQuickView .modal-content .products-content h3 a:hover {
-  color: #000000;
+  color: var(--black);
 }
 
 .productsQuickView .modal-content .products-content .price {
@@ -6887,23 +6927,23 @@ Modal CSS
 }
 
 .productsQuickView .modal-content .products-content .products-review .rating i {
-  color: #f49f0b;
+  color: var(--yfaa);
   display: inline-block;
   margin-right: -2px;
 }
 
 .productsQuickView .modal-content .products-content .products-review .rating-count {
   display: inline-block;
-  color: #000000;
-  border-bottom: 1px solid #000000;
+  color: var(--black);
+  border-bottom: 1px solid var(--black);
   line-height: initial;
   position: relative;
   top: -1px;
 }
 
 .productsQuickView .modal-content .products-content .products-review .rating-count:hover {
-  color: #d1be03;
-  border-color: #d1be03;
+  color: var(--companycob);
+  border-color: var(--companycob);
 }
 
 .productsQuickView .modal-content .products-content .products-info {
@@ -6915,7 +6955,7 @@ Modal CSS
 
 .productsQuickView .modal-content .products-content .products-info li {
   font-size: 16px;
-  color: #000000;
+  color: var(--black);
   margin-bottom: 8px;
 }
 
@@ -6930,11 +6970,11 @@ Modal CSS
 .productsQuickView .modal-content .products-content .products-info li a {
   display: inline-block;
   font-weight: 600;
-  color: #000000;
+  color: var(--black);
 }
 
 .productsQuickView .modal-content .products-content .products-info li a:hover {
-  color: #000000;
+  color: var(--black);
 }
 
 .productsQuickView .modal-content .products-content .products-color-switch {
@@ -6985,16 +7025,16 @@ Modal CSS
 
 .productsQuickView .modal-content .products-content .products-color-switch ul li a:hover,
 .productsQuickView .modal-content .products-content .products-color-switch ul li a:focus {
-  border-color: #000000;
+  border-color: var(--black);
 }
 
 .productsQuickView .modal-content .products-content .products-color-switch ul li a.color-white::before {
-  background: #ffffff;
+  background: var(--wt);
   border: 1px solid #eeeeee;
 }
 
 .productsQuickView .modal-content .products-content .products-color-switch ul li a.color-black::before {
-  background: #000000;
+  background: var(--black);
 }
 
 .productsQuickView .modal-content .products-content .products-color-switch ul li a.color-red::before {
@@ -7042,7 +7082,7 @@ Modal CSS
 }
 
 .productsQuickView .modal-content .products-content .products-color-switch ul li.active a {
-  border-color: #000000;
+  border-color: var(--black);
 }
 
 .productsQuickView .modal-content .products-content .products-size-wrapper {
@@ -7084,13 +7124,13 @@ Modal CSS
 
 .productsQuickView .modal-content .products-content .products-size-wrapper ul li a:hover,
 .productsQuickView .modal-content .products-content .products-size-wrapper ul li a:focus {
-  border-color: #000000;
-  color: #000000;
+  border-color: var(--black);
+  color: var(--black);
 }
 
 .productsQuickView .modal-content .products-content .products-size-wrapper ul li.active a {
-  border-color: #000000;
-  color: #000000;
+  border-color: var(--black);
+  color: var(--black);
 }
 
 .productsQuickView .modal-content .products-content .products-add-to-cart .input-counter {
@@ -7125,12 +7165,12 @@ Modal CSS
 }
 
 .productsQuickView .modal-content .products-content .products-add-to-cart .input-counter span:hover {
-  color: #d1be03;
+  color: var(--companycob);
 }
 
 .productsQuickView .modal-content .products-content .products-add-to-cart .input-counter input {
   height: 45px;
-  color: #000000;
+  color: var(--black);
   outline: 0;
   display: block;
   border: none;
@@ -7142,24 +7182,24 @@ Modal CSS
 }
 
 .productsQuickView .modal-content .products-content .products-add-to-cart .input-counter input::-webkit-input-placeholder {
-  color: #000000;
+  color: var(--black);
 }
 
 .productsQuickView .modal-content .products-content .products-add-to-cart .input-counter input:-ms-input-placeholder {
-  color: #000000;
+  color: var(--black);
 }
 
 .productsQuickView .modal-content .products-content .products-add-to-cart .input-counter input::-ms-input-placeholder {
-  color: #000000;
+  color: var(--black);
 }
 
 .productsQuickView .modal-content .products-content .products-add-to-cart .input-counter input::placeholder {
-  color: #000000;
+  color: var(--black);
 }
 
 .productsQuickView .modal-content .products-content .view-full-info {
   margin-top: 25px;
-  color: #000000;
+  color: var(--black);
   line-height: initial;
   display: inline-block;
   position: relative;
@@ -7174,7 +7214,7 @@ Modal CSS
   left: 0;
   width: 100%;
   height: 1px;
-  background: #000000;
+  background: var(--black);
   -webkit-transition: 0.5s;
   transition: 0.5s;
 }
@@ -7271,7 +7311,7 @@ Modal CSS
 
 .shoppingCartModal .modal-content .modal-body .products-cart-content .products-cart .products-content .products-price span.price {
   font-size: 14px;
-  color: #000000;
+  color: var(--black);
 }
 
 .shoppingCartModal .modal-content .modal-body .products-cart-content .products-cart .products-content .remove-btn {
@@ -7329,7 +7369,7 @@ Modal CSS
 }
 
 .shoppingCartModal .close {
-  color: #000000;
+  color: var(--black);
   font-size: 30px;
   outline: 0 !important;
   line-height: initial;
@@ -7399,7 +7439,7 @@ Modal CSS
   content: '';
   position: absolute;
   left: 0;
-  background-color: #d1be03;
+  background-color: var(--companycob);
 }
 
 .sidebarModal .modal-content .modal-body .sidebar-about-content .about-the-store .sidebar-contact-info {
@@ -7440,7 +7480,7 @@ Modal CSS
   height: 1px;
   -webkit-transition: 0.5s;
   transition: 0.5s;
-  background-color: #d1be03;
+  background-color: var(--companycob);
 }
 
 .sidebarModal .modal-content .modal-body .sidebar-about-content .about-the-store .sidebar-contact-info li:last-child {
@@ -7467,7 +7507,7 @@ Modal CSS
   width: 30px;
   height: 30px;
   text-align: center;
-  color: #d1be03;
+  color: var(--companycob);
   background-color: #f4f4f4;
   font-size: 18px;
   position: relative;
@@ -7484,8 +7524,8 @@ Modal CSS
 }
 
 .sidebarModal .modal-content .modal-body .sidebar-about-content .social-link li a:hover {
-  background-color: #d1be03;
-  color: #ffffff;
+  background-color: var(--companycob);
+  color: var(--wt);
 }
 
 .sidebarModal .modal-content .modal-body .sidebar-new-in-store {
@@ -7528,7 +7568,7 @@ Modal CSS
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: #d1be03;
+  background-color: var(--companycob);
   -webkit-transition: 0.5s;
   transition: 0.5s;
   opacity: 0;
@@ -7543,18 +7583,18 @@ Modal CSS
 .sidebarModal .modal-content .modal-body .sidebar-new-in-store .shop-now-btn {
   display: inline-block;
   text-transform: uppercase;
-  border-bottom: 1px solid #d1be03;
+  border-bottom: 1px solid var(--companycob);
   font-weight: 600;
   font-size: 14px;
 }
 
 .sidebarModal .modal-content .modal-body .sidebar-new-in-store .shop-now-btn:hover {
-  color: #d1be03;
-  border-color: #d1be03;
+  color: var(--companycob);
+  border-color: var(--companycob);
 }
 
 .sidebarModal .close {
-  color: #000000;
+  color: var(--black);
   font-size: 28px;
   outline: 0 !important;
   line-height: initial;
@@ -7592,7 +7632,7 @@ Modal CSS
   top: 0;
   outline: 0;
   opacity: 1;
-  color: #000000;
+  color: var(--black);
   -webkit-transition: 0.5s;
   transition: 0.5s;
   line-height: 35px;
@@ -7608,7 +7648,7 @@ Modal CSS
 
 .sizeGuideModal .modal-content button.close:hover {
   background-color: red;
-  color: #ffffff;
+  color: var(--wt);
 }
 
 .sizeGuideModal .modal-content .modal-sizeguide {
@@ -7630,14 +7670,14 @@ Modal CSS
 }
 
 .sizeGuideModal .modal-content .modal-sizeguide .table thead {
-  background-color: #000000;
-  color: #ffffff;
+  background-color: var(--black);
+  color: var(--wt);
 }
 
 .sizeGuideModal .modal-content .modal-sizeguide .table thead th {
   border-bottom: none;
   white-space: nowrap;
-  color: #ffffff;
+  color: var(--wt);
   vertical-align: middle;
   padding: 10px 15px;
 }
@@ -7668,7 +7708,7 @@ Modal CSS
   top: 0;
   outline: 0;
   opacity: 1;
-  color: #000000;
+  color: var(--black);
   -webkit-transition: 0.5s;
   transition: 0.5s;
   line-height: 35px;
@@ -7684,7 +7724,7 @@ Modal CSS
 
 .productsShippingModal .modal-content button.close:hover {
   background-color: red;
-  color: #ffffff;
+  color: var(--wt);
 }
 
 .productsShippingModal .modal-content .shipping-content h3 {
@@ -7719,7 +7759,7 @@ Modal CSS
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #d1be03;
+  background: var(--companycob);
 }
 
 .productsShippingModal .modal-content .shipping-content ul li:last-child {
@@ -7814,7 +7854,7 @@ Modal CSS
 
 .shoppingWishlistModal .modal-content .modal-body .products-cart-content .products-cart .products-content .products-price span.price {
   font-size: 14px;
-  color: #000000;
+  color: var(--black);
 }
 
 .shoppingWishlistModal .modal-content .modal-body .products-cart-content .products-cart .products-content .remove-btn {
@@ -7854,7 +7894,7 @@ Modal CSS
 }
 
 .shoppingWishlistModal .close {
-  color: #000000;
+  color: var(--black);
   font-size: 30px;
   outline: 0 !important;
   line-height: initial;
@@ -7977,7 +8017,7 @@ Page Title CSS
   display: inline-block;
   margin-left: 15px;
   font-weight: 600;
-  color: #d1be03;
+  color: var(--companycob);
   position: relative;
 }
 
@@ -8056,7 +8096,7 @@ Gallery CSS
   position: absolute;
   bottom: 0;
   left: 10px;
-  border: 1px solid #ffffff;
+  border: 1px solid var(--wt);
   right: 10px;
   padding: 25px 15px;
   z-index: 1;
@@ -8074,13 +8114,13 @@ Gallery CSS
   right: 0;
   bottom: 0;
   margin: 5px;
-  background-color: #ffffff;
+  background-color: var(--wt);
   z-index: -1;
 }
 
 .single-gallery-item .gallery-content span {
   display: block;
-  color: #d1be03;
+  color: var(--companycob);
   text-transform: uppercase;
   margin-bottom: 5px;
   font-size: 14px;
@@ -8127,7 +8167,7 @@ Look Book CSS
 .single-lookbook-box .content {
   -webkit-transition: 0.5s;
   transition: 0.5s;
-  background-color: #ffffff;
+  background-color: var(--wt);
   padding: 20px;
   border-radius: 5px;
   position: relative;
@@ -8183,7 +8223,7 @@ Woocommerce Widget Sidebar CSS
   width: 50px;
   height: 1px;
   bottom: -1px;
-  background-color: #d1be03;
+  background-color: var(--companycob);
 }
 
 .woocommerce-widget-area .woocommerce-widget:last-child {
@@ -8210,10 +8250,10 @@ Woocommerce Widget Sidebar CSS
 
 .woocommerce-widget-area .filter-list-widget .selected-filters-wrap-list ul li a i {
   display: inline-block;
-  background-color: #d1be03;
+  background-color: var(--companycob);
   width: 18px;
   height: 18px;
-  color: #ffffff;
+  color: var(--wt);
   border-radius: 50%;
   text-align: center;
   line-height: 19px;
@@ -8270,25 +8310,25 @@ Woocommerce Widget Sidebar CSS
   transition: 0.5s;
   height: 15px;
   border-radius: 50%;
-  border: 1px solid #000000;
+  border: 1px solid var(--black);
 }
 
 .woocommerce-widget-area .collections-list-widget .collections-list-row li a:hover {
-  color: #d1be03;
+  color: var(--companycob);
 }
 
 .woocommerce-widget-area .collections-list-widget .collections-list-row li a:hover::before {
-  border-color: #d1be03;
+  border-color: var(--companycob);
 }
 
 .woocommerce-widget-area .collections-list-widget .collections-list-row li a.active::before {
-  background-color: #d1be03;
-  border-color: #d1be03;
+  background-color: var(--companycob);
+  border-color: var(--companycob);
 }
 
 .woocommerce-widget-area .collections-list-widget .collections-list-row li.active a::before {
-  background-color: #d1be03;
-  border-color: #d1be03;
+  background-color: var(--companycob);
+  border-color: var(--companycob);
 }
 
 .woocommerce-widget-area .collections-list-widget .collections-list-row li:last-child {
@@ -8306,14 +8346,14 @@ Woocommerce Widget Sidebar CSS
 .woocommerce-widget-area .price-list-widget .collection-filter-by-price .irs--flat .irs-from,
 .woocommerce-widget-area .price-list-widget .collection-filter-by-price .irs--flat .irs-to,
 .woocommerce-widget-area .price-list-widget .collection-filter-by-price .irs--flat .irs-single {
-  background-color: #d1be03;
+  background-color: var(--companycob);
   padding: 1px 5px 1px 11.5px;
 }
 
 .woocommerce-widget-area .price-list-widget .collection-filter-by-price .irs--flat .irs-from::before,
 .woocommerce-widget-area .price-list-widget .collection-filter-by-price .irs--flat .irs-to::before,
 .woocommerce-widget-area .price-list-widget .collection-filter-by-price .irs--flat .irs-single::before {
-  border-top-color: #d1be03;
+  border-top-color: var(--companycob);
 }
 
 .woocommerce-widget-area .price-list-widget .collection-filter-by-price .irs--flat .irs-from::after,
@@ -8326,11 +8366,11 @@ Woocommerce Widget Sidebar CSS
 }
 
 .woocommerce-widget-area .price-list-widget .collection-filter-by-price .irs--flat .irs-bar {
-  background-color: #d1be03;
+  background-color: var(--companycob);
 }
 
 .woocommerce-widget-area .price-list-widget .collection-filter-by-price .irs--flat .irs-handle>i:first-child {
-  background-color: #d1be03;
+  background-color: var(--companycob);
 }
 
 .woocommerce-widget-area .price-list-widget .collection-filter-by-price .irs--flat .irs-min,
@@ -8372,21 +8412,21 @@ Woocommerce Widget Sidebar CSS
 
 .woocommerce-widget-area .size-list-widget .size-list-row li a:hover,
 .woocommerce-widget-area .size-list-widget .size-list-row li a:focus {
-  border-color: #d1be03;
-  color: #ffffff;
-  background-color: #d1be03;
+  border-color: var(--companycob);
+  color: var(--wt);
+  background-color: var(--companycob);
 }
 
 .woocommerce-widget-area .size-list-widget .size-list-row li a.active a {
-  border-color: #d1be03;
-  color: #ffffff;
-  background-color: #d1be03;
+  border-color: var(--companycob);
+  color: var(--wt);
+  background-color: var(--companycob);
 }
 
 .woocommerce-widget-area .size-list-widget .size-list-row li.active a {
-  border-color: #d1be03;
-  color: #ffffff;
-  background-color: #d1be03;
+  border-color: var(--companycob);
+  color: var(--wt);
+  background-color: var(--companycob);
 }
 
 .woocommerce-widget-area .color-list-widget .color-list-row {
@@ -8426,16 +8466,16 @@ Woocommerce Widget Sidebar CSS
 }
 
 .woocommerce-widget-area .color-list-widget .color-list-row li a:hover {
-  border-color: #000000;
+  border-color: var(--black);
 }
 
 .woocommerce-widget-area .color-list-widget .color-list-row li a.color-white::before {
-  background: #ffffff;
+  background: var(--wt);
   border: 1px solid #eeeeee;
 }
 
 .woocommerce-widget-area .color-list-widget .color-list-row li a.color-black::before {
-  background: #000000;
+  background: var(--black);
 }
 
 .woocommerce-widget-area .color-list-widget .color-list-row li a.color-red::before {
@@ -8483,7 +8523,7 @@ Woocommerce Widget Sidebar CSS
 }
 
 .woocommerce-widget-area .color-list-widget .color-list-row li.active a {
-  border-color: #000000;
+  border-color: var(--black);
 }
 
 .woocommerce-widget-area .brands-list-widget .brands-list-row {
@@ -8514,25 +8554,25 @@ Woocommerce Widget Sidebar CSS
   transition: 0.5s;
   height: 15px;
   border-radius: 3px;
-  border: 1px solid #000000;
+  border: 1px solid var(--black);
 }
 
 .woocommerce-widget-area .brands-list-widget .brands-list-row li a:hover {
-  color: #d1be03;
+  color: var(--companycob);
 }
 
 .woocommerce-widget-area .brands-list-widget .brands-list-row li a:hover::before {
-  border-color: #d1be03;
+  border-color: var(--companycob);
 }
 
 .woocommerce-widget-area .brands-list-widget .brands-list-row li a.active::before {
-  background-color: #d1be03;
-  border-color: #d1be03;
+  background-color: var(--companycob);
+  border-color: var(--companycob);
 }
 
 .woocommerce-widget-area .brands-list-widget .brands-list-row li.active a::before {
-  background-color: #d1be03;
-  border-color: #d1be03;
+  background-color: var(--companycob);
+  border-color: var(--companycob);
 }
 
 .woocommerce-widget-area .brands-list-widget .brands-list-row li:last-child {
@@ -8551,7 +8591,7 @@ Woocommerce Widget Sidebar CSS
   -webkit-transition: 0.5s;
   transition: 0.5s;
   right: 0;
-  background-color: #ffffff;
+  background-color: var(--wt);
   padding: 20px;
   bottom: 10px;
   margin-left: 10px;
@@ -8607,14 +8647,14 @@ Sizing Guide CSS
 }
 
 .sizing-guide-table table thead {
-  background-color: #d1be03;
-  color: #ffffff;
+  background-color: var(--companycob);
+  color: var(--wt);
 }
 
 .sizing-guide-table table thead th {
   border-bottom: none;
   vertical-align: middle;
-  color: #ffffff;
+  color: var(--wt);
   white-space: nowrap;
   font-size: 17px;
   font-weight: 600;
@@ -8717,7 +8757,7 @@ Cart CSS
 
 .cart-table table tbody tr td.product-name ul li span {
   display: inline;
-  color: #000000;
+  color: var(--black);
 }
 
 .cart-table table tbody tr td.product-name ul li:last-child {
@@ -8729,7 +8769,7 @@ Cart CSS
 }
 
 .cart-table table tbody tr td.product-subtotal .subtotal-amount {
-  color: #000000;
+  color: var(--black);
   font-weight: 600;
 }
 
@@ -8805,12 +8845,12 @@ Cart CSS
 }
 
 .cart-table table tbody tr td.product-quantity .input-counter span:hover {
-  color: #d1be03;
+  color: var(--companycob);
 }
 
 .cart-table table tbody tr td.product-quantity .input-counter input {
   height: 45px;
-  color: #000000;
+  color: var(--black);
   outline: 0;
   display: block;
   border: none;
@@ -8822,23 +8862,23 @@ Cart CSS
 }
 
 .cart-table table tbody tr td.product-quantity .input-counter input::-webkit-input-placeholder {
-  color: #000000;
+  color: var(--black);
 }
 
 .cart-table table tbody tr td.product-quantity .input-counter input:-ms-input-placeholder {
-  color: #000000;
+  color: var(--black);
 }
 
 .cart-table table tbody tr td.product-quantity .input-counter input::-ms-input-placeholder {
-  color: #000000;
+  color: var(--black);
 }
 
 .cart-table table tbody tr td.product-quantity .input-counter input::placeholder {
-  color: #000000;
+  color: var(--black);
 }
 
 .cart-table table tbody tr td .unit-amount {
-  color: #000000;
+  color: var(--black);
   font-weight: 600;
 }
 
@@ -8847,7 +8887,7 @@ Cart CSS
 }
 
 .cart-totals {
-  background: #ffffff;
+  background: var(--wt);
   padding: 40px;
   max-width: 500px;
   -webkit-box-shadow: 0 2px 48px 0 rgba(0, 0, 0, 0.08);
@@ -8873,7 +8913,7 @@ Cart CSS
 .cart-totals ul li {
   border: 1px solid #eaedff;
   padding: 10px 15px;
-  color: #000000;
+  color: var(--black);
   overflow: hidden;
   font-weight: 600;
 }
@@ -8888,7 +8928,7 @@ Cart CSS
 }
 
 .cart-totals ul li:last-child span {
-  color: #000000;
+  color: var(--black);
 }
 
 .cart-totals ul li span {
@@ -8902,15 +8942,15 @@ Checkout CSS
 .user-actions {
   -webkit-box-shadow: 0 2px 48px 0 rgba(0, 0, 0, 0.08);
   box-shadow: 0 2px 48px 0 rgba(0, 0, 0, 0.08);
-  background: #ffffff;
+  background: var(--wt);
   padding: 15px 20px;
-  border-top: 3px solid #d1be03;
+  border-top: 3px solid var(--companycob);
   position: relative;
   margin-bottom: 40px;
 }
 
 .user-actions i {
-  color: #d1be03;
+  color: var(--companycob);
   margin-right: 2px;
   font-size: 20px;
   position: relative;
@@ -8919,19 +8959,19 @@ Checkout CSS
 
 .user-actions span {
   display: inline-block;
-  color: #d1be03;
+  color: var(--companycob);
   font-weight: 500;
   font-size: 16px;
 }
 
 .user-actions span a {
   display: inline-block;
-  color: #000000;
+  color: var(--black);
 }
 
 .user-actions span a:hover,
 .user-actions span a:focus {
-  color: #d1be03;
+  color: var(--companycob);
 }
 
 .billing-details .title {
@@ -8946,7 +8986,7 @@ Checkout CSS
 .billing-details .title::before {
   content: '';
   position: absolute;
-  background: #d1be03;
+  background: var(--companycob);
   bottom: -1px;
   left: 0;
   width: 50px;
@@ -8972,7 +9012,7 @@ Checkout CSS
 .billing-details .form-group .nice-select {
   float: unset;
   line-height: 48px;
-  color: #000000;
+  color: var(--black);
   border: none;
   background-color: #f5f5f5 !important;
   font-weight: normal;
@@ -8982,7 +9022,7 @@ Checkout CSS
 }
 
 .billing-details .form-group .nice-select .list {
-  background-color: #ffffff;
+  background-color: var(--wt);
   -webkit-box-shadow: 0px 0px 29px 0px rgba(102, 102, 102, 0.1);
   box-shadow: 0px 0px 29px 0px rgba(102, 102, 102, 0.1);
   border-radius: 0;
@@ -9001,7 +9041,7 @@ Checkout CSS
 
 .billing-details .form-group .nice-select .list .option:hover {
   background-color: #d1be03 !important;
-  color: #ffffff;
+  color: var(--wt);
 }
 
 .billing-details .form-group .nice-select .list .option.selected {
@@ -9018,7 +9058,7 @@ Checkout CSS
 }
 
 .billing-details .form-check .form-check-label {
-  color: #000000;
+  color: var(--black);
 }
 
 .billing-details .form-check label {
@@ -9044,7 +9084,7 @@ Checkout CSS
 .order-details .title::before {
   content: '';
   position: absolute;
-  background: #d1be03;
+  background: var(--companycob);
   bottom: -1px;
   left: 0;
   width: 50px;
@@ -9082,7 +9122,7 @@ Checkout CSS
 .order-details .order-table table tbody tr td.order-subtotal span,
 .order-details .order-table table tbody tr td.order-shipping span,
 .order-details .order-table table tbody tr td.total-price span {
-  color: #000000;
+  color: var(--black);
   font-weight: 700;
 }
 
@@ -9090,11 +9130,11 @@ Checkout CSS
 .order-details .order-table table tbody tr td.order-subtotal-price,
 .order-details .order-table table tbody tr td.product-subtotal {
   font-weight: 700;
-  color: #000000;
+  color: var(--black);
 }
 
 .order-details .payment-box {
-  background-color: #ffffff;
+  background-color: var(--wt);
   -webkit-box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.06);
   box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.06);
   margin-top: 30px;
@@ -9111,7 +9151,7 @@ Checkout CSS
   padding-left: 27px;
   cursor: pointer;
   display: block;
-  color: #000000;
+  color: var(--black);
   position: relative;
   margin-bottom: 8px;
   font-weight: 600;
@@ -9127,7 +9167,7 @@ Checkout CSS
   height: 18px;
   border: 1px solid #dddddd;
   border-radius: 50%;
-  background: #ffffff;
+  background: var(--wt);
 }
 
 .order-details .payment-box .payment-method p [type="radio"]:checked+label::after,
@@ -9135,7 +9175,7 @@ Checkout CSS
   content: '';
   width: 12px;
   height: 12px;
-  background: #d1be03;
+  background: var(--companycob);
   position: absolute;
   top: 8px;
   left: 3px;
@@ -9182,7 +9222,7 @@ FAQ CSS
 }
 
 .faq-accordion-tab .tabs li a {
-  color: #000000;
+  color: var(--black);
   text-decoration: none;
   border-radius: 5px;
   padding: 20px;
@@ -9203,13 +9243,13 @@ FAQ CSS
 }
 
 .faq-accordion-tab .tabs li a:hover {
-  background-color: #d1be03;
-  color: #ffffff;
+  background-color: var(--companycob);
+  color: var(--wt);
 }
 
 .faq-accordion-tab .tabs li.current a {
-  background-color: #d1be03;
-  color: #ffffff;
+  background-color: var(--companycob);
+  color: var(--wt);
 }
 
 .tab .tabs-item {
@@ -9232,7 +9272,7 @@ FAQ CSS
   display: block;
   -webkit-box-shadow: 2px 8px 20px 0 rgba(25, 42, 70, 0.13) !important;
   box-shadow: 2px 8px 20px 0 rgba(25, 42, 70, 0.13) !important;
-  background: #ffffff;
+  background: var(--wt);
   margin-bottom: 15px;
   border: none;
 }
@@ -9243,7 +9283,7 @@ FAQ CSS
 
 .faq-accordion .accordion .accordion-title {
   padding: 20px 25px 17px 60px;
-  color: #000000;
+  color: var(--black);
   text-decoration: none;
   position: relative;
   display: block;
@@ -9306,7 +9346,7 @@ FAQ CSS
   left: 0;
   width: 6px;
   height: 6px;
-  background: #d1be03;
+  background: var(--companycob);
   border-radius: 50%;
 }
 
@@ -9349,7 +9389,7 @@ Customer Service CSS
   position: absolute;
   top: 0;
   left: 0;
-  color: #d1be03;
+  color: var(--companycob);
 }
 
 .customer-service-content h3:not(:first-child) {
@@ -9377,7 +9417,7 @@ Customer Service CSS
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background: #d1be03;
+  background: var(--companycob);
 }
 
 .customer-service-content ul li:last-child {
@@ -9390,7 +9430,7 @@ Customer Service CSS
 }
 
 .customer-service-content ul li a:hover {
-  color: #000000;
+  color: var(--black);
 }
 
 /*================================================
@@ -9411,7 +9451,7 @@ Compare CSS
 
 .products-compare-table table tr td:first-child {
   text-transform: uppercase;
-  color: #000000;
+  color: var(--black);
   font-weight: 600;
 }
 
@@ -9455,10 +9495,10 @@ Pagination CSS
 }
 
 .pagination-area .page-numbers {
-  color: #000000;
+  color: var(--black);
   display: inline-block;
   line-height: 1;
-  background-color: #ffffff;
+  background-color: var(--wt);
   font-weight: 600;
   font-size: 20px;
   margin-left: -1px;
@@ -9472,7 +9512,7 @@ Pagination CSS
 .pagination-area .page-numbers:hover,
 .pagination-area .page-numbers:focus,
 .pagination-area .page-numbers.current {
-  color: #d1be03;
+  color: var(--companycob);
 }
 
 .pagination-area .page-numbers.prev {
@@ -9520,7 +9560,7 @@ Widget Sidebar CSS
   width: 50px;
   height: 1px;
   bottom: -1px;
-  background-color: #d1be03;
+  background-color: var(--companycob);
 }
 
 .widget-area .widget_search form {
@@ -9538,7 +9578,7 @@ Widget Sidebar CSS
 
 .widget-area .widget_search form .search-field {
   height: 50px;
-  color: #000000;
+  color: var(--black);
   background-color: #eef5f9;
   display: block;
   width: 100%;
@@ -9593,8 +9633,8 @@ Widget Sidebar CSS
 
 .widget-area .widget_search form button {
   border: none;
-  background-color: #d1be03;
-  color: #ffffff;
+  background-color: var(--companycob);
+  color: var(--wt);
   height: 40px;
   width: 40px;
   position: absolute;
@@ -9608,8 +9648,8 @@ Widget Sidebar CSS
 
 .widget-area .widget_search form button:hover,
 .widget-area .widget_search form button:focus {
-  background-color: #000000;
-  color: #ffffff;
+  background-color: var(--black);
+  color: var(--wt);
 }
 
 .widget-area .widget_xton_posts_thumb {
@@ -9664,7 +9704,7 @@ Widget Sidebar CSS
   -webkit-transition: all 0.8s cubic-bezier(0.2, 1, 0.22, 1);
   transition: all 0.8s cubic-bezier(0.2, 1, 0.22, 1);
   content: '';
-  background-color: #ffffff;
+  background-color: var(--wt);
   position: absolute;
   z-index: 1;
   top: 50%;
@@ -9728,7 +9768,7 @@ Widget Sidebar CSS
   position: relative;
   margin-bottom: 12px;
   overflow: hidden;
-  color: #000000;
+  color: var(--black);
   padding-left: 18px;
   font-weight: 600;
   font-size: 15px;
@@ -9739,7 +9779,7 @@ Widget Sidebar CSS
 }
 
 .widget-area .widget_categories ul li::before {
-  background: #d1be03;
+  background: var(--companycob);
   height: 8px;
   width: 8px;
   content: '';
@@ -9750,12 +9790,12 @@ Widget Sidebar CSS
 }
 
 .widget-area .widget_categories ul li a {
-  color: #000000;
+  color: var(--black);
   display: inline-block;
 }
 
 .widget-area .widget_categories ul li a:hover {
-  color: #d1be03;
+  color: var(--companycob);
 }
 
 .widget-area .widget_categories ul li .post-count {
@@ -9773,7 +9813,7 @@ Widget Sidebar CSS
 .widget-area .tagcloud a {
   display: inline-block;
   background-color: #f6f6f6;
-  color: #000000;
+  color: var(--black);
   padding: 7px 15px;
   border: none;
   border-radius: 3px;
@@ -9785,8 +9825,8 @@ Widget Sidebar CSS
 
 .widget-area .tagcloud a:hover,
 .widget-area .tagcloud a:focus {
-  color: #ffffff;
-  background-color: #d1be03;
+  color: var(--wt);
+  background-color: var(--companycob);
 }
 
 .widget-area .widget_instagram ul {
@@ -9823,7 +9863,7 @@ Widget Sidebar CSS
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: #d1be03;
+  background-color: var(--companycob);
   -webkit-transition: 0.5s;
   transition: 0.5s;
   opacity: 0;
@@ -9855,7 +9895,7 @@ Widget Sidebar CSS
   left: 0;
   top: 0;
   border-radius: 5px;
-  background-color: #d1be03;
+  background-color: var(--companycob);
   opacity: .70;
   z-index: -1;
 }
@@ -9870,14 +9910,14 @@ Widget Sidebar CSS
 .widget-area .widget_contact .text .icon {
   width: 65px;
   height: 65px;
-  border: 2px dashed #d1be03;
+  border: 2px dashed var(--companycob);
   position: relative;
   border-radius: 50%;
   font-size: 35px;
   -webkit-transition: 0.5s;
   transition: 0.5s;
-  background-color: #ffffff;
-  color: #d1be03;
+  background-color: var(--wt);
+  color: var(--companycob);
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 17px;
@@ -9894,7 +9934,7 @@ Widget Sidebar CSS
 
 .widget-area .widget_contact .text span {
   display: block;
-  color: #ffffff;
+  color: var(--wt);
   margin-bottom: 8px;
   font-size: 16px;
   font-weight: 600;
@@ -9902,7 +9942,7 @@ Widget Sidebar CSS
 
 .widget-area .widget_contact .text a {
   display: inline-block;
-  color: #ffffff;
+  color: var(--wt);
   font-weight: 800;
   font-size: 25px;
 }
@@ -9923,7 +9963,7 @@ Coming Soon CSS
 
 .coming-soon-content {
   max-width: 700px;
-  background: #ffffff;
+  background: var(--wt);
   border-radius: 5px;
   overflow: hidden;
   text-align: center;
@@ -9954,7 +9994,7 @@ Coming Soon CSS
 
 .coming-soon-content #timer div {
   background-color: #333333;
-  color: #ffffff;
+  color: var(--wt);
   width: 100px;
   height: 105px;
   border-radius: 5px;
@@ -9994,7 +10034,7 @@ Coming Soon CSS
   pointer-events: none;
   width: 100%;
   height: 100%;
-  color: #000000;
+  color: var(--black);
 }
 
 .coming-soon-content form .form-group .label-title i {
@@ -10016,7 +10056,7 @@ Coming Soon CSS
   height: 2px;
   -webkit-transition: 0.5s;
   transition: 0.5s;
-  background: #d1be03;
+  background: var(--companycob);
 }
 
 .coming-soon-content form .form-group .input-newsletter {
@@ -10024,7 +10064,7 @@ Coming Soon CSS
   border: none;
   border-bottom: 2px solid #eeeeee;
   padding: 0 0 0 32px;
-  color: #000000;
+  color: var(--black);
   height: 45px;
   display: block;
   width: 100%;
@@ -10093,7 +10133,7 @@ Track Order CSS
 =================================================*/
 .track-order-content {
   max-width: 700px;
-  background-color: #ffffff;
+  background-color: var(--wt);
   -webkit-box-shadow: 3px 5px 25px 0 rgba(0, 0, 0, 0.1);
   box-shadow: 3px 5px 25px 0 rgba(0, 0, 0, 0.1);
   text-align: center;
@@ -10120,7 +10160,7 @@ Track Order CSS
 
 .track-order-content form .form-group label {
   display: block;
-  color: #000000;
+  color: var(--black);
   margin-bottom: 9px;
   text-transform: uppercase;
   font-size: 14px;
@@ -10261,7 +10301,7 @@ Signup CSS
 }
 
 .signup-content .signup-form .return-store:hover {
-  color: #000000;
+  color: var(--black);
 }
 
 .signup-content .signup-form .return-store:hover::before {
@@ -10298,7 +10338,7 @@ Contact CSS
   position: absolute;
   left: 0;
   top: 2px;
-  color: #d1be03;
+  color: var(--companycob);
   font-size: 20px;
 }
 
@@ -10321,7 +10361,7 @@ Contact CSS
   height: 1px;
   -webkit-transition: 0.5s;
   transition: 0.5s;
-  background-color: #d1be03;
+  background-color: var(--companycob);
 }
 
 .contact-info .contact-list li:last-child {
@@ -10362,7 +10402,7 @@ Contact CSS
   height: 30px;
   text-align: center;
   display: block;
-  color: #d1be03;
+  color: var(--companycob);
   background-color: #f4f4f4;
   font-size: 18px;
   position: relative;
@@ -10379,8 +10419,8 @@ Contact CSS
 }
 
 .contact-info .social li a:hover {
-  background-color: #d1be03;
-  color: #ffffff;
+  background-color: var(--companycob);
+  color: var(--wt);
 }
 
 .contact-form h3 {
@@ -10436,18 +10476,40 @@ Contact CSS
 Footer CSS
 =================================================*/
 .footer-area {
-  padding-top: 100px;
-  background-color: #000000;
+  background-color: var(--black);
   position: relative;
   z-index: 1;
+}
+
+.foot-linear-set {
+  height: 800px;
+  width: 100%;
+  border-bottom-right-radius: 50%;
+  border-bottom-left-radius: 50%;
+  background: linear-gradient(to right,
+      #006e65 0%,
+      #037703 20%,
+      gold 40%,
+      #000000 80%,
+      var(--rd) 90%) !important;
+}
+
+.foot-circle {
+  height: 99.2%;
+  background-color: var(--wt);
+  width: 100%;
+  border-bottom-right-radius: 50%;
+  border-bottom-left-radius: 50%;
 }
 
 .single-footer-widget {
   margin-bottom: 30px;
 }
 
-.single-footer-widget h3 {
-  color: #ffffff;
+
+/*@@@@@@@@@@@@@@@@@@@@@@@ .footas starts @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+.single-footer-widget .foota {
+  color: var(--wt);
   margin-bottom: 25px;
   padding-bottom: 5px;
   position: relative;
@@ -10456,18 +10518,83 @@ Footer CSS
   font-weight: 700;
 }
 
-.single-footer-widget h3::before {
+.single-footer-widget .foota::before {
   width: 50px;
   height: 1px;
   bottom: -1px;
   content: '';
   position: absolute;
   left: 0;
-  background-color: #d1be03;
+  background-color: #037703;
 }
 
+.single-footer-widget .footb {
+  color: var(--wt);
+  margin-bottom: 25px;
+  padding-bottom: 5px;
+  position: relative;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.single-footer-widget .footb::before {
+  width: 50px;
+  height: 1px;
+  bottom: -1px;
+  content: '';
+  position: absolute;
+  left: 0;
+  background-color: gold;
+}
+
+.single-footer-widget .footc {
+  color: var(--wt);
+  margin-bottom: 25px;
+  padding-bottom: 5px;
+  position: relative;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.single-footer-widget .footc::before {
+  width: 50px;
+  height: 1px;
+  bottom: -1px;
+  content: '';
+  position: absolute;
+  left: 0;
+  background-color: gold;
+}
+
+.single-footer-widget .footd {
+  color: var(--wt);
+  margin-bottom: 25px;
+  padding-bottom: 5px;
+  position: relative;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.single-footer-widget .footd::before {
+  width: 50px;
+  height: 1px;
+  bottom: -1px;
+  content: '';
+  position: absolute;
+  left: 0;
+  background-color: red;
+}
+
+
+/*@@@@@@@@@@@@@@@@@@@@@@@ .footas end @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+
+
+
 .single-footer-widget p {
-  color: #ffffff;
+  color: var(--wt);
 }
 
 .single-footer-widget .about-the-store p {
@@ -10482,7 +10609,7 @@ Footer CSS
 
 .single-footer-widget .about-the-store .footer-contact-info li {
   margin-bottom: 12px;
-  color: #ffffff;
+  color: var(--wt);
   position: relative;
   padding-left: 25px;
 }
@@ -10494,32 +10621,6 @@ Footer CSS
   font-size: 18px;
 }
 
-.single-footer-widget .about-the-store .footer-contact-info li a {
-  display: inline-block;
-  color: #ffffff;
-  font-weight: 600;
-  position: relative;
-}
-
-.single-footer-widget .about-the-store .footer-contact-info li a:hover {
-  color: #d1be03;
-}
-
-.single-footer-widget .about-the-store .footer-contact-info li a:hover::before {
-  width: 100%;
-}
-
-.single-footer-widget .about-the-store .footer-contact-info li a::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 0;
-  height: 1px;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-  background-color: #d1be03;
-}
 
 .single-footer-widget .about-the-store .footer-contact-info li:last-child {
   margin-bottom: 0;
@@ -10545,8 +10646,8 @@ Footer CSS
   width: 30px;
   height: 30px;
   text-align: center;
-  color: #d1be03;
-  background-color: #ffffff;
+  color: var(--companycob);
+  background-color: var(--wt);
   font-size: 18px;
   position: relative;
   border-radius: 2px;
@@ -10562,8 +10663,8 @@ Footer CSS
 }
 
 .single-footer-widget .social-link li a:hover {
-  background-color: #d1be03;
-  color: #ffffff;
+  background-color: var(--companycob);
+  color: var(--wt);
 }
 
 .single-footer-widget .quick-links {
@@ -10574,18 +10675,18 @@ Footer CSS
 
 .single-footer-widget .quick-links li {
   margin-bottom: 16px;
-  color: #ffffff;
+  color: var(--wt);
 }
 
 .single-footer-widget .quick-links li a {
   display: inline-block;
-  color: #ffffff;
+  color: var(--wt);
   font-weight: 600;
   position: relative;
 }
 
 .single-footer-widget .quick-links li a:hover {
-  color: #d1be03;
+  color: var(--companycob);
 }
 
 .single-footer-widget .quick-links li a:hover::before {
@@ -10601,8 +10702,40 @@ Footer CSS
   height: 1px;
   -webkit-transition: 0.5s;
   transition: 0.5s;
-  background-color: #d1be03;
+  background-color: var(--companycob);
 }
+
+/*@@@@@@@@@@@@@@@@@@ links hover under color start @@@@@@@@@@@@@@@@@@@@@@@*/
+
+.single-footer-widget .about-the-store .footer-contact-info li .awe {
+  display: inline-block;
+  color: var(--wt);
+  font-weight: 600;
+  position: relative;
+}
+
+.single-footer-widget .about-the-store .footer-contact-info li .awe:hover {
+  color: #006e65;
+}
+
+.single-footer-widget .about-the-store .footer-contact-info li .awe:hover::before {
+  width: 100%;
+}
+
+.single-footer-widget .about-the-store .footer-contact-info li .awe::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 1px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  background-color: #037703;
+}
+
+/*@@@@@@@@@@@@@@@@@@ links hover under color @@@@@@@@@@@@@@@@@@@@@@@*/
+
 
 .single-footer-widget .quick-links li:last-child {
   margin-bottom: 0;
@@ -10616,18 +10749,18 @@ Footer CSS
 
 .single-footer-widget .customer-support li {
   margin-bottom: 16px;
-  color: #ffffff;
+  color: var(--wt);
 }
 
 .single-footer-widget .customer-support li a {
   display: inline-block;
-  color: #ffffff;
+  color: var(--wt);
   font-weight: 600;
   position: relative;
 }
 
 .single-footer-widget .customer-support li a:hover {
-  color: #d1be03;
+  color: var(--companycob);
 }
 
 .single-footer-widget .customer-support li a:hover::before {
@@ -10643,7 +10776,7 @@ Footer CSS
   height: 1px;
   -webkit-transition: 0.5s;
   transition: 0.5s;
-  background-color: #d1be03;
+  background-color: var(--companycob);
 }
 
 .single-footer-widget .customer-support li:last-child {
@@ -10657,7 +10790,7 @@ Footer CSS
 
 .single-footer-widget .footer-newsletter-box .newsletter-form label {
   display: block;
-  color: #ffffff;
+  color: var(--wt);
   font-weight: 600;
   margin-bottom: 10px;
 }
@@ -10669,7 +10802,7 @@ Footer CSS
   border-radius: 0;
   height: 45px;
   padding-left: 10px;
-  color: #ffffff;
+  color: var(--wt);
   font-size: 15px;
   border-radius: .25rem;
 }
@@ -10719,8 +10852,8 @@ Footer CSS
   margin-top: .8rem;
   width: 100%;
   border-radius: .25rem;
-  background-color: #d1be03;
-  color: #ffffff;
+  background-color: var(--companycob);
+  color: var(--wt);
   border: none;
   padding: 12px 25px;
   -webkit-transition: 0.5s;
@@ -10730,15 +10863,15 @@ Footer CSS
 }
 
 .single-footer-widget .footer-newsletter-box .newsletter-form button:hover {
-  color: #000000;
-  background-color: #ffffff;
+  color: var(--black);
+  background-color: var(--wt);
 }
 
 .single-footer-widget .footer-newsletter-box .newsletter-form #validator-newsletter {
   position: absolute;
   left: 0;
   bottom: -32px;
-  color: #ffffff !important;
+  color: var(--wt) !important;
 }
 
 .footer-bottom-area {
@@ -10762,7 +10895,7 @@ Footer CSS
 
 .footer-bottom-area p a {
   display: inline-block;
-  color: #ffffff;
+  color: var(--wt);
   font-weight: 600;
   position: relative;
 }
@@ -10776,11 +10909,11 @@ Footer CSS
   -webkit-transition: 0.5s;
   transition: 0.5s;
   height: 1px;
-  background-color: #d1be03;
+  background-color: var(--companycob);
 }
 
 .footer-bottom-area p a:hover {
-  color: #d1be03;
+  color: var(--companycob);
 }
 
 .footer-bottom-area p a:hover::before {
@@ -10838,8 +10971,8 @@ Footer CSS
   width: 100%;
   top: -50%;
   left: 0;
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0)), color-stop(75%, #ffffff), to(#ffffff));
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #ffffff 75%, #ffffff 100%);
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0)), color-stop(75%, var(--companycoe)), to(var(--wt)));
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, var(--companycoe) 75%, var(--wt) 100%);
   -webkit-animation: run 7s 0s infinite;
   animation: run 7s 0s infinite;
   -webkit-animation-fill-mode: forwards;
@@ -10862,6 +10995,99 @@ Footer CSS
 }
 
 .lines .line:nth-child(3)::after {
+  -webkit-animation-delay: 2.5s;
+  animation-delay: 2.5s;
+}
+
+
+.lines .lineb {
+  position: absolute;
+  width: 1px;
+  height: 100%;
+  top: 0;
+  left: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+
+.lines .lineb::after {
+  content: "";
+  display: block;
+  position: absolute;
+  height: 15vh;
+  width: 100%;
+  top: -50%;
+  left: 0;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0)), color-stop(75%, var(--companycob)), to(var(--companycob)));
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, var(--companycob) 75%, var(--wt) 100%);
+  -webkit-animation: run 7s 0s infinite;
+  animation: run 7s 0s infinite;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.97);
+  animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.97);
+}
+
+.lines .lineb:nth-child(1) {
+  margin-left: -25%;
+}
+
+.lines .lineb:nth-child(1)::after {
+  -webkit-animation-delay: 2s;
+  animation-delay: 2s;
+}
+
+.lines .lineb:nth-child(3) {
+  margin-left: 25%;
+}
+
+.lines .lineb:nth-child(3)::after {
+  -webkit-animation-delay: 2.5s;
+  animation-delay: 2.5s;
+}
+
+.lines .linec {
+  position: absolute;
+  width: 1px;
+  height: 100%;
+  top: 0;
+  left: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+
+.lines .linec::after {
+  content: "";
+  display: block;
+  position: absolute;
+  height: 15vh;
+  width: 100%;
+  top: -50%;
+  left: 0;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0)), color-stop(75%, var(--companycoc)), to(var(--wt)));
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, var(--companycoc) 75%, var(--wt) 100%);
+  -webkit-animation: run 7s 0s infinite;
+  animation: run 7s 0s infinite;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.97);
+  animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.97);
+}
+
+.lines .linec:nth-child(1) {
+  margin-left: -25%;
+}
+
+.lines .linec:nth-child(1)::after {
+  -webkit-animation-delay: 2s;
+  animation-delay: 2s;
+}
+
+.lines .linec:nth-child(3) {
+  margin-left: 25%;
+}
+
+.lines .linec:nth-child(3)::after {
   -webkit-animation-delay: 2.5s;
   animation-delay: 2.5s;
 }
@@ -10894,8 +11120,8 @@ Go Top CSS
   cursor: pointer;
   bottom: -42px;
   right: 15px;
-  color: #ffffff;
-  background-color: #d1be03;
+  color: var(--wt);
+  background-color: var(--companycob);
   z-index: 4;
   width: 42px;
   text-align: center;

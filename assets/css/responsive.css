@@ -136,19 +136,6 @@
     display: block;
   }
 
-  .main-banner {
-    height: auto;
-    padding-top: 100px;
-    padding-bottom: 130px;
-  }
-
-  .main-banner.banner-bg6 {
-    background-position: top left;
-  }
-
-  .main-banner.banner-bg2 {
-    background-position: top left;
-  }
 
   .main-banner.single-main-banner {
     padding-top: 100px;
@@ -160,15 +147,6 @@
     padding-bottom: 0;
   }
 
-  .main-banner-content .sub-title {
-    margin-bottom: 12px;
-    font-size: 15px;
-  }
-
-  .main-banner-content h1 {
-    margin-bottom: 12px;
-    font-size: 35px;
-  }
 
   .main-banner-content p {
     font-size: 15px;
@@ -1366,10 +1344,6 @@
     font-size: 13px;
   }
 
-  .footer-area {
-    padding-top: 60px;
-  }
-
   .single-footer-widget h3 {
     margin-bottom: 20px;
     font-size: 19px;
@@ -1537,14 +1511,6 @@
 
   .main-banner-content .sub-title {
     font-size: 16.5px;
-  }
-
-  .main-banner-content h1 {
-    font-size: 50px;
-  }
-
-  .main-banner-content p {
-    font-size: 16px;
   }
 
   .banner-content {

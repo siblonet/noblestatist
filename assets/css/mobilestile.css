@@ -1,8 +1,8 @@
 @media only screen and (max-width: 991px) {
     .navbar-area {
-        height: 50px !important;
+        height: 42px !important;
         background: linear-gradient(to right,
-        #006e65 0%,
+                #006e65 0%,
                 #04af0c 20%,
                 gold 40%,
                 #000000 80%,
@@ -13,11 +13,16 @@
     .xton-responsive-nav {
         display: block;
         background: #ffffff;
-        height: 52px;
+        height: 40px;
         position: absolute;
         width: 100%;
         z-index: 99;
-        top: 155px;
+        top: 132px;
+    }
+
+    .main-logo, .white-logo{
+        height: 33px !important;
+        width: 70px !important;
     }
 
     .products-box .products-image {
@@ -234,5 +239,114 @@
         top: -6px;
         border-radius: 0px 80px 0px 0px;
         background: red;
+    }
+
+
+
+
+
+
+    /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+    /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+    /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+    /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+    /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+    /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+    /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+
+
+
+
+    .foot-linear-set {
+        height: 200px;
+    }
+
+    .foot-circle {
+        height: 99%;
+    }
+
+
+
+
+    .lines {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 100%;
+        margin: auto;
+        width: 90vw;
+        z-index: 0;
+    }
+
+    .lines .line {
+        left: 45%;
+    }
+
+
+
+    .lines .linec {
+        left: 55%;
+    }
+
+
+
+
+
+    /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+    /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+    /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+    /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+    /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+    /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+    /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+
+    .main-banner {
+        height: auto;
+        padding-top: 50px;
+        padding-bottom: 53px;
+    }
+
+
+    .main-banner-content .sub-title {
+        display: none !important;
+    }
+
+    .main-banner-content h1 {
+        margin-bottom: 12px;
+        font-size: 20px;
+    }
+
+
+    .main-banner-content p {
+        font-size: 13px !important;
+    }
+
+
+    .optional-btn {
+        border: 1px solid var(--wt);
+        color: var(--wt);
+    }
+
+
+
+    .home-slides.owl-theme .owl-dots {
+
+        bottom: 0;
+    }
+
+    .home-slides.owl-theme .owl-dots .owl-dot span {
+        width: 13px;
+        height: 13px;
+        margin: 0 8px;
+    }
+
+    .home-slides.owl-theme .owl-dots .owl-dot span::before {
+        background-color: var(--companycoe);
+    }
+
+    .home-slides.owl-theme .owl-dots .owl-dot:hover span,
+    .home-slides.owl-theme .owl-dots .owl-dot.active span {
+        border-color: var(--companycoe);
     }
 }
