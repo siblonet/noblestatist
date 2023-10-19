@@ -10492,6 +10492,7 @@ Footer CSS
       gold 40%,
       #000000 80%,
       var(--rd) 90%) !important;
+      overflow: hidden !important;
 }
 
 .foot-circle {
@@ -10500,6 +10501,8 @@ Footer CSS
   width: 100%;
   border-bottom-right-radius: 50%;
   border-bottom-left-radius: 50%;
+  overflow: hidden !important;
+
 }
 
 .single-footer-widget {
