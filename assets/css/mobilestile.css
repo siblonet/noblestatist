@@ -20,7 +20,8 @@
         top: 131px;
     }
 
-    .main-logo, .white-logo{
+    .main-logo,
+    .white-logo {
         height: 33px !important;
         width: 70px !important;
     }
@@ -265,7 +266,9 @@
         height: 99%;
     }
 
-
+    .foot-circle .clonsamobil {
+        display: none !important;
+    }
 
 
     .lines {
@@ -349,4 +352,11 @@
     .home-slides.owl-theme .owl-dots .owl-dot.active span {
         border-color: var(--companycoe);
     }
+}
+
+@media only screen and (min-width: 992px) {
+
+    .closeCom{
+        display: none !important;
+      }
 }
