@@ -639,9 +639,10 @@ const NavBaractivity = async () => {
 
         const odernotifi = document.getElementById('odernotifi');
         odernotifi.innerHTML = '';
+        document.getElementById('recetteMoney').innerText = `${totalSold} F.CFA`;
+
         if (odernotnu > 0) {
             document.getElementById('CommandesNum').innerText = odernotnu;
-            document.getElementById('recetteMoney').innerText = `${totalSold} F.CFA`;
             const odernotifiHTML = `
     
                     <i class="fa fa-bell-o"></i>
