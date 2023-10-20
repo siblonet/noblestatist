@@ -5,6 +5,9 @@ function totalManager() {
     if (token) {
         const splo = token.split("°");
         const phone = splo[3];
+        const name = splo[1];
+        const lastname = splo[2];
+        const mynama = thisiswhat(`${name}â${lastname}`)
         const mynam = thisiswhat(`${phone}`);
         document.getElementById('prenomValue').disabled = true;
         document.getElementById('nomValue').disabled = true;
@@ -12,7 +15,17 @@ function totalManager() {
         document.getElementById('confirmezValue').disabled = true;
         document.getElementById('emailValue').disabled = true;
         document.getElementById('telephoneValue').value = mynam;
-        document.getElementById('connectedor').innerHTML = '';
+        const connectedor = document.getElementById('connectedor').innerHTML = '';
+        connectedor.innerHTML = '';
+        const connectedorHTML =
+            `
+         
+        <div class="user-actions-linear"></div>
+
+        <span class="span" style="color: #037703 !important;">Bienvenue ${mynama}</span>
+
+        `;
+        connectedor.innerHTML = connectedorHTML;
     };
 };
 

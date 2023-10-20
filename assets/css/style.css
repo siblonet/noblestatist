@@ -8969,7 +8969,7 @@ Checkout CSS
 }
 
 .user-actions .user-actions-linear {
-  background: var(--wt);
+  background: var(--wt) !important;
   position: absolute;
   height: 100%;
   width: 100%;
