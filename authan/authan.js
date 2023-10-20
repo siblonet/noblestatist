@@ -148,7 +148,7 @@ function loGin() {
                             errer.classList.remove("rejected");
                         }, 1500);
 
-                    } else if (response.er == "erro" && response.id == "erro") {
+                    } else if (response.er !== "erro" && response.id !== "erro") {
                         sessionStorage.setItem('tibule', response.token);
                         const splo = response.token.split("°");
                         const admin = splo[5];
