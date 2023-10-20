@@ -192,6 +192,9 @@ function loGin() {
 
 
 function loginCommage() {
+    const tohia = document.getElementById('tohia');
+    const load = document.getElementById('tohi');
+    const errer = document.getElementById('rejected');
     try {
         const phone = document.getElementById('phone').value;
         const password = document.getElementById('password').value;
@@ -218,7 +221,8 @@ function loginCommage() {
 
                         setTimeout(() => {
                             errer.classList.remove("rejected");
-                        }, 1000);
+                        }, 1500);
+
                     } else {
                         sessionStorage.setItem('tibule', response.token);
                         const splo = response.token.split("°");
@@ -249,15 +253,17 @@ function loginCommage() {
 
                 } catch (e) {
 
-                    load.classList.remove("load28")
-                    load.classList.add("tohi")
-                    tohia.classList.remove("tohi");
-                    errer.classList.add("rejected");
-                    document.getElementById('nointer').innerText = "Vérifiez que vous avez access a l'internet";
+                   setTimeout(() => {
+                        load.classList.remove("load28")
+                        load.classList.add("tohi")
+                        tohia.classList.remove("tohi");
+                        errer.classList.add("rejected");
+                        document.getElementById('nointer').innerText = "Vérifiez que vous avez access a l'internet";
+                    }, 1500);
 
                     setTimeout(() => {
                         errer.classList.remove("rejected");
-                    }, 3500);
+                    }, 4500);
                 }
             };
 

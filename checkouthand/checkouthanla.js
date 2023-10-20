@@ -15,14 +15,14 @@ function totalManager() {
         document.getElementById('confirmezValue').disabled = true;
         document.getElementById('emailValue').disabled = true;
         document.getElementById('telephoneValue').value = mynam;
-        const connectedor = document.getElementById('connectedor').innerHTML = '';
+        const connectedor = document.getElementById('connectedor');
         connectedor.innerHTML = '';
         const connectedorHTML =
             `
          
         <div class="user-actions-linear"></div>
 
-        <span class="span" style="color: #037703 !important;">Bienvenue ${mynama}</span>
+        <span class="span" style="color: #037703 !important;"> Bienvenue ${mynama}</span>
 
         `;
         connectedor.innerHTML = connectedorHTML;
