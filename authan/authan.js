@@ -17,6 +17,10 @@ const sendRequestnoto = async (method, endpoint, data = null) => {
             return { id: "erro", er: "erro" }
         }
 
+        if (responseData.ee) {
+            return { id: "erro", er: "erro" }
+        } 
+
         return { id: responseData, er: responseData }
     } catch (e) {
         
@@ -244,7 +248,7 @@ function loginCommage() {
                     }
 
                 } catch (e) {
-
+                    console.log(e)
                     setTimeout(() => {
                         load.classList.remove("load28")
                         load.classList.add("tohi")
