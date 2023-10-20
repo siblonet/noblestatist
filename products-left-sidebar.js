@@ -339,6 +339,38 @@ async function productsLeftSidbar() {
                     productContainer.innerHTML += productHTML;
 
                 });
+
+                const loaderRemove = document.getElementById('loaderRemove');
+                loaderRemove.innerHTML = "";
+                loaderRemove.style.display = "none";
+                const emptyadd = document.getElementById('emptyadd');
+
+                emptyadd.style.width = "100%"
+                emptyadd.style.height = "500px"
+                const emptyaddHtml = `
+                    <section class="facility-area pb-70 foot-circle">
+                        <section class="offer-area bg-image1 ptb-100">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-lg-5 col-md-6">
+                                        <div class="offer-content">
+                                            <span class="sub-title">Offre à durée limitée !</span>
+                    
+                    
+                    
+                    
+                                            <h2>-40% DE RÉDUCTION</h2>
+                                            <p>Profitez des meilleures offres maintenant</p>
+                                            <a href="vide.html" class="default-btn">Découvrir maintenant</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </section>
+                    `;
+
+                emptyadd.innerHTML = emptyaddHtml;
             } else {
                 const isemptyorintern = document.getElementById('isemptyorintern');
                 //const isemptyorintern = document.getElementById('isemptyorintern').innerText;
