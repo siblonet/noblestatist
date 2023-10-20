@@ -18,7 +18,6 @@ const sendRequestnoto = async (method, endpoint, data = null) => {
         }
 
         if (responseData.ee) {
-            console.log(responseData.ee);
             return { id: "erro", er: "erro" }
         } 
 
