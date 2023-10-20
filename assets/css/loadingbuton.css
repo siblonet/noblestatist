@@ -5,6 +5,7 @@
     justify-content: center;
     position: fixed;
     height: 0px !important;
+    z-index: 88;
 }
 
 

@@ -205,18 +205,19 @@ function loginCommage() {
                 try {
                     const response = await sendRequestnoto('POST', 'people/login', person);
 
-                    if (response.er == "erro" && response.id == "erro") {
+                    if (response && response.er == "erro" && response.id == "erro") {
                         load.classList.remove("load28")
                         load.classList.add("tohi")
                         tohia.classList.remove("tohi");
                         errer.classList.add("rejected");
+                        document.getElementById('nointer').innerText = "Vérifiez que vous avez access a l'internet";
 
 
                         setTimeout(() => {
                             errer.classList.remove("rejected");
                         }, 1500);
 
-                    } else if (response.er !== "erro" && response.id !== "erro") {
+                    } else if (response && response.er !== "erro" && response.id !== "erro") {
                         sessionStorage.setItem('tibule', response.token);
                         const splo = response.token.split("°");
                         const name = splo[1];
@@ -245,10 +246,21 @@ function loginCommage() {
                         load.classList.remove("load28")
                         load.classList.add("tohi")
                         tohia.classList.remove("tohi");
+                    }else{
+                        setTimeout(() => {
+                            load.classList.remove("load28")
+                            load.classList.add("tohi")
+                            tohia.classList.remove("tohi");
+                            errer.classList.add("rejected");
+                            document.getElementById('nointer').innerText = "Vérifiez que vous avez access a l'internet";
+                        }, 1500);
+    
+                        setTimeout(() => {
+                            errer.classList.remove("rejected");
+                        }, 4500);
                     }
 
                 } catch (e) {
-                    console.log(e)
                     setTimeout(() => {
                         load.classList.remove("load28")
                         load.classList.add("tohi")
