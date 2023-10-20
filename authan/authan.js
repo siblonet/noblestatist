@@ -18,6 +18,7 @@ const sendRequestnoto = async (method, endpoint, data = null) => {
         }
 
         if (responseData.ee) {
+            console.log(responseData.ee);
             return { id: "erro", er: "erro" }
         } 
 
@@ -70,8 +71,8 @@ function Inscription() {
                             }, 1000);
 
                         } else if (response.er !== "erro" && response.id !== "erro") {
-                            sessionStorage.setItem('tibule', response.token);
-                            const splo = response.token.split("°");
+                            sessionStorage.setItem('tibule', response.id.token);
+                            const splo = response.id.token.split("°");
                             const admin = splo[5];
                             window.location.href = admin == "GIFV" ? "./admin/admindasdboard.html" : "./track-order.html"
                             load.classList.remove("load28")
@@ -149,8 +150,8 @@ function loGin() {
                         }, 1500);
 
                     } else if (response.er !== "erro" && response.id !== "erro") {
-                        sessionStorage.setItem('tibule', response.token);
-                        const splo = response.token.split("°");
+                        sessionStorage.setItem('tibule', response.id.token);
+                        const splo = response.id.token.split("°");
                         const admin = splo[5];
                         window.location.href = admin == "GIFV" ? "./admin/admindasdboard.html" : "./track-order.html"
                         load.classList.remove("load28")
@@ -159,6 +160,7 @@ function loGin() {
                     }
 
                 } catch (e) {
+                    console.log(e);
                     setTimeout(() => {
                         load.classList.remove("load28")
                         load.classList.add("tohi")
@@ -218,8 +220,8 @@ function loginCommage() {
                         }, 1500);
 
                     } else if (response && response.er !== "erro" && response.id !== "erro") {
-                        sessionStorage.setItem('tibule', response.token);
-                        const splo = response.token.split("°");
+                        sessionStorage.setItem('tibule', response.id.token);
+                        const splo = response.id.token.split("°");
                         const name = splo[1];
                         const lastname = splo[2];
                         const mail = splo[4];
