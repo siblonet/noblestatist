@@ -2,8 +2,8 @@ function totalManager() {
     TotalAll('all2', "");
 
     const token = sessionStorage.getItem('tibule');
-    const splo = token.split("°");
-    if (splo) {
+    if (token) {
+        const splo = token.split("°");
         const phone = splo[3];
         const mynam = thisiswhat(`${phone}`);
         document.getElementById('prenomValue').disabled = true;
@@ -19,6 +19,9 @@ function totalManager() {
 totalManager();
 
 async function sendCommen() {
+    const tohia = document.getElementById('tohia');
+    const load = document.getElementById('tohi');
+    const errer = document.getElementById('rejected');
     try {
 
         const token = sessionStorage.getItem('tibule');
@@ -73,7 +76,7 @@ async function sendCommen() {
                     };
 
                     const clientId = await CreatClientd(person);  // Await the result
-                    if (clientId) {
+                    if (clientId.er !== "erro" && clientId.id !== "erro") {
                         const articleOne = {
                             articles: [],
                             ville: villeValue,
@@ -86,7 +89,7 @@ async function sendCommen() {
 
 
                         TotalAll('sendOrder', articleOne);
-                    } else {
+                    } else if (clientId.er == "erro" && clientId.id == "erro") {
                         load.classList.remove("load28")
                         load.classList.add("tohi")
                         tohia.classList.remove("tohi");
@@ -98,7 +101,15 @@ async function sendCommen() {
                         }, 4000);
                     }
                 } else {
-                    alert("mot de passe n'est conforme à la confirmation")
+                    load.classList.remove("load28")
+                    load.classList.add("tohi")
+                    tohia.classList.remove("tohi");
+                    errer.classList.add("rejected");
+                    document.getElementById('nointer').innerText = "Mot de passe n'est pas conform a la confirmation";
+                    setTimeout(() => {
+                        errer.classList.remove("rejected");
+                    }, 3500);
+
                 }
             }
         }
@@ -135,6 +146,9 @@ const sendRequestOrder = async (method, endpoint, data = null) => {
 };
 
 async function CreatClientd(client) {
+    const tohia = document.getElementById('tohia');
+    const load = document.getElementById('tohi');
+    const errer = document.getElementById('rejected');
     try {
         const createItem = async (method, endpoint) => {
             try {
@@ -157,7 +171,7 @@ async function CreatClientd(client) {
                     load.classList.add("tohi")
                     tohia.classList.remove("tohi");
                     errer.classList.add("rejected");
-                    document.getElementById('nointer').innerText = "Vérifiez que vous avez access a l'internet";
+                    document.getElementById('nointer').innerText = "Erreur incconnu, Veuillez re-essayer plus tard";
 
                     setTimeout(() => {
                         errer.classList.remove("rejected");
@@ -165,7 +179,7 @@ async function CreatClientd(client) {
                 }
 
                 if (responseData.ee) {
-                    return null
+                    return "erro"
                 } else {
                     sessionStorage.setItem('tibule', responseData.token);
                     const splo = responseData.token.split("°");
@@ -173,15 +187,23 @@ async function CreatClientd(client) {
                 }
 
             } catch (e) {
-               
+                setTimeout(() => {
+                    load.classList.remove("load28")
+                    load.classList.add("tohi")
+                    tohia.classList.remove("tohi");
+                    errer.classList.add("rejected");
+                    document.getElementById('nointer').innerText = "Vérifiez que vous avez access a l'internet";
+                }, 1500);
 
+                setTimeout(() => {
+                    errer.classList.remove("rejected");
+                }, 4500);
             }
         };
 
         const createdItemId = await createItem('POST', 'people'); // Await the result of createItem()
-        return createdItemId;
-    } catch (error) {
-        console.log(error);
-        throw error; // Re-throw the error to handle it in the calling function if needed
+        return { id: createdItemId, er: createdItemId };
+    } catch (e) {
+        console.log(e);
     }
 };

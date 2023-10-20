@@ -6,7 +6,19 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="theme-color" content="#d1be03" />
+    <meta name="theme-color" content="#006e65" />
+    <meta name="description" content="Securisé et rapide" />
+    <meta name="keywords" content="Noble, Noble_boutikonline, Siblo, Silence-AI, John, Kokar, Dibloni" />
+    <meta name="author" content="John Kokar" />
+    <meta property="og:title" content="e-Commerce" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="assets/img/banner-img1.png" />
+    <meta property="og:description" content="Securisé et rapide" />
+    <meta property="og:site_name" content="Noble" />
+    <meta property="og:locale" content="fr-FR" />
+    <meta property="article:author" content="John Kokar" />
+    <meta property="article:published_time" content="2023-10-19T08:00:00Z" />
+    <meta property="article:modified_time" content="#2023-10-19T08:00:00Z" />
 
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/animate.min.css">
@@ -20,6 +32,8 @@
     <link rel="stylesheet" href="assets/css/rangeSlider.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/mobilestile.css">
+    <link rel="stylesheet" href="assets/css/loading.css">
+    <link rel="stylesheet" href="assets/css/loadingbuton.css">
     <link rel="stylesheet" href="assets/css/dark.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
     <title>Panier</title>
@@ -27,8 +41,20 @@
 </head>
 
 <body>
+    <div class="" id="coverfor">
+        <div class="spinner">
+            <div class="inner">
+                <div class="disc"></div>
+                <div class="disc"></div>
+                <div class="disc"></div>
+            </div>
+        </div>
+    </div>
 
     <div class="page-title-area">
+        <div class="page-linear">
+        </div>
+
         <div class="container">
             <div class="page-title-content">
                 <a class="navbar-brand" href="index.html">
@@ -36,7 +62,7 @@
                 </a>
                 <ul>
                     <li><a href="index.html">Accueil</a></li>
-                    <li>Panier</li>
+                    <li style="color: #f80265 !important;">Panier</li>
                 </ul>
             </div>
         </div>
@@ -66,7 +92,7 @@
                 <div class="cart-buttons">
                     <div class="row align-items-center">
                         <div class="col-lg-7 col-sm-7 col-md-7">
-                            <a href="index.html" class="optional-btn">Continuer vos achats</a>
+                            <a href="index.html" class="optional-btn optional-a">Continuer vos achats</a>
                         </div>
                         <div class="col-lg-5 col-sm-5 col-md-5 text-end">
                             <a style="cursor: pointer !important;" class="default-btn" onclick="clearPanier()">Vider le
@@ -86,37 +112,136 @@
 
 
 
-
     <footer class="footer-area">
+        <div class="lines">
+            <div class="line"></div>
+            <div class="lineb"></div>
+            <div class="linec"></div>
+        </div>
+        <div class="foot-linear-set">
+            <section class="facility-area pb-70 foot-circle">
+                <div style="width: 100%; height: 500px;">
+                    <section class="facility-area pb-70 foot-circle">
+                        <section class="offer-area bg-image1 ptb-100">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-lg-5 col-md-6">
+                                        <div class="offer-content">
+                                            <span class="sub-title">Offre à durée limitée !</span>
+
+
+
+
+                                            <h2>-40% DE RÉDUCTION</h2>
+                                            <p>Profitez des meilleures offres maintenant</p>
+                                            <a href="vide.html" class="default-btn">Découvrir maintenant</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </section>
+                </div>
+                <div class="container">
+                    <div class="facility-slides owl-carousel owl-theme">
+                        <div class="single-facility-box">
+                            <div class="icon">
+                                <i class="flaticon-tracking"></i>
+                            </div>
+                            <h3>Livraison gratuite dans le monde entier</h3>
+                        </div>
+                        <div class="single-facility-box">
+                            <div class="icon">
+                                <i class="flaticon-return"></i>
+                            </div>
+                            <h3>Politique de retour facile</h3>
+                        </div>
+                        <div class="single-facility-box">
+                            <div class="icon">
+                                <i class="flaticon-shuffle"></i>
+                            </div>
+                            <h3>Politique d'échange de 7 jours</h3>
+                        </div>
+                        <div class="single-facility-box">
+                            <div class="icon">
+                                <i class="flaticon-sale"></i>
+                            </div>
+                            <h3>Coupon de réduction du week-end</h3>
+                        </div>
+                        <div class="single-facility-box">
+                            <div class="icon">
+                                <i class="flaticon-credit-card"></i>
+                            </div>
+                            <h3>Méthodes de paiement sécurisées</h3>
+                        </div>
+                        <div class="single-facility-box">
+                            <div class="icon">
+                                <i class="flaticon-location"></i>
+                            </div>
+                            <h3>Suivez votre colis</h3>
+                        </div>
+                        <div class="single-facility-box">
+                            <div class="icon">
+                                <i class="flaticon-customer-service"></i>
+                            </div>
+                            <h3>Assistance client 24/7</h3>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
         <div class="container">
+            <div style="height: 50px; width: 100%;"></div>
+
             <div class="row">
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="single-footer-widget">
-                        <h3>À propos du magasin</h3>
+                        <h3 class="foota">À propos du magasin</h3>
                         <div class="about-the-store">
                             <p>L'une des activités les plus populaires sur le Web est le shopping.</p>
                             <ul class="footer-contact-info">
-                                <li><i class="bx bx-map"></i> <a href="#" target="_blank">Abidjan, Cocody, Riviera II
-                                        (CI)</a></li>
-                                <li><i class="bx bx-phone-call"></i> <a href="tel:0768020606">0768020606</a>
+                                <li>
+                                    <i class="bx bx-map"></i>
+                                    <a class="awe">Abidjan, Cocody, Riviera II (CI)
+                                    </a>
                                 </li>
-                                <li><i class="bx bx-envelope"></i> <a><span>noble.boutikonline@gmail.com</span></a>
+                                <li>
+                                    <i class="bx bx-phone-call"></i>
+                                    <a class="awe" href="tel:0768020606">07.68.02.06.06/01.43.31.93.93
+                                    </a>
+                                </li>
+                                <li>
+                                    <i class="bx bx-envelope"></i>
+                                    <a class="awe" href="mail:noble.boutikonline@gmail.com">
+                                        <span>noble.boutikonline@gmail.com</span>
+                                    </a>
                                 </li>
                             </ul>
                         </div>
                         <ul class="social-link">
-                            <li><a href="https://www.facebook.com/profile.php?id=61551743586029&mibextid=ZbWKwL" class="d-block" target="_blank"><i class="bx bxl-facebook"></i></a></li>
-                            <li><a href="https://www.instagram.com/p/Cyf883QN0B9/?igshid=NjIwNzIyMDk2Mg==" class="d-block" target="_blank"><i class="bx bxl-instagram"></i></a></li>
+                            <li>
+                                <a href="https://www.facebook.com/profile.php?id=61551743586029&mibextid=ZbWKwL"
+                                    class="d-block" target="_blank">
+                                    <i class="bx bxl-facebook" style="color: #037703 !important;"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.instagram.com/p/Cyf883QN0B9/?igshid=NjIwNzIyMDk2Mg=="
+                                    class="d-block" target="_blank">
+                                    <i class="bx bxl-instagram" style="color: #037703 !important;"></i>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="single-footer-widget pl-4">
-                        <h3>Liens rapides</h3>
+                        <h3 class="footb">Liens rapides</h3>
                         <ul class="quick-links">
                             <li><a href="about.html">À propos de nous</a></li>
-                            <li><a href="products-left-sidebar.html">Homme</a></li>
-                            <li><a href="products-left-sidebar-2.html">Femme</a></li>
+                            <li><a href="vide.html">Homme</a></li>
+                            <li><a href="vide.html">Femme</a></li>
                             <li><a href="faqs.html">FAQ</a></li>
                             <li><a href="contact.html">Contactez-nous</a></li>
                             <li><a href="customer-service.html">Service client</a></li>
@@ -125,9 +250,10 @@
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="single-footer-widget">
-                        <h3>Assistance client</h3>
+                        <h3 class="footc">Assistance client</h3>
                         <ul class="customer-support">
-                            <li><a href="login.html">Mon compte</a></li>
+                            <li><a style="cursor: pointer !important;" onclick="navigateAdminCLient()">Mon compte</a>
+                            </li>
                             <li><a href="checkout.html">Paiement</a></li>
                             <li><a href="cart.html">Panier</a></li>
                             <li><a href="faqs.html">FAQ</a></li>
@@ -138,15 +264,15 @@
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="single-footer-widget">
-                        <h3>Newsletter</h3>
+                        <h3 class="footd">Newsletter</h3>
                         <div class="footer-newsletter-box">
                             <p>Pour recevoir les dernières nouvelles et les dernières mises à jour de notre part.</p>
                             <form class="newsletter-form" data-bs-toggle="validator">
                                 <label>Votre adresse e-mail :</label>
                                 <input type="email" class="input-newsletter" placeholder="Entrez votre email"
-                                    name="EMAIL" obligatoire autocomplete="off">
-                                <button type="submit">S'abonner</button>
-                                <div id="validator-newsletter" class="form-result"></div>
+                                    name="EMAIL" obligatoire autocomplete="off" id="newsletterid">
+                                <button type="submit"
+                                    style="background-color: rgb(219, 56, 105) !important; border-bottom: 1px solid red;">S'abonner</button>
                             </form>
                         </div>
                     </div>
@@ -155,18 +281,13 @@
             <div class="footer-bottom-area">
                 <div class="row align-items-center">
                     <div class="col-lg-6 col-md-6">
-                        <p>© Noble est fièrement digitalisé par
-                            <a href="https://hibootstrap.com/" target="_blank">John Kokar</a>
+                        <p>Contactez le dévélopper, cliquez
+                            <a href="tel:+13257330245">ici John Kokar</a>
                         </p>
                     </div>
-                  
+
                 </div>
             </div>
-        </div>
-        <div class="lines">
-            <div class="line"></div>
-            <div class="line"></div>
-            <div class="line"></div>
         </div>
     </footer>
 
@@ -174,7 +295,6 @@
     <script src="./router.js"></script>
     <script src="./productsFetcher/database_handl.js"></script>
     <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/popper.min.html"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/owl.carousel.min.js"></script>
     <script src="assets/js/magnific-popup.min.js"></script>

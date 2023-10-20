@@ -256,7 +256,9 @@
     /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
 
 
-
+    .top-header .container {
+        z-index: 2;
+    }
 
     .foot-linear-set {
         height: 200px;
@@ -331,7 +333,10 @@
         color: var(--wt);
     }
 
-
+    .optional-a {
+        border: 1px solid var(--black);
+        color: var(--black);
+    }
 
     .home-slides.owl-theme .owl-dots {
 
@@ -353,14 +358,34 @@
         border-color: var(--companycoe);
     }
 
-    #emptyadd{
+    #emptyadd {
         display: none !important;
-      }
+    }
+
+
+
+    /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+    /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+    /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+    /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+    /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+    /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+    /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+    .page-title-area {
+        padding-top: 40px;
+        padding-bottom: 35px;
+        overflow: hidden;
+        background: #f8f8f8 !important;
+    }
+
+    .page-title-area .page-linear {
+        display: none !important;
+    }
 }
 
 @media only screen and (min-width: 992px) {
 
-    .closeCom{
+    .closeCom {
         display: none !important;
-      }
+    }
 }

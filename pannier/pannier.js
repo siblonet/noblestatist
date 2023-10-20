@@ -176,7 +176,7 @@ function getallData() {
             allPannier.push(cursor.value);
             //pannierPrin.push(cursor.value);
             cursor.continue();
-        } else {
+        } else if (allPannier.length > 0) {
             const tbodyId = document.getElementById('tbody-data');
             tbodyId.innerHTML = '';
 
@@ -236,14 +236,15 @@ function getallData() {
                             <li>Total <span>${totalPricea + 1000} F.CFA</span></li>
                             `;
             pantotalid.innerHTML += pantotalhtml;
+        } else {
+            document.getElementById('coverfor').classList.add("preloader-area");
+
         }
     };
 
     transaction.onerror = (event) => {
         console.error("Transaction error:", event.target.error);
     };
-
-    return "data"
 }
 
 function getallDataa() {

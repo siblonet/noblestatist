@@ -1,17 +1,16 @@
-.rejjustifa {
-    width: 100%;
+.rejectSyst {
     background-color: var(--wt);
-    height: 120px;
-    display: flex;
-    justify-content: center;
+    align-self: center;
     align-items: center;
-    overflow: hidden !important;
+    justify-content: center;
+    position: fixed;
+    height: 0px !important;
 }
 
-.rejjustifa .rejjustifaSub .rejectSystem {
 
+.rejectSystem {
     background-color: var(--wt);
-    margin-top: -150px;
+    margin-top: -450px;
     border-radius: 7px;
     display: flex;
     flex-wrap: nowrap;
@@ -20,29 +19,23 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    padding: 7px;
+    padding: 7px 90px 7px 90px;
     -webkit-transition-duration: 300ms;
     transition-duration: 300ms;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-
 }
 
-.rejjustifa .rejjustifaSub .rejectSystem img {
+.rejectSystem img {
     height: 20px;
     width: 20px;
 }
 
-.rejjustifa .rejjustifaSub .rejectSystemspan {
-    width: 10px !important;
+.rejectSystem span {
+    width: 20px !important;
 }
 
-.rejjustifa .rejjustifaSub .rejectSystemp {
-    color: #b30000 !important;
-    line-height: 0;
-    margin-bottom: 10px !important;
-}
 
-.rejjustifa .rejjustifaSub .rejected {
+.rejected {
     margin-top: 0;
 }
 

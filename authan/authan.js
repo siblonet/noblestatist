@@ -1,7 +1,3 @@
-const load = document.getElementById('tohi');
-const tohia = document.getElementById('tohia');
-const errer = document.getElementById('rejected');
-
 const sendRequestnoto = async (method, endpoint, data = null) => {
     const options = {
         method,
@@ -48,6 +44,9 @@ const sendRequestnoto = async (method, endpoint, data = null) => {
 
 
 function Inscription() {
+    const tohia = document.getElementById('tohia');
+    const load = document.getElementById('tohi');
+    const errer = document.getElementById('rejected');
     try {
         const fname = document.getElementById('fname').value;
         const lname = document.getElementById('lname').value;
@@ -92,15 +91,17 @@ function Inscription() {
                         }
 
                     } catch (e) {
-                        load.classList.remove("load28")
-                        load.classList.add("tohi")
-                        tohia.classList.remove("tohi");
-                        errer.classList.add("rejected");
-                        document.getElementById('nointer').innerText = "Vérifiez que vous avez access a l'internet";
-
+                        setTimeout(() => {
+                            load.classList.remove("load28")
+                            load.classList.add("tohi")
+                            tohia.classList.remove("tohi");
+                            errer.classList.add("rejected");
+                            document.getElementById('nointer').innerText = "Vérifiez que vous avez access a l'internet";
+                        }, 1500);
+    
                         setTimeout(() => {
                             errer.classList.remove("rejected");
-                        }, 3500);
+                        }, 4500);
 
                     }
                 };
@@ -109,7 +110,14 @@ function Inscription() {
 
 
             } else {
-                alert("mot de passe n'est conform a la confirmation")
+                load.classList.remove("load28")
+                load.classList.add("tohi")
+                tohia.classList.remove("tohi");
+                errer.classList.add("rejected");
+                document.getElementById('nointer').innerText = "Mot de passe n'est pas conform a la confirmation";
+                setTimeout(() => {
+                    errer.classList.remove("rejected");
+                }, 3500);
             }
         }
     } catch (error) {
@@ -119,6 +127,9 @@ function Inscription() {
 
 
 function loGin() {
+    const tohia = document.getElementById('tohia');
+    const load = document.getElementById('tohi');
+    const errer = document.getElementById('rejected');
     try {
         const phone = document.getElementById('phone').value;
         const password = document.getElementById('password').value;
@@ -127,7 +138,6 @@ function loGin() {
             tohia.classList.add("tohi");
             load.classList.remove("tohi");
             load.classList.add("load28");
-
 
             const person = {
                 phone: phone,
@@ -139,7 +149,7 @@ function loGin() {
                     const response = await sendRequestnoto('POST', 'people/login', person);
 
                     if (response.ee) {
-                        /*load.classList.remove("load28")
+                        load.classList.remove("load28")
                         load.classList.add("tohi")
                         tohia.classList.remove("tohi");
                         errer.classList.add("rejected");
@@ -147,7 +157,7 @@ function loGin() {
 
                         setTimeout(() => {
                             errer.classList.remove("rejected");
-                        }, 1000);*/
+                        }, 1500);
 
                     } else {
                         sessionStorage.setItem('tibule', response.token);
@@ -157,16 +167,18 @@ function loGin() {
                     }
 
                 } catch (e) {
-                   /* load.classList.remove("load28")
-                    load.classList.add("tohi")
-                    tohia.classList.remove("tohi");
-                    errer.classList.add("rejected");
-                    document.getElementById('nointer').innerText = "Vérifiez que vous avez access a l'internet";
+                    setTimeout(() => {
+                        load.classList.remove("load28")
+                        load.classList.add("tohi")
+                        tohia.classList.remove("tohi");
+                        errer.classList.add("rejected");
+                        document.getElementById('nointer').innerText = "Vérifiez que vous avez access a l'internet";
+                    }, 1500);
 
                     setTimeout(() => {
                         errer.classList.remove("rejected");
-                    }, 3500);
-*/
+                    }, 4500);
+
 
                 }
             };

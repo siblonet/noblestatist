@@ -390,7 +390,7 @@ function getallCheckou() {
         if (cursor) {
             data.push(cursor.value);
             cursor.continue();
-        } else {
+        } else if(data.length > 0){
             const checkouId = document.getElementById('checkoutpanier');
             checkouId.innerHTML = '';
 
@@ -448,6 +448,9 @@ function getallCheckou() {
                                 </tr> 
                         `;
             pantotalid.innerHTML += pantotalhtml;
+
+        }else{
+            document.getElementById('coverfor').classList.add("preloader-area");
 
         }
     };
@@ -573,15 +576,11 @@ function TotalAll(who, data) {
                 if (who === "post") {
                     addtoPanier(data);
                 } else if (who === "all") {
-                    getallData()
-                        .then(result => resolve(result))
-                        .catch(error => reject(error));
+                    getallData();
                 } else if (who === "all1") {
                     getallDataa();
                 } else if (who === "all2") {
-                    getallCheckou()
-                        .then(result => resolve(result))
-                        .catch(error => reject(error));
+                    getallCheckou();
                 } else if (who === "action") {
                     getselectDataById(data)
                         .then(result => resolve(result))
