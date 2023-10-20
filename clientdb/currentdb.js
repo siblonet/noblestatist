@@ -301,6 +301,10 @@ function addtoPanier(data) {
 
 
 function getPanierSend(tocompl) {
+    const tohia = document.getElementById('tohia');
+    const load = document.getElementById('tohi');
+    const errer = document.getElementById('rejected');
+
     const transaction = panierdb.transaction(["PannierContent"], "readonly");
     const objectStore = transaction.objectStore("PannierContent");
     objectStore.openCursor().onsuccess = async (event) => {
@@ -333,24 +337,27 @@ function getPanierSend(tocompl) {
                 const responseData = await response.json();
 
                 if (!response.ok) {
-                    throw new Error(responseData.message || 'Request failed!');
+                    return { id: "erro", er: "erro" };
                 }
 
-                return responseData;
+                return { id: responseData.done, er: responseData.done };
             };
 
 
             try {
                 const response = await sendReque('POST', 'orders', tocompl);
-                if (response.done == "done") {
+                if (response.er == "done" && response.id == "done") {
                     TotalAll("clear", "");
                     window.location.href = "./track-order.html"
-                } else {
+                    load.classList.remove("load28")
+                    load.classList.add("tohi")
+                    tohia.classList.remove("tohi");
+                } else if (response.er !== "done" && response.id !== "done") {
                     load.classList.remove("load28")
                     load.classList.add("tohi")
                     tohia.classList.remove("tohi");
                     errer.classList.add("rejected");
-                    document.getElementById('nointer').innerText = "Vérifiez que vous avez access a l'internet";
+                    document.getElementById('nointer').innerText = "Erreur incconnu, Veuillez re-essayer plus tard";
 
                     setTimeout(() => {
                         errer.classList.remove("rejected");
@@ -358,15 +365,17 @@ function getPanierSend(tocompl) {
                 };
 
             } catch (e) {
-                load.classList.remove("load28")
-                load.classList.add("tohi")
-                tohia.classList.remove("tohi");
-                errer.classList.add("rejected");
-                document.getElementById('nointer').innerText = "Vérifiez que vous avez access a l'internet";
+                setTimeout(() => {
+                    load.classList.remove("load28")
+                    load.classList.add("tohi")
+                    tohia.classList.remove("tohi");
+                    errer.classList.add("rejected");
+                    document.getElementById('nointer').innerText = "Vérifiez que vous avez access a l'internet";
+                }, 1500);
 
                 setTimeout(() => {
                     errer.classList.remove("rejected");
-                }, 3500);
+                }, 4500);
 
             }
 
@@ -390,7 +399,7 @@ function getallCheckou() {
         if (cursor) {
             data.push(cursor.value);
             cursor.continue();
-        } else if(data.length > 0){
+        } else if (data.length > 0) {
             const checkouId = document.getElementById('checkoutpanier');
             checkouId.innerHTML = '';
 
@@ -449,7 +458,7 @@ function getallCheckou() {
                         `;
             pantotalid.innerHTML += pantotalhtml;
 
-        }else{
+        } else {
             document.getElementById('coverfor').classList.add("preloader-area");
 
         }

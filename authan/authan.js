@@ -14,30 +14,12 @@ const sendRequestnoto = async (method, endpoint, data = null) => {
         const responseData = await response.json();
 
         if (!response.ok) {
-
-            load.classList.remove("load28")
-            load.classList.add("tohi")
-            tohia.classList.remove("tohi");
-            errer.classList.add("rejected");
-            document.getElementById('nointer').innerText = "Vérifiez que vous avez access a l'internet";
-
-            setTimeout(() => {
-                errer.classList.remove("rejected");
-            }, 3500);
-
+            return { id: "erro", er: "erro" }
         }
 
-        return responseData;
+        return { id: responseData, er: responseData }
     } catch (e) {
-        load.classList.remove("load28")
-        load.classList.add("tohi")
-        tohia.classList.remove("tohi");
-        errer.classList.add("rejected");
-        document.getElementById('nointer').innerText = "Vérifiez que vous avez access a l'internet";
-
-        setTimeout(() => {
-            errer.classList.remove("rejected");
-        }, 3500);
+        
     }
 
 };
@@ -72,7 +54,7 @@ function Inscription() {
                 const createItem = async () => {
                     try {
                         const response = await sendRequestnoto('POST', 'people', person);
-                        if (response.ee) {
+                        if (response.er == "erro" && response.id == "erro") {
                             load.classList.remove("load28")
                             load.classList.add("tohi")
                             tohia.classList.remove("tohi");
@@ -83,11 +65,14 @@ function Inscription() {
                                 errer.classList.remove("rejected");
                             }, 1000);
 
-                        } else {
+                        } else if (response.er !== "erro" && response.id !== "erro") {
                             sessionStorage.setItem('tibule', response.token);
                             const splo = response.token.split("°");
                             const admin = splo[5];
                             window.location.href = admin == "GIFV" ? "./admin/admindasdboard.html" : "./track-order.html"
+                            load.classList.remove("load28")
+                            load.classList.add("tohi")
+                            tohia.classList.remove("tohi");
                         }
 
                     } catch (e) {
@@ -98,7 +83,7 @@ function Inscription() {
                             errer.classList.add("rejected");
                             document.getElementById('nointer').innerText = "Vérifiez que vous avez access a l'internet";
                         }, 1500);
-    
+
                         setTimeout(() => {
                             errer.classList.remove("rejected");
                         }, 4500);
@@ -148,7 +133,7 @@ function loGin() {
                 try {
                     const response = await sendRequestnoto('POST', 'people/login', person);
 
-                    if (response.ee) {
+                    if (response.er == "erro" && response.id == "erro") {
                         load.classList.remove("load28")
                         load.classList.add("tohi")
                         tohia.classList.remove("tohi");
@@ -159,11 +144,14 @@ function loGin() {
                             errer.classList.remove("rejected");
                         }, 1500);
 
-                    } else {
+                    } else if (response.er == "erro" && response.id == "erro") {
                         sessionStorage.setItem('tibule', response.token);
                         const splo = response.token.split("°");
                         const admin = splo[5];
                         window.location.href = admin == "GIFV" ? "./admin/admindasdboard.html" : "./track-order.html"
+                        load.classList.remove("load28")
+                        load.classList.add("tohi")
+                        tohia.classList.remove("tohi");
                     }
 
                 } catch (e) {
@@ -203,6 +191,7 @@ function loginCommage() {
             tohia.classList.add("tohi");
             load.classList.remove("tohi");
             load.classList.add("load28");
+
             const person = {
                 phone: phone,
                 motdepass: password,
@@ -212,7 +201,7 @@ function loginCommage() {
                 try {
                     const response = await sendRequestnoto('POST', 'people/login', person);
 
-                    if (response.ee) {
+                    if (response.er == "erro" && response.id == "erro") {
                         load.classList.remove("load28")
                         load.classList.add("tohi")
                         tohia.classList.remove("tohi");
@@ -223,7 +212,7 @@ function loginCommage() {
                             errer.classList.remove("rejected");
                         }, 1500);
 
-                    } else {
+                    } else if (response.er !== "erro" && response.id !== "erro") {
                         sessionStorage.setItem('tibule', response.token);
                         const splo = response.token.split("°");
                         const name = splo[1];
@@ -249,11 +238,14 @@ function loginCommage() {
                         document.getElementById('emailValue').disabled = true;
 
                         document.getElementById('telephoneValue').value = phone;
+                        load.classList.remove("load28")
+                        load.classList.add("tohi")
+                        tohia.classList.remove("tohi");
                     }
 
                 } catch (e) {
 
-                   setTimeout(() => {
+                    setTimeout(() => {
                         load.classList.remove("load28")
                         load.classList.add("tohi")
                         tohia.classList.remove("tohi");
