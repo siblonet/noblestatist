@@ -8,6 +8,10 @@ function getUrlParameter(ov) {
 };
 
 const retriva = getUrlParameter('ov');
-productStypes1(retriva);
-document.getElementById('ido').value = retriva;
 
+if (!retriva || retriva.length < 5) {
+    document.getElementById('coverfor').classList.add("preloader-area");
+} else {
+    productStypes1(retriva);
+    document.getElementById('ido').value = retriva;  
+}

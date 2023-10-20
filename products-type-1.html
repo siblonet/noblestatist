@@ -47,6 +47,7 @@
     <link rel="stylesheet" href="assets/css/rangeSlider.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/mobilestile.css">
+    <link rel="stylesheet" href="assets/css/loading.css">
     <link rel="stylesheet" href="assets/css/dark.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
     <title>Noble</title>
@@ -54,7 +55,15 @@
 </head>
 
 <body>
-
+    <div class="" id="coverfor">
+        <div class="spinner">
+            <div class="inner">
+                <div class="disc"></div>
+                <div class="disc"></div>
+                <div class="disc"></div>
+            </div>
+        </div>
+    </div>
     <div class="top-header">
         <div class="container">
             <div class="row align-items-center">
@@ -678,7 +687,7 @@
 
 
 
-    <section class="product-details-area pt-100 pb-70">
+    <section class="product-details-area pt-100 pb-70" id="nothingEroo">
         <div class="container">
             <div class="row">
                 <div class="col-lg-5 col-md-12">
@@ -1588,8 +1597,10 @@
 
     <footer class="footer-area">
         <div class="foot-linear-set">
-    
-            <section class="facility-area pb-70 foot-circle">                
+            <section class="facility-area pb-70 foot-circle">
+                <div id="emptyadd">
+                    
+                </div>               
                 <div class="container">
                     <div class="facility-slides owl-carousel owl-theme">
                         <div class="single-facility-box">
@@ -1755,7 +1766,6 @@
     <script src="produitConnexe.js"></script>
 
     <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/popper.min.html"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/owl.carousel.min.js"></script>
     <script src="assets/js/magnific-popup.min.js"></script>

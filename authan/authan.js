@@ -1,3 +1,7 @@
+const load = document.getElementById('tohi');
+const tohia = document.getElementById('tohia');
+const errer = document.getElementById('rejected');
+
 const sendRequestnoto = async (method, endpoint, data = null) => {
     const options = {
         method,
@@ -9,15 +13,37 @@ const sendRequestnoto = async (method, endpoint, data = null) => {
     if (data) {
         options.body = JSON.stringify(data);
     }
+    try {
+        const response = await fetch(apiUrlfine + endpoint, options);
+        const responseData = await response.json();
 
-    const response = await fetch(apiUrlfine + endpoint, options);
-    const responseData = await response.json();
+        if (!response.ok) {
 
-    if (!response.ok) {
-        throw new Error(responseData.message || 'Request failed!');
+            load.classList.remove("load28")
+            load.classList.add("tohi")
+            tohia.classList.remove("tohi");
+            errer.classList.add("rejected");
+            document.getElementById('nointer').innerText = "Vérifiez que vous avez access a l'internet";
+
+            setTimeout(() => {
+                errer.classList.remove("rejected");
+            }, 3500);
+
+        }
+
+        return responseData;
+    } catch (e) {
+        load.classList.remove("load28")
+        load.classList.add("tohi")
+        tohia.classList.remove("tohi");
+        errer.classList.add("rejected");
+        document.getElementById('nointer').innerText = "Vérifiez que vous avez access a l'internet";
+
+        setTimeout(() => {
+            errer.classList.remove("rejected");
+        }, 3500);
     }
 
-    return responseData;
 };
 
 
@@ -32,6 +58,10 @@ function Inscription() {
 
         if (fname != "" && lname != "" && email != "" && password != "") {
             if (password === confirm) {
+                tohia.classList.add("tohi");
+                load.classList.remove("tohi");
+                load.classList.add("load28");
+
                 const person = {
                     prenom: fname,
                     nom: lname,
@@ -43,13 +73,35 @@ function Inscription() {
                 const createItem = async () => {
                     try {
                         const response = await sendRequestnoto('POST', 'people', person);
-                        sessionStorage.setItem('tibule', response.token);
-                        const splo = response.token.split("°");
-                        const admin = splo[5];
-                        window.location.href = admin == "GIFV" ? "./admin/admindasdboard.html" : "./track-order.html"
+                        if (response.ee) {
+                            load.classList.remove("load28")
+                            load.classList.add("tohi")
+                            tohia.classList.remove("tohi");
+                            errer.classList.add("rejected");
+                            document.getElementById('nointer').innerText = `Le ${phone} est déjà associé un compte`;
 
-                    } catch (error) {
-                        console.error('Error creating item:', error.message);
+                            setTimeout(() => {
+                                errer.classList.remove("rejected");
+                            }, 1000);
+
+                        } else {
+                            sessionStorage.setItem('tibule', response.token);
+                            const splo = response.token.split("°");
+                            const admin = splo[5];
+                            window.location.href = admin == "GIFV" ? "./admin/admindasdboard.html" : "./track-order.html"
+                        }
+
+                    } catch (e) {
+                        load.classList.remove("load28")
+                        load.classList.add("tohi")
+                        tohia.classList.remove("tohi");
+                        errer.classList.add("rejected");
+                        document.getElementById('nointer').innerText = "Vérifiez que vous avez access a l'internet";
+
+                        setTimeout(() => {
+                            errer.classList.remove("rejected");
+                        }, 3500);
+
                     }
                 };
 
@@ -72,6 +124,11 @@ function loGin() {
         const password = document.getElementById('password').value;
 
         if (phone != "" && password != "") {
+            tohia.classList.add("tohi");
+            load.classList.remove("tohi");
+            load.classList.add("load28");
+
+
             const person = {
                 phone: phone,
                 motdepass: password,
@@ -80,18 +137,37 @@ function loGin() {
             const createItem = async () => {
                 try {
                     const response = await sendRequestnoto('POST', 'people/login', person);
-                    sessionStorage.setItem('tibule', response.token);
-                    const splo = response.token.split("°");
-                    /*const _id = splo[0];
-                    const name = splo[1];
-                    const lastname = splo[2];
-                    const phone = splo[3];
-                    const mail = splo[4];*/
-                    const admin = splo[5];
-                    //const mynam = thisiswhat(`${_id}â${name}â${lastname}â${phone}â${mail}â${admin}`)
-                    window.location.href = admin == "GIFV" ? "./admin/admindasdboard.html" : "./track-order.html"
-                } catch (error) {
-                    console.error('Error creating item:', error.message);
+
+                    if (response.ee) {
+                        /*load.classList.remove("load28")
+                        load.classList.add("tohi")
+                        tohia.classList.remove("tohi");
+                        errer.classList.add("rejected");
+
+
+                        setTimeout(() => {
+                            errer.classList.remove("rejected");
+                        }, 1000);*/
+
+                    } else {
+                        sessionStorage.setItem('tibule', response.token);
+                        const splo = response.token.split("°");
+                        const admin = splo[5];
+                        window.location.href = admin == "GIFV" ? "./admin/admindasdboard.html" : "./track-order.html"
+                    }
+
+                } catch (e) {
+                   /* load.classList.remove("load28")
+                    load.classList.add("tohi")
+                    tohia.classList.remove("tohi");
+                    errer.classList.add("rejected");
+                    document.getElementById('nointer').innerText = "Vérifiez que vous avez access a l'internet";
+
+                    setTimeout(() => {
+                        errer.classList.remove("rejected");
+                    }, 3500);
+*/
+
                 }
             };
 
@@ -109,6 +185,9 @@ function loginCommage() {
         const password = document.getElementById('password').value;
 
         if (phone != "" && password != "") {
+            tohia.classList.add("tohi");
+            load.classList.remove("tohi");
+            load.classList.add("load28");
             const person = {
                 phone: phone,
                 motdepass: password,
@@ -117,33 +196,56 @@ function loginCommage() {
             const createItem = async () => {
                 try {
                     const response = await sendRequestnoto('POST', 'people/login', person);
-                    sessionStorage.setItem('tibule', response.token);
-                    const splo = response.token.split("°");
-                    const name = splo[1];
-                    const lastname = splo[2];
-                    const mail = splo[4];
-                    const mynam = thisiswhat(`${name}â${lastname}â${mail}`)
-                    const myspl = mynam.split(" ");
+
+                    if (response.ee) {
+                        load.classList.remove("load28")
+                        load.classList.add("tohi")
+                        tohia.classList.remove("tohi");
+                        errer.classList.add("rejected");
 
 
-                    document.getElementById('prenomValue').value = myspl[0];
-                    document.getElementById('prenomValue').disabled = true;
-                    
-                    document.getElementById('nomValue').value = myspl[1];
-                    document.getElementById('nomValue').disabled = true;
+                        setTimeout(() => {
+                            errer.classList.remove("rejected");
+                        }, 1000);
+                    } else {
+                        sessionStorage.setItem('tibule', response.token);
+                        const splo = response.token.split("°");
+                        const name = splo[1];
+                        const lastname = splo[2];
+                        const mail = splo[4];
+                        const mynam = thisiswhat(`${name}â${lastname}â${mail}`)
+                        const myspl = mynam.split(" ");
 
-                    document.getElementById('motValue').value = password;
-                    document.getElementById('motValue').disabled = true;
 
-                    document.getElementById('confirmezValue').value = password;
-                    document.getElementById('confirmezValue').disabled = true;
+                        document.getElementById('prenomValue').value = myspl[0];
+                        document.getElementById('prenomValue').disabled = true;
 
-                    document.getElementById('emailValue').value = myspl[2];
-                    document.getElementById('emailValue').disabled = true;
+                        document.getElementById('nomValue').value = myspl[1];
+                        document.getElementById('nomValue').disabled = true;
 
-                    document.getElementById('telephoneValue').value = phone;
-                } catch (error) {
-                    console.error('Error creating item:', error.message);
+                        document.getElementById('motValue').value = password;
+                        document.getElementById('motValue').disabled = true;
+
+                        document.getElementById('confirmezValue').value = password;
+                        document.getElementById('confirmezValue').disabled = true;
+
+                        document.getElementById('emailValue').value = myspl[2];
+                        document.getElementById('emailValue').disabled = true;
+
+                        document.getElementById('telephoneValue').value = phone;
+                    }
+
+                } catch (e) {
+
+                    load.classList.remove("load28")
+                    load.classList.add("tohi")
+                    tohia.classList.remove("tohi");
+                    errer.classList.add("rejected");
+                    document.getElementById('nointer').innerText = "Vérifiez que vous avez access a l'internet";
+
+                    setTimeout(() => {
+                        errer.classList.remove("rejected");
+                    }, 3500);
                 }
             };
 

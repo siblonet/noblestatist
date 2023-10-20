@@ -82,7 +82,7 @@ async function previewImage() {
             await sendBase64ToServer(base64Data, file.name);
         };
         reader.readAsDataURL(file);
-    }else if(imas.length>4){
+    } else if (imas.length > 4) {
         document.getElementById('limitimag').style.display = "none";
     }
 }
@@ -345,11 +345,29 @@ function getPanierSend(tocompl) {
                 if (response.done == "done") {
                     TotalAll("clear", "");
                     window.location.href = "./track-order.html"
+                } else {
+                    load.classList.remove("load28")
+                    load.classList.add("tohi")
+                    tohia.classList.remove("tohi");
+                    errer.classList.add("rejected");
+                    document.getElementById('nointer').innerText = "Vérifiez que vous avez access a l'internet";
+
+                    setTimeout(() => {
+                        errer.classList.remove("rejected");
+                    }, 3500);
                 };
 
-            } catch (error) {
-                console.error('Error creating item:', error.message);
-                throw error; // Re-throw the error to handle it in the calling function if needed
+            } catch (e) {
+                load.classList.remove("load28")
+                load.classList.add("tohi")
+                tohia.classList.remove("tohi");
+                errer.classList.add("rejected");
+                document.getElementById('nointer').innerText = "Vérifiez que vous avez access a l'internet";
+
+                setTimeout(() => {
+                    errer.classList.remove("rejected");
+                }, 3500);
+
             }
 
         }
@@ -559,9 +577,7 @@ function TotalAll(who, data) {
                         .then(result => resolve(result))
                         .catch(error => reject(error));
                 } else if (who === "all1") {
-                    getallDataa()
-                        .then(result => resolve(result))
-                        .catch(error => reject(error));
+                    getallDataa();
                 } else if (who === "all2") {
                     getallCheckou()
                         .then(result => resolve(result))

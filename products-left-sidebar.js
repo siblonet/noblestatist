@@ -340,54 +340,90 @@ async function productsLeftSidbar() {
 
                 });
             } else {
-
-                const productContainer = document.getElementById('nocontent');
-                productContainer.innerHTML = '';
+                const isemptyorintern = document.getElementById('isemptyorintern');
+                //const isemptyorintern = document.getElementById('isemptyorintern').innerText;
                 const emptyadd = document.getElementById('emptyadd');
+                // if (isemptyorintern == "Vérifiez que vous avez access a l'internet") {
 
-                emptyadd.style.width = "100%"
-                emptyadd.style.height = "500px"
+                if (isemptyorintern) {
+                    emptyadd.style.width = "100%"
+                    emptyadd.style.height = "500px"
+                    const emptyaddHtml = `
+                        <section class="facility-area pb-70 foot-circle">
+                            <section class="offer-area bg-image1 ptb-100">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-lg-5 col-md-6">
+                                            <div class="offer-content">
+                                                <span class="sub-title">Offre à durée limitée !</span>
+                        
+                        
+                        
+                        
+                                                <h2>-40% DE RÉDUCTION</h2>
+                                                <p>Profitez des meilleures offres maintenant</p>
+                                                <a href="vide.html" class="default-btn">Découvrir maintenant</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </section>
+                        `;
+
+                    emptyadd.innerHTML = emptyaddHtml;
+                } else {
+                    const productContainer = document.getElementById('product-container');
+                    productContainer.innerHTML = '';
+                    const emptyadd = document.getElementById('emptyadd');
+
+                    emptyadd.style.width = "100%"
+                    emptyadd.style.height = "500px"
 
 
 
 
-                const productHTML = `<div class="container">
-                <div class="section-title">
-                    <span class="sub-title">Contenu indisponible</span>
-                    <h2>Vide</h2>
-                </div>
-                <div>
-                    <img src="assets/img/vide.jpg" alt="image">
-    
-                </div>
-            </div>
-            `;
+                    const productHTML = `
+                                        <div class="container">
+                                            <div class="section-title">
+                                                <span class="sub-title">Contenu indisponible</span>
+                                                <h2>Vide</h2>
+                                            </div>
+                                            <div>
+                                                <img src="assets/img/vide.jpg" alt="image">
+                                
+                                            </div>
+                                    </div>
+                                `;
 
-            const emptyaddHtml = `
-            <section class="facility-area pb-70 foot-circle">
-            <section class="offer-area bg-image1 ptb-100">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-lg-5 col-md-6">
-                            <div class="offer-content">
-                                <span class="sub-title">Offre à durée limitée !</span>
-        
-        
-        
-        
-                                <h2>-40% DE RÉDUCTION</h2>
-                                <p>Profitez des meilleures offres maintenant</p>
-                                <a href="vide.html" class="default-btn">Découvrir maintenant</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        `;
-            
-        emptyadd.innerHTML = emptyaddHtml;
-        productContainer.innerHTML = productHTML;
-    }
+                    const emptyaddHtml = `
+                        <section class="facility-area pb-70 foot-circle">
+                            <section class="offer-area bg-image1 ptb-100">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-lg-5 col-md-6">
+                                            <div class="offer-content">
+                                                <span class="sub-title">Offre à durée limitée !</span>
+                        
+                        
+                        
+                        
+                                                <h2>-40% DE RÉDUCTION</h2>
+                                                <p>Profitez des meilleures offres maintenant</p>
+                                                <a href="vide.html" class="default-btn">Découvrir maintenant</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </section>
+                        `;
+
+                    emptyadd.innerHTML = emptyaddHtml;
+                    productContainer.innerHTML = productHTML;
+                }
+
+            }
         }
     }
 }

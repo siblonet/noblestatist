@@ -47,6 +47,7 @@
     <link rel="stylesheet" href="assets/css/rangeSlider.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/mobilestile.css">
+    <link rel="stylesheet" href="assets/css/loading.css">
     <link rel="stylesheet" href="assets/css/dark.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
     <title>Noble</title>
@@ -54,7 +55,15 @@
 </head>
 
 <body>
-
+    <div class="preloader-area" id="loaderRemove">
+        <div class="spinner">
+            <div class="inner">
+                <div class="disc"></div>
+                <div class="disc"></div>
+                <div class="disc"></div>
+            </div>
+        </div>
+    </div>
     <div class="top-header">
         <div class="container">
             <div class="row align-items-center">
@@ -734,20 +743,12 @@
 
     <section class="products-area pb-70">
         <div class="container">
-            <div id="toclear">
-                <div class="section-title">
-                    <img class="loadind-im" src="./assets/img/loaging.gif" alt="loading">
-                    <p style="align-self: center;">Chargement en cours ....</p>
-                </div>
-            </div>
-
             <div id="product-container" class="row">
 
 
             </div>
         </div>
     </section>
-
 
     <section class="offer-area bg-image1 ptb-100 jarallax closeCom" data-jarallax="{&quot;speed&quot;: 0.3}">
         <div class="container-fluid">
@@ -1508,12 +1509,13 @@
         </div>
     </footer>
 
-    <div class="go-top"><i class="bx bx-up-arrow-alt"></i></div>
+    <div class="go-top">
+        <i class="bx bx-up-arrow-alt"></i>
+    </div>
 
     <script src="./productsFetcher/database_handl.js"></script>
     <script src="./router.js"></script>
     <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/popper.min.html"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/owl.carousel.min.js"></script>
     <script src="assets/js/magnific-popup.min.js"></script>

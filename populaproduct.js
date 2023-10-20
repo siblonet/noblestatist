@@ -132,4 +132,4 @@ function showProductQuickViewa(productId) {
     }
 }
 
-populaProduct();
+//populaProduct();

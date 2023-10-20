@@ -79,10 +79,8 @@ function clearOrder() {
 function recentProduct(recenPr) {
     const ProdAvailable = [];
     const productContainer = document.getElementById('product-container');
-    const toclear = document.getElementById('toclear');
-    toclear.innerHTML = '';
     productContainer.innerHTML = '';
-    
+
     function isMobileDevice() {
         const userAgent = navigator.userAgent.toLowerCase();
         return userAgent.includes('mobile');
@@ -93,7 +91,7 @@ function recentProduct(recenPr) {
             if (prodAvailable.quantity > 0) {
                 ProdAvailable.push(prodAvailable);
             }
-         });
+        });
     }
 
     if (ProdAvailable.length > 0) {
@@ -337,32 +335,36 @@ function recentProduct(recenPr) {
         `;
 
             productContainer.innerHTML += productHTML;
-
-
         });
+        const loaderRemove = document.getElementById('loaderRemove');
+        loaderRemove.innerHTML = "";
+        loaderRemove.style.display = "none";
     } else {
         const tokens = sessionStorage.getItem('tibule');
         const productHTML = `
-    <div class="container">
-    <div class="section-title">
-    ${tokens && tokens.split("°") && tokens.split("°")[5] == "GIFV" ?
-                `
-    <a class="sub-title" href="admin/admindasdboard.html"><i class="bx bx-log-in"></i> Ajouter un article</a>
+            <div class="container">
+                <div class="section-title">
+                ${tokens && tokens.split("°") && tokens.split("°")[5] == "GIFV" ?
+                    `
+                        <a class="sub-title" href="admin/admindasdboard.html"><i class="bx bx-log-in"></i> Ajouter un article</a>
 
-`
-                :
-                ""
-            }
-        <h2>Le magasin est vide pour l'instant</h2>
-    </div>
-    <div>
-        <img src="assets/img/vide.jpg" alt="image">
+                        `
+                    :
 
-    </div>
-</div>
+                    ""
+                }
+                    <h2>Le magasin est vide pour l'instant</h2>
+                </div>
+                <div>
+                    <img src="assets/img/vide.jpg" alt="image">
+
+                </div>
+            </div>
     `;
         productContainer.innerHTML += productHTML;
-
+        const loaderRemove = document.getElementById('loaderRemove');
+        loaderRemove.innerHTML = "";
+        loaderRemove.style.display = "none";
     }
 };
 

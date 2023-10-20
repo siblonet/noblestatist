@@ -34,7 +34,7 @@ const sendRequestnot = async (method, endpoint, data = null) => {
     const responseData = await response.json();
 
     if (!response.ok) {
-        throw new Error(responseData.message || 'Request failed!');
+        return null
     }
 
     return responseData;
@@ -57,23 +57,75 @@ function clearArticle() {
 
     //TotalAll("clear", {});
 }
-
+const Reloada = () => {
+    window.location.reload();
+}
 
 async function DataLoad() {
     try {
         const items = await sendRequestnot('GET', 'boutique');
-        return new Promise((resolve, reject) => {
-            openArticleDatabase().then(() => clearArticle().then(result => resolve(result)).catch(error => reject(error)));
-            openArticleDatabase().then(() => addArticles(items).then(result => resolve(result)).catch(error => reject(error)));
-            recentProduct(items);
-            populaProduct(items);
-        }).catch(error => console.log(error));
+        if (!items) {
+            const productContainer = document.getElementById('product-container');
+            productContainer.innerHTML = '';
 
-    } catch (error) {
-        console.error('Error fetching items:', error.message);
+            const productHTML = `
+            <div class="container">
+                <div class="section-title">
+                    <span style="color: red !important">Vérifiez que vous avez access a l'internet</span>
+                </div>
+                <div style="align-self: center; align-items: center; justify-content: center; text-align: center">
+                    <img src="assets/img/error-404.png" alt="Internet Error">
+                </div>
+                <br>
+                <br>
+                <div style="align-self: center; align-items: center; justify-content: center; text-align: center">
+                    <a style="align-self: center; cursor: pointer; color: #006e65" onclick="Reloada()">Cliquez ici pour actualiser</a>
+                </div>
+    
+            </div>
+    `;
+            productContainer.innerHTML += productHTML;
+            const loaderRemove = document.getElementById('loaderRemove');
+            loaderRemove.innerHTML = "";
+            loaderRemove.style.display = "none";
+        } else {
+            return new Promise((resolve, reject) => {
+                openArticleDatabase().then(() => clearArticle().then(result => resolve(result)).catch(error => reject(error)));
+                openArticleDatabase().then(() => addArticles(items).then(result => resolve(result)).catch(error => reject(error)));
+                recentProduct(items);
+                populaProduct(items);
+            });
+        }
+
+
+    } catch (e) {
+        const productContainer = document.getElementById('product-container');
+        productContainer.innerHTML = '';
+
+        const productHTML = `
+        <div class="container">
+            <div class="section-title">
+                <span style="color: red !important" id="isemptyorintern">Vérifiez que vous avez access a l'internet</span>
+            </div>
+            <div style="align-self: center; align-items: center; justify-content: center; text-align: center">
+                <img src="assets/img/error-404.png" alt="Internet Error">
+            </div>
+            <br>
+            <br>
+            <div style="align-self: center; align-items: center; justify-content: center; text-align: center">
+                <a style="align-self: center; cursor: pointer; color: #006e65" onclick="Reloada()">Cliquez ici pour actualiser</a>
+            </div>
+
+        </div>
+`;
+        productContainer.innerHTML += productHTML;
+        const loaderRemove = document.getElementById('loaderRemove');
+        loaderRemove.innerHTML = "";
+        loaderRemove.style.display = "none";
     };
 
 };
+
 DataLoad();
 
 

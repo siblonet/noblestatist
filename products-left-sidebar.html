@@ -21,7 +21,7 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="theme-color" content="#006e65" />
+    <meta name="theme-color" content="#006e65"/>
     <meta name="description" content="Securisé et rapide" />
     <meta name="keywords" content="Noble, Noble_boutikonline, Siblo, Silence-AI, John, Kokar, Dibloni" />
     <meta name="author" content="John Kokar" />
@@ -47,6 +47,7 @@
     <link rel="stylesheet" href="assets/css/rangeSlider.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/mobilestile.css">
+    <link rel="stylesheet" href="assets/css/loading.css">
     <link rel="stylesheet" href="assets/css/dark.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
     <title>Noble</title>
@@ -54,6 +55,15 @@
 </head>
 
 <body>
+    <div class="preloader-area" id="loaderRemove">
+        <div class="spinner">
+            <div class="inner">
+                <div class="disc"></div>
+                <div class="disc"></div>
+                <div class="disc"></div>
+            </div>
+        </div>
+    </div>
 
     <div class="top-header">
         <div class="container">
@@ -676,7 +686,7 @@
     </div>
 
 
-    <section class="products-area pt-100 pb-70" id="nocontent">
+    <section class="products-area pt-100 pb-70" id="product-container">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-12">
@@ -823,15 +833,7 @@
                     <div id="products-collections-filter" class="row">
 
                     </div>
-                    <!--<div class="pagination-area text-center">
-                        <a href="#" class="prev page-numbers"><i class="bx bx-chevron-left"></i></a>
-                        <span class="page-numbers current" aria-current="page">1</span>
-                        <a href="#" class="page-numbers">2</a>
-                        <a href="#" class="page-numbers">3</a>
-                        <a href="#" class="page-numbers">4</a>
-                        <a href="#" class="page-numbers">5</a>
-                        <a href="#" class="next page-numbers"><i class="bx bx-chevron-right"></i></a>
-                    </div>-->
+                    
                 </div>
             </div>
         </div>
@@ -1297,6 +1299,7 @@
     </footer>
 
     <div class="go-top"><i class="bx bx-up-arrow-alt"></i></div>
+
     <script src="convertisseur.js"></script>
     <script src="./productsFetcher/database_handl.js"></script>
     <script src="./router.js"></script>
@@ -1308,7 +1311,6 @@
     <script src="produitConnexe.js"></script>
 
     <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/popper.min.html"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/owl.carousel.min.js"></script>
     <script src="assets/js/magnific-popup.min.js"></script>

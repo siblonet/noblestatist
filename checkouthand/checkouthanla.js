@@ -73,19 +73,30 @@ async function sendCommen() {
                     };
 
                     const clientId = await CreatClientd(person);  // Await the result
+                    if (clientId) {
+                        const articleOne = {
+                            articles: [],
+                            ville: villeValue,
+                            commune: communeValue,
+                            lieu: adresseValue,
+                            phone: telephoneValue,
+                            note: notesValue,
+                            client: clientId,
+                        };
 
-                    const articleOne = {
-                        articles: [],
-                        ville: villeValue,
-                        commune: communeValue,
-                        lieu: adresseValue,
-                        phone: telephoneValue,
-                        note: notesValue,
-                        client: clientId,
-                    };
 
+                        TotalAll('sendOrder', articleOne);
+                    } else {
+                        load.classList.remove("load28")
+                        load.classList.add("tohi")
+                        tohia.classList.remove("tohi");
+                        errer.classList.add("rejected");
+                        document.getElementById('nointer').innerText = `Le ${telephoneValue} est déjà associé un compte, \n ( Cliquez ici pour vous connecter)`;
 
-                    TotalAll('sendOrder', articleOne);
+                        setTimeout(() => {
+                            errer.classList.remove("rejected");
+                        }, 4000);
+                    }
                 } else {
                     alert("mot de passe n'est conforme à la confirmation")
                 }
@@ -133,24 +144,37 @@ async function CreatClientd(client) {
                         'Content-Type': 'application/json'
                     }
                 };
-            
+
                 if (client) {
                     options.body = JSON.stringify(client);
                 }
-            
+
                 const response = await fetch(apiUrlfine + endpoint, options);
                 const responseData = await response.json();
-            
+
                 if (!response.ok) {
-                    throw new Error(responseData.message || 'Request failed!');
+                    load.classList.remove("load28")
+                    load.classList.add("tohi")
+                    tohia.classList.remove("tohi");
+                    errer.classList.add("rejected");
+                    document.getElementById('nointer').innerText = "Vérifiez que vous avez access a l'internet";
+
+                    setTimeout(() => {
+                        errer.classList.remove("rejected");
+                    }, 3500);
                 }
 
-                sessionStorage.setItem('tibule', responseData.token);
-                const splo = responseData.token.split("°");
-                return thisiswhat(splo[0]);
-            } catch (error) {
-                console.error('Error creating item:', error.message);
-                throw error; // Re-throw the error to handle it in the calling function if needed
+                if (responseData.ee) {
+                    return null
+                } else {
+                    sessionStorage.setItem('tibule', responseData.token);
+                    const splo = responseData.token.split("°");
+                    return thisiswhat(splo[0]);
+                }
+
+            } catch (e) {
+               
+
             }
         };
 
