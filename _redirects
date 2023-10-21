@@ -1,0 +1,16 @@
+# Redirects from what the browser requests to what we serve
+/index.html                         /
+/admin/admindasdboard.html          /admin
+/client/client.html                 /client
+/login.html                         /login
+/signup.html                        /signup
+/products-left-sidebar.html         /filter
+/products-type-1.html               /detail
+/about.html                         /propos
+/cart.html                          /pannier
+/checkout.html                      /payment
+/contact.html                       /contact
+/customer-service.html              /service-client
+/faqs.html                          /questions
+/vide.html                          /indisponible
+/track-order.html                   /old

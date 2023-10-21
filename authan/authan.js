@@ -85,7 +85,7 @@ async function Inscription() {
                 sessionStorage.setItem('tibule', response.token);
                 const splo = response.token.split("°");
                 const admin = splo[5];
-                window.location.href = admin == "GIFV" ? "./admin/admindasdboard.html" : "./client/client.html"
+                window.location.href = admin == "GIFV" ? "admin" : "client"
                 load.classList.remove("load28")
                 load.classList.add("tohi")
                 tohia.classList.remove("tohi");
@@ -151,7 +151,7 @@ async function loGin() {
             sessionStorage.setItem('tibule', response.token);
             const splo = response.token.split("°");
             const admin = splo[5];
-            window.location.href = admin == "GIFV" ? "./admin/admindasdboard.html" : "./client/client.html"
+            window.location.href = admin == "GIFV" ? "admin" : "client"
             load.classList.remove("load28")
             load.classList.add("tohi")
             tohia.classList.remove("tohi");

@@ -355,7 +355,7 @@ function getPanierSend(tocompl) {
                 const response = await sendReque('POST', 'orders', tocompl);
                 if (response.er == "done" && response.id == "done") {
                     TotalAll("clear", "");
-                    window.location.href = "./client/client.html"
+                    window.location.href = "client"
                     load.classList.remove("load28")
                     load.classList.add("tohi")
                     tohia.classList.remove("tohi");

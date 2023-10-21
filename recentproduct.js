@@ -25,7 +25,7 @@ function getUsenam() {
         if (admin == "GIFV") {
             const usernamBody =
                 `
-            <a href="admin/admindasdboard.html"><i class="bx bxs-user"></i> ${mynam}</a>
+            <a href="admin"><i class="bx bxs-user"></i> ${mynam}</a>
 
             `;
 
@@ -34,7 +34,7 @@ function getUsenam() {
 
             const usernamBody =
                 `
-            <a href="track-order.html"><i class="bx bxs-user"></i> ${mynam}</a>
+            <a href="client"><i class="bx bxs-user"></i> ${mynam}</a>
 
             `;
 
@@ -355,7 +355,7 @@ function recentProduct(recenPr) {
                             <br>
                             <br>
                             <div style="align-self: center; align-items: center; justify-content: center; text-align: center">
-                                <a style="align-self: center; cursor: pointer; color: #006e65" href="admin/admindasdboard.html">Cliquez ici pour Ajouter un article</a>
+                                <a style="align-self: center; cursor: pointer; color: #006e65" href="admin">Cliquez ici pour Ajouter un article</a>
                             </div>
                         `
                 :

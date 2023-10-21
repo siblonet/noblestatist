@@ -53,7 +53,7 @@ const NafigatioTo = async (where) => {
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb my-breadcrumb">
                         <li class="breadcrumb-item" aria-current="page">
-                            <a href="../index.html">
+                            <a href="">
                                 <i class="fa fa-angle-double-left"></i>
                                     Aller à la boutique
                             </a>
@@ -460,7 +460,7 @@ async function Disconexion() {
     await clearOrder();
     sessionStorage.clear();
     localStorage.clear();
-    window.location.href = "../login.html"
+    window.location.href = "login"
 };
 
 
@@ -481,7 +481,7 @@ async function updateUser() {
     await clearOrder();
     sessionStorage.clear();
     localStorage.clear();
-    window.location.href = "../login.html"
+    window.location.href = "login"
 };
 
 async function deleteUser() {
