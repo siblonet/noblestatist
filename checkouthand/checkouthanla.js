@@ -35,103 +35,110 @@ async function sendCommen() {
     const tohia = document.getElementById('tohia');
     const load = document.getElementById('tohi');
     const errer = document.getElementById('rejected');
-    try {
 
-        const token = sessionStorage.getItem('tibule');
-        if (token) {
-            const splo = token.split("°");
+    const token = sessionStorage.getItem('tibule');
+    if (token) {
+        const splo = token.split("°");
 
-            const _id = splo[0];
-            const mynam = thisiswhat(`${_id}`);
-            const villeValue = document.getElementById('villeValue').value;
-            const communeValue = document.getElementById('communeValue').value;
-            const adresseValue = document.getElementById('adresseValue').value;
-            const telephoneValue = document.getElementById('telephoneValue').value;
-            const notesValue = document.getElementById('notes').value;
+        const _id = splo[0];
+        const mynam = thisiswhat(`${_id}`);
+        const villeValue = document.getElementById('villeValue').value;
+        const communeValue = document.getElementById('communeValue').value;
+        const adresseValue = document.getElementById('adresseValue').value;
+        const telephoneValue = document.getElementById('telephoneValue').value;
+        const notesValue = document.getElementById('notes').value;
 
-            if (villeValue && communeValue && adresseValue) {
+        if (villeValue && communeValue && adresseValue) {
 
-                const articleOne = {
-                    articles: [],
-                    ville: villeValue,
-                    commune: communeValue,
-                    lieu: adresseValue,
-                    phone: telephoneValue,
-                    note: notesValue,
-                    client: mynam,
-                };
-
-
-                TotalAll('sendOrder', articleOne);
+            const articleOne = {
+                articles: [],
+                ville: villeValue,
+                commune: communeValue,
+                lieu: adresseValue,
+                phone: telephoneValue,
+                note: notesValue,
+                client: mynam,
             };
 
-        } else {
 
-            const prenomValue = document.getElementById('prenomValue').value;
-            const nomValue = document.getElementById('nomValue').value;
-            const villeValue = document.getElementById('villeValue').value;
-            const communeValue = document.getElementById('communeValue').value;
-            const adresseValue = document.getElementById('adresseValue').value;
-            const motValue = document.getElementById('motValue').value;
-            const confirmezValue = document.getElementById('confirmezValue').value;
-            const emailValue = document.getElementById('emailValue').value;
-            const telephoneValue = document.getElementById('telephoneValue').value;
-            const notesValue = document.getElementById('notes').value;
+            TotalAll('sendOrder', articleOne);
+        };
 
-            if (prenomValue && nomValue && villeValue && communeValue && adresseValue && motValue && emailValue && telephoneValue) {
-                if (confirmezValue === motValue) {
-                    const person = {
-                        prenom: prenomValue,
-                        nom: nomValue,
-                        motdepass: motValue,
-                        email: emailValue,
-                        phone: telephoneValue,
-                    };
+    } else {
 
-                    const clientId = await CreatClientd(person);  // Await the result
-                    if (clientId.er !== "erro" && clientId.id !== "erro") {
-                        const articleOne = {
-                            articles: [],
-                            ville: villeValue,
-                            commune: communeValue,
-                            lieu: adresseValue,
-                            phone: telephoneValue,
-                            note: notesValue,
-                            client: clientId,
-                        };
+        const prenomValue = document.getElementById('prenomValue').value;
+        const nomValue = document.getElementById('nomValue').value;
+        const villeValue = document.getElementById('villeValue').value;
+        const communeValue = document.getElementById('communeValue').value;
+        const adresseValue = document.getElementById('adresseValue').value;
+        const motValue = document.getElementById('motValue').value;
+        const confirmezValue = document.getElementById('confirmezValue').value;
+        const emailValue = document.getElementById('emailValue').value;
+        const telephoneValue = document.getElementById('telephoneValue').value;
+        const notesValue = document.getElementById('notes').value;
 
+        if (prenomValue && nomValue && villeValue && communeValue && adresseValue && motValue && emailValue && telephoneValue) {
+            if (confirmezValue === motValue) {
+                const person = {
+                    prenom: prenomValue,
+                    nom: nomValue,
+                    motdepass: motValue,
+                    email: emailValue,
+                    phone: telephoneValue,
+                };
 
-                        TotalAll('sendOrder', articleOne);
-                    } else if (clientId.er == "erro" && clientId.id == "erro") {
-                        load.classList.remove("load28")
-                        load.classList.add("tohi")
-                        tohia.classList.remove("tohi");
-                        errer.classList.add("rejected");
-                        document.getElementById('nointer').innerText = `Le ${telephoneValue} est déjà associé un compte, \n ( Cliquez ici pour vous connecter)`;
-
-                        setTimeout(() => {
-                            errer.classList.remove("rejected");
-                        }, 4000);
-                    }
-                } else {
+                const response = await CreatClientd(person, 'POST', 'people');  // Await the result
+                if (response && response.invalide) {
                     load.classList.remove("load28")
                     load.classList.add("tohi")
                     tohia.classList.remove("tohi");
                     errer.classList.add("rejected");
-                    document.getElementById('nointer').innerText = "Mot de passe n'est pas conform a la confirmation";
+                    document.getElementById('nointer').innerText = `Le ${telephoneValue} est déjà associé un compte, \n Connectez-vous pour continuer`;
+
                     setTimeout(() => {
                         errer.classList.remove("rejected");
-                    }, 3500);
+                    }, 1000);
 
+                } else if (response && response.token) {
+
+                    const articleOne = {
+                        articles: [],
+                        ville: villeValue,
+                        commune: communeValue,
+                        lieu: adresseValue,
+                        phone: telephoneValue,
+                        note: notesValue,
+                        client: response.token,
+                    };
+
+                    TotalAll('sendOrder', articleOne);
+
+                } else if (response && response.inconnu) {
+                    load.classList.remove("load28")
+                    load.classList.add("tohi")
+                    tohia.classList.remove("tohi");
+                    errer.classList.add("rejected");
+                    document.getElementById('nointer').innerText = "Erreur incconnu, Veuillez re-essayer plus tard";
+
+
+                    setTimeout(() => {
+                        errer.classList.remove("rejected");
+                    }, 1500);
                 }
+            } else {
+                load.classList.remove("load28")
+                load.classList.add("tohi")
+                tohia.classList.remove("tohi");
+                errer.classList.add("rejected");
+                document.getElementById('nointer').innerText = "Mot de passe n'est pas conform a la confirmation";
+                setTimeout(() => {
+                    errer.classList.remove("rejected");
+                }, 3500);
             }
+
         }
-
-
-
-    } catch (error) {
-        console.log(error)
     }
+
 };
 
 
@@ -158,65 +165,56 @@ const sendRequestOrder = async (method, endpoint, data = null) => {
     return responseData;
 };
 
-async function CreatClientd(client) {
+async function CreatClientd(client, method, endpoint) {
     const tohia = document.getElementById('tohia');
     const load = document.getElementById('tohi');
     const errer = document.getElementById('rejected');
+
     try {
-        const createItem = async (method, endpoint) => {
-            try {
-                const options = {
-                    method,
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                };
-
-                if (client) {
-                    options.body = JSON.stringify(client);
-                }
-
-                const response = await fetch(apiUrlfine + endpoint, options);
-                const responseData = await response.json();
-
-                if (!response.ok) {
-                    load.classList.remove("load28")
-                    load.classList.add("tohi")
-                    tohia.classList.remove("tohi");
-                    errer.classList.add("rejected");
-                    document.getElementById('nointer').innerText = "Erreur incconnu, Veuillez re-essayer plus tard";
-
-                    setTimeout(() => {
-                        errer.classList.remove("rejected");
-                    }, 3500);
-                }
-
-                if (responseData.ee) {
-                    return "erro"
-                } else {
-                    sessionStorage.setItem('tibule', responseData.token);
-                    const splo = responseData.token.split("°");
-                    return thisiswhat(splo[0]);
-                }
-
-            } catch (e) {
-                setTimeout(() => {
-                    load.classList.remove("load28")
-                    load.classList.add("tohi")
-                    tohia.classList.remove("tohi");
-                    errer.classList.add("rejected");
-                    document.getElementById('nointer').innerText = "Vérifiez que vous avez access a l'internet";
-                }, 1500);
-
-                setTimeout(() => {
-                    errer.classList.remove("rejected");
-                }, 4500);
+        const options = {
+            method,
+            headers: {
+                'Content-Type': 'application/json'
             }
         };
 
-        const createdItemId = await createItem('POST', 'people'); // Await the result of createItem()
-        return { id: createdItemId, er: createdItemId };
+        if (client) {
+            options.body = JSON.stringify(client);
+        }
+
+        const response = await fetch(apiUrlfine + endpoint, options);
+        const responseData = await response.json();
+
+        if (!response.ok) {
+            return { inconnu: "Inconnu" }
+
+        }
+
+
+        if (!response.ok) {
+            return { inconnu: "Inconnu" }
+        }
+
+        if (responseData.ee) {
+            return { invalide: responseData.ee }
+        }
+
+        sessionStorage.setItem('tibule', responseData.token);
+        const splo = responseData.token.split("°");
+        const userid = { token: thisiswhat(splo[0]) }
+        return userid;
     } catch (e) {
-        console.log(e);
+        setTimeout(() => {
+            load.classList.remove("load28")
+            load.classList.add("tohi")
+            tohia.classList.remove("tohi");
+            errer.classList.add("rejected");
+            document.getElementById('nointer').innerText = "Vérifiez que vous avez access a l'internet";
+        }, 1500);
+
+        setTimeout(() => {
+            errer.classList.remove("rejected");
+        }, 4500);
     }
+
 };

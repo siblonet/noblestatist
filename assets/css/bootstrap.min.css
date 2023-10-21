@@ -6244,6 +6244,34 @@ fieldset:disabled .btn {
     outline: 0
 }
 
+.modala{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1057;
+    display: none;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    outline: 0;
+    background-color: rgba(0, 0, 0, .5);
+
+}
+
+.modal-contenta{
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 7px 20px 7px 20px;
+    border-radius: 20px;
+}
+
+#messages{
+    color: var(--bs-warning);
+}
 .modal-dialog {
     position: relative;
     width: auto;

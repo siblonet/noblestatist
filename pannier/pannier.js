@@ -1,15 +1,9 @@
 async function Pannier(ad) {
-    const exista = await getDataById({ _id: ad, even: "get" });
-
 
     if (ad === "rapide") {
 
-    } else if (!exista) {
-        await getArticleByIdforpanier(ad);
-
-    } else {
-        setTimeout(() => alert("Exist déjà dans le panier!"), 10);
-    };
+    }
+    await getArticleByIdforpanier(ad);
 
 };
 
@@ -55,7 +49,14 @@ async function getArticleByIdforpaniera(idm, quand) {
             prod.size = selct.length > 0 ? sizo : prod.addtail[2] == "," ? prod.addtail[0] + prod.addtail[1] : prod.addtail[0];
             TotalAll("post", prod);
         } else {
-            alert(`Cet article ne rest que ${prod.quantity}`);
+            document.getElementById('modalcoma').style.display = "block";
+            document.getElementById('modalcoma').setAttribute("aria-hidden", "false");
+            document.getElementById('messages').innerText = `Cet article ne rest que ${prod.quantity}`;
+
+            setTimeout(() => {
+                document.getElementById('modalcoma').style.display = "none";
+                document.getElementById('modalcoma').setAttribute("aria-hidden", "true");
+            }, 2500);
         }
 
     };
@@ -82,43 +83,6 @@ async function getArticleByIdforpaniera(idm, quand) {
  * @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
  */
 
-
-
-
-
-async function getDataById(id) {
-    await openDatabase()
-    const transaction = panierdb.transaction(["PannierContent"], "readonly");
-    const objectStore = transaction.objectStore("PannierContent");
-
-    const getRequest = objectStore.get(id._id);
-    let answer;
-    getRequest.onsuccess = (event) => {
-        const result = event.target.result;
-
-        if (id.even === "incre") {
-            result.aquantity = parseInt(result.aquantity) + 1;
-            TotalAll('put', result);
-            TotalAll('dasboard', "");
-
-        } else if (id.even == "get") {
-            console.log(result)
-            answer = result
-        } else {
-            result.aquantity = parseInt(result.aquantity) - 1;
-            TotalAll('put', result);
-            TotalAll('dasboard', "");
-
-        }
-
-    };
-
-    transaction.onerror = (event) => {
-        console.log(event.target.error);
-    };
-
-    return answer;
-};
 
 async function getArticleByIdforpanier(_id) {
     await openArticleDatabase()

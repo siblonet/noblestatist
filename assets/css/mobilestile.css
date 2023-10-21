@@ -17,7 +17,16 @@
         position: absolute;
         width: 100%;
         z-index: 99;
-        top: 131px;
+        top: 132px;
+    }
+
+    .mean-bar a span span{
+        color: #ff0000 !important;
+        background: #ff0000 !important;
+    }
+    .mean-bar a span span span{
+        color: #000000 !important;
+        background: #000000 !important;
     }
 
     .main-logo,
@@ -388,4 +397,39 @@
     .closeCom {
         display: none !important;
     }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .xton-responsive-nav {
+        top: 79px !important;
+    }
+
+
+}
+
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+    .xton-responsive-nav {
+        top: 93px !important;
+    }
+
+
+}
+
+@media only screen and (max-width: 313px) {
+    .xton-responsive-nav {
+        top: 161.5px !important;
+    }
+
+}
+
+@media only screen and (max-width: 227px) {
+    .navbar-area {
+        height: 37px !important;
+        position: relative;
+    }
+    .xton-responsive-nav {
+        top: 2px !important;
+    }
+
+
 }

@@ -7,7 +7,7 @@ function getAdmin() {
     const lastname = splo[2];
     username = thisiswhat(`${nam}â${lastname}`);
     document.getElementById('usernam').innerText = username;
-    return splo[5] == "GIFV" ? true : false
+    return splo[5] == "UZOHV" ? true : false
 };
 
 

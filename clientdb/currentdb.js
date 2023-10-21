@@ -279,7 +279,6 @@ function AddArticle() {
 
 //addtoPanier
 function addtoPanier(data) {
-    //console.log(data);
     const transaction = panierdb.transaction(["PannierContent"], "readwrite");
     const objectStore = transaction.objectStore("PannierContent");
 
@@ -290,14 +289,22 @@ function addtoPanier(data) {
     };
 
     addRequest.onerror = () => {
-        console.log("not panier added");
+        console.log("addtoPanier func in currentdb 292");
     };
 
-    transaction.onerror = (event) => {
-        setTimeout(() => alert("Exist déjà dans le panier!"), 10);
+    transaction.onerror = () => {
+        document.getElementById('modalcoma').style.display = "block";
+        document.getElementById('modalcoma').setAttribute("aria-hidden", "false");
+        document.getElementById('messages').innerText = "Exist déjà dans le panier!";
+
+        setTimeout(() => {
+            document.getElementById('modalcoma').style.display = "none";
+            document.getElementById('modalcoma').setAttribute("aria-hidden", "true");
+        }, 2500); 
     };
 
 }
+
 
 
 function getPanierSend(tocompl) {
@@ -348,7 +355,7 @@ function getPanierSend(tocompl) {
                 const response = await sendReque('POST', 'orders', tocompl);
                 if (response.er == "done" && response.id == "done") {
                     TotalAll("clear", "");
-                    window.location.href = "./track-order.html"
+                    window.location.href = "./client/client.html"
                     load.classList.remove("load28")
                     load.classList.add("tohi")
                     tohia.classList.remove("tohi");
@@ -385,8 +392,6 @@ function getPanierSend(tocompl) {
     transaction.onerror = (event) => {
         console.error("Transaction error:", event.target.error);
     };
-
-    return done
 };
 
 function getallCheckou() {

@@ -58,11 +58,16 @@ const NafigatioTo = async (where) => {
 
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb my-breadcrumb">
-                        <li class="breadcrumb-item active" aria-current="page">Tableau de bord</li>
+                        <li class="breadcrumb-item" aria-current="page">
+                            <a href="../index.html">
+                                <i class="fa fa-angle-double-left"></i>
+                                    Aller à la boutique
+                            </a>
+                        </li>
                     </ol>
                 </nav>
                 <div class="welcome-msg pt-3 pb-4">
-                    <h1>Bonjour <span class="text-primary">${username}</span>, Bienvenue</h1>
+                    <h1>Bonjour <span class="text-primary">${username}</span></h1>
                     <p>Vous étes dans votre espace administratif.</p>
                 </div>
 
@@ -111,82 +116,25 @@ const NafigatioTo = async (where) => {
 
                 <div class="chart">
                     <div class="row">
-                        <div class="col-lg-6 pr-lg-2 chart-grid">
-
-
-                            <div class="col-lg-12 chart-grid mb-4">
-                                <div class="card card_border p-4">
-                                    <div class="card-header chart-grid__header pl-0 pt-0">
-                                        Conversation
-                                    </div>
-                                    <div class="messaging">
-                                        <div class="inbox_msg">
-                                            <div class="inbox_people">
-                                                <div class="headind_srch">
-                                                    <div class="srch_bar">
-                                                        <div class="stylish-input-group">
-                                                            <input type="text" class="search-bar"
-                                                                placeholder="Chercher une conversation">
-                                                            <span class="input-group-addon">
-                                                                <button type="button"> <i class="fa fa-search"
-                                                                        aria-hidden="true"></i> </button>
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="inbox_chat">
-                                                    <div class="chat_list active_chat">
-                                                        <div class="chat_people">
-
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                            <div class="mesgs">
-                                                <div class="msg_history">
-                                                    <div class="incoming_msg">
-                                                        
-                                                    </div>
-                                                    <div class="outgoing_msg">
-                                                      
-                                                    </div>
-                                                   
-                                                    <div class="incoming_msg">
-                                                        
-                                                    </div>
-                                                </div>
-                                                <div class="type_msg">
-                                                    <div class="input_msg_write">
-                                                        <input type="text" class="write_msg"
-                                                            placeholder="Écrivez un message" />
-                                                        <button class="msg_send_btn" type="button"><i
-                                                                class="fa fa-paper-plane-o"
-                                                                aria-hidden="true"></i></button>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                        </div>
                         <div class="col-lg-6 pl-lg-2 chart-grid">
                             <div class="card text-center card_border">
-                                <div class="card-header chart-grid__header">
-                                </div>
                                 <div class="card-body">
                                     <div id="container">
                                         <canvas id="linechart"></canvas>
                                     </div>
                                 </div>
-                                <div class="card-footer text-muted chart-grid__footer">
-                                    Mis à jour à l'instant
-                                </div>
+                            </div>
+                        </div>
 
+                        <div class="col-lg-6 pr-lg-2 chart-grid">
+                            <div class="card text-center card_border">
+                                <div class="card-body">
+                                <!-- bar chart -->
+                                <div id="container">
+                                    <canvas id="barchart"></canvas>
+                                </div>
+                                <!-- //bar chart -->
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -195,31 +143,110 @@ const NafigatioTo = async (where) => {
         
         `;
 
+
+        /*
+        
+          <div class="col-lg-6 pl-lg-2 chart-grid">
+                            <div class="card text-center card_border">
+                                <div class="card-header chart-grid__header">
+                                </div>
+                                <div class="card-body">
+                                    <div id="container">
+                                        <canvas id="linecharta"></canvas>
+                                    </div>
+                                </div>
+                                <div class="card-footer text-muted chart-grid__footer">
+                                    Mis à jour à l'instant
+                                </div>
+
+                            </div>
+                        </div>
+                        */
+
+
         adminiSpace.innerHTML = dasboardHTML;
         new Chart(document.getElementById("linechart"), {
             type: 'line',
             data: {
-                labels: ['Jan', 'Fev', 'Mars', 'Avr', 'Mai', 'Juin', 'Juillet'],
+                labels: ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'],
                 datasets: [{
-                    label: 'Activités',
+                    label: 'Jan',
                     backgroundColor: "#20c997",
                     borderColor: "#28a745",
+                    data: [0, 0, 0, 32, 85, 0, 55, 0],
+                    fill: false,
+                }, {
+                    label: 'Fev',
+                    fill: false,
+                    backgroundColor: "#054846",
+                    borderColor: "#054846",
+                    data: [10, 0, 20, 0, 25, 0, 10, 40],
+                }, {
+                    label: 'Mars',
+                    fill: false,
+                    backgroundColor: "#4755AB",
+                    borderColor: "#4755AB",
+                    data: [0, 100, 20, 0, 0, 50, 0, 100],
+                },
+                {
+                    label: 'Avr',
+                    backgroundColor: "#03c895",
+                    borderColor: "#03c895",
+                    data: [10, 0, 0, 0, 25, 0, 10, 70],
+                    fill: false,
+                },
+                {
+                    label: 'Mai',
+                    backgroundColor: "#B162AC",
+                    borderColor: "#B162AC",
+                    data: [0, 0, 0, 0, 0, 0, 0, 0],
+                    fill: false,
+                },
+                {
+                    label: 'Juin',
+                    backgroundColor: "#E7EDF6",
+                    borderColor: "#E7EDF6",
                     data: [0, 0, 0, 0, 0, 0, 0, 0],
                     fill: false,
                 }, {
-                    label: 'Commandes',
+                    label: 'Juillet',
+                    backgroundColor: "#8549ba",
+                    borderColor: "#8549ba",
+                    data: [0, 0, 0, 0, 0, 0, 0, 0],
                     fill: false,
-                    backgroundColor: "#ffc107",
-                    borderColor: "#fd7e14",
-                    data: [10, 40, 20, 35, 25, 50, 10, 70],
+                }, {
+                    label: 'Août',
+                    backgroundColor: "#58595b",
+                    borderColor: "#58595b",
+                    data: [0, 0, 0, 0, 0, 0, 0, 0],
+                    fill: false,
+                }, {
+                    label: 'Sept',
+                    backgroundColor: "#166a8f",
+                    borderColor: "#166a8f",
+                    data: [0, 0, 0, 0, 0, 0, 0, 0],
+                    fill: false,
+                }, {
+                    label: 'Nov',
+                    backgroundColor: "#acc236",
+                    borderColor: "#acc236",
+                    data: [0, 0, 0, 0, 0, 0, 0, 0],
+                    fill: false,
+                },
+                {
+                    label: 'Déc',
+                    backgroundColor: "#f53794",
+                    borderColor: "#f53794",
+                    data: [31, 100, 1, 1, 1, 1, 1, 100],
+                    fill: false,
                 }]
             },
             options: {
                 responsive: true,
-                // title: {
-                // 	display: true,
-                // 	text: 'Chart.js Line Chart'
-                // },
+                title: {
+                    display: true,
+                    text: 'Activité'
+                },
                 tooltips: {
                     mode: 'index',
                     intersect: false,
@@ -227,25 +254,221 @@ const NafigatioTo = async (where) => {
                 hover: {
                     mode: 'nearest',
                     intersect: true
-                },
-                scales: {
-                    xAxes: [{
-                        display: true,
-                        scaleLabel: {
-                            display: true,
-                            labelString: 'Mois'
-                        }
-                    }],
-                    yAxes: [{
-                        display: true,
-                        scaleLabel: {
-                            display: true,
-                            labelString: 'Value'
-                        }
-                    }]
                 }
             }
         });
+
+        new Chart(document.getElementById("barchart"), {
+            type: 'bar',
+            data: {
+                labels: ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'],
+                datasets: [
+                    {
+                        label: 'Jan',
+                        backgroundColor: "#20c997",
+                        borderColor: "#28a745",
+                        borderWidth: 1,
+                        data: [0, 0, 0, 0, 0, 0, 0, 0],
+
+                    }, {
+                        label: 'Fev',
+                        borderWidth: 1,
+                        backgroundColor: "#054846",
+                        borderColor: "#054846",
+                        data: [0, 0, 0, 0, 0, 0, 0, 0],
+
+                    }, {
+                        label: 'Mars',
+                        borderWidth: 1,
+                        backgroundColor: "#4755AB",
+                        borderColor: "#4755AB",
+                        data: [30, 10, 70, 15, 30, 20, 70, 80],
+
+                    },
+                    {
+                        label: 'Avr',
+                        backgroundColor: "#03c895",
+                        borderColor: "#03c895",
+                        data: [0, 0, 0, 0, 0, 0, 0, 0],
+                        borderWidth: 1,
+                    },
+                    {
+                        label: 'Mai',
+                        backgroundColor: "#B162AC",
+                        borderColor: "#B162AC",
+                        data: [10, 38, 20, 35, 25, 0, 0, 5],
+                        borderWidth: 1,
+                    },
+                    {
+                        label: 'Juin',
+                        backgroundColor: "#E7EDF6",
+                        borderColor: "#E7EDF6",
+                        data: [0, 0, 0, 0, 0, 0, 0, 0],
+                        borderWidth: 1,
+                    }, {
+                        label: 'Juillet',
+                        backgroundColor: "#4755AB",
+                        borderColor: "#4755AB",
+                        data: [10, 20, 30, 40, 50, 60, 70, 80],
+                        borderWidth: 1,
+                    }, {
+                        label: 'Août',
+                        backgroundColor: "#58595b",
+                        borderColor: "#58595b",
+                        data: [0, 0, 0, 0, 0, 0, 0, 0],
+
+                        borderWidth: 1,
+                    }, {
+                        label: 'Sept',
+                        backgroundColor: "#166a8f",
+                        borderColor: "#166a8f",
+                        data: [0, 100, 20, 1, 0, 50, 0, 100],
+
+                        borderWidth: 1,
+                    }, {
+                        label: 'Nov',
+                        backgroundColor: "#acc236",
+                        borderColor: "#acc236",
+                        data: [0, 0, 0, 0, 0, 0, 0, 0],
+                        fill: false,
+                    },
+                    {
+                        label: 'Déc',
+                        backgroundColor: "#f53794",
+                        borderColor: "#f53794",
+                        borderWidth: 1,
+                        data: [0, 0, 0, 0, 0, 0, 0, 0],
+
+                    }]
+            },
+            options: {
+                responsive: true,
+                title: {
+                    display: true,
+                    text: 'Ventes'
+                },
+                legend: {
+                    position: 'top',
+                },
+            }
+        });
+        /*
+                new Chart(document.getElementById("linecharta"), {
+                    type: 'line',
+                    data: {
+                        labels: ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'],
+                        datasets: [{
+                            label: 'Jan',
+                            backgroundColor: "#20c997",
+                            borderColor: "#28a745",
+                            fill: false,
+                            data: [0, 0, 0, 0, 0, 0, 0, 0],
+        
+                        }, {
+                            label: 'Fev',
+                            fill: false,
+                            backgroundColor: "#054846",
+                            borderColor: "#054846",
+                            data: [0, 0, 0, 0, 0, 0, 0, 0],
+        
+                        }, {
+                            label: 'Mars',
+                            fill: false,
+                            backgroundColor: "#4755AB",
+                            borderColor: "#4755AB",
+                            data: [0, 0, 0, 0, 0, 0, 0, 0],
+        
+                        },
+                        {
+                            label: 'Avr',
+                            backgroundColor: "#03c895",
+                            borderColor: "#03c895",
+                            data: [0, 0, 0, 0, 0, 0, 0, 0],
+                            fill: false,
+                        },
+                        {
+                            label: 'Mai',
+                            backgroundColor: "#B162AC",
+                            borderColor: "#B162AC",
+                            data: [10, 38, 20, 35, 25, 0, 0, 5],
+                            fill: false,
+                        },
+                        {
+                            label: 'Juin',
+                            backgroundColor: "#E7EDF6",
+                            borderColor: "#E7EDF6",
+                            data: [0, 0, 0, 0, 0, 0, 0, 0],
+                            fill: false,
+                        }, {
+                            label: 'Juillet',
+                            backgroundColor: "#8549ba",
+                            borderColor: "#8549ba",
+                            data: [1, 2, 20, 0, 90, 1, 5, 1],
+                            fill: false,
+                        }, {
+                            label: 'Août',
+                            backgroundColor: "#58595b",
+                            borderColor: "#58595b",
+                            data: [0, 0, 0, 0, 0, 0, 0, 0],
+        
+                            fill: false,
+                        }, {
+                            label: 'Sept',
+                            backgroundColor: "#166a8f",
+                            borderColor: "#166a8f",
+                            data: [0, 100, 20, 1, 0, 50, 0, 100],
+        
+                            fill: false,
+                        }, {
+                            label: 'Nov',
+                            backgroundColor: "#acc236",
+                            borderColor: "#acc236",
+                            data: [0, 0, 0, 0, 0, 0, 0, 0],
+                            fill: false,
+                        },
+                        {
+                            label: 'Déc',
+                            backgroundColor: "#f53794",
+                            borderColor: "#f53794",
+                            fill: false,
+                            data: [0, 0, 0, 0, 0, 0, 0, 0],
+        
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        title: {
+                            display: true,
+                            text: 'Ventes'
+                        },
+                        tooltips: {
+                            mode: 'index',
+                            intersect: false,
+                        },
+                        hover: {
+                            mode: 'nearest',
+                            intersect: true
+                        },
+                        scales: {
+                            xAxes: [{
+                                display: true,
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: 'Semaine'
+                                }
+                            }],
+                            yAxes: [
+                                {
+                                    display: true,
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: 'Niveau'
+                                    }
+                                }]
+                        }
+                    }
+                });
+        */
         NavBaractivity();
         getArticles();
     } else if (where === "commandes") {
@@ -286,6 +509,9 @@ const NafigatioTo = async (where) => {
 
         const transaction = orderdb.transaction(["OrderdStore"], "readonly");
         const objectStore = transaction.objectStore("OrderdStore");
+        const tbodyId = document.getElementById('tbody-data');
+        tbodyId.innerHTML = '';
+        Orderdata.length = 0
 
         objectStore.openCursor().onsuccess = (event) => {
             const cursor = event.target.result;
@@ -293,9 +519,6 @@ const NafigatioTo = async (where) => {
                 Orderdata.push(cursor.value);
                 cursor.continue();
             } else {
-
-                const tbodyId = document.getElementById('tbody-data');
-                tbodyId.innerHTML = '';
 
                 Orderdata.forEach((pan) => {
                     pan.articles.forEach((pani) => {
@@ -469,7 +692,7 @@ const NafigatioTo = async (where) => {
                         ${admin.email}
                         </td>
                         <td class="" style="color: #ffffff !important; text-align: center !important;">
-                        <strong>${admin.phone}</strong>
+                            <strong>${admin.phone}</strong>
                         </td>
                         <td class="" style="text-align: center !important;">
                             <p class="status shipped">Actif</p>
@@ -552,7 +775,7 @@ const NafigatioTo = async (where) => {
                         </td>
                     
                         <td class="">
-                            <p class="status ${pani.quantity > 0 ? "shipped": "cancelled"}">${pani.quantity > 0 ? "Disponible" : "Finis"}</p>
+                            <p class="status ${pani.quantity > 0 ? "shipped" : "cancelled"}">${pani.quantity > 0 ? "Disponible" : "Finis"}</p>
                         </td>
                     </tr>
                     `;
@@ -778,6 +1001,22 @@ async function changeStatus(sta) {
     window.location.reload()
 };
 
+async function updateUser() {
+    const nom = document.getElementById('clientNom').value;
+    const prenom = document.getElementById('clientPrenom').value;
+    const email = document.getElementById('clientEmail').value;
+    const phone = document.getElementById('clientPhone').value;
+    const toUpda = {
+        prenom: nom,
+        nom: prenom,
+        phone: phone,
+        email: email,
+    }
+    const clid = document.getElementById('clientid').value;
+    await sendRequestforOrder('PUT', `people/personupdate/${clid}`, toUpda);
+    window.location.reload()
+};
+
 async function deleteUser() {
     const clid = document.getElementById('clientid').value;
 
@@ -806,5 +1045,25 @@ function optionClientView(clid, whos) {
     document.getElementById('clientEmail').value = client.email;
     document.getElementById('clientPhone').value = client.phone;
     document.getElementById('userStatus').classList.add(`${client.admin === 'false' ? 'btn-info' : client.admin === 'true' ? 'btn-success' : 'btn-dangera'}`);
-    document.getElementById('userStatus').innerText = `${client.admin === 'false' ? 'Clien' : client.admin === 'true' ? 'Adminitrateur' : 'Bloquer'}`;
+    document.getElementById('userStatus').innerText = `${client.admin === 'false' ? 'Clien' : client.admin === 'true' ? 'Adminitrateur' : 'Bloqué'}`;
+
+
+    const token = sessionStorage.getItem('tibule');
+    const splo = token.split("°");
+    const userid = thisiswhat(`${splo[0]}`);
+
+    const usermodif = document.getElementById('usermodif');
+
+    if (userid == clid) {
+        const usermodifHTML = `
+        <button type="button" class="btn btn-outline-success" data-dismiss="modal"
+            onclick="updateUser()">Modifer
+        </button>
+    `;
+        usermodif.innerHTML = usermodifHTML;
+    } else {
+        usermodif.innerHTML = "";
+
+    }
+
 };

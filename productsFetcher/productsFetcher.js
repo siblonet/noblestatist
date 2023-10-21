@@ -93,7 +93,7 @@ async function DataLoad() {
                 openArticleDatabase().then(() => clearArticle().then(result => resolve(result)).catch(error => reject(error)));
                 openArticleDatabase().then(() => addArticles(items).then(result => resolve(result)).catch(error => reject(error)));
                 recentProduct(items);
-                populaProduct(items);
+                //populaProduct(items);
             });
         }
 

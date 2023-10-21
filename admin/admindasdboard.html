@@ -2,19 +2,43 @@
 <html lang="fr-FR">
 
 <head>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="theme-color" content="#d1be03" />
+    <meta name="theme-color" content="#006e65"/>
+    <meta name="description" content="Securisé et rapide" />
+    <meta name="keywords" content="Noble, Noble_boutikonline, Siblo, Silence-AI, John, Kokar, Dibloni" />
+    <meta name="author" content="John Kokar" />
+    <meta property="og:title" content="e-Commerce" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="assets/img/banner-img1.png" />
+    <meta property="og:description" content="Securisé et rapide" />
+    <meta property="og:site_name" content="Noble" />
+    <meta property="og:locale" content="fr-FR" />
+    <meta property="article:author" content="John Kokar" />
+    <meta property="article:published_time" content="2023-10-19T08:00:00Z" />
+    <meta property="article:modified_time" content="#2023-10-19T08:00:00Z" />
+    <link rel="stylesheet" href="../assets/css/loading.css">
+
+
     <title>Noble-Admin</title>
     <link rel="stylesheet" href="assets/css/style-starter.css">
     <link rel="stylesheet" href="tirthcss.css">
     <link rel="stylesheet" href="noble.css">
+
     <link rel="icon" type="image/png" href="../assets/img/favicon.png">
 </head>
 
 <body class="sidebar-menu-collapsed" id="renderFirst">
-    <div class="se-pre-con"></div>
-
+    <div class="preloader-area" id="loaderRemove">
+        <div class="spinner">
+            <div class="inner">
+                <div class="disc"></div>
+                <div class="disc"></div>
+                <div class="disc"></div>
+            </div>
+        </div>
+    </div>
     <section>
         <div class="sidebar-menu sticky-sidebar-menu">
             <div class="logo">
@@ -51,7 +75,8 @@
                         </a>
                     </li>
                     <li class="active" id="ActiveAd">
-                        <a style="cursor: pointer" onclick="NafigatioTo('admin')"><i class="fa fa-cogs"> </i>
+                        <a style="cursor: pointer" onclick="NafigatioTo('admin')">
+                            <i class="fa fa-cogs"></i>
                             <span>Adminitrateurs</span>
                         </a>
                     </li>
@@ -60,15 +85,9 @@
                             <span>Articles</span>
                         </a>
                     </li>
-
-                    <li>
-                        <a href="../index.html"><i class="fa fa-th"> </i>
-                            <span>Boutique</span>
-                        </a>
-                    </li>
                 </ul>
                 <a class="toggle-btn">
-                    <i class="fa fa-angle-double-left menu-collapsed__left"><span>Réduire la barre latérale</span></i>
+                    <i class="fa fa-angle-double-left menu-collapsed__left"><span>Réduire</span></i>
                     <i class="fa fa-angle-double-right menu-collapsed__right"></i>
                 </a>
             </div>
@@ -175,7 +194,73 @@
         </div>
 
 
+<!--
 
+<div class="col-lg-6 pr-lg-2 chart-grid">
+
+
+                            <div class="col-lg-12 chart-grid mb-4">
+                                <div class="card card_border p-4">
+                                    <div class="card-header chart-grid__header pl-0 pt-0">
+                                        Conversation
+                                    </div>
+                                    <div class="messaging">
+                                        <div class="inbox_msg">
+                                            <div class="inbox_people">
+                                                <div class="headind_srch">
+                                                    <div class="srch_bar">
+                                                        <div class="stylish-input-group">
+                                                            <input type="text" class="search-bar"
+                                                                placeholder="Chercher une conversation">
+                                                            <span class="input-group-addon">
+                                                                <button type="button"> <i class="fa fa-search"
+                                                                        aria-hidden="true"></i> </button>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="inbox_chat">
+                                                    <div class="chat_list active_chat">
+                                                        <div class="chat_people">
+
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="mesgs">
+                                                <div class="msg_history">
+                                                    <div class="incoming_msg">
+                                                        
+                                                    </div>
+                                                    <div class="outgoing_msg">
+                                                      
+                                                    </div>
+                                                   
+                                                    <div class="incoming_msg">
+                                                        
+                                                    </div>
+                                                </div>
+                                                <div class="type_msg">
+                                                    <div class="input_msg_write">
+                                                        <input type="text" class="write_msg"
+                                                            placeholder="Écrivez un message" />
+                                                        <button class="msg_send_btn" type="button"><i
+                                                                class="fa fa-paper-plane-o"
+                                                                aria-hidden="true"></i></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+-->
         <div class="main-content" id="main-content">
 
 
@@ -318,7 +403,7 @@
                         </div>
                         <div class="col-lg-6 col-md-12">
                             <div class="order-details">
-                                <h3 class="title">Suite de l'article</h3>
+                                <h3 class="title">Selection des images</h3>
                                 <div class="order-table table-responsive">
                                     <div id="imagePreview1"></div>
                                     <div id="imagePreview2"></div>
@@ -486,7 +571,7 @@
                         </div>
                         <div class="col-lg-6 col-md-12">
                             <div class="order-details">
-                                <h3 class="title">Suite de l'article</h3>
+                                <h3 class="title">Selection des images</h3>
                                 <div class="order-table table-responsive">
                                     <div style="cursor: pointer !important;" id="Editeimage1"></div>
                                     <div style="cursor: pointer !important;" id="Editeimage2"></div>
@@ -746,13 +831,16 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-info" data-dismiss="modal" onclick="changeStatus('false')">Client</button>
+                    <button type="button" class="btn btn-info" data-dismiss="modal"
+                        onclick="changeStatus('false')">Client</button>
                     <button type="button" class="btn btn-success" data-dismiss="modal"
                         onclick="changeStatus('true')">Admin</button>
                     <button type="button" class="btn btn-dangera" data-dismiss="modal"
                         onclick="changeStatus('blocked')">Bloquer</button>
                     <button type="button" class="btn btn-danger" data-dismiss="modal"
                         onclick="deleteUser()">Supprimer</button>
+                        <div id="usermodif"></div>
+
                 </div>
             </div>
 

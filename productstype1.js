@@ -449,7 +449,16 @@ async function getArticleByIdforpanieOr(idm, quand) {
             prod.size = selct.length > 0 ? sizo : prod.addtail[2] == "," ? prod.addtail[0] + prod.addtail[1] : prod.addtail[0];
             TotalAll("post", prod);
         } else {
-            alert(`Cet article ne rest que ${prod.quantity}`);
+
+            document.getElementById('modalcoma').style.display = "block";
+            document.getElementById('modalcoma').setAttribute("aria-hidden", "false");
+            document.getElementById('messages').innerText = `Cet article ne rest que ${prod.quantity}`;
+
+            setTimeout(() => {
+                document.getElementById('modalcoma').style.display = "none";
+                document.getElementById('modalcoma').setAttribute("aria-hidden", "true");
+            }, 2500);
+
         }
     };
 
