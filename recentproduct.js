@@ -342,25 +342,29 @@ function recentProduct(recenPr) {
     } else {
         const tokens = sessionStorage.getItem('tibule');
         const productHTML = `
-            <div class="container">
-                <div class="section-title">
-                ${tokens && tokens.split("°") && tokens.split("°")[5] == "GIFV" ?
-                    `
-                        <a class="sub-title" href="admin/admindasdboard.html"><i class="bx bx-log-in"></i> Ajouter un article</a>
-
+                <div class="container">
+                    <div class="section-title">
+                        <h2>Le magasin est vide pour l'instant</h2>
+                    </div>
+                    <div style="align-self: center; align-items: center; justify-content: center; text-align: center">
+                        <img src="assets/img/error-404.png" alt="Le magasin est vide">
+                    </div>
+                        
+                    ${tokens && tokens.split("°") && tokens.split("°")[5] == "GIFV" ?
+                `
+                            <br>
+                            <br>
+                            <div style="align-self: center; align-items: center; justify-content: center; text-align: center">
+                                <a style="align-self: center; cursor: pointer; color: #006e65" href="admin/admindasdboard.html">Cliquez ici pour Ajouter un article</a>
+                            </div>
                         `
-                    :
+                :
 
-                    ""
-                }
-                    <h2>Le magasin est vide pour l'instant</h2>
+                ""
+            }
                 </div>
-                <div>
-                    <img src="assets/img/vide.jpg" alt="image">
+            `;
 
-                </div>
-            </div>
-    `;
         productContainer.innerHTML += productHTML;
         const loaderRemove = document.getElementById('loaderRemove');
         loaderRemove.innerHTML = "";
