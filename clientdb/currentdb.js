@@ -230,7 +230,7 @@ function AddArticle() {
         const addexpe = document.getElementById('addexpe').value;
         const notes = document.getElementById('notes').value;
 
-        if (addarticle && addquant && addgenre && addtransage && addprix && addfour && adddispo && addcoul && addtail && addmateri && addmarque && addtype && addtypepro && addphone && addexpe && notes && imas.length > 4) {
+        if (addarticle && addgenre && addtransage && addprix && addfour && adddispo && addcoul && addtail && addmateri && addmarque && addtype && addtypepro && addphone && addexpe && notes && imas.length > 4) {
             const product = {
                 addarticle: addarticle,
                 quantity: parseInt(addquant),

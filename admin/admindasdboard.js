@@ -236,7 +236,7 @@ async function EditeViewArticle() {
         const notes = document.getElementById('Editenotes').value;
 
 
-        if (addarticle && addquant && addgenre && addtransage && addprix && addfour && adddispo && addcoul && addtail && addmateri && addmarque && addtype && addtypepro && addphone && addexpe && notes) {
+        if (addarticle && addgenre && addtransage && addprix && addfour && adddispo && addcoul && addtail && addmateri && addmarque && addtype && addtypepro && addphone && addexpe && notes) {
             const product = {
                 addarticle: addarticle,
                 quantity: parseInt(addquant),
