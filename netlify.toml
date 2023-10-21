@@ -1,4 +1,68 @@
 [[redirects]]
+from = "admin"
+to = "/admin/admindasdboard.html"
+status = 200
+
+
+[[redirects]]
+from = "client"
+to = "/client/client.html"
+status = 200
+
+
+[[redirects]]
+from = "login"
+to = "/login.html"
+status = 200
+
+[[redirects]]
+from = "signup"
+to = "/signup.html"
+status = 200
+
+[[redirects]]
 from = "propos"
 to = "/about.html"
 status = 200
+
+
+[[redirects]]
+from = "pannier"
+to = "/cart.html"
+status = 200
+
+
+[[redirects]]
+from = "payment"
+to = "/checkout.html"
+status = 200
+
+
+[[redirects]]
+from = "contact"
+to = "/contact.html"
+status = 200
+
+
+[[redirects]]
+from = "service-client"
+to = "/customer-service.html"
+status = 200
+
+
+
+[[redirects]]
+from = "questions"
+to = "/faqs.html"
+status = 200
+
+
+[[redirects]]
+from = "indisponible"
+to = "/vide.html"
+status = 200
+
+
+[[redirects]]
+from = "filter*"
+to = "/products-left-sidebar.html:splat"
