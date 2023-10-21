@@ -71,3 +71,13 @@ status = 200
 [[redirects]]
 from = "filter*"
 to = "/filtera:splat"
+
+
+[[redirects]]
+from = "/detaila"
+to = "/products-type-1.html"
+status = 200
+
+[[redirects]]
+from = "detail*"
+to = "/detaila:splat"
