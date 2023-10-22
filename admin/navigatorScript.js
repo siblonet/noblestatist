@@ -31,28 +31,13 @@ const sendRequestforOrderget = async (method, endpoint, data = null) => {
 function addArti(data) {
     const transaction = articldb.transaction(["ArticleStore"], "readwrite");
     const objectStore = transaction.objectStore("ArticleStore");
-    console.log("addArti")
-
 
     data.map(article => {
         objectStore.add(article);
-        console.log("addArti map")
 
     });
-
-
-    objectStore.onsuccess = (event) => {
-        console.log("addArti onsuccess")
-
-        NafigatioTo("articles")
-
-    };
-
-    objectStore.onerror = (event) => {
-        Reloada();
-    };
+    getArticles()
     NafigatioTo("articles")
-
 }
 
 
