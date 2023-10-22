@@ -36,8 +36,7 @@ function addArti(data) {
         objectStore.add(article);
 
     });
-    getArticles()
-    NafigatioTo("articles")
+    getArticleOnly()
 }
 
 
@@ -1020,6 +1019,29 @@ const NavBaractivity = async () => {
     }
 
 
+}
+
+
+async function getArticleOnly() {
+    articlesData.length = 0;
+
+    await openArticleDatabase();
+    const transaction = articldb.transaction(["ArticleStore"], "readonly");
+    const objectStore = transaction.objectStore("ArticleStore");
+
+    objectStore.openCursor().onsuccess = (event) => {
+        const cursor = event.target.result;
+        if (cursor) {
+            articlesData.push(cursor.value);
+            cursor.continue();
+        } else {
+            NafigatioTo("articles")
+        };
+    };
+
+    transaction.onerror = (event) => {
+        console.error("Transaction error:", event.target.error);
+    };
 }
 
 
