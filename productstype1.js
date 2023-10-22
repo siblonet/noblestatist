@@ -24,7 +24,7 @@ function getUsenam() {
         if (admin == "GIFV") {
             const usernamBody =
                 `
-            <a href="admin/admindasdboard.html"><i class="bx bxs-user"></i> ${mynam}</a>
+            <a href="admin"><i class="bx bxs-user"></i> ${mynam}</a>
 
             `;
 
@@ -33,7 +33,7 @@ function getUsenam() {
 
             const usernamBody =
                 `
-            <a href="track-order.html"><i class="bx bxs-user"></i> ${mynam}</a>
+            <a href="client"><i class="bx bxs-user"></i> ${mynam}</a>
 
             `;
 
