@@ -299,10 +299,11 @@ function AddArticlea() {
                 notes: notes,
                 image: imas
             };
+            document.getElementById("ajouteencou").innerText = "En cours"
+
             const createItem = async () => {
                 try {
                     await sendRequestnotoa('POST', 'boutique', product);
-                    document.getElementById("ajouteencou").innerText = "En cours"
                     FetchArticle();
                 } catch (error) {
                     console.error('Error creating product:', error.message);
