@@ -5,10 +5,7 @@ function getUsenam() {
     const tokens = sessionStorage.getItem('tibule');
     if (tokens && tokens.split("°")) {
         const sploz = tokens.split("°");
-        const name = sploz[1];
-        const lastname = sploz[2];
         const admin = sploz[5];
-        const mynam = thisiswhat(`${name}â${lastname}`)
         const usernam = document.getElementById('usernam');
         const usernama = document.getElementById('usernama');
         usernam.innerHTML = '';
@@ -24,7 +21,7 @@ function getUsenam() {
         if (admin == "GIFV") {
             const usernamBody =
                 `
-            <a href="admin"><i class="bx bxs-user"></i> ${mynam}</a>
+            <a href="admin"><i class="bx bxs-user"></i> Mon Espace</a>
 
             `;
 
@@ -33,7 +30,7 @@ function getUsenam() {
 
             const usernamBody =
                 `
-            <a href="client"><i class="bx bxs-user"></i> ${mynam}</a>
+            <a href="client"><i class="bx bxs-user"></i> Mon Espace</a>
 
             `;
 
