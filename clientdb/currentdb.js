@@ -205,7 +205,7 @@ function ClearImage() {
     imas.length = 0;
 }
 
-function AddArticle() {
+function AddArticleTest() {
     document.getElementById("ajouteencou").innerText = "En cours"
     const product = {
                     "addarticle": "Chemise Noble à manches court",
@@ -251,7 +251,7 @@ function AddArticle() {
 
 }
 
-function AddArticlea() {
+function AddArticle() {
     try {
         const addarticle = document.getElementById('addarticle').value;
         const addquant = document.getElementById('addquant').value;

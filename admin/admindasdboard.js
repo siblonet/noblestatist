@@ -263,6 +263,8 @@ async function EditeViewArticle() {
             const createItem = async () => {
                 try {
                     await sendRequestforOrder('PUT', `boutique/${_id}`, product);
+                    FetchArticle();
+
                 } catch (error) {
                     console.error('Error updating product:', error.message);
                 }
@@ -321,11 +323,8 @@ async function optionEditeView(_id) {
 async function deleteArticleById() {
     const _ide = document.getElementById("ediatiid").value;
     await sendRequestforOrder('DELETE', `boutique/${_ide}`);
-    await openArticleDatabase();
-    await clearArticlea();
-    const items = await sendRequestforOrderget('GET', 'boutique');
-    await addArticlesa(items);
-    window.location.reload();
+    FetchArticle();
+
 }
 
 function addArticlesa(data) {
