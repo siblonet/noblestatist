@@ -1035,6 +1035,7 @@ async function getArticleOnly() {
             articlesData.push(cursor.value);
             cursor.continue();
         } else {
+            document.getElementById("ajouteencou").innerText = "Ajouter encore"
             NafigatioTo("articles")
         };
     };

@@ -245,6 +245,7 @@ function AddArticle() {
             const items = await sendRequestforOrderget('GET', 'boutique');
             await addArticlesa(items);
             await openOrdersDatabase();
+            document.getElementById("ajouteencou").innerText = "En cours"
             FetchArticle();
 
         } catch (error) {
