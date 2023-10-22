@@ -142,6 +142,8 @@ async function optionCancileView(_id, proid, arti_id) {
                 <button type="button" class="btn btn-info" data-dismiss="modal" onclick="selectStatus('onway')">Modifer</button>
                             
                 <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="cancelItemById()">Annuller</button>
+                <button type="button" class="btn btn-outline-success" data-dismiss="modal">Quitter</button>
+
             `;
                 updateposi.innerHTML = updateposiHTML;
             }
