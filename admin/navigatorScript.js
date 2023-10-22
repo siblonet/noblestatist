@@ -28,7 +28,72 @@ const sendRequestforOrderget = async (method, endpoint, data = null) => {
     return responseData;
 };
 
+function addArticles(data) {
+    const transaction = articldb.transaction(["ArticleStore"], "readwrite");
+    const objectStore = transaction.objectStore("ArticleStore");
+    data.map(article => {
+        objectStore.add(article);
+    });
+    NafigatioTo("commandes")
+}
 
+
+const sendRequestnot = async (method, endpoint, data = null) => {
+    const options = {
+        method,
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    };
+
+    if (data) {
+        options.body = JSON.stringify(data);
+    }
+
+    const response = await fetch(apiUrlfine + endpoint, options);
+    const responseData = await response.json();
+
+    if (!response.ok) {
+        return null
+    }
+
+    return responseData;
+};
+
+function clearArticle() {
+    const transacti = articldb.transaction(["ArticleStore"], "readwrite");
+    const objectAr = transacti.objectStore("ArticleStore");
+    objectAr.clear();
+/*
+    clearRequest.onsuccess = (event) => {
+    };
+
+    clearRequest.onerror = (event) => {
+    };*/
+
+}
+
+
+const Reloada = () => {
+    window.location.reload();
+}
+
+
+async function FetchArticle() {
+    try {
+        const items = await sendRequestnot('GET', 'boutique');
+        if (items) {
+            openArticleDatabase();
+            clearArticle();
+            openArticleDatabase();
+            addArticles(items);
+        }
+
+    } catch (e) {
+        console.log(e)
+    }
+
+};
 
 
 const NafigatioTo = async (where) => {

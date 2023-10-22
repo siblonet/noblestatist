@@ -61,6 +61,7 @@ const Reloada = () => {
     window.location.reload();
 }
 
+
 async function DataLoad() {
     try {
         const items = await sendRequestnot('GET', 'boutique');
