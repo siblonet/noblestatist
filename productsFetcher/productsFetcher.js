@@ -1,20 +1,12 @@
 function addArticles(data) {
-    return new Promise((resolve, reject) => {
-        const transaction = articldb.transaction(["ArticleStore"], "readwrite");
-        const objectStore = transaction.objectStore("ArticleStore");
+    const transaction = articldb.transaction(["ArticleStore"], "readwrite");
+    const objectStore = transaction.objectStore("ArticleStore");
 
-        const requests = data.map(article => {
-            return new Promise((innerResolve, innerReject) => {
-                const request = objectStore.add(article);
-                request.onsuccess = () => innerResolve();
-                request.onerror = (event) => innerReject(event.target.error);
-            });
-        });
+    data.map(article => {
+        objectStore.add(article);
 
-        Promise.all(requests)
-            .then(() => resolve('done'))
-            .catch(error => reject(error));
     });
+    recentProduct(data)
 }
 
 
@@ -40,19 +32,17 @@ const sendRequestnot = async (method, endpoint, data = null) => {
     return responseData;
 };
 
-function clearArticle() {
+function clearArticle(items) {
     const transacti = articldb.transaction(["ArticleStore"], "readwrite");
     const objectAr = transacti.objectStore("ArticleStore");
 
     const clearRequest = objectAr.clear();
-    let answer;
-
-    clearRequest.onsuccess = (event) => {
-        answer = "cleared"
+    clearRequest.onsuccess = () => {
+        addArticles(items)
     };
 
     clearRequest.onerror = (event) => {
-        answer = event.target.error;
+        console.log(event.target.error);
     };
 
     //TotalAll("clear", {});
@@ -90,12 +80,9 @@ async function DataLoad() {
             loaderRemove.innerHTML = "";
             loaderRemove.style.display = "none";
         } else {
-            return new Promise((resolve, reject) => {
-                openArticleDatabase().then(() => clearArticle().then(result => resolve(result)).catch(error => reject(error)));
-                openArticleDatabase().then(() => addArticles(items).then(result => resolve(result)).catch(error => reject(error)));
-                recentProduct(items);
+                await openArticleDatabase()
+                clearArticle(items)
                 //populaProduct(items);
-            });
         }
 
 
