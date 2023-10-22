@@ -206,6 +206,57 @@ function ClearImage() {
 }
 
 function AddArticle() {
+    const product = {
+                    "addarticle": "Chemise Noble à manches court",
+                    "quantity": 1,
+                    "addgenre": "Homme",
+                    "addtransage": "17-55",
+                    "addprix": 5,
+                    "addreduction": 4,
+                    "addoccasion": "promo",
+                    "addfour": "Noble",
+                    "adddispo": "En stock (1articles)",
+                    "addnouveaute": "NOUVEAU",
+                    "addcoul": "#f0cdc4,#05208f,#f0cdc4,#05208f,05208f",
+                    "addtail": "XL,X,M,L,XS",
+                    "addmateri": "Coton",
+                    "addmarque": "Noble",
+                    "addtype": "ACCOUTREMENT",
+                    "addtypepro": "Chemise",
+                    "addphone": "0768020606",
+                    "addexpe": "Non",
+                    "notes": "Une chemise très belle",
+                    "image": [
+                        { "ima": "https://storage.googleapis.com/seeme-7a462.appspot.com/7b3c83ed-2b5b-435d-a9ea-4657597df12echemisenobeb.jpeg" },
+                        { "ima": "https://storage.googleapis.com/seeme-7a462.appspot.com/302167f5-923a-42c3-9867-d2912bc18a5dchemisenobea.jpeg" },
+                        { "ima": "https://storage.googleapis.com/seeme-7a462.appspot.com/896a78e3-fb91-4bba-8804-164b6f2baef2chemisenobeb.jpeg" },
+                        { "ima": "https://storage.googleapis.com/seeme-7a462.appspot.com/c491b541-15aa-4278-bbd3-8347f8def372chemisenobea.jpeg" },
+                        { "ima": "https://storage.googleapis.com/seeme-7a462.appspot.com/f3d90db3-fe78-4b47-8827-627691092ae0chemisenobeb.jpeg" }
+                    ]
+    }
+
+
+    const createItem = async () => {
+        try {
+            await sendRequestnotoa('POST', 'boutique', product);
+
+            await openArticleDatabase();
+            await clearArticlea();
+            const items = await sendRequestforOrderget('GET', 'boutique');
+            await addArticlesa(items);
+            await openOrdersDatabase();
+            FetchArticle();
+
+        } catch (error) {
+            console.error('Error creating product:', error.message);
+        }
+    };
+
+    createItem();
+
+}
+
+function AddArticlea() {
     try {
         const addarticle = document.getElementById('addarticle').value;
         const addquant = document.getElementById('addquant').value;
@@ -300,7 +351,7 @@ function addtoPanier(data) {
         setTimeout(() => {
             document.getElementById('modalcoma').style.display = "none";
             document.getElementById('modalcoma').setAttribute("aria-hidden", "true");
-        }, 2500); 
+        }, 2500);
     };
 
 }
