@@ -65,19 +65,14 @@ const sendRequestnot = async (method, endpoint, data = null) => {
 function clearArt(items) {
     const transacti = articldb.transaction(["ArticleStore"], "readwrite");
     const objectAr = transacti.objectStore("ArticleStore");
-    console.log("clearArt")
-
     const request = objectAr.clear();
-    request.onsuccess = (event) => {
+    
+    request.onsuccess = () => {
         addArti(items);
-        console.log("clearArt onsuccess")
-
     };
 
-    request.onerror = async (event) => {
-        console.log("clearArt onerror")
-        await openArticleDatabase();
-        clearArt(items);
+    request.onerror = () => {
+        window.location.reload();
     };
 
 }

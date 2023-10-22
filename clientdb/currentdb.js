@@ -206,6 +206,7 @@ function ClearImage() {
 }
 
 function AddArticle() {
+    document.getElementById("ajouteencou").innerText = "En cours"
     const product = {
                     "addarticle": "Chemise Noble à manches court",
                     "quantity": 1,
@@ -239,7 +240,6 @@ function AddArticle() {
     const createItem = async () => {
         try {
             await sendRequestnotoa('POST', 'boutique', product);
-            document.getElementById("ajouteencou").innerText = "En cours"
             FetchArticle();
 
         } catch (error) {
