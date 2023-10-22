@@ -28,7 +28,7 @@ const sendRequestforOrderget = async (method, endpoint, data = null) => {
     return responseData;
 };
 
-function addArticles(data) {
+function addArti(data) {
     const transaction = articldb.transaction(["ArticleStore"], "readwrite");
     const objectStore = transaction.objectStore("ArticleStore");
     data.map(article => {
@@ -60,7 +60,7 @@ const sendRequestnot = async (method, endpoint, data = null) => {
     return responseData;
 };
 
-function clearArticle() {
+function clearArt() {
     const transacti = articldb.transaction(["ArticleStore"], "readwrite");
     const objectAr = transacti.objectStore("ArticleStore");
     objectAr.clear();
@@ -84,9 +84,9 @@ async function FetchArticle() {
         const items = await sendRequestnot('GET', 'boutique');
         if (items) {
             openArticleDatabase();
-            clearArticle();
+            clearArt();
             openArticleDatabase();
-            addArticles(items);
+            addArti(items);
         }
 
     } catch (e) {
