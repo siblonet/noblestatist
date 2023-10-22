@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://e-noble.online/</loc>
+  <lastmod>2023-10-22T01:00:01+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://e-noble.online/login</loc>
+  <lastmod>2023-10-22T01:00:01+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://e-noble.online/indisponible</loc>
+  <lastmod>2023-10-22T01:00:01+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://e-noble.online/payment</loc>
+  <lastmod>2023-10-22T01:00:01+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://e-noble.online/pannier</loc>
+  <lastmod>2023-10-22T01:00:01+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://e-noble.online/propos</loc>
+  <lastmod>2023-10-22T01:00:01+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://e-noble.online/questions</loc>
+  <lastmod>2023-10-22T01:00:01+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://e-noble.online/contact</loc>
+  <lastmod>2023-10-22T01:00:01+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://e-noble.online/service-client</loc>
+  <lastmod>2023-10-22T01:00:01+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://e-noble.online/signup</loc>
+  <lastmod>2023-10-22T01:00:01+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://e-noble.online/vide</loc>
+  <lastmod>2023-10-22T01:00:01+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://e-noble.online/track-order</loc>
+  <lastmod>2023-10-22T01:00:01+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+
+
+</urlset>
