@@ -92,9 +92,7 @@ async function FetchArticle() {
     try {
         const items = await sendRequestnot('GET', 'boutique');
         if (items) {
-            console.log("FetchArticle")
             await openArticleDatabase();
-            console.log("FetchArticlea")
             clearArt(items);
         }
 

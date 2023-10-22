@@ -239,12 +239,6 @@ function AddArticle() {
     const createItem = async () => {
         try {
             await sendRequestnotoa('POST', 'boutique', product);
-
-            await openArticleDatabase();
-            await clearArticlea();
-            const items = await sendRequestforOrderget('GET', 'boutique');
-            await addArticlesa(items);
-            await openOrdersDatabase();
             document.getElementById("ajouteencou").innerText = "En cours"
             FetchArticle();
 
@@ -308,14 +302,8 @@ function AddArticlea() {
             const createItem = async () => {
                 try {
                     await sendRequestnotoa('POST', 'boutique', product);
-
-                    await openArticleDatabase();
-                    await clearArticlea();
-                    const items = await sendRequestforOrderget('GET', 'boutique');
-                    await addArticlesa(items);
-                    await openOrdersDatabase();
+                    document.getElementById("ajouteencou").innerText = "En cours"
                     FetchArticle();
-
                 } catch (error) {
                     console.error('Error creating product:', error.message);
                 }
