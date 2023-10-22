@@ -34,7 +34,7 @@ function addArti(data) {
     data.map(article => {
         objectStore.add(article);
     });
-    NafigatioTo("commandes")
+    NafigatioTo("articles")
 }
 
 
