@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuage en SVG</title>
+    <style>
+        .cloud {
+            fill: #bb3f3f;
+        }
+        .crown {
+            fill: #FFD700; /* Couleur dorée */
+        }
+        .gem {
+            fill: #FF4500; /* Couleur rouge pour les gemmes */
+        }
+    </style>
+</head>
+<body>
+
+    
+    <svg xmlns="http://www.w3.org/2000/svg" width="200" height="100">
+        <circle class="cloud" cx="40" cy="30" r="30" />
+        <circle class="cloud" cx="70" cy="30" r="40" />
+        <circle class="cloud" cx="100" cy="30" r="30" />
+    </svg>
+
+    <circle cx="50" cy="50" r="20" fill="black" />
+    <circle cx="95" cy="50" r="20" fill="black" />
+    <circle cx="140" cy="50" r="20" fill="black" />
+ 
+        <svg xmlns="http://www.w3.org/2000/svg" width="200" height="100">
+            <path class="cloud" d="M30 50 Q40 30 60 40 Q80 30 100 50 Q120 30 140 40 Q160 30 180 50 Q190 70 180 80 Q160 90 140 80 Q120 90 100 80 Q80 90 60 80 Q40 90 30 80 Z" />
+        </svg>
+
+
+        <svg xmlns="http://www.w3.org/2000/svg" width="200" height="100">
+            <ellipse class="cloud" cx="60" cy="40" rx="30" ry="20" />
+            <ellipse class="cloud" cx="90" cy="35" rx="40" ry="25" />
+            <ellipse class="cloud" cx="120" cy="40" rx="30" ry="20" />
+        </svg>
+
+
+        <svg xmlns="http://www.w3.org/2000/svg" width="200" height="100">
+            <rect class="cloud" x="20" y="30" width="30" height="20" rx="10" ry="10" />
+            <rect class="cloud" x="50" y="25" width="40" height="30" rx="15" ry="15" />
+            <rect class="cloud" x="90" y="30" width="30" height="20" rx="10" ry="10" />
+        </svg>
+       
+</body>
+</html>

@@ -253,7 +253,9 @@
 
 
 
-
+    .absoluin{
+        display: none !important;
+      }
 
 
     /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
@@ -290,7 +292,7 @@
         height: 100%;
         margin: auto;
         width: 90vw;
-        z-index: 0;
+        z-index: 1;
     }
 
     .lines .line {
@@ -390,6 +392,33 @@
     .page-title-area .page-linear {
         display: none !important;
     }
+
+
+    #background-video {
+        position: absolute;
+        width: 100% !important;
+        height: 131px !important;
+        left: 0 !important;
+        right: 0 !important;
+        top: 0 !important;
+        z-index: 0;
+        align-items: center;
+        text-align: center;
+        object-fit: cover;
+        display: block !important;
+
+    }
+    
+    .holehvg{
+        position: absolute;
+        width: 100% !important;
+        height: 131px !important;
+        left: 0 !important;
+        right: 0 !important;
+        top: 0 !important;
+        z-index: 2;
+        display: block !important;
+    }
 }
 
 @media only screen and (min-width: 992px) {
@@ -430,6 +459,5 @@
     .xton-responsive-nav {
         top: 2px !important;
     }
-
-
 }
+

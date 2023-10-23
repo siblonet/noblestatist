@@ -402,6 +402,14 @@ Top Header CSS
   padding: 0px 8px 0px 8px;
 }
 
+#background-video {
+  display: none !important;
+
+}
+
+.holehvg {
+  display: none !important;
+}
 
 .header-contact-info li a::before {
   content: '';
@@ -8987,6 +8995,7 @@ Checkout CSS
 .user-actions .span:hover {
   color: #007bff
 }
+
 .user-actions i {
   color: var(--companycob);
   margin-right: 2px;
