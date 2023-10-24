@@ -433,6 +433,10 @@
 
 
 @media only screen and (max-width: 574px) {
+    .mobilelogo{
+        display: flex !important;
+      }
+
     .xton-responsive-nav {
         top: 0px !important;
         background: transparent;

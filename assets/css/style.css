@@ -1792,7 +1792,9 @@ display: none !important;
 
 
 
-
+.mobilelogo{
+  display: none !important;
+}
 
 
 .button-85a {
