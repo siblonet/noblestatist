@@ -18,6 +18,7 @@
     <meta property="article:author" content="John Kokar" />
     <meta property="article:published_time" content="2023-10-19T08:00:00Z" />
     <meta property="article:modified_time" content="#2023-10-19T08:00:00Z" />
+    <meta name="google-signin-client_id" content="">
 
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/animate.min.css">
@@ -84,6 +85,9 @@
                                     <img src="assets/img/add.png" height="20px" width="20px" alt="defdaar">
                                 </div>
                             </a>
+                            <div class="g-signin2" data-onsuccess="onSignIn">
+                                connecter avec compte google
+                            </div>
                             <a href="#" class="forgot-password">Mot de passe oublié ?</a>
                         </form>
                     </div>
@@ -308,6 +312,7 @@
     <script src="assets/js/main.js"></script>
     <script src="./authan/authan.js"></script>
     <script src="./convertisseur.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
 </body>
 
 
