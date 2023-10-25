@@ -19,11 +19,18 @@
 
     // Header Sticky
     $(window).on('scroll', function () {
-        if ($(this).scrollTop() > 130) {
-            $('.header-sticky').addClass("is-sticky");
+        function isMobileDevice() {
+            const userAgent = navigator.userAgent.toLowerCase();
+            return userAgent.includes('mobile');
         }
-        else {
-            $('.header-sticky').removeClass("is-sticky");
+        if (!isMobileDevice()) {
+
+            if ($(this).scrollTop() > 130) {
+                $('.header-sticky').addClass("is-sticky");
+            }
+            else {
+                $('.header-sticky').removeClass("is-sticky");
+            }
         }
     });
     var c, currentScrollTop = 0,
@@ -42,9 +49,9 @@
                 navbar.addClass("scrollUp");
             } else if (c > currentScrollTop && !(a <= b)) {
                 navbar.removeClass("scrollUp");
-            }  
+            }
         }
-       
+
         c = currentScrollTop;
     });
 
