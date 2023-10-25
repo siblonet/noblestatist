@@ -32,11 +32,19 @@
         var a = $(window).scrollTop();
         var b = navbar.height();
         currentScrollTop = a;
-        if (c < currentScrollTop && a > b + b) {
-            navbar.addClass("scrollUp");
-        } else if (c > currentScrollTop && !(a <= b)) {
-            navbar.removeClass("scrollUp");
+        function isMobileDevice() {
+            const userAgent = navigator.userAgent.toLowerCase();
+            return userAgent.includes('mobile');
         }
+
+        if (!isMobileDevice()) {
+            if (c < currentScrollTop && a > b + b) {
+                navbar.addClass("scrollUp");
+            } else if (c > currentScrollTop && !(a <= b)) {
+                navbar.removeClass("scrollUp");
+            }  
+        }
+       
         c = currentScrollTop;
     });
 
