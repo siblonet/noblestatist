@@ -536,7 +536,7 @@
     }
 
     .top-header {
-        height: 90px;
+        height: 89px;
     }
 
     .top-header .container .align-items-center .col-md-12 .header-top-others-option .search-btn-box {
@@ -554,7 +554,9 @@
         top: -8px;
         z-index: 999;
     }
-
+    .hiddenpc{
+        display: block !important;
+      }
 
     #usernam {
         display: none !important;
