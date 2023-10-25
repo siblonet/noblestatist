@@ -1,7 +1,15 @@
 (function ($) {
     "use strict";
 
-    // Search Popup JS
+
+    function isMobileDevice() {
+        const userAgent = navigator.userAgent.toLowerCase();
+        return userAgent.includes('mobile');
+    }
+    if (!isMobileDevice()) {
+        $('.addhere').addClass("header-sticky");
+    }
+
     $(".others-option .search-btn").on("click", function () {
         $(".search-overlay").toggleClass("search-overlay-active");
     });
@@ -19,19 +27,13 @@
 
     // Header Sticky
     $(window).on('scroll', function () {
-        function isMobileDevice() {
-            const userAgent = navigator.userAgent.toLowerCase();
-            return userAgent.includes('mobile');
+        if ($(this).scrollTop() > 130) {
+            $('.header-sticky').addClass("is-sticky");
         }
-        if (!isMobileDevice()) {
+        else {
+            $('.header-sticky').removeClass("is-sticky");
+        }
 
-            if ($(this).scrollTop() > 130) {
-                $('.header-sticky').addClass("is-sticky");
-            }
-            else {
-                $('.header-sticky').removeClass("is-sticky");
-            }
-        }
     });
     var c, currentScrollTop = 0,
         navbar = $('.header-sticky');
@@ -39,18 +41,14 @@
         var a = $(window).scrollTop();
         var b = navbar.height();
         currentScrollTop = a;
-        function isMobileDevice() {
-            const userAgent = navigator.userAgent.toLowerCase();
-            return userAgent.includes('mobile');
+
+
+        if (c < currentScrollTop && a > b + b) {
+            navbar.addClass("scrollUp");
+        } else if (c > currentScrollTop && !(a <= b)) {
+            navbar.removeClass("scrollUp");
         }
 
-        if (!isMobileDevice()) {
-            if (c < currentScrollTop && a > b + b) {
-                navbar.addClass("scrollUp");
-            } else if (c > currentScrollTop && !(a <= b)) {
-                navbar.removeClass("scrollUp");
-            }
-        }
 
         c = currentScrollTop;
     });

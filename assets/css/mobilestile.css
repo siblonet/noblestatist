@@ -536,7 +536,7 @@
     }
 
     .top-header {
-        height: 89px;
+        height: 51px;
     }
 
     .top-header .container .align-items-center .col-md-12 .header-top-others-option .search-btn-box {
@@ -578,7 +578,7 @@
     #background-video {
         position: absolute;
         width: 100% !important;
-        height: 131px !important;
+        height: 135px !important;
         left: 0 !important;
         right: 0 !important;
         top: 0 !important;
@@ -592,7 +592,7 @@
     .holehvg {
         position: absolute;
         width: 100% !important;
-        height: 131px !important;
+        height: 135px !important;
         left: 0 !important;
         right: 0 !important;
         top: 0 !important;
