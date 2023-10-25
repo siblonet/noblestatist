@@ -1,4 +1,20 @@
 @media only screen and (max-width: 991px) {
+    .mobilefooter {
+        display: block;
+    }
+
+    .linearboottom {
+        display: none !important
+    }
+
+    .pcfooter {
+        display: none !important;
+    }
+
+    .backgroua {
+        top: -42px !important;
+      }
+
     .navbar-area {
         height: 42px !important;
         background: linear-gradient(to right,
@@ -8,26 +24,37 @@
                 #000000 80%,
                 #ff0000 90%) !important;
         overflow: hidden;
+        background: transparent !important;
+        position: unset !important;
+        width: 100%;
+        z-index: 0;
     }
 
     .xton-responsive-nav {
         display: block;
-        background: #ffffff;
+        background: transparent;
         height: 40px;
         position: absolute;
         width: 100%;
         z-index: 99;
-        top: 132px;
+        top: 10px !important;
     }
 
+
+    .mean-bar a span {
+        color: #ffffff !important;
+        background: #ffffff !important;
+    }
     .mean-bar a span span {
-        color: #ff0000 !important;
-        background: #ff0000 !important;
+        color: #ffffff !important;
+        background: #ffffff !important;
+        width: 70% !important;
+
     }
 
     .mean-bar a span span span {
-        color: #000000 !important;
-        background: #000000 !important;
+        color: #ffffff !important;
+        background: #ffffff !important;
     }
 
     .main-logo,
@@ -378,16 +405,60 @@
     /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
     /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
     .page-title-area {
-        padding-top: 40px;
-        padding-bottom: 35px;
+        height: 220px;
         overflow: hidden;
         background: #f8f8f8 !important;
     }
 
     .page-title-area .page-linear {
-        display: none !important;
+        height: 220px;
+        width: 100%;
+        background-image: url(../img/auth.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        align-self: center;
     }
 
+    .page-title-area .container .boba {
+        display: block;
+        background: rgba(11, 0, 0, 0.468);
+        position: absolute;
+        height: 220px;
+        width: 100%;
+        left: 0;
+        right: 0;
+        align-self: center;
+    }
+
+    .page-title-area .container .bob {
+        height: 30px;
+        display: block;
+    }
+
+    .page-title-area .page-title-content ul a{
+        color: #ffffff;
+    }
+    
+    .boderit{
+        display: block;
+        top: -30px !important;
+        background-color: #ffffff;
+        border-top-left-radius: 30px;
+        border-top-right-radius: 30px;
+        height: 30px;
+        position: relative;
+        width: 100%;
+    }
+
+    .login-area.ptb-100{
+        padding-top: 0 !important;
+        padding-bottom: 100px;
+    }
+    .signup-area.ptb-100{
+        padding-top: 0 !important;
+        padding-bottom: 100px;
+    }
 }
 
 @media only screen and (min-width: 992px) {
@@ -397,45 +468,45 @@
     }
 }
 
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-    .xton-responsive-nav {
-        top: 79px !important;
-    }
 
 
-}
-
-@media only screen and (min-width: 576px) and (max-width: 767px) {
-    .xton-responsive-nav {
-        top: 93px !important;
-    }
 
 
-}
 
-/*
-@media only screen and (max-width: 313px) {
-    .xton-responsive-nav {
-        top: 161.5px !important;
-    }
 
-}
 
-@media only screen and (max-width: 227px) {
-    .navbar-area {
-        height: 37px !important;
-        position: relative;
-    }
-    .xton-responsive-nav {
-        top: 2px !important;
-    }
-}*/
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+    /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+    /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+    /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+    /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+    /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+    /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
 
 @media only screen and (max-width: 574px) {
-    .mobilelogo{
+    .mobilelogo {
         display: flex !important;
-      }
+    }
 
     .xton-responsive-nav {
         top: 0px !important;
@@ -489,9 +560,7 @@
         display: none !important;
 
     }
-    .navbar-area {
-        background: #006e65 !important;
-    }
+
     .xton-responsive-nav .header-top-others-option i {
         color: #ffffff !important;
     }
@@ -503,7 +572,7 @@
     .backgroua {
         display: none !important;
     }
-    
+
     #background-video {
         position: absolute;
         width: 100% !important;
@@ -614,4 +683,12 @@
             border-radius: 46% 54% 50% 50%/35% 61% 39% 65%
         }
     }
+
+    .transition {
+        height: 45px;
+        width: 100%;
+
+    }
+
+
 }

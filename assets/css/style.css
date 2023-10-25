@@ -57,7 +57,7 @@ Default CSS
 
 :root {
   --companycoa: #0c6248;
-  --companycob: #d1be03;
+  --companycob: #fdd804;
   --companycoc: #dc3545;
   --companycod: #037703;
   --companycoe: #006e65;
@@ -711,16 +711,16 @@ Navbar CSS
 
 .navbar-area {
   height: 87px;
-  background: linear-gradient(to right,
-      #006e65 0%,
-      #037703 20%,
-      gold 40%,
-      var(--black) 80%,
-      var(--rd) 90%) !important;
+  background:transparent !important;
+  position: relative;
+  width: 100%;
+  z-index: 888;
 
 }
 
-
+.mobilefooter{
+  display: none;
+}
 .navbar-area.header-sticky {
   position: fixed;
   top: 0;
@@ -763,12 +763,36 @@ Navbar CSS
 }
 
 .xton-nav {
-  background-color: var(--wt);
+  -webkit-box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.06);
+  background-color: rgba(255, 255, 255, 0.289);
 }
+
+.backgroua {
+  top: -90px;
+  position: relative;
+  z-index: 0;
+}
+
+.linearboottom{
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(to right,
+                #006e65 0%,
+                #04af0c 20%,
+                gold 40%,
+                #000000 80%,
+                #ff0000 90%) !important;
+}
+
 
 .xton-nav .container-fluid {
   padding-left: 40px;
   padding-right: 40px;
+}
+
+.hiddenpc{
+  display: none !important;
 }
 
 .xton-nav .navbar {
@@ -1293,13 +1317,14 @@ Navbar CSS
 }
 
 .xton-nav .navbar .others-option .option-item .burger-menu span {
-  height: 1px;
+  height: 2px;
   width: 25px;
   background: var(--black);
   display: block;
   margin: 6px 0;
   -webkit-transition: all .50s ease-in-out;
   transition: all .50s ease-in-out;
+  border-radius: 5px;
 }
 
 .xton-nav .navbar .others-option .option-item .burger-menu.active span.top-bar {
@@ -1327,7 +1352,7 @@ Navbar CSS
   }
 
   .xton-responsive-nav .xton-responsive-menu.mean-container .mean-nav {
-    margin-top: 45px;
+    margin-top: 57px;
   }
 
   .xton-responsive-nav .xton-responsive-menu.mean-container .mean-nav ul {
@@ -1520,7 +1545,7 @@ Navbar CSS
   }
 
   .xton-responsive-nav .mean-container a.meanmenu-reveal {
-    color: var(--black);
+    color: var(--wt);
   }
 
   .xton-responsive-nav .mean-container a.meanmenu-reveal span {
@@ -8194,10 +8219,20 @@ Page Title CSS
 .page-title-area .page-linear {
   background-color: #f8f8f8;
   position: absolute;
-  height: 89.5px !important;
+  height: 118px;
   width: 100%;
 
 }
+
+.login-area.ptb-100{
+  padding-top: 50px !important;
+  padding-bottom: 100px;
+}
+.signup-area.ptb-100{
+  padding-top: 50px !important;
+  padding-bottom: 100px;
+}
+
 
 .page-title-content {
   position: relative;
@@ -10453,6 +10488,23 @@ Login CSS
 
 .login-content .login-form .forgot-password:hover::before {
   width: 0;
+}
+
+.page-title-area .container .boba {
+  display: none;
+}
+
+.page-title-area .container .bob {
+  height: 30px;
+  display: none;
+}
+
+.page-title-area .page-title-content ul a{
+  color: #170202;
+}
+
+.boderit{
+  display: none;
 }
 
 .new-customer-content {
