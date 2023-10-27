@@ -110,12 +110,6 @@ async function DataLoad() {
         const loaderRemove = document.getElementById('loaderRemove');
         loaderRemove.innerHTML = "";
         loaderRemove.style.display = "none";
-
-        const livecha = document.getElementById('live-chat');
-
-        setTimeout(() => {
-            livecha.classList.add('active');
-        }, 100);
     };
 
 };
