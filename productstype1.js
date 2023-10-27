@@ -82,8 +82,10 @@ async function productStypes1(viewid) {
         getRequesta.onsuccess = (event) => {
             const prod = event.target.result;
             if (prod) {
-                document.getElementById('artiname').innerText = prod.addarticle;
-                document.getElementById('artiname').style.color = prod.addcoul.substring(0, 7);
+                document.getElementById('artinamem').innerText = prod.addarticle;
+                document.getElementById('artinamem').style.color = prod.addcoul.substring(0, 7);
+                document.getElementById('artinamep').innerText = prod.addarticle;
+                document.getElementById('artinamep').style.color = prod.addcoul.substring(0, 7);
                 document.getElementById('description').innerText = prod.notes;
                 document.getElementById('addexpe').innerText = prod.addexpe
                 document.getElementById('addexpea').innerText = prod.addexpe
@@ -180,7 +182,7 @@ async function productStypes1(viewid) {
                             <li><a id="quisizelie" onclick="quiSizefun('e', '${qsizee}')" style="cursor: pointer !important;">${qsizee}</a></li>
                             `
                 quickTailHtml.innerHTML = quickSizeHTML;
-                
+
                 const emptyadd = document.getElementById('emptyadd');
                 emptyadd.style.width = "100%"
                 emptyadd.style.height = "500px"
@@ -190,16 +192,25 @@ async function productStypes1(viewid) {
                                 <div class="container-fluid">
                                     <div class="row">
                                         <div class="col-lg-5 col-md-6">
-                                            <div class="offer-content">
-                                                <span class="sub-title">Offre à durée limitée !</span>
-                        
-                        
-                        
-                        
-                                                <h2>-40% DE RÉDUCTION</h2>
-                                                <p>Profitez des meilleures offres maintenant</p>
-                                                <a href="vide.html" class="default-btn">Découvrir maintenant</a>
-                                            </div>
+                                        <div class="offer-content">
+                                        <span class="sub-title" style="color: #006e65 !important;">Offre à durée
+                                            limitée !</span>
+
+
+
+
+                                        <h2>-40% DE RÉDUCTION</h2>
+                                        <p>Profitez des meilleures offres maintenant</p>
+
+                                        <div class="anim">
+                                            <div class="button-85a  wow comIn" data-wow-delay=".3s"></div>
+                                            <a href="#product-container" class="button-85 wow comIn"
+                                                data-wow-delay=".3s">
+                                                Découvrir maintenant
+                                                <span></span>
+                                            </a>
+                                        </div>
+                                    </div>
                                         </div>
                                     </div>
                                 </div>
@@ -208,11 +219,18 @@ async function productStypes1(viewid) {
                         `;
 
                 emptyadd.innerHTML = emptyaddHtml;
+                const livecha = document.getElementById('live-chat');
 
+                setTimeout(() => {
+                    livecha.classList.add('active');
+                }, 3000);
             } else {
-                const errer = document.getElementById('artiname')
-                errer.innerText = "Error Inconnu";
-                errer.style.color = "red";
+                const errerm = document.getElementById('artinamem')
+                errerm.innerText = "Error Inconnu";
+                errerm.style.color = "red";
+                const errerp = document.getElementById('artinamep')
+                errerp.innerText = "Error Inconnu";
+                errerp.style.color = "red";
                 document.getElementById('nothingEroo').innerHTML = "";
                 const emptyadd = document.getElementById('emptyadd');
                 emptyadd.style.width = "100%"
@@ -223,16 +241,25 @@ async function productStypes1(viewid) {
                                 <div class="container-fluid">
                                     <div class="row">
                                         <div class="col-lg-5 col-md-6">
-                                            <div class="offer-content">
-                                                <span class="sub-title">Offre à durée limitée !</span>
-                        
-                        
-                        
-                        
-                                                <h2>-40% DE RÉDUCTION</h2>
-                                                <p>Profitez des meilleures offres maintenant</p>
-                                                <a href="vide.html" class="default-btn">Découvrir maintenant</a>
-                                            </div>
+                                        <div class="offer-content">
+                                        <span class="sub-title" style="color: #006e65 !important;">Offre à durée
+                                            limitée !</span>
+
+
+
+
+                                        <h2>-40% DE RÉDUCTION</h2>
+                                        <p>Profitez des meilleures offres maintenant</p>
+
+                                        <div class="anim">
+                                            <div class="button-85a  wow comIn" data-wow-delay=".3s"></div>
+                                            <a href="#product-container" class="button-85 wow comIn"
+                                                data-wow-delay=".3s">
+                                                Découvrir maintenant
+                                                <span></span>
+                                            </a>
+                                        </div>
+                                    </div>
                                         </div>
                                     </div>
                                 </div>
@@ -241,6 +268,11 @@ async function productStypes1(viewid) {
                         `;
 
                 emptyadd.innerHTML = emptyaddHtml;
+                const livecha = document.getElementById('live-chat');
+
+                setTimeout(() => {
+                    livecha.classList.add('active');
+                }, 3000);
 
             }
         };

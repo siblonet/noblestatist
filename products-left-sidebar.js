@@ -86,15 +86,18 @@ function getUrlParameter(ov) {
 };
 
 const retriva = getUrlParameter('ov');
-const typoret = retriva.split("@");
-const typo = typoret[1];//"ACCOUTREMENT"/assesoire
-const typopro = typoret[0];//t-shert/robe/patenlon/Bailette
-const genre = typoret[2];//homme/femme/
-productsLeftSidbar();
-document.getElementById('selecteditem').innerText = typopro;
+if (retriva) {
+    const typoret = retriva.split("@");
+    const typo = typoret[1];//"ACCOUTREMENT"/assesoire
+    const typopro = typoret[0];//t-shert/robe/patenlon/Bailette
+    const genre = typoret[2];//homme/femme/
+    productsLeftSidbar(typopro);
+    document.getElementById('selecteditemm').innerText = typopro;
+    document.getElementById('selecteditemw').innerText = typopro;
+}
 
 
-async function productsLeftSidbar() {
+async function productsLeftSidbar(typopro) {
     await openArticleDatabase();
     const transaction = articldb.transaction(["ArticleStore"], "readonly");
     const objectStore = transaction.objectStore("ArticleStore");
@@ -350,16 +353,25 @@ async function productsLeftSidbar() {
                             <div class="container-fluid">
                                 <div class="row">
                                     <div class="col-lg-5 col-md-6">
-                                        <div class="offer-content">
-                                            <span class="sub-title">Offre à durée limitée !</span>
-                    
-                    
-                    
-                    
-                                            <h2>-40% DE RÉDUCTION</h2>
-                                            <p>Profitez des meilleures offres maintenant</p>
-                                            <a href="vide.html" class="default-btn">Découvrir maintenant</a>
-                                        </div>
+                                    <div class="offer-content">
+                                    <span class="sub-title" style="color: #006e65 !important;">Offre à durée
+                                        limitée !</span>
+
+
+
+
+                                    <h2>-40% DE RÉDUCTION</h2>
+                                    <p>Profitez des meilleures offres maintenant</p>
+
+                                    <div class="anim">
+                                        <div class="button-85a  wow comIn" data-wow-delay=".3s"></div>
+                                        <a href="#product-container" class="button-85 wow comIn"
+                                            data-wow-delay=".3s">
+                                            Découvrir maintenant
+                                            <span></span>
+                                        </a>
+                                    </div>
+                                </div>
                                     </div>
                                 </div>
                             </div>
@@ -368,79 +380,60 @@ async function productsLeftSidbar() {
                     `;
 
                 emptyadd.innerHTML = emptyaddHtml;
+                const livecha = document.getElementById('live-chat');
+
+                setTimeout(() => {
+                    livecha.classList.add('active');
+                }, 3000);
             } else {
-                const isemptyorintern = document.getElementById('isemptyorintern');
-                //const isemptyorintern = document.getElementById('isemptyorintern').innerText;
+
+
+                const productContainer = document.getElementById('product-container');
+                productContainer.innerHTML = '';
                 const emptyadd = document.getElementById('emptyadd');
-                // if (isemptyorintern == "Vérifiez que vous avez access a l'internet") {
 
-                if (isemptyorintern) {
-                    emptyadd.style.width = "100%"
-                    emptyadd.style.height = "500px"
-                    const emptyaddHtml = `
-                        <section class="facility-area pb-70 foot-circle">
-                            <section class="offer-area bg-image1 ptb-100">
-                                <div class="container-fluid">
-                                    <div class="row">
-                                        <div class="col-lg-5 col-md-6">
-                                            <div class="offer-content">
-                                                <span class="sub-title">Offre à durée limitée !</span>
-                        
-                        
-                        
-                        
-                                                <h2>-40% DE RÉDUCTION</h2>
-                                                <p>Profitez des meilleures offres maintenant</p>
-                                                <a href="vide.html" class="default-btn">Découvrir maintenant</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </section>
-                        </section>
-                        `;
-
-                    emptyadd.innerHTML = emptyaddHtml;
-                } else {
-                    const productContainer = document.getElementById('product-container');
-                    productContainer.innerHTML = '';
-                    const emptyadd = document.getElementById('emptyadd');
-
-                    emptyadd.style.width = "100%"
-                    emptyadd.style.height = "500px"
+                emptyadd.style.width = "100%"
+                emptyadd.style.height = "500px"
 
 
 
 
-                    const productHTML = `
+                const productHTML = `
                                         <div class="container">
                                             <div class="section-title">
-                                                <span class="sub-title">Contenu indisponible</span>
-                                                <h2>Vide</h2>
+                                                <h3><i style="color: #fdd804;">${typopro}</i>, sera à nouveau bientôt disponible</h3>
                                             </div>
-                                            <div>
-                                                <img src="assets/img/vide.jpg" alt="image">
-                                
+                                            <div style="align-self: center; align-items: center; justify-content: center; text-align: center">
+                                                <img src="assets/img/error-404.png" alt="Le magasin est vide">
                                             </div>
                                     </div>
-                                `;
+                                        `;
 
-                    const emptyaddHtml = `
+                const emptyaddHtml = `
                         <section class="facility-area pb-70 foot-circle">
                             <section class="offer-area bg-image1 ptb-100">
                                 <div class="container-fluid">
                                     <div class="row">
                                         <div class="col-lg-5 col-md-6">
-                                            <div class="offer-content">
-                                                <span class="sub-title">Offre à durée limitée !</span>
-                        
-                        
-                        
-                        
-                                                <h2>-40% DE RÉDUCTION</h2>
-                                                <p>Profitez des meilleures offres maintenant</p>
-                                                <a href="vide.html" class="default-btn">Découvrir maintenant</a>
-                                            </div>
+                                        <div class="offer-content">
+                                        <span class="sub-title" style="color: #006e65 !important;">Offre à durée
+                                            limitée !</span>
+
+
+
+
+                                        <h2>-40% DE RÉDUCTION</h2>
+                                        <p>Profitez des meilleures offres maintenant</p>
+
+                                        <div class="anim">
+                                            <div class="button-85a  wow comIn" data-wow-delay=".3s"></div>
+                                            <a href="#product-container" class="button-85 wow comIn"
+                                                data-wow-delay=".3s">
+                                                Découvrir maintenant
+                                                <span></span>
+                                            </a>
+                                        </div>
+                                    </div>
                                         </div>
                                     </div>
                                 </div>
@@ -448,10 +441,17 @@ async function productsLeftSidbar() {
                         </section>
                         `;
 
-                    emptyadd.innerHTML = emptyaddHtml;
-                    productContainer.innerHTML = productHTML;
-                }
+                emptyadd.innerHTML = emptyaddHtml;
+                productContainer.innerHTML = productHTML;
+                const loaderRemove = document.getElementById('loaderRemove');
+                loaderRemove.innerHTML = "";
+                loaderRemove.style.display = "none";
 
+                const livecha = document.getElementById('live-chat');
+
+                setTimeout(() => {
+                    livecha.classList.add('active');
+                }, 3000);
             }
         }
     }

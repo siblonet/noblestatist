@@ -740,7 +740,9 @@ Navbar CSS
   opacity: 1;
   visibility: visible;
 }
-
+.shoph{
+  display: none !important;
+}
 /*
 .navbar-area.header-sticky.scrollUp {
   -webkit-transform: translateY(-85px);
@@ -11446,4 +11448,64 @@ Go Top CSS
   margin-top: -3px;
 }
 
+
+/*================================================
+Live Chat CSS
+=================================================*/
+.live-chat {
+  position: fixed;
+  cursor: pointer;
+  bottom: -45px;
+  left: 15px;
+  background-color: transparent;
+  z-index: 4;
+  width: 42px;
+  text-align: center;
+  height: 42px;
+  line-height: 42px;
+  opacity: 0;
+  visibility: hidden;
+  font-size: 28px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  border-radius: 10px;
+}
+
+.live-chat img {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 55%;
+  -webkit-transform: translateY(-55%);
+  transform: translateY(-55%);
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.live-chat.active {
+  bottom: 25px;
+  opacity: 1;
+  visibility: visible !important;
+}
+
+
+@-webkit-keyframes livehelp {
+  0% {
+    top: -50%;
+  }
+
+  100% {
+    top: 110%;
+  }
+}
+
+@keyframes livehelp {
+  0% {
+    top: -50%;
+  }
+
+  100% {
+    top: 110%;
+  }
+}
 /*# sourceMappingURL=style.css.map */

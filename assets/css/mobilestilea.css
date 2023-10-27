@@ -1,25 +1,697 @@
 @media only screen and (max-width: 991px) {
+    .shoph{
+        display: block !important;
+    }
+    .pt-100 {
+        padding-top: 0px !important;
+      }
+    .shopc{
+        display: none !important;
+    }
+    .mobilefooter {
+        display: block;
+    }
+
+    .linearboottom {
+        display: none !important
+    }
+
+    .pcfooter {
+        display: none !important;
+    }
+
+    .backgroua {
+        top: -42px !important;
+    }
+
     .navbar-area {
-        height: 53px !important;
-        background: linear-gradient(to right,
-        #006e65 0%,
-                #01c84d 20%,
-                gold 40%,
-                #000000 80%,
-                #ff0000 90%) !important;
-        overflow: hidden;
-        align-items: flex-start;
-        justify-content: flex-start;
-        padding: 0px;
-        margin: 0px;
+        display: none !important;
     }
 
     .xton-responsive-nav {
         display: block;
-        background: #ffffff;
-        height: 95%;
-        position: relative;
+        background: transparent;
+        height: 98%;
+        position: absolute;
         width: 100%;
         z-index: 0;
+        top: 10px !important;
     }
+
+
+    .mean-bar a span {
+        color: #ffffff !important;
+        background: #ffffff !important;
+    }
+
+    .mean-bar a span span {
+        color: #ffffff !important;
+        background: #ffffff !important;
+        width: 70% !important;
+
+    }
+
+    .mean-bar a span span span {
+        color: #ffffff !important;
+        background: #ffffff !important;
+    }
+
+    .main-logo,
+    .white-logo {
+        height: 33px !important;
+        width: 70px !important;
+    }
+
+    .products-box .products-image {
+        height: 248.5px !important;
+    }
+
+    .products-box .products-image .products-imagea {
+        display: flex;
+        justify-content: space-between;
+        width: 100% !important;
+        align-items: center;
+        position: relative;
+        height: 100%;
+    }
+
+    .products-box .products-image .products-imagea .imageahandlea {
+        width: 50%;
+        height: 100%;
+        align-self: flex-start;
+        border-right: 1px solid white;
+    }
+
+    .products-box .products-image .products-imagea .imageahandlea .one {
+        width: 100%;
+        height: 100%;
+    }
+
+    .products-box .products-image .products-imagea .imageahandleb {
+        width: 50%;
+        height: 100%;
+        align-self: flex-end;
+        border-left: 1px solid white;
+
+    }
+
+    .products-box .products-image .products-imagea .imageahandlea .two {
+        width: 100%;
+        height: 100%;
+    }
+
+
+
+    /*.products-discounta start*/
+    .products-box .products-discounta {
+        position: absolute;
+        bottom: 96.5px;
+        right: -6.1px;
+        display: inline-block;
+    }
+
+    .products-box .products-discounta span {
+        position: relative;
+        display: block;
+        text-align: center;
+        line-height: 1;
+        padding: 8px 10px 8px 12px;
+        border-bottom-right-radius: 8px;
+        width: 90px;
+        background-color: red;
+        color: #ffffff;
+        text-transform: uppercase;
+        font-weight: 600;
+        font-size: 14px;
+    }
+
+    .products-box .products-discounta span:after {
+        height: 5px;
+        width: 5.3px;
+        right: 0.7px;
+        position: absolute;
+        content: "";
+        top: -5px;
+        border-radius: 0px 80px 0px 0px;
+        background: rgb(48, 1, 1);
+    }
+
+    .products-box .products-discounta span:before {
+        position: absolute;
+        content: "";
+        height: 6px;
+        width: 6px;
+        right: 0px;
+        top: -6px;
+        border-radius: 0px 80px 0px 0px;
+        background: red;
+    }
+
+    .nouveau {
+        background: #007fbb;
+        color: #ffffff;
+        padding: 0px 8px 0px 8px;
+        position: absolute;
+        bottom: 80px;
+        right: -6.1px;
+        display: inline-block;
+    }
+
+    .promo {
+        background: rgba(3, 183, 135, 0.528);
+        color: #ffffff;
+        padding: 0px 8px 0px 8px;
+
+        position: absolute;
+        bottom: 0px;
+        right: -6.1px;
+        display: inline-block;
+    }
+
+    .sold {
+        background: rgb(255, 255, 255);
+        color: rgb(255, 0, 157);
+        padding: 10px;
+        border-radius: 100%;
+        position: absolute;
+        font-style: italic;
+        top: -10px;
+        left: -10px;
+        display: inline-block;
+    }
+
+
+
+
+
+    /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+    /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+    /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+    /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+    /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+    /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+    /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+
+    .single-products-box .products-image {
+        height: 248.5px !important;
+    }
+
+    .single-products-box .products-image .products-imagea {
+        display: flex;
+        justify-content: space-between;
+        width: 100% !important;
+        align-items: center;
+        position: relative;
+        height: 100%;
+    }
+
+    .single-products-box .products-image .products-imagea .imageahandlea {
+        width: 50%;
+        height: 100%;
+        align-self: flex-start;
+        border-right: 1px solid white;
+    }
+
+    .single-products-box .products-image .products-imagea .imageahandlea .one {
+        width: 100%;
+        height: 100%;
+    }
+
+    .single-products-box .products-image .products-imagea .imageahandleb {
+        width: 50%;
+        height: 100%;
+        align-self: flex-end;
+        padding-top: 35px;
+        border-left: 1px solid white;
+
+    }
+
+    .single-products-box .products-image .products-imagea .imageahandlea .two {
+        width: 100%;
+        height: 100%;
+    }
+
+
+
+    /*.products-discounta start*/
+    .single-products-box .products-discounta {
+        position: absolute;
+        bottom: 41.5px;
+        right: -6.1px;
+        display: inline-block;
+    }
+
+    .single-products-box .products-discounta span {
+        position: relative;
+        display: block;
+        text-align: center;
+        line-height: 1;
+        padding: 8px 10px 8px 12px;
+        border-bottom-right-radius: 8px;
+        width: 90px;
+        background-color: red;
+        color: #ffffff;
+        text-transform: uppercase;
+        font-weight: 600;
+        font-size: 14px;
+    }
+
+    .single-products-box .products-discounta span:after {
+        height: 5px;
+        width: 5.3px;
+        right: 0.7px;
+        position: absolute;
+        content: "";
+        top: -5px;
+        border-radius: 0px 80px 0px 0px;
+        background: rgb(48, 1, 1);
+    }
+
+    .single-products-box .products-discounta span:before {
+        position: absolute;
+        content: "";
+        height: 6px;
+        width: 6px;
+        right: 0px;
+        top: -6px;
+        border-radius: 0px 80px 0px 0px;
+        background: red;
+    }
+
+
+    /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+    /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+    /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+    /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+    /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+    /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+    /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+
+
+    .top-header .container {
+        z-index: 2;
+    }
+
+    .foot-linear-set {
+        height: 200px;
+    }
+
+    .foot-circle {
+        height: 99%;
+    }
+
+    .foot-circle .clonsamobil {
+        display: none !important;
+    }
+
+
+    .lines {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 100%;
+        margin: auto;
+        width: 90vw;
+        z-index: 1;
+    }
+
+    .lines .line {
+        left: 45%;
+    }
+
+
+
+    .lines .linec {
+        left: 55%;
+    }
+
+
+
+
+
+    /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+    /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+    /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+    /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+    /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+    /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+    /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+
+    .main-banner {
+        height: auto;
+        padding-top: 50px;
+        padding-bottom: 53px;
+    }
+
+
+    .main-banner-content .sub-title {
+        display: none !important;
+    }
+
+    .main-banner-content h1 {
+        margin-bottom: 12px;
+        font-size: 20px;
+    }
+
+
+    .main-banner-content p {
+        font-size: 13px !important;
+    }
+
+
+    .optional-btn {
+        border: 1px solid var(--wt);
+        color: var(--wt);
+    }
+
+    .optional-a {
+        border: 1px solid var(--black);
+        color: var(--black);
+    }
+
+    .home-slides.owl-theme .owl-dots {
+
+        bottom: 0;
+    }
+
+    .home-slides.owl-theme .owl-dots .owl-dot span {
+        width: 13px;
+        height: 13px;
+        margin: 0 8px;
+    }
+
+    .home-slides.owl-theme .owl-dots .owl-dot span::before {
+        background-color: var(--companycoe);
+    }
+
+    .home-slides.owl-theme .owl-dots .owl-dot:hover span,
+    .home-slides.owl-theme .owl-dots .owl-dot.active span {
+        border-color: var(--companycoe);
+    }
+
+    #emptyadd {
+        display: none !important;
+    }
+
+
+
+    /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+    /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+    /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+    /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+    /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+    /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+    /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+    .page-title-area {
+        height: 220px;
+        overflow: hidden;
+        background: #f8f8f8 !important;
+    }
+
+    .page-title-area .page-linear {
+        height: 220px;
+        width: 100%;
+        background-image: url(../img/auth.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        align-self: center;
+    }
+
+    .page-title-area .container .boba {
+        display: block;
+        background: rgba(2, 2, 2, 0.693);
+        position: absolute;
+        height: 220px;
+        width: 100%;
+        left: 0;
+        right: 0;
+        align-self: center;
+    }
+
+    .page-title-area .container .bob {
+        height: 30px;
+        display: block;
+    }
+
+    .page-title-area .page-title-content ul a {
+        color: #ffffff;
+    }
+
+    .boderit {
+        display: block;
+        top: -30px !important;
+        background-color: #ffffff;
+        border-top-left-radius: 30px;
+        border-top-right-radius: 30px;
+        height: 30px;
+        position: relative;
+        width: 100%;
+    }
+
+    .login-area.ptb-100 {
+        padding-top: 0 !important;
+        padding-bottom: 100px;
+    }
+
+    .signup-area.ptb-100 {
+        padding-top: 0 !important;
+        padding-bottom: 100px;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+
+    .closeCom {
+        display: none !important;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+
+@media only screen and (max-width: 574px) {
+    .mobilelogo {
+        display: flex !important;
+    }
+
+    .xton-responsive-nav {
+        top: 0px !important;
+        background: transparent;
+        background-color: transparent;
+    }
+
+    .xton-responsive-nav .logo {
+        display: none !important;
+    }
+
+
+    .mean-bar a span {
+        color: #ffffff !important;
+        background: #ffffff !important;
+    }
+
+    .mean-bar a span span {
+        color: #ffffff !important;
+        background: #ffffff !important;
+        width: 70% !important;
+    }
+
+    .mean-bar a span span span {
+        color: #ffffff !important;
+        background: #ffffff !important;
+    }
+
+    .top-header {
+        height: 51px;
+    }
+
+    .top-header .container .align-items-center .col-md-12 .header-top-others-option .search-btn-box {
+        display: none !important;
+    }
+
+    .top-header .container .align-items-center .col-md-12 .header-top-others-option .cart-btn {
+        display: none !important;
+    }
+
+    .xton-responsive-nav .header-top-others-option {
+        width: 70px !important;
+        position: absolute !important;
+        right: 55px !important;
+        top: -8px;
+        z-index: 999;
+    }
+
+    .hiddenpc {
+        display: block !important;
+    }
+
+    #usernam {
+        display: none !important;
+
+    }
+
+    .xton-responsive-nav .header-top-others-option i {
+        color: #ffffff !important;
+    }
+
+    .absoluin {
+        display: none !important;
+    }
+
+    .backgroua {
+        display: none !important;
+    }
+
+    #background-video {
+        position: absolute;
+        width: 100% !important;
+        height: 135px !important;
+        left: 0 !important;
+        right: 0 !important;
+        top: 0 !important;
+        z-index: 0;
+        object-fit: cover;
+        align-self: center !important;
+        display: block !important;
+
+    }
+
+    .holehvg {
+        position: absolute;
+        width: 100% !important;
+        height: 135px !important;
+        left: 0 !important;
+        right: 0 !important;
+        top: 0 !important;
+        z-index: 2;
+        display: block !important;
+    }
+
+    .backgrou {
+        display: block !important;
+        background-color: #006e65 !important;
+    }
+
+
+
+    .main-banner {
+        height: 300px;
+        padding-top: 160px;
+        padding-bottom: 160px;
+
+    }
+
+    .animate-banner-image {
+        overflow: hidden;
+        display: block !important;
+        -webkit-animation: border-transform 10s linear infinite alternate forwards;
+        animation: border-transform 10s linear infinite alternate forwards;
+        margin: auto;
+    }
+
+    @-webkit-keyframes border-transform {
+
+        0%,
+        100% {
+            border-radius: 63% 37% 54% 46%/55% 48% 52% 45%
+        }
+
+        14% {
+            border-radius: 40% 60% 54% 46%/49% 60% 40% 51%
+        }
+
+        28% {
+            border-radius: 54% 46% 38% 62%/49% 70% 30% 51%
+        }
+
+        42% {
+            border-radius: 61% 39% 55% 45%/61% 38% 62% 39%
+        }
+
+        56% {
+            border-radius: 61% 39% 67% 33%/70% 50% 50% 30%
+        }
+
+        70% {
+            border-radius: 50% 50% 34% 66%/56% 68% 32% 44%
+        }
+
+        84% {
+            border-radius: 46% 54% 50% 50%/35% 61% 39% 65%
+        }
+    }
+
+    @keyframes border-transform {
+
+        0%,
+        100% {
+            border-radius: 63% 37% 54% 46%/55% 48% 52% 45%
+        }
+
+        14% {
+            border-radius: 40% 60% 54% 46%/49% 60% 40% 51%
+        }
+
+        28% {
+            border-radius: 54% 46% 38% 62%/49% 70% 30% 51%
+        }
+
+        42% {
+            border-radius: 61% 39% 55% 45%/61% 38% 62% 39%
+        }
+
+        56% {
+            border-radius: 61% 39% 67% 33%/70% 50% 50% 30%
+        }
+
+        70% {
+            border-radius: 50% 50% 34% 66%/56% 68% 32% 44%
+        }
+
+        84% {
+            border-radius: 46% 54% 50% 50%/35% 61% 39% 65%
+        }
+    }
+
+    .transition {
+        height: 45px;
+        width: 100%;
+
+    }
+
+
 }

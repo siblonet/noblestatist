@@ -336,6 +336,13 @@ function recentProduct(recenPr) {
         const loaderRemove = document.getElementById('loaderRemove');
         loaderRemove.innerHTML = "";
         loaderRemove.style.display = "none";
+
+
+        const livecha = document.getElementById('live-chat');
+
+        setTimeout(() => {
+            livecha.classList.add('active');
+        }, 5000);
     } else {
         const tokens = sessionStorage.getItem('tibule');
         const productHTML = `
@@ -366,6 +373,12 @@ function recentProduct(recenPr) {
         const loaderRemove = document.getElementById('loaderRemove');
         loaderRemove.innerHTML = "";
         loaderRemove.style.display = "none";
+
+        const livecha = document.getElementById('live-chat');
+
+        setTimeout(() => {
+            livecha.classList.add('active');
+        }, 5000);
     }
 };
 

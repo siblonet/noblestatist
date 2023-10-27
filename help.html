@@ -1,0 +1,382 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Chat</title>
+    <style>
+        body {
+            font-family: 'Lato', sans-serif;
+            background: #f1f1f1
+        }
+
+        a:link,
+        a:visited {
+            color: #444;
+            text-decoration: none;
+            transition: all .4s ease-in-out
+        }
+
+        h1 {
+            font-size: 20px;
+            text-align: center;
+            display: block;
+            background: linear-gradient(to right top, #6f96f3, #164ed2);
+            padding: 20px;
+            color: #fff;
+            border-radius: 50px
+        }
+
+        .credit {
+            background: #fff;
+            position: relative;
+            display: inline-block;
+            padding: 10px 20px;
+            border: 1px solid #ddd;
+            border-radius: 20px
+        }
+
+        /* CSS Multiple Whatsapp Chat */
+        #whatsapp-chat {
+            position: fixed;
+            background: #fff;
+            width: 350px;
+            border-radius: 10px;
+            box-shadow: 0 1px 15px rgba(32, 33, 36, .28);
+            bottom: 90px;
+            right: 30px;
+            overflow: hidden;
+            z-index: 99;
+            animation-name: showchat;
+            animation-duration: 1s;
+            transform: scale(1)
+        }
+
+        a.blantershow-chat {
+            background: linear-gradient(to right top, #6f96f3, #164ed2);
+            color: #fff;
+            position: fixed;
+            z-index: 98;
+            bottom: 25px;
+            right: 30px;
+            font-size: 15px;
+            padding: 10px 20px;
+            border-radius: 30px;
+            box-shadow: 0 1px 15px rgba(32, 33, 36, .28)
+        }
+
+        a.blantershow-chat i {
+            transform: scale(1.2);
+            margin: 0 10px 0 0
+        }
+
+        .header-chat {
+            background: linear-gradient(to right top, #6f96f3, #164ed2);
+            color: #fff;
+            padding: 20px
+        }
+
+        .header-chat h3 {
+            margin: 0 0 10px
+        }
+
+        .header-chat p {
+            font-size: 14px;
+            line-height: 1.7;
+            margin: 0
+        }
+
+        .info-avatar {
+            position: relative
+        }
+
+        .info-avatar img {
+            border-radius: 100%;
+            width: 50px;
+            float: left;
+            margin: 0 10px 0 0
+        }
+
+        .info-avatar:before {
+            content: '\f232';
+            z-index: 1;
+            font-family: "Font Awesome 5 Brands";
+            background: #23ab23;
+            color: #fff;
+            padding: 4px 5px;
+            border-radius: 100%;
+            position: absolute;
+            top: 30px;
+            left: 30px
+        }
+
+        a.informasi {
+            padding: 20px;
+            display: block;
+            overflow: hidden;
+            animation-name: showhide;
+            animation-duration: 2.5s
+        }
+
+        a.informasi:hover {
+            background: #f1f1f1
+        }
+
+        .info-chat span {
+            display: block
+        }
+
+        #get-label,
+        span.chat-label {
+            font-size: 12px;
+            color: #888
+        }
+
+        #get-nama,
+        span.chat-nama {
+            margin: 5px 0 0;
+            font-size: 15px;
+            font-weight: 700;
+            color: #222
+        }
+
+        #get-label,
+        #get-nama {
+            color: #fff
+        }
+
+        span.my-number {
+            display: none
+        }
+
+        .blanter-msg {
+            color: #444;
+            padding: 20px;
+            font-size: 12.5px;
+            text-align: center;
+            border-top: 1px solid #ddd
+        }
+
+        textarea#chat-input {
+            border: none;
+            font-family: 'Arial', sans-serif;
+            width: 100%;
+            height: 20px;
+            outline: none;
+            resize: none
+        }
+
+        a#send-it {
+            color: #555;
+            width: 40px;
+            margin: -5px 0 0 5px;
+            font-weight: 700;
+            padding: 8px;
+            background: #eee;
+            border-radius: 10px
+        }
+
+        .first-msg {
+            background: #f5f5f5;
+            padding: 30px;
+            text-align: center
+        }
+
+        .first-msg span {
+            background: #e2e2e2;
+            color: #333;
+            font-size: 14.2px;
+            line-height: 1.7;
+            border-radius: 10px;
+            padding: 15px 20px;
+            display: inline-block
+        }
+
+        .start-chat .blanter-msg {
+            display: flex
+        }
+
+        #get-number {
+            display: none
+        }
+
+        a.close-chat {
+            position: absolute;
+            top: 5px;
+            right: 15px;
+            color: #fff;
+            font-size: 30px
+        }
+
+        @keyframes showhide {
+            from {
+                transform: scale(.5);
+                opacity: 0
+            }
+        }
+
+        @keyframes showchat {
+            from {
+                transform: scale(0);
+                opacity: 0
+            }
+        }
+
+        @media screen and (max-width:480px) {
+            #whatsapp-chat {
+                width: auto;
+                left: 5%;
+                right: 5%;
+                font-size: 80%
+            }
+        }
+
+        .hide {
+            display: none;
+            animation-name: showhide;
+            animation-duration: 1.5s;
+            transform: scale(1);
+            opacity: 1
+        }
+
+        .show {
+            display: block;
+            animation-name: showhide;
+            animation-duration: 1.5s;
+            transform: scale(1);
+            opacity: 1
+        }
+    </style>
+</head>
+
+<body>
+
+    <!--
+    <span data-test-id="chat-widget-launcher" class="p-top-5 display-flex p-left-6 launcher-right-align">
+        <div class="VizExNotificationBadge__Wrapper-ptsbdm-0 eVehql"><button aria-label="Close live chat"
+                aria-haspopup="dialog"
+                class="IconLauncher__BaseLauncher-cu68b2-0 IconLauncher__ShapedLauncher-cu68b2-1 cMHDrN reagan--widget-loaded"
+                style="background-color: rgb(246, 62, 124);">
+                <div direction="left" class="TwistFadeTransition__TransitionComponent-sc-14dw38s-0 NhlEx">
+                    <div class="IconLauncher__LauncherIcon-cu68b2-2 ggJujR"><svg xmlns="http://www.w3.org/2000/svg"
+                            width="20" height="20" viewBox="0 0 19 18" class="conversations-visitor-close-icon">
+                            <g fill="none" fill-rule="evenodd" stroke="none" stroke-width="1">
+                                <g fill="#ffffff" transform="translate(-927 -991) translate(900.277 962)">
+                                    <g transform="translate(27 29)">
+                                        <path
+                                            d="M10.627 9.013l6.872 6.873.708.707-1.415 1.414-.707-.707-6.872-6.872L2.34 17.3l-.707.707L.22 16.593l.707-.707L7.8 9.013.946 2.161l-.707-.708L1.653.04l.707.707L9.213 7.6 16.066.746l.707-.707 1.414 1.414-.707.708-6.853 6.852z">
+                                        </path>
+                                    </g>
+                                </g>
+                            </g>
+                        </svg></div>
+                </div>
+                <div direction="right" class="TwistFadeTransition__TransitionComponent-sc-14dw38s-0 cpjbWU">
+                    <div class="IconLauncher__LauncherIcon-cu68b2-2 ggJujR"><svg xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="30" viewBox="0 0 39 37"
+                            class="conversations-visitor-open-icon">
+                            <defs>
+                                <path id="conversations-visitor-open-icon-path-1:r0:"
+                                    d="M31.4824242 24.6256121L31.4824242 0.501369697 0.476266667 0.501369697 0.476266667 24.6256121z">
+                                </path>
+                            </defs>
+                            <g fill="none" fill-rule="evenodd" stroke="none" stroke-width="1">
+                                <g transform="translate(-1432 -977) translate(1415.723 959.455)">
+                                    <g transform="translate(17 17)">
+                                        <g transform="translate(6.333 .075)">
+                                            <path fill="#ffffff"
+                                                d="M30.594 4.773c-.314-1.943-1.486-3.113-3.374-3.38C27.174 1.382 22.576.5 15.36.5c-7.214 0-11.812.882-11.843.889-1.477.21-2.507.967-3.042 2.192a83.103 83.103 0 019.312-.503c6.994 0 11.647.804 12.33.93 3.079.462 5.22 2.598 5.738 5.728.224 1.02.932 4.606.932 8.887 0 2.292-.206 4.395-.428 6.002 1.22-.516 1.988-1.55 2.23-3.044.008-.037.893-3.814.893-8.415 0-4.6-.885-8.377-.89-8.394">
+                                            </path>
+                                        </g>
+                                        <g fill="#ffffff" transform="translate(0 5.832)">
+                                            <path
+                                                d="M31.354 4.473c-.314-1.944-1.487-3.114-3.374-3.382-.046-.01-4.644-.89-11.859-.89-7.214 0-11.813.88-11.843.888-1.903.27-3.075 1.44-3.384 3.363C.884 4.489 0 8.266 0 12.867c0 4.6.884 8.377.889 8.393.314 1.944 1.486 3.114 3.374 3.382.037.007 3.02.578 7.933.801l2.928 5.072a1.151 1.151 0 001.994 0l2.929-5.071c4.913-.224 7.893-.794 7.918-.8 1.902-.27 3.075-1.44 3.384-3.363.01-.037.893-3.814.893-8.414 0-4.601-.884-8.378-.888-8.394">
+                                            </path>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </svg></div>
+                </div>
+            </button></div>
+    </span>
+
+-->
+
+
+    <div id='whatsapp-chat' class='hide'>
+        <div class='header-chat'>
+            <div class='get-new hide'>
+                <div id='get-label'>
+                    <span class='chat-label'>Sales</span>
+
+                </div>
+                <div id='get-nama'>
+                    <span class='chat-nama'>Customer Service 2</span>
+
+                </div>
+            </div>
+        </div>
+
+        <div class='start-chat hide'>
+            <div class='first-msg'>
+                <span>Hello! What can I do for you?</span></div>
+            <div class='blanter-msg'>
+                <textarea id='chat-input' placeholder='Write a response' maxlength='120' row='1'>
+                </textarea>
+                <a href='javascript:void;' id='send-it'>Send</a>
+            </div>
+        </div>
+        <div id='get-number'>
+            <p>098765443</p>
+        </div>
+        <a class='close-chat' href='javascript:void'>×</a>
+    </div>
+
+
+
+    <a class='blantershow-chat' href='javascript:void' title='Show Chat'>
+        <i class='fab fa-whatsapp'>
+
+        </i>How can I help
+        you?
+    </a>
+
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
+    <script src="assets/js/magnific-popup.min.js"></script>
+    <script src="assets/js/parallax.min.js"></script>
+    <script src="assets/js/rangeSlider.min.js"></script>
+    <script src="assets/js/nice-select.min.js"></script>
+    <script src="assets/js/meanmenu.min.js"></script>
+    <script src="assets/js/isotope.pkgd.min.js"></script>
+    <script src="assets/js/slick.min.js"></script>
+    <script src="assets/js/sticky-sidebar.min.js"></script>
+    <script src="assets/js/wow.min.js"></script>
+    <script src="assets/js/main.js"></script>
+
+    <script>
+        $(document).on("click", "#send-it", function () {
+            var a = document.getElementById("chat-input");
+            if ("" != a.value) {
+
+            }
+        }),
+        
+        $(document).on("click", ".blantershow-chat", function () {
+            $("#whatsapp-chat").addClass("show").removeClass("hide")
+            document.getElementById("get-number").innerHTML = $(this).children(".my-number").text(),
+                $(".start-chat,.get-new").addClass("show").removeClass("hide"),
+                $(".home-chat,.head-home").addClass("hide").removeClass("show")
+        }),
+        
+        $(document).on("click", ".close-chat", function () {
+            $("#whatsapp-chat").addClass("hide").removeClass("show")
+        })
+    </script>
+
+</body>
+
+</html>
