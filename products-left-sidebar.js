@@ -91,13 +91,13 @@ if (retriva) {
     const typo = typoret[1];//"ACCOUTREMENT"/assesoire
     const typopro = typoret[0];//t-shert/robe/patenlon/Bailette
     const genre = typoret[2];//homme/femme/
-    productsLeftSidbar(typopro);
+    productsLeftSidbar(typopro, genre, typo);
     document.getElementById('selecteditemm').innerText = typopro;
     document.getElementById('selecteditemw').innerText = typopro;
 }
 
 
-async function productsLeftSidbar(typopro) {
+async function productsLeftSidbar(typopro, genre, typo) {
     await openArticleDatabase();
     const transaction = articldb.transaction(["ArticleStore"], "readonly");
     const objectStore = transaction.objectStore("ArticleStore");
