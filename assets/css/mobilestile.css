@@ -6,6 +6,12 @@
     .linearboottom {
         display: none !important
     }
+    .products-box .products-image .products-button {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0;
+      }
+
 
     .pcfooter {
         display: none !important;
