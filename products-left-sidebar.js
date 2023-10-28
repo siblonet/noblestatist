@@ -131,21 +131,21 @@ async function productsLeftSidbar(typopro, genre, typo) {
                                     <div class="single-products-box">
         
                                     <div class="products-image" style="background-color: ${product.addcoul.substring(0, 7)};" onmouseover="this.style.backgroundColor='${product.addcoul.substring(8, 15)}'" onmouseout="this.style.backgroundColor='${product.addcoul.substring(0, 7)}'">
-        
-                                    <div class="products-imagea">
-                                        <a class="imageahandlea" style="cursor: pointer !important;" 
-                                            data-bs-toggle="modal" 
-                                            data-bs-target="#productsQuickView" 
-                                            onclick="showProductQuickView('a', '${product._id}')">
-                                            <img class="one" src="${product.image[0].ima}" alt="image">
-                                        </a>
-                                        <a class="imageahandleb" style="cursor: pointer !important;" 
-                                            data-bs-toggle="modal"
-                                            data-bs-target="#productsQuickView" 
-                                            onclick="showProductQuickView('b', '${product._id}')">
-                                            <img class="two" src="${product.image[1].ima}" alt="image"> 
-                                        </a>
-                                    </div>
+            
+                                        <div class="products-imagea">
+                                            <a class="imageahandlea" style="cursor: pointer !important;" 
+                                                data-bs-toggle="modal" 
+                                                data-bs-target="#productsQuickView" 
+                                                onclick="showProductQuickView('a', '${product._id}')">
+                                                <img class="one" src="${product.image[0].ima}" alt="image">
+                                            </a>
+                                            <a class="imageahandleb" style="cursor: pointer !important;" 
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#productsQuickView" 
+                                                onclick="showProductQuickView('b', '${product._id}')">
+                                                <img class="two" src="${product.image[1].ima}" alt="image"> 
+                                            </a>
+                                        </div>
                                        
                                 
         
@@ -203,7 +203,7 @@ async function productsLeftSidbar(typopro, genre, typo) {
         
         
                                     <div class="products-content">
-                                        <h3><a href="products-type-1.html?ov=${product._id}">${product.addarticle}</a></h3>
+                                        <h3><a style="color: ${product.addcoul.substring(0, 7)} !important" href="products-type-1.html?ov=${product._id}">${product.addarticle}</a></h3>
                                         <div class="star-rating">
                                             <i class="bx bxs-star"></i>
                                             <i class="bx bxs-star"></i>
@@ -219,7 +219,7 @@ async function productsLeftSidbar(typopro, genre, typo) {
                                 :
                                 ""
                             }
-                                            <span class="new-price">${product.addprix} F.CFA</span>
+                                            <span class="new-price" style="color: ${product.addcoul.substring(8, 15)} !important">${product.addprix} F.CFA</span>
                                         </div>
                                         <a style="cursor: pointer !important;" class="add-to-cart" onclick="Pannier('${product._id}')">Ajouter au panier</a>
                                     </div>
