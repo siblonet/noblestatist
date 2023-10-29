@@ -9,33 +9,60 @@ function getUsenam() {
         const admin = sploz[5];
         const usernam = document.getElementById('usernam');
         const usernama = document.getElementById('usernama');
+
+        const usernamab = document.getElementById('usernamab');
+        const usernamaa = document.getElementById('usernamaa');
+
         usernam.innerHTML = '';
         admin == "GIFV" ? true : false;
         usernama.innerHTML = `
-        <a><i class="bx bx-log-in"></i>Se Deconecter</a>
-        `;
+            <a><i class="bx bx-log-in"></i>Se Deconecter</a>
+            `;
         usernama.onclick = navigateAdminCLient;
         usernama.style.cursor = "pointer"
-
-
 
         if (admin == "GIFV") {
             const usernamBody =
                 `
-            <a href="admin"><i class="bx bxs-user"></i>Mon Espace</a>
-
-            `;
+                <a href="admin"><i class="bx bxs-user"></i>Mon Espace</a>
+    
+                `;
 
             usernam.innerHTML += usernamBody;
         } else {
 
             const usernamBody =
                 `
-            <a href="client"><i class="bx bxs-user"></i> Mon Espace</a>
-
-            `;
+                <a href="client"><i class="bx bxs-user"></i> Mon Espace</a>
+    
+                `;
 
             usernam.innerHTML += usernamBody;
+        }
+
+
+        usernamab.innerHTML = '';
+        usernamaa.innerHTML = `
+            <a style="color: red; cursor: pointer" onclick="navigateAdminCLient()"><i class="bx bx-log-in"></i>Se Deconecter</a>
+            `;
+
+        if (admin == "GIFV") {
+            const usernamBodya =
+                `
+                <a style="color: #006e65;" href="admin"><i class="bx bxs-user"></i>Mon Espace</a>
+    
+                `;
+
+            usernamab.innerHTML += usernamBodya;
+        } else {
+
+            const usernamBodya =
+                `
+                <a style="color: #006e65;" href="client"><i class="bx bxs-user"></i> Mon Espace</a>
+    
+                `;
+
+            usernamab.innerHTML += usernamBodya;
         }
 
     }
