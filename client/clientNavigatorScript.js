@@ -233,8 +233,8 @@ const NafigatioTo = async (where) => {
                         <br>
                         <div class="articlerow">
                             ${Orderdata.forEach((pan) => {
-                                pan.articles.forEach((pani) => {
-                                const deliveryStatus = pani.statut === "done" ? "livré" : pani.statut == "review" ? "en attente" : pani.statut === "onway" ? "en cours" : "échoué";
+                        pan.articles.forEach((pani) => {
+                            const deliveryStatus = pani.statut === "done" ? "livré" : pani.statut == "review" ? "en attente" : pani.statut === "onway" ? "en cours" : "échoué";
 
                             return `
                                 <div class="articlerowsub" >
@@ -246,10 +246,14 @@ const NafigatioTo = async (where) => {
                                         <p>Tél: ${pan.phone}</p>
                                         </div>
                                         <div class="rightone">
-                                            <p class="status">Statut</p>
+                                            <p class="status">${pani.prix} F</p>
+                                            <p class="status">${pani.quantcho}</p>
+                                            <p class="status">Total: ${pani.prix * pani.quantcho} F</p>
                                             <p class="sta shipp"  style="cursor: pointer" data-toggle="modal" data-target="#optionCancile" onclick="optionCancileView('${pan._id}', '${pani._id}', '${pani.arti_id._id}')">Ouvrir</p>
                                             <div style="height: 5px"></div>
-                                            <p  class="sta" style="font-size: 14px; background-color: ${pani.quantity > 0 ? "#054846" : "rgba(255, 0, 89, 0.341)"}; font-weight: bold; color: ${pani.quantity > 0 ? "#ffffff" : "red"}">${pani.quantity > 0 ? "Disponible" : "Finis"}</p>
+                                            <p style="cursor: pointer" class="status ${deliveryStatus === 'livré' ? 'delivered' : deliveryStatus === 'en attente' ? 'pending' : deliveryStatus === 'en cours' ? 'shipped' : 'cancelled'}">
+                                                ${deliveryStatus}
+                                            </p>
                                         </div>
                                     </div>
                                     <div class="imaros">
