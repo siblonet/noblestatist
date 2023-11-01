@@ -163,6 +163,168 @@ tbody td.active {
     color: #6c00bd;
 }
 
-li{
+li {
     list-style-type: none;
+}
+
+
+
+/*================================================
+Add Article CSS
+=================================================*/
+.add-article {
+    position: fixed;
+    cursor: pointer;
+    bottom: -45px;
+    left: 15px;
+    background-color: transparent;
+    z-index: 4;
+    width: 42px;
+    text-align: center;
+    height: 42px;
+    line-height: 42px;
+    opacity: 0;
+    visibility: hidden;
+    font-size: 28px;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    border-radius: 10px;
+}
+
+.add-article img {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 55%;
+    -webkit-transform: translateY(-55%);
+    transform: translateY(-55%);
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+}
+
+.add-article.active {
+    bottom: 25px;
+    opacity: 1;
+    visibility: visible !important;
+}
+
+
+@-webkit-keyframes livehelp {
+    0% {
+        top: -50%;
+    }
+
+    100% {
+        top: 110%;
+    }
+}
+
+@keyframes livehelp {
+    0% {
+        top: -50%;
+    }
+
+    100% {
+        top: 110%;
+    }
+}
+
+
+
+@media only screen and (max-width: 991px) {
+    .articlerow .title div p {
+        color: #ffffff;
+    }
+
+    .articlerow {
+        background-color: #ecf0f5;
+        width: 100vw;
+        padding: 0px 20px 0px 20px;
+        overflow-y: scroll;
+        scroll-behavior: smooth;
+
+    }
+
+    .articlerowsub {
+        background-color: #ffffff;
+        height: 300px;
+        width: 100%;
+        padding: 0px 20px 0px 20px;
+        border-radius: 2%;
+        margin-bottom: 50px;
+        }
+
+    .articlerow .title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        align-self: center;
+    }
+
+
+    .articlerow .title .leftone,
+    .articlerow .title .rightone {
+        height: 130px;
+        overflow: hidden;
+
+    }
+
+
+    .articlerow .title .leftone {
+        width: 230px;
+    }
+
+    .articlerow .title .rightone {
+        width: 140px;
+    }
+
+
+    .articlerow .title .leftone p {
+        color: #054846;
+    }
+
+
+
+    .articlerow .title .rightone .status {
+        color: #054846;
+    }
+
+    .articlerow .title .rightone .sta.shipp {
+        background-color: #109691a6;
+        color: #054846;
+    
+    }
+
+    
+
+    .articlerow .title .rightone .sta {
+        padding: .2rem 0;
+        border-radius: 2rem;
+        text-align: center;
+    }
+
+    .articlerow .imaros {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        align-self: center;
+        height: 170px;
+        overflow: hidden;
+    }
+
+
+    .articlerow .imaros div {
+        height: 100%;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        border-radius: 5%;
+        overflow: hidden;
+    }
+
+
+    .articlerow .imaros div img {
+        height: 90%;
+        width: 100%;
+    }
 }

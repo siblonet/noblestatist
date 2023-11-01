@@ -208,7 +208,87 @@ const NafigatioTo = async (where) => {
         ActiveCl.classList.remove('active');
         await openOrdersDatabase();
 
-        const commandesHTML = `
+        function isMobileDevice() {
+            const userAgent = navigator.userAgent.toLowerCase();
+            return userAgent.includes('mobile');
+        }
+        if (isMobileDevice()) {
+            const transaction = orderdb.transaction(["OrderdStore"], "readonly");
+            const objectStore = transaction.objectStore("OrderdStore");
+            const tbodyId = document.getElementById('tbody-data');
+            tbodyId.innerHTML = '';
+            Orderdata.length = 0
+
+            objectStore.openCursor().onsuccess = (event) => {
+                const cursor = event.target.result;
+                if (cursor) {
+                    Orderdata.push(cursor.value);
+                    cursor.continue();
+                } else {
+
+
+                    const articlesHTML = `
+                        <br>
+                        <br>
+                        <br>
+                        <div class="articlerow">
+                            ${Orderdata.forEach((pan) => {
+                                pan.articles.forEach((pani) => {
+                                const deliveryStatus = pani.statut === "done" ? "livré" : pani.statut == "review" ? "en attente" : pani.statut === "onway" ? "en cours" : "échoué";
+
+                            return `
+                                <div class="articlerowsub" >
+                                    <div class="title">
+                                        <div class="leftone">
+                                        <p style="max-height: 50px; overflow: hidden;">${pani.arti_id ? pani.arti_id.addarticle : 'Article Supprimé'}</p>
+                                        <p>Ville: ${pan.ville}</p>
+                                        <p>Lieu: ${pan.lieu}</p>
+                                        <p>Tél: ${pan.phone}</p>
+                                        </div>
+                                        <div class="rightone">
+                                            <p class="status">Statut</p>
+                                            <p class="sta shipp"  style="cursor: pointer" data-toggle="modal" data-target="#optionCancile" onclick="optionCancileView('${pan._id}', '${pani._id}', '${pani.arti_id._id}')">Ouvrir</p>
+                                            <div style="height: 5px"></div>
+                                            <p  class="sta" style="font-size: 14px; background-color: ${pani.quantity > 0 ? "#054846" : "rgba(255, 0, 89, 0.341)"}; font-weight: bold; color: ${pani.quantity > 0 ? "#ffffff" : "red"}">${pani.quantity > 0 ? "Disponible" : "Finis"}</p>
+                                        </div>
+                                    </div>
+                                    <div class="imaros">
+                                        <div style="background-color: ${pani.addcoul.substring(0, 7)};">
+                                            <img src="${pani.image[0].ima}" alt="image1">
+                                        </div>
+                                        <span style="width: 10px;"></span>
+                                        <div style="background-color: ${pani.addcoul.substring(8, 15)};">
+                                            <img src="${pani.image[1].ima}" alt="image2">
+                                        </div>
+                                        <span style="width: 10px;"></span>
+                                        <div style="background-color: ${pani.addcoul.substring(16, 23)};">
+                                            <img src="${pani.image[2].ima}" alt="image3">
+                                        </div>
+                                        <span style="width: 10px;"></span>
+                                        <div style="background-color: ${pani.addcoul.substring(24, 31)};">
+                                            <img src="${pani.image[3].ima}" alt="image4">
+                                        </div>
+                                        <span style="width: 10px;"></span>
+                                        <div style="background-color: ${pani.addcoul.substring(32, 39)};">
+                                            <img src="${pani.image[4].ima}" alt="image5">
+                                        </div>
+                                    </div>
+                                </div>
+                            `;
+                        }).join('')
+                    })}
+                        </div>
+
+                        `;
+
+                    adminiSpace.innerHTML = articlesHTML;
+
+                }
+            }
+        } else {
+
+
+            const commandesHTML = `
                 <main class="main">
                 <br>
                 <br>
@@ -234,25 +314,25 @@ const NafigatioTo = async (where) => {
                 </section>
             </main>
         `;
-        adminiSpace.innerHTML = commandesHTML;
+            adminiSpace.innerHTML = commandesHTML;
 
-        const transaction = orderdb.transaction(["OrderdStore"], "readonly");
-        const objectStore = transaction.objectStore("OrderdStore");
-        const tbodyId = document.getElementById('tbody-data');
-        tbodyId.innerHTML = '';
-        Orderdata.length = 0
+            const transaction = orderdb.transaction(["OrderdStore"], "readonly");
+            const objectStore = transaction.objectStore("OrderdStore");
+            const tbodyId = document.getElementById('tbody-data');
+            tbodyId.innerHTML = '';
+            Orderdata.length = 0
 
-        objectStore.openCursor().onsuccess = (event) => {
-            const cursor = event.target.result;
-            if (cursor) {
-                Orderdata.push(cursor.value);
-                cursor.continue();
-            } else {
+            objectStore.openCursor().onsuccess = (event) => {
+                const cursor = event.target.result;
+                if (cursor) {
+                    Orderdata.push(cursor.value);
+                    cursor.continue();
+                } else {
 
-                Orderdata.forEach((pan) => {
-                    pan.articles.forEach((pani) => {
-                        const deliveryStatus = pani.statut === "done" ? "livré" : pani.statut == "review" ? "en attente" : pani.statut === "onway" ? "en cours" : "échoué";
-                        const panierTBODY = `
+                    Orderdata.forEach((pan) => {
+                        pan.articles.forEach((pani) => {
+                            const deliveryStatus = pani.statut === "done" ? "livré" : pani.statut == "review" ? "en attente" : pani.statut === "onway" ? "en cours" : "échoué";
+                            const panierTBODY = `
                         <tr  style="cursor: pointer" data-toggle="modal" data-target="#optionCancile" onclick="optionCancileView('${pan._id}', '${pani._id}', '${pani.arti_id._id}')">
 
                             <td style="color: #ffffff !important">
@@ -298,13 +378,13 @@ const NafigatioTo = async (where) => {
                         </tr>
                     `;
 
-                        tbodyId.innerHTML += panierTBODY;
+                            tbodyId.innerHTML += panierTBODY;
+                        });
                     });
-                });
 
-            }
-        };
-
+                }
+            };
+        }
         transaction.onerror = (event) => {
             console.error("Transaction error:", event.target.error);
         };
@@ -505,5 +585,5 @@ function optionClientView(userid, nam, lastnam, phone, mail, admin) {
     document.getElementById('clientEmail').value = mail;
     document.getElementById('clientPhone').value = phone;
     document.getElementById('userStatus').classList.add(`${admin === 'false' ? 'btn-info' : admin === 'vendeur' ? 'btn-success' : 'btn-dangera'}`);
-    document.getElementById('userStatus').innerText = `${admin === 'false' ? 'Client' :  admin === 'vendeur' ? 'Vendeur' : 'Bloqué'}`;
+    document.getElementById('userStatus').innerText = `${admin === 'false' ? 'Client' : admin === 'vendeur' ? 'Vendeur' : 'Bloqué'}`;
 };

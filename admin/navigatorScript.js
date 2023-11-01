@@ -66,7 +66,7 @@ function clearArt(items) {
     const transacti = articldb.transaction(["ArticleStore"], "readwrite");
     const objectAr = transacti.objectStore("ArticleStore");
     const request = objectAr.clear();
-    
+
     request.onsuccess = () => {
         addArti(items);
     };
@@ -419,7 +419,7 @@ const NafigatioTo = async (where) => {
                 },
             }
         });
-        
+
         NavBaractivity();
         getArticles();
     } else if (where === "commandes") {
@@ -663,14 +663,82 @@ const NafigatioTo = async (where) => {
         ActiveAd.classList.remove('active');
         ActiveAr.classList.add('active');
 
-        addAticlebtn.innerHTML = `
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addArticle">
-                    Ajouter
-                </button>
-        
-        `;
 
-        const articlesHTML = `
+        function isMobileDevice() {
+            const userAgent = navigator.userAgent.toLowerCase();
+            return userAgent.includes('mobile');
+        }
+        if (isMobileDevice()) {
+
+            const livecha = document.getElementById('add-article');
+
+            setTimeout(() => {
+                livecha.classList.add('active');
+            }, 1000);
+
+
+            const articlesHTML = `
+                        <br>
+                        <br>
+                        <br>
+                        <div class="articlerow">
+                            ${articlesData.map(pani => {
+                                
+                return `
+                                <div class="articlerowsub" >
+                                    <div class="title">
+                                        <div class="leftone">
+                                            <p style="max-height: 50px; overflow: hidden;">${pani.addarticle}</p>
+                                            <p>Quantité: ${pani.quantity}</p>
+                                            <p>Prix: ${pani.addprix} F</p>
+                                        </div>
+                                        <div class="rightone">
+                                            <p class="status">Statut</p>
+                                            <p class="sta shipp"  style="cursor: pointer" data-toggle="modal" data-target="#modArticle" onclick="optionEditeView('${pani._id}')">Ouvrir</p>
+                                            <div style="height: 5px"></div>
+                                            <p  class="sta" style="font-size: 14px; background-color: ${pani.quantity > 0 ? "#054846" : "rgba(255, 0, 89, 0.341)"}; font-weight: bold; color: ${pani.quantity > 0 ? "#ffffff" : "red"}">${pani.quantity > 0 ? "Disponible" : "Finis"}</p>
+                                        </div>
+                                    </div>
+                                    <div class="imaros">
+                                        <div style="background-color: ${pani.addcoul.substring(0, 7)};">
+                                            <img src="${pani.image[0].ima}" alt="image1">
+                                        </div>
+                                        <span style="width: 10px;"></span>
+                                        <div style="background-color: ${pani.addcoul.substring(8, 15)};">
+                                            <img src="${pani.image[1].ima}" alt="image2">
+                                        </div>
+                                        <span style="width: 10px;"></span>
+                                        <div style="background-color: ${pani.addcoul.substring(16, 23)};">
+                                            <img src="${pani.image[2].ima}" alt="image3">
+                                        </div>
+                                        <span style="width: 10px;"></span>
+                                        <div style="background-color: ${pani.addcoul.substring(24, 31)};">
+                                            <img src="${pani.image[3].ima}" alt="image4">
+                                        </div>
+                                        <span style="width: 10px;"></span>
+                                        <div style="background-color: ${pani.addcoul.substring(32, 39)};">
+                                            <img src="${pani.image[4].ima}" alt="image5">
+                                        </div>
+                                    </div>
+                                </div>
+                            `;
+            }).join('')}
+                        </div>
+
+                        `;
+
+            adminiSpace.innerHTML = articlesHTML;
+
+
+        } else {
+            addAticlebtn.innerHTML = `
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addArticle">
+                Ajouter
+            </button>
+    
+    `;
+
+            const articlesHTML = `
                 <main class="main">
                 <br>
                 <br>
@@ -695,15 +763,15 @@ const NafigatioTo = async (where) => {
                 </section>
             </main>
         `;
-        adminiSpace.innerHTML = articlesHTML
+            adminiSpace.innerHTML = articlesHTML
 
-        {
-            const tbodyId = document.getElementById('tbody-data');
-            tbodyId.innerHTML = '';
+            {
+                const tbodyId = document.getElementById('tbody-data');
+                tbodyId.innerHTML = '';
 
-            articlesData.forEach(pani => {
-                const panierTBODY =
-                    `
+                articlesData.forEach(pani => {
+                    const panierTBODY =
+                        `
                     <tr  style="cursor: pointer" data-toggle="modal" data-target="#modArticle" onclick="optionEditeView('${pani._id}')" >
                         <td class=""> 
                             <img src="${pani.image[0].ima}" alt="">
@@ -731,13 +799,12 @@ const NafigatioTo = async (where) => {
                     </tr>
                     `;
 
-                tbodyId.innerHTML += panierTBODY;
+                    tbodyId.innerHTML += panierTBODY;
 
-            });
+                });
 
+            }
         }
-
-
     }
 }
 
