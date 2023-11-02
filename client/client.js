@@ -1,11 +1,3 @@
-async function selectStatus(sta) {
-    const ido = document.getElementById('ido').value;
-    const idar = document.getElementById('proid').value;
-
-    await sendRequestforOrder('PUT', `orders/statoo/${ido}/${idar}`, { statut: sta });
-    window.location.reload()
-};
-
 async function cancelItemById() {
     const ido = document.getElementById('ido').value;
     const proid = document.getElementById('proid').value;
@@ -139,9 +131,15 @@ async function optionCancileView(_id, proid, arti_id) {
 
             if (product.statut == "review") {
                 const updateposiHTML = `
-                <button type="button" class="btn btn-info" data-dismiss="modal" onclick="selectStatus('onway')">Modifer</button>
+                <button type="button" class="btn btn-info" data-dismiss="modal" onclick="EditeViewOrder()">Modifer</button>
                             
                 <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="cancelItemById()">Annuller</button>
+                <button type="button" class="btn btn-outline-success" data-dismiss="modal">Quitter</button>
+
+            `;
+                updateposi.innerHTML = updateposiHTML;
+            } else {
+                const updateposiHTML = `                            
                 <button type="button" class="btn btn-outline-success" data-dismiss="modal">Quitter</button>
 
             `;
@@ -226,8 +224,10 @@ function removeImageEdite(event) {
     }
 }
 
-async function EditeViewArticle() {
-    const _id = document.getElementById('ediatiid').value;
+async function EditeViewOrder() {
+    /*const ido = document.getElementById('ido').value;
+    const idar = document.getElementById('proid').value;
+
     try {
         const addarticle = document.getElementById('Editearticle').value;
         const addquant = parseInt(document.getElementById('Editequant').value);
@@ -276,17 +276,19 @@ async function EditeViewArticle() {
             };
             const createItem = async () => {
                 try {
-                    await sendRequestforOrder('PUT', `boutique/${_id}`, product);
+                    await sendRequestforOrder('PUT', `orders/statoo/${ido}/${idar}`, { statut: sta });
                 } catch (error) {
                     console.error('Error updating product:', error.message);
                 }
             };
 
             createItem();
+            window.location.reload()
+
         }
     } catch (error) {
         console.log(error)
-    }
+    }*/
 
 
 };

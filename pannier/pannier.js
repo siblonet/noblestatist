@@ -228,12 +228,22 @@ function getallDataa() {
 
             if (panner.length > 0) {
                 const pannierNumber1 = document.getElementById('paniernumber1');
+                const panierNumber1r = document.getElementById('paniernumber1r');
+
                 pannierNumber1.innerHTML = ''; // Clear previous content
                 const panniernumHTML1 = `
                                     <i class="bx bx-shopping-bag"></i>
                                     <span>${panner.length}</span>
                                 `;
                 pannierNumber1.innerHTML += panniernumHTML1;
+
+                panierNumber1r.innerHTML = ''; // Clear previous content
+                const panniernumHTML1r = `
+                                    <i class="bx bx-shopping-bag"></i>
+                                    <span>${panner.length}</span>
+                                `;
+                panierNumber1r.innerHTML += panniernumHTML1r;
+
 
 
                 const pannierNumber2 = document.getElementById('paniernumber2');
@@ -312,6 +322,7 @@ function getallDataa() {
                     subtotal.innerText = `${0} F.CFA`;
                 }
                 const pannierNumber1 = document.getElementById('paniernumber1');
+                const panierNumber1r = document.getElementById('paniernumber1r');
 
 
 
@@ -327,6 +338,12 @@ function getallDataa() {
                                     <i class="bx bx-shopping-bag"></i>
                                 `;
                 pannierNumber1.innerHTML += panniernumHTML1;
+
+                panierNumber1r.innerHTML = ''; // Clear previous content
+                const panniernumHTML1r = `
+                                    <i class="bx bx-shopping-bag"></i>
+                                `;
+                panierNumber1r.innerHTML += panniernumHTML1r;
 
 
                 pannierNumber2.innerHTML = ''; // Clear previous content

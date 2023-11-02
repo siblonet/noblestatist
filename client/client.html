@@ -5,26 +5,27 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="theme-color" content="#006e65"/>
+    <meta name="theme-color" content="#006e65" />
     <meta name="description" content="Securisé et rapide" />
-    <meta name="keywords" content="Noble, Noble_boutikonline, Siblo, Silence-AI, John, Kokar, Dibloni" />
+    <meta name="keywords" content="NobleBoutik, Noble_boutikonline, Siblo, Silence-AI, John, Kokar, Dibloni" />
     <meta name="author" content="John Kokar" />
     <meta property="og:title" content="e-Commerce" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="../assets/img/banner-img1.png" />
     <meta property="og:description" content="Securisé et rapide" />
-    <meta property="og:site_name" content="Noble" />
+    <meta property="og:site_name" content="NobleBoutik" />
     <meta property="og:locale" content="fr-FR" />
     <meta property="article:author" content="John Kokar" />
     <meta property="article:published_time" content="2023-10-19T08:00:00Z" />
     <meta property="article:modified_time" content="#2023-10-19T08:00:00Z" />
     <link rel="stylesheet" href="../assets/css/loading.css">
+    <link rel="stylesheet" href="../assets/css/livechat.css">
 
 
-    <title>Noble-Client</title>
-    <link rel="stylesheet" href="client/assets/css/style-starter.css">
-    <link rel="stylesheet" href="client/tirthcss.css">
-    <link rel="stylesheet" href="client/noble.css">
+    <title>Noble Client</title>
+    <link rel="stylesheet" href="assets/css/style-starter.css">
+    <link rel="stylesheet" href="tirthcss.css">
+    <link rel="stylesheet" href="noble.css">
     <link rel="icon" type="image/png" href="../assets/img/favicon.png">
 </head>
 
@@ -42,7 +43,7 @@
         <div class="sidebar-menu sticky-sidebar-menu">
             <div class="logo">
                 <h1>
-                    <a href="dasboard.html">Noble</a>
+                    <a href="dasboard.html">NobleBoutik</a>
                 </h1>
             </div>
 
@@ -73,7 +74,7 @@
                             <span>Profile</span>
                         </a>
                     </li>
-                   
+
                 </ul>
                 <a class="toggle-btn">
                     <i class="fa fa-angle-double-left menu-collapsed__left"><span>Réduire</span></i>
@@ -90,19 +91,12 @@
                     <div class="user-dropdown-details d-flex">
                         <div class="profile_details_left">
 
-                            <ul class="nofitications-dropdown">     
+                            <ul class="nofitications-dropdown">
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i
-                                            class="fa fa-comment-o"></i><span class="badge blue"
-                                            style="background-color: rgb(255, 0, 98);">0</span></a>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <div class="notification_header">
-                                                <h3>Vous n'avez pas de nouveau message</h3>
-                                            </div>
-                                        </li>
-
-                                    </ul>
+                                    <a style="cursor: pointer;" class="live-conve">
+                                        <i class="fa fa-comment-o"></i>
+                                        <span class="badge blue" style="background-color: rgb(255, 0, 98);">0</span>
+                                    </a>
                                 </li>
                             </ul>
                         </div>
@@ -124,21 +118,9 @@
                                             <span class="status ml-2">Client</span>
                                         </li>
                                         <li>
-                                            <a>
+                                            <a onclick="NafigatioTo('clients')">
                                                 <i class="lnr lnr-user"></i>
                                                 Mon profil
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a>
-                                                <i class="lnr lnr-users"></i>
-                                                Rôle
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a>
-                                                <i class="lnr lnr-cog"></i>
-                                                Devenir Vendeur
                                             </a>
                                         </li>
                                         <li class="logout">
@@ -164,7 +146,7 @@
         </div>
 
     </section>
-   
+
 
 
 
@@ -380,11 +362,11 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-info" data-dismiss="modal"
                         onclick="updateUser('false')">Modifer</button>
-                   
+
                     <button type="button" class="btn btn-danger" data-dismiss="modal"
                         onclick="deleteUser()">Supprimer</button>
 
-                   
+
                     <button type="button" class="btn btn-outline-success" data-dismiss="modal">Quitter</button>
 
                 </div>
@@ -392,17 +374,51 @@
 
         </div>
     </div>
+
+    <div id='whatsapp-chat' class='hidea'>
+        <div class='header-chata'>
+            <div class='get-newa hidea'>
+                <div id='get-labela'>
+                    <div class="online"></div>
+                    <img src="../assets/img/avatay.png" alt="">
+                </div>
+                <div id='get-namaa'>
+                    <span class='chat-namaa'>Hors Line</span>
+
+                </div>
+            </div>
+        </div>
+
+        <div class='start-chata hidea'>
+            <div class='first-msga' id="first-msga">
+                <span class="spanf">Bonjour! Personne n'est en line pour l'instant, Appelez: 0768020606</span>
+
+
+            </div>
+            <div class='blanter-msga'>
+                <textarea name="notes" id="chat-inputa" cols="20" rows="2" placeholder="Saisissez-ici votre message"
+                    class="form-control ttextarea" maxlength='120'></textarea>
+
+                <a class="aa" href='javascript:void' id='send-ita'>Send</a>
+            </div>
+        </div>
+        <div id='get-numbera'>
+            098765443
+        </div>
+        <a class='close-chata aa' href='javascript:void'>×</a>
+    </div>
+
     <script src="../router.js"></script>
     <script src="../productsFetcher/database_handl.js"></script>
     <script src="../convertisseur.js"></script>
     <script src="../disconnexion.js"></script>
-    <script src="client/assets/js/jquery-3.3.1.min.js"></script>
-    <script src="client/assets/js/jquery-1.10.2.min.js"></script>
-    <script src="client/assets/js/Chart.min.js"></script>
-    <script src="client/assets/js/utils.js"></script>
+    <script src="assets/js/jquery-3.3.1.min.js"></script>
+    <script src="assets/js/jquery-1.10.2.min.js"></script>
+    <script src="assets/js/Chart.min.js"></script>
+    <script src="assets/js/utils.js"></script>
 
-    <script src="client/assets/js/jquery.nicescroll.js"></script>
-    <script src="client/assets/js/scripts.js"></script>
+    <script src="assets/js/jquery.nicescroll.js"></script>
+    <script src="assets/js/scripts.js"></script>
 
     <script>
         var closebtns = document.getElementsByClassName("close-grid");
@@ -422,12 +438,33 @@
         });
     </script>
 
-    <script src="client/assets/js/modernizr.js"></script>
-    <script src="client/assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/modernizr.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
     <script src="../clientdb/currentdb.js"></script>
-    <script src="client/clientNavigatorScript.js"></script>
-    <script src="client/clientLoaderScript.js"></script>
-    <script src="client/client.js"></script>
+    <script src="clientNavigatorScript.js"></script>
+    <script src="clientLoaderScript.js"></script>
+    <script src="client.js"></script>
+
+    <script>
+        $(document).on("click", "#send-ita", function () {
+            var a = document.getElementById("chat-inputa");
+            if ("" != a.value) {
+                document.getElementById("first-msga").innerHTML += `<br><span class="spans">${a.value}</span>`
+                document.getElementById("chat-inputa").value = ""
+            }
+        }),
+
+            $(document).on("click", ".live-conve", function () {
+                $("#whatsapp-chat").addClass("showa").removeClass("hidea")
+                document.getElementById("get-numbera").innerHTML = $(this).children(".my-numbera").text(),
+                    $(".start-chata,.get-newa").addClass("showa").removeClass("hidea"),
+                    $(".home-chata,.head-homea").addClass("hidea").removeClass("showa")
+            }),
+
+            $(document).on("click", ".close-chata", function () {
+                $("#whatsapp-chat").addClass("hidea").removeClass("showa")
+            })
+    </script>
 </body>
 
 </html>
