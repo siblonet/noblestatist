@@ -80,9 +80,9 @@ async function DataLoad() {
             loaderRemove.innerHTML = "";
             loaderRemove.style.display = "none";
         } else {
-                await openArticleDatabase()
-                clearArticle(items)
-                //populaProduct(items);
+            await openArticleDatabase()
+            clearArticle(items)
+            //populaProduct(items);
         }
 
 

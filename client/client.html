@@ -410,6 +410,8 @@
 
     <script src="../router.js"></script>
     <script src="../productsFetcher/database_handl.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
+    <script src="../livechat.js"></script>
     <script src="../convertisseur.js"></script>
     <script src="../disconnexion.js"></script>
     <script src="client/assets/js/jquery-3.3.1.min.js"></script>
@@ -449,12 +451,40 @@
         $(document).on("click", "#send-ita", function () {
             var a = document.getElementById("chat-inputa");
             if ("" != a.value) {
-                document.getElementById("first-msga").innerHTML += `<br><span class="spans">${a.value}</span>`
+                socket.emit('send_hoim', { message: a.value, to: myLive });
+                document.getElementById("first-msga").innerHTML += `<br><span class="spans">${a.value}</span><br>`
                 document.getElementById("chat-inputa").value = ""
             }
         }),
 
             $(document).on("click", ".live-conve", function () {
+                if (sockectState) {
+                    const firstMsga = document.getElementById("first-msga");
+                    firstMsga.innerHTML = "<span class='spanf'>Bonjour, je suis en line!</span>";
+                    const getLabela = document.getElementById("get-labela");
+                    getLabela.innerHTML = "";
+
+                    const nuwGethtnl = `
+                        <div id='get-labela'>
+                                <div class="online"></div>
+                                <img src="../assets/img/avatay.png" alt="">
+                            </div>
+                        `;
+                    getLabela.innerHTML = nuwGethtnl;
+
+
+                    const getNamaa = document.getElementById("get-namaa");
+                    getNamaa.innerHTML = "";
+
+                    const nuwnmahtnl = `
+                        <div id='get-namaa'>
+                                <span class='chat-namaa'>M.Dayf</span>
+
+                            </div>
+                        `;
+                    getNamaa.innerHTML = nuwnmahtnl;
+                }
+
                 $("#whatsapp-chat").addClass("showa").removeClass("hidea")
                 document.getElementById("get-numbera").innerHTML = $(this).children(".my-numbera").text(),
                     $(".start-chata,.get-newa").addClass("showa").removeClass("hidea"),
@@ -464,6 +494,17 @@
             $(document).on("click", ".close-chata", function () {
                 $("#whatsapp-chat").addClass("hidea").removeClass("showa")
             })
+        socket.on(myLive, (data) => {
+            const firstMsga = document.getElementById("first-msga");
+
+            const nuwGethtnl = `
+            <span class="spanf">${data}</span>
+
+                        `;
+            firstMsga.innerHTML += nuwGethtnl;
+
+
+        });
     </script>
 </body>
 

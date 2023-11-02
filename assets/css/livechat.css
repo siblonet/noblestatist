@@ -81,13 +81,23 @@ span.chat-namaa {
     overflow: hidden;
 }
 
-.online {
+.offline {
     position: absolute;
     align-self: flex-end;
     height: 10px;
     width: 10px;
     border-radius: 5px;
     background-color: #f50521;
+    /*background-color: #23ab23;*/
+}
+
+.online {
+    position: absolute;
+    align-self: flex-end;
+    height: 10px;
+    width: 10px;
+    border-radius: 5px;
+    background-color: #059f05;
     /*background-color: #23ab23;*/
 }
 
