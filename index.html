@@ -1798,7 +1798,7 @@
         $(document).on("click", "#send-ita", function () {
             var a = document.getElementById("chat-inputa");
             if ("" != a.value) {
-                socket.emit('send_hoim', { message: a.value, to: myLive });
+                socket.emit('send_hoim', { author: "client", message: a.value, to: myLive });
                 document.getElementById("first-msga").innerHTML += `<br><span class="spans">${a.value}</span><br>`
                 document.getElementById("chat-inputa").value = ""
             }
