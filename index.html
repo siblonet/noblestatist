@@ -1795,64 +1795,124 @@
     <script src="./clientdb/currentdb.js"></script>
     <script src="./pannier/callpanindex.js"></script>
     <script>
-        $(document).on("click", "#send-ita", function () {
-            var a = document.getElementById("chat-inputa");
-            if ("" != a.value) {
-                socket.emit('send_hoim', { author: "client", message: a.value, to: myLive });
-                document.getElementById("first-msga").innerHTML += `<br><span class="spans">${a.value}</span><br>`
-                document.getElementById("chat-inputa").value = ""
-            }
-        }),
 
-            $(document).on("click", ".live-chat", function () {
-                if (sockectState) {
-                    const firstMsga = document.getElementById("first-msga");
-                    firstMsga.innerHTML = "<span class='spanf'>Bonjour, je suis en line!</span>";
-                    const getLabela = document.getElementById("get-labela");
-                    getLabela.innerHTML = "";
+        let sockectState = false;
+        const socket = io(tunalS);
+        socket.connect();
 
-                    const nuwGethtnl = `
-                        <div id='get-labela'>
-                                <div class="online"></div>
-                                <img src="assets/img/avatay.png" alt="">
-                            </div>
-                        `;
-                    getLabela.innerHTML = nuwGethtnl;
-
-
-                    const getNamaa = document.getElementById("get-namaa");
-                    getNamaa.innerHTML = "";
-
-                    const nuwnmahtnl = `
-                        <div id='get-namaa'>
-                                <span class='chat-namaa'>M.Dayf</span>
-
-                            </div>
-                        `;
-                    getNamaa.innerHTML = nuwnmahtnl;
-                }
-
-                $("#whatsapp-chat").addClass("showa").removeClass("hidea")
-                document.getElementById("get-numbera").innerHTML = $(this).children(".my-numbera").text(),
-                    $(".start-chata,.get-newa").addClass("showa").removeClass("hidea"),
-                    $(".home-chata,.head-homea").addClass("hidea").removeClass("showa")
-            }),
-
-            $(document).on("click", ".close-chata", function () {
-                $("#whatsapp-chat").addClass("hidea").removeClass("showa")
-            })
-        socket.on(myLive, (data) => {
-            const firstMsga = document.getElementById("first-msga");
-
-            const nuwGethtnl = `
-            <span class="spanf">${data}</span>
-
-                        `;
-            firstMsga.innerHTML += nuwGethtnl;
-
+        socket.on('connect', () => {
+            sockectState = true;
 
         });
+
+
+        socket.on('disconnect', () => {
+            sockectState = false;
+        });
+
+
+        socket.on('reconnect_attempt', () => {
+            sockectState = true;
+
+            console.log('Tentative de reconnexion...');
+        });
+
+        socket.on('reconnect', (attemptNumber) => {
+            sockectState = true;
+
+            console.log(`Rétabli la connexion après ${attemptNumber} tentatives.`);
+        });
+
+
+
+
+        const socketWithOptions = io(tunalS, {
+            reconnection: true, // Activer la reconnexion automatique
+            reconnectionAttempts: 3, // Nombre maximal de tentatives de reconnexion
+            reconnectionDelay: 1000, // Délai initial avant la première tentative de reconnexion (en millisecondes)
+            reconnectionDelayMax: 5000, // Délai maximal entre les tentatives de reconnexion (en millisecondes)
+            randomizationFactor: 0.5, // Facteur de randomisation pour les délais de reconnexion
+        });
+
+        socketWithOptions.connect();
+
+        socket.on('reconnect_error', (error) => {
+            sockectState = false;
+
+            console.error('Erreur de reconnexion:', error);
+            setTimeout(() => {
+                socket.connect();
+                socket.on('connect', () => {
+                    sockectState = true;
+
+                });
+            }, 99990);
+        });
+
+
+        $(document).on("click", ".live-chat", async function () {
+
+            if (sockectState) {
+                socket.on(myLive, (data) => {
+                    const firstMsga = document.getElementById("first-msga");
+
+                    const nuwGethtnl = `
+                <span class="spanf">${data}</span>
+              `;
+
+                    firstMsga.innerHTML += nuwGethtnl;
+                });
+
+                const firstMsga = document.getElementById("first-msga");
+                firstMsga.innerHTML = "<span class='spanf'>Bonjour, je suis en ligne!</span>";
+
+                const getLabela = document.getElementById("get-labela");
+                getLabela.innerHTML = "";
+
+                const nuwGethtnl = `
+              <div id='get-labela'>
+                <div class="online"></div>
+                <img src="assets/img/avatay.png" alt="">
+              </div>
+            `;
+                getLabela.innerHTML = nuwGethtnl;
+
+                const getNamaa = document.getElementById("get-namaa");
+                getNamaa.innerHTML = "";
+
+                const nuwnmahtnl = `
+              <div id='get-namaa'>
+                <span class='chat-namaa'>M.Dayf</span>
+              </div>
+            `;
+                getNamaa.innerHTML = nuwnmahtnl;
+
+                $(document).on("click", "#send-ita", function () {
+                    var a = document.getElementById("chat-inputa");
+                    if ("" != a.value) {
+                        socket.emit('send_hoim', { author: "client", message: a.value, to: myLive });
+                        document.getElementById("first-msga").innerHTML += `<br><span class="spans">${a.value}</span><br>`;
+                        document.getElementById("chat-inputa").value = "";
+                    }
+                });
+            }
+
+            if (sockectState) {
+                $(document).on("click", ".close-chata", function () {
+                    $("#whatsapp-chat").addClass("hidea").removeClass("showa");
+                });
+
+                socket.close();
+            }
+
+            $("#whatsapp-chat").addClass("showa").removeClass("hidea");
+            document.getElementById("get-numbera").innerHTML = $(this).children(".my-numbera").text();
+            $(".start-chata, .get-newa").addClass("showa").removeClass("hidea");
+            $(".home-chata, .head-homea").addClass("hidea").removeClass("showa");
+        });
+
     </script>
+
 </body>
 
 </html>
