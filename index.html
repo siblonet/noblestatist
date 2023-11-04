@@ -1903,6 +1903,10 @@
                 });
 
                 socket.close();
+            }else{
+                $(document).on("click", ".close-chata", function () {
+                    $("#whatsapp-chat").addClass("hidea").removeClass("showa");
+                });
             }
 
             $("#whatsapp-chat").addClass("showa").removeClass("hidea");
