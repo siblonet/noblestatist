@@ -1,7 +1,7 @@
 let recenProd = [];
 let selct = [];
 let selctSize = [];
-
+let isAdmin = false;
 function getUsenam() {
     const tokens = sessionStorage.getItem('tibule');
     if (tokens && tokens.split("°")) {
@@ -15,6 +15,7 @@ function getUsenam() {
 
         usernam.innerHTML = '';
         admin == "GIFV" ? true : false;
+        isAdmin = admin;
         usernama.innerHTML = `
             <a><i class="bx bx-log-in"></i>Se Deconecter</a>
             `;
@@ -364,12 +365,14 @@ function recentProduct(recenPr) {
         loaderRemove.innerHTML = "";
         loaderRemove.style.display = "none";
 
+        if (!isAdmin) {
 
-        const livecha = document.getElementById('live-chat');
+            const livecha = document.getElementById('live-chat');
 
-        setTimeout(() => {
-            livecha.classList.add('active');
-        }, 5000);
+            setTimeout(() => {
+                livecha.classList.add('active');
+            }, 5000);
+        }
     } else {
         const tokens = sessionStorage.getItem('tibule');
         const productHTML = `
@@ -401,11 +404,14 @@ function recentProduct(recenPr) {
         loaderRemove.innerHTML = "";
         loaderRemove.style.display = "none";
 
-        const livecha = document.getElementById('live-chat');
+        if (!isAdmin) {
+            const livecha = document.getElementById('live-chat');
 
-        setTimeout(() => {
-            livecha.classList.add('active');
-        }, 5000);
+            setTimeout(() => {
+                livecha.classList.add('active');
+            }, 5000);
+        }
+
     }
 };
 

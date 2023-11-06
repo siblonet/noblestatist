@@ -1,17 +1,55 @@
-/* CSS Multiple Whatsapp Chat */
+.aa:link,
+.aa:visited {
+    color: #444;
+    text-decoration: none;
+    transition: all .4s ease-in-out
+}
+
+.head-homea p {
+    color: #ffffff;
+}
+
+.h1 {
+    font-size: 20px;
+    text-align: center;
+    display: block;
+    background: linear-gradient(to right top, #6f96f3, #164ed2);
+    padding: 20px;
+    color: #fff;
+    border-radius: 50px
+}
+
 #whatsapp-chat {
     position: fixed;
     background: #fff;
-    width: 300px;
+    width: 350px;
     border-radius: 10px;
     box-shadow: 0 1px 15px rgba(32, 33, 36, .28);
-    bottom: 58px;
-    left: 25px;
+    bottom: 90px;
+    right: 30px;
     overflow: hidden;
     z-index: 99;
     animation-name: showchat;
     animation-duration: 1s;
     transform: scale(1)
+}
+
+.aa.blantershow-chata {
+    background: linear-gradient(to right top, #6f96f3, #164ed2);
+    color: #fff;
+    position: fixed;
+    z-index: 98;
+    bottom: 25px;
+    right: 30px;
+    font-size: 15px;
+    padding: 10px 20px;
+    border-radius: 30px;
+    box-shadow: 0 1px 15px rgba(32, 33, 36, .28)
+}
+
+.aa.blantershow-chata i {
+    transform: scale(1.2);
+    margin: 0 10px 0 0
 }
 
 .header-chata {
@@ -20,7 +58,7 @@
     padding: 20px
 }
 
-.header-chata h3 {
+.header-chata .h3 {
     margin: 0 0 10px
 }
 
@@ -30,9 +68,19 @@
     margin: 0
 }
 
+.info-avatara {
+    position: relative
+}
+
+.info-avatara img {
+    border-radius: 100%;
+    width: 50px;
+    float: left;
+    margin: 0 10px 0 0
+}
 
 .info-avatara:before {
-    content: '\f232';
+    content: '';
     z-index: 1;
     font-family: "Font Awesome 5 Brands";
     background: #23ab23;
@@ -40,8 +88,8 @@
     padding: 4px 5px;
     border-radius: 100%;
     position: absolute;
-    top: 30px;
-    left: 30px
+    top: 4px;
+    left: 5px
 }
 
 .aa.informasia {
@@ -56,57 +104,62 @@
     background: #f1f1f1
 }
 
-.info-chata span {
+.info-chata .span {
     display: block
 }
 
 #get-labela,
-span.chat-labela {
+.span.chat-labela {
     font-size: 12px;
     color: #888
 }
 
 #get-namaa,
-span.chat-namaa {
+.span.chat-namaa {
     margin: 5px 0 0;
     font-size: 15px;
     font-weight: 700;
     color: #222
 }
 
-#get-labela {
-    height: 38px;
-    width: 40px;
-    border-radius: 50px;
-    overflow: hidden;
+
+
+.first-msga .spanf {
+    background: #e2e2e2;
+    color: #333;
+    font-size: 14.2px;
+    line-height: 1.7;
+    border-radius: 0px 8px 8px 18px;
+    padding: 5px 18px 5px 18px;
+    float: left !important;
+    columns: 1;
+    max-width: 280px !important;
+    text-align: justify;
 }
 
-.offline {
-    position: absolute;
-    align-self: flex-end;
-    height: 10px;
-    width: 10px;
-    border-radius: 5px;
-    background-color: #f50521;
-    /*background-color: #23ab23;*/
+
+.first-msga .spans {
+    background: #b8d6ec;
+    color: #333;
+    font-size: 14.2px;
+    line-height: 1.7;
+    border-radius: 8px 18px 0px 8px;
+    padding: 5px 18px 5px 18px;
+    margin-top: 10px;
+    float: right !important;
+    columns: 2;
+    text-align: justify;
+    max-width: 280px !important;
 }
 
-.online {
-    position: absolute;
-    align-self: flex-end;
-    height: 10px;
-    width: 10px;
-    border-radius: 5px;
-    background-color: #059f05;
-    /*background-color: #23ab23;*/
-}
+
 
 #get-labela,
 #get-namaa {
     color: #fff
 }
 
-span.my-numbera {
+.span.my-numbera {
     display: none
 }
 
@@ -118,7 +171,7 @@ span.my-numbera {
     border-top: 1px solid #ddd
 }
 
-.ttextarea#chat-inputa {
+.textarea#chat-inputa {
     border: none;
     font-family: 'Arial', sans-serif;
     width: 100%;
@@ -148,33 +201,7 @@ span.my-numbera {
     flex-direction: column;
 }
 
-.first-msga .spanf {
-    background: #e2e2e2;
-    color: #333;
-    font-size: 14.2px;
-    line-height: 1.7;
-    border-radius: 0px 8px 8px 18px;
-    padding: 5px 18px 5px 18px;
-    float: left !important;
-    columns: 1;
-    max-width: 280px !important;
-    text-align: justify;
-}
 
-
-.first-msga .spans {
-    background: #b8d6ec;
-    color: #333;
-    font-size: 14.2px;
-    line-height: 1.7;
-    border-radius: 8px 18px 0px 8px;
-    padding: 5px 18px 5px 18px;
-    margin-top: 10px;
-    float: right !important;
-    columns: 2;
-    text-align: justify;
-    max-width: 280px !important;
-}
 
 .start-chata .blanter-msga {
     display: flex
