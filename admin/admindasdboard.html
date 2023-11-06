@@ -44,14 +44,14 @@
         <div class="sidebar-menu sticky-sidebar-menu">
             <div class="logo">
                 <h1>
-                    <a href="/">Noble</a>
+                    <a href="dasboard.html">Noble</a>
                 </h1>
             </div>
 
 
 
             <div class="logo-icon text-center">
-                <a href="/" title="logo">
+                <a href="dasboard.html" title="logo">
                     <img src="../assets/img/logo.jpeg" alt="logo-icon">
                 </a>
             </div>
@@ -992,6 +992,8 @@
                 const authen = { author: "admina", id: id };
                 socket.emit('dasboard', authen, (dee) => {
                     ClientId = dee;
+                    document.getElementById("chatss").innerText = `${dee.length}`;
+
                     const clientId = document.getElementById("clientId");
                     dee.forEach((el) => {
                         clientId.innerHTML += `<a class='informasia aa' href='javascript:void' title='Chat Whatsapp'>
@@ -1018,10 +1020,13 @@
 
             const client = document.getElementById("get-labela").innerText
             const chatss = document.getElementById("chatss").innerText;
-            document.getElementById("chatss").innerText = `${parseInt(chatss) + 1}`;
-            ClientId.push(data);
-            const clientId = document.getElementById("clientId");
-            clientId.innerHTML += `<a class='informasia aa' href='javascript:void' title='Chat Whatsapp'>
+            const clienexi = ClientId.find(item => item.to == data.to);
+            if (clienexi) {
+                clienexi.message = `${clienexi.message}\n${data.message}`;
+            } else {
+                ClientId.push(data);
+                const clientId = document.getElementById("clientId");
+                clientId.innerHTML += `<a class='informasia aa' href='javascript:void' title='Chat Whatsapp'>
                             <div class='info-avatara'>
                                 <img src="../assets/img/avatay.png" alt="">
                             </div>
@@ -1032,11 +1037,12 @@
                             <span class='span my-numbera'>${data.to}</span>
                         </a>
                         `
+            };
 
-            if (client === data.to) {
+            if (client == data.to) {
                 const firstMsga = document.getElementById("first-msga");
                 const nuwGethtnl = `
-                <span class="spanf">${data.message}</span>
+                <br><span class="spanf">${data.message}</span>
               `;
 
                 firstMsga.innerHTML += nuwGethtnl;
@@ -1050,7 +1056,7 @@
                         $(".start-chata, .get-newa").addClass("showa").removeClass("hidea"),
                         $(".home-chata, .head-homea").addClass("hidea").removeClass("showa"),
                         document.getElementById("get-namaa").innerHTML = data.name ? data.name : 'non connecter',
-                        document.getElementById("get-labela").innerHTML = data.to 
+                        document.getElementById("get-labela").innerHTML = data.to
 
                     document.getElementById("chatss").innerText = "0";
 
@@ -1064,6 +1070,9 @@
 
 
                 }, 1300);
+
+            } else {
+                document.getElementById("chatss").innerText = `${parseInt(chatss) + 1}`;
 
             }
         });
@@ -1083,9 +1092,6 @@
 
         $(document).on("click", ".informasia", function () {
             document.getElementById("get-numbera").innerHTML = $(this).children(".my-numbera").text(),
-
-
-
                 $(".start-chata, .get-newa").addClass("showa").removeClass("hidea"),
                 $(".home-chata, .head-homea").addClass("hidea").removeClass("showa"),
                 document.getElementById("get-namaa").innerHTML = $(this).children(".info-chata").children(".chat-namaa").text(),

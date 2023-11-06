@@ -1844,7 +1844,7 @@
 
             const nuwnmahtnl = `
               <div id='get-namaa'>
-                <span class='chat-namaa'>M.Dayf</span>
+                <span class='chat-namaa'>Service Clientèle</span>
               </div>
             `;
             getNamaa.innerHTML = nuwnmahtnl;
@@ -1877,10 +1877,20 @@
             var a = document.getElementById("chat-inputa");
             if ("" != a.value) {
                 const messageData = { author: "client", message: a.value, to: myLive, name: name ? name : null };
-                socket.emit('send_hoim', messageData);
+                socket.emit('send_hoim', messageData, (isAmi) => {
+                    if (!isAmi) {
+                        const nolineMsga = document.getElementById("first-msga");
+                     nolineMsga.innerHTML = "<span class='spanf' style='color: red !important'>Bonjour! Personne n'est en line pour l'instant, patientez d'ici que quelqu'un vous joindre ou appelez: 0768020606</span>";
+                     document.getElementById("first-msga").innerHTML += `<br><span class="spans">${a.value}</span><br>`;
+                     document.getElementById("chat-inputa").value = "";
 
-                document.getElementById("first-msga").innerHTML += `<br><span class="spans">${a.value}</span><br>`;
-                document.getElementById("chat-inputa").value = "";
+                    }else{
+                        document.getElementById("first-msga").innerHTML += `<br><span class="spans">${a.value}</span><br>`;
+                        document.getElementById("chat-inputa").value = "";
+
+                    };
+                });
+
             }
         });
 

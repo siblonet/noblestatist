@@ -93,9 +93,10 @@
 
                             <ul class="nofitications-dropdown">
                                 <li class="dropdown">
-                                    <a style="cursor: pointer;" class="live-conve">
+                                    <a style="cursor: pointer;" class="live-conve live-chat">
                                         <i class="fa fa-comment-o"></i>
-                                        <span class="badge blue" style="background-color: rgb(255, 0, 98);">0</span>
+                                        <span id="chatss" class="badge blue"
+                                            style="background-color: rgb(255, 0, 98);">0</span>
                                     </a>
                                 </li>
                             </ul>
@@ -379,7 +380,7 @@
         <div class='header-chata'>
             <div class='get-newa hidea'>
                 <div id='get-labela'>
-                    <div class="online"></div>
+                    <div class="offline"></div>
                     <img src="../assets/img/avatay.png" alt="">
                 </div>
                 <div id='get-namaa'>
@@ -448,61 +449,116 @@
     <script src="client/client.js"></script>
 
     <script>
+        const toKen = sessionStorage.getItem('tibule');
+
+        const splo = toKen.split("°");
+        const nam = splo[1];
+        const lastname = splo[2];
+        const phom = splo[3];
+
+        const sername = thisiswhat(`${nam}â${lastname}`);
+        const mylive = thisiswhat(`${phom}`);
+
+        const socket = io(tunalS);
+        socket.connect();
+
+        socket.on('disconnect');
+
+        socket.on('reconnect_attempt');
+
+        socket.on('reconnect');
+
+        const socketWithOptions = io(tunalS, {
+            reconnection: true, // Activer la reconnexion automatique
+            reconnectionAttempts: 3, // Nombre maximal de tentatives de reconnexion
+            reconnectionDelay: 1000, // Délai initial avant la première tentative de reconnexion (en millisecondes)
+            reconnectionDelayMax: 5000, // Délai maximal entre les tentatives de reconnexion (en millisecondes)
+            randomizationFactor: 0.5, // Facteur de randomisation pour les délais de reconnexion
+        });
+
+        socketWithOptions.connect();
+
+        socket.on('reconnect_error', (error) => {
+
+            console.error('Erreur de reconnexion:', error);
+            setTimeout(() => {
+                socket.connect();
+
+            }, 99990);
+        });
+
+        $(document).on("click", ".live-chat", async function () {
+            const firstMsga = document.getElementById("first-msga");
+            firstMsga.innerHTML = "<span class='spanf'>Bonjour, je suis la pour vous aider!</span>";
+
+            const getLabela = document.getElementById("get-labela");
+            getLabela.innerHTML = "";
+
+            const nuwGethtnl = `
+              <div id='get-labela'>
+                <div class="online"></div>
+                <img src="../assets/img/avatay.png" alt="">
+              </div>
+            `;
+            getLabela.innerHTML = nuwGethtnl;
+
+            const getNamaa = document.getElementById("get-namaa");
+            getNamaa.innerHTML = "";
+
+            const nuwnmahtnl = `
+              <div id='get-namaa'>
+                <span class='chat-namaa'>Service Clientèle</span>
+              </div>
+            `;
+            getNamaa.innerHTML = nuwnmahtnl;
+
+            $("#whatsapp-chat").addClass("showa").removeClass("hidea");
+            document.getElementById("get-numbera").innerHTML = $(this).children(".my-numbera").text();
+            $(".start-chata, .get-newa").addClass("showa").removeClass("hidea");
+            $(".home-chata, .head-homea").addClass("hidea").removeClass("showa");
+        });
+
+
+
+        $(document).on("click", ".close-chata", function () {
+            $("#whatsapp-chat").addClass("hidea").removeClass("showa");
+            socket.close();
+
+        });
+
+
         $(document).on("click", "#send-ita", function () {
+
+
             var a = document.getElementById("chat-inputa");
             if ("" != a.value) {
-                socket.emit('send_hoim', { message: a.value, to: myLive });
-                document.getElementById("first-msga").innerHTML += `<br><span class="spans">${a.value}</span><br>`
-                document.getElementById("chat-inputa").value = ""
+                const messageData = { author: "client", message: a.value, to: mylive, name: sername };
+                socket.emit('send_hoim', messageData, (isAmi) => {
+                    if (!isAmi) {
+                        const nolineMsga = document.getElementById("first-msga");
+                        nolineMsga.innerHTML = "<span class='spanf' style='color: red !important'>Bonjour! Personne n'est en line pour l'instant, patientez d'ici que quelqu'un vous joindre ou appelez: 0768020606</span>";
+                        document.getElementById("first-msga").innerHTML += `<br><span class="spans">${a.value}</span><br>`;
+                        document.getElementById("chat-inputa").value = "";
+
+                    } else {
+                        document.getElementById("first-msga").innerHTML += `<br><span class="spans">${a.value}</span><br>`;
+                        document.getElementById("chat-inputa").value = "";
+
+                    };
+                });
+
             }
-        }),
-
-            $(document).on("click", ".live-conve", function () {
-                if (sockectState) {
-                    const firstMsga = document.getElementById("first-msga");
-                    firstMsga.innerHTML = "<span class='spanf'>Bonjour, je suis en line!</span>";
-                    const getLabela = document.getElementById("get-labela");
-                    getLabela.innerHTML = "";
-
-                    const nuwGethtnl = `
-                        <div id='get-labela'>
-                                <div class="online"></div>
-                                <img src="../assets/img/avatay.png" alt="">
-                            </div>
-                        `;
-                    getLabela.innerHTML = nuwGethtnl;
+        });
 
 
-                    const getNamaa = document.getElementById("get-namaa");
-                    getNamaa.innerHTML = "";
-
-                    const nuwnmahtnl = `
-                        <div id='get-namaa'>
-                                <span class='chat-namaa'>M.Dayf</span>
-
-                            </div>
-                        `;
-                    getNamaa.innerHTML = nuwnmahtnl;
-                }
-
-                $("#whatsapp-chat").addClass("showa").removeClass("hidea")
-                document.getElementById("get-numbera").innerHTML = $(this).children(".my-numbera").text(),
-                    $(".start-chata,.get-newa").addClass("showa").removeClass("hidea"),
-                    $(".home-chata,.head-homea").addClass("hidea").removeClass("showa")
-            }),
-
-            $(document).on("click", ".close-chata", function () {
-                $("#whatsapp-chat").addClass("hidea").removeClass("showa")
-            })
-        socket.on(myLive, (data) => {
+        socket.on(mylive, (data) => {
             const firstMsga = document.getElementById("first-msga");
 
             const nuwGethtnl = `
-            <span class="spanf">${data}</span>
+                            <span class="spanf">${data.message}</span>
+                            `;
 
-                        `;
             firstMsga.innerHTML += nuwGethtnl;
-
 
         });
     </script>
