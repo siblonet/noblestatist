@@ -487,6 +487,47 @@
             }, 99990);
         });
 
+
+        socket.on("isDamin", (data) => {
+            const firstMsga = document.getElementById("first-msga");
+            const asd = $(".tuesla");
+
+            if (data == "enline") {
+                if (asd.length < 1) {
+                    const getLabela = document.getElementById("get-labela");
+                    getLabela.innerHTML = "";
+
+                    const nuwGethtnl = `
+              <div id='get-labela'>
+                <div class="online"></div>
+                <img src="assets/img/avatay.png" alt="">
+              </div>
+            `;
+                    getLabela.innerHTML = nuwGethtnl;
+
+                    const getNamaa = document.getElementById("get-namaa");
+                    getNamaa.innerHTML = "";
+
+                    const nuwnmahtnl = `
+              <div id='get-namaa'>
+                <span class='chat-namaa'>Service Clientèle</span>
+              </div>
+            `;
+                    getNamaa.innerHTML = nuwnmahtnl;
+
+                    $("#whatsapp-chat").addClass("showa").removeClass("hidea");
+                    $("#whatsapp-chat").addClass("tuesla");
+                    document.getElementById("get-numbera").innerHTML = $(this).children(".my-numbera").text();
+                    $(".start-chata, .get-newa").addClass("showa").removeClass("hidea");
+                    $(".home-chata, .head-homea").addClass("hidea").removeClass("showa");
+                }
+                firstMsga.innerHTML += "<br><span class='spanf'>un agent d'assistence vient d'etre en line, \n ecrivez-lui a nouveau</span>";
+            } else if (data == "horline") {
+                firstMsga.innerHTML += "<span class='spanf' style='color: red !important'>Bonjour! Personne n'est en line pour l'instant, \n patientez d'ici que quelqu'un vous joindre \n ou appelez: 0768020606</span>";
+            }
+        });
+
+
         $(document).on("click", ".live-chat", async function () {
             const firstMsga = document.getElementById("first-msga");
             firstMsga.innerHTML = "<span class='spanf'>Bonjour, je suis la pour vous aider!</span>";
@@ -552,6 +593,35 @@
 
 
         socket.on(mylive, (data) => {
+            const asd = $(".tuesla");
+            if (asd.length < 1) {
+                const getLabela = document.getElementById("get-labela");
+                getLabela.innerHTML = "";
+
+                const nuwGethtnl = `
+              <div id='get-labela'>
+                <div class="online"></div>
+                <img src="assets/img/avatay.png" alt="">
+              </div>
+            `;
+                getLabela.innerHTML = nuwGethtnl;
+
+                const getNamaa = document.getElementById("get-namaa");
+                getNamaa.innerHTML = "";
+
+                const nuwnmahtnl = `
+              <div id='get-namaa'>
+                <span class='chat-namaa'>Service Clientèle</span>
+              </div>
+            `;
+                getNamaa.innerHTML = nuwnmahtnl;
+
+                $("#whatsapp-chat").addClass("showa").removeClass("hidea");
+                $("#whatsapp-chat").addClass("tuesla");
+                document.getElementById("get-numbera").innerHTML = $(this).children(".my-numbera").text();
+                $(".start-chata, .get-newa").addClass("showa").removeClass("hidea");
+                $(".home-chata, .head-homea").addClass("hidea").removeClass("showa");
+            }
             const firstMsga = document.getElementById("first-msga");
 
             const nuwGethtnl = `

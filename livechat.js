@@ -5,5 +5,9 @@ function generateUUID() {
     return v.toString(16);
   });
 }
+let myLiv = localStorage.getItem('myLive');
 
-let myLive = generateUUID();
+if (!myLiv) {
+  localStorage.setItem('myLive', generateUUID());
+}
+

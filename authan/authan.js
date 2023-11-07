@@ -83,12 +83,16 @@ async function Inscription() {
 
             } else if (response && response.token) {
                 sessionStorage.setItem('tibule', response.token);
+                localStorage.removeItem('myLive');
+
                 const splo = response.token.split("°");
                 const admin = splo[5];
-                window.location.href = admin == "GIFV" ? "admin" : "client"
                 load.classList.remove("load28")
                 load.classList.add("tohi")
                 tohia.classList.remove("tohi");
+
+                window.location.href = admin == "GIFV" ? "admin" : "client"
+
 
             } else if (response && response.inconnu) {
                 load.classList.remove("load28")
@@ -147,17 +151,17 @@ async function loGin() {
             }, 1500);
 
         } else if (response && response.token) {
-
             sessionStorage.setItem('tibule', response.token);
+            localStorage.removeItem('myLive');
+
             const splo = response.token.split("°");
             const admin = splo[5];
-            window.location.href = admin == "GIFV" ? "admin" : "client"
             load.classList.remove("load28")
             load.classList.add("tohi")
             tohia.classList.remove("tohi");
+            window.location.href = admin == "GIFV" ? "admin" : "client"
 
         } else if (response && response.inconnu) {
-
             load.classList.remove("load28")
             load.classList.add("tohi")
             tohia.classList.remove("tohi");
@@ -207,6 +211,8 @@ async function loginCommage() {
 
         } else if (response && response.token) {
             sessionStorage.setItem('tibule', response.token);
+            localStorage.removeItem('myLive');
+
             const splo = response.token.split("°");
             const name = splo[1];
             const lastname = splo[2];
