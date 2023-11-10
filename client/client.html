@@ -450,6 +450,7 @@
 
     <script>
         const toKen = sessionStorage.getItem('tibule');
+        let myMes = false;
 
         const splo = toKen.split("°");
         const nam = splo[1];
@@ -460,31 +461,14 @@
         const mylive = thisiswhat(`${phom}`);
 
         const socket = io(tunalS);
-        socket.connect();
+        const soid = socket.connect();
 
-        socket.on('disconnect');
-
-        socket.on('reconnect_attempt');
-
-        socket.on('reconnect');
-
-        const socketWithOptions = io(tunalS, {
-            reconnection: true, // Activer la reconnexion automatique
-            reconnectionAttempts: 3, // Nombre maximal de tentatives de reconnexion
-            reconnectionDelay: 1000, // Délai initial avant la première tentative de reconnexion (en millisecondes)
-            reconnectionDelayMax: 5000, // Délai maximal entre les tentatives de reconnexion (en millisecondes)
-            randomizationFactor: 0.5, // Facteur de randomisation pour les délais de reconnexion
+        socket.on('connect', () => {
+            console.log(soid.id);
         });
 
-        socketWithOptions.connect();
-
-        socket.on('reconnect_error', (error) => {
-
-            console.error('Erreur de reconnexion:', error);
-            setTimeout(() => {
-                socket.connect();
-
-            }, 99990);
+        socket.on('disconnecto', (ordre) => {
+            socket.emit('disconnector', "client");
         });
 
 
@@ -521,16 +505,16 @@
                     $(".start-chata, .get-newa").addClass("showa").removeClass("hidea");
                     $(".home-chata, .head-homea").addClass("hidea").removeClass("showa");
                 }
-                firstMsga.innerHTML += "<br><span class='spanf'>un agent d'assistence vient d'etre en line, \n ecrivez-lui a nouveau</span>";
+                firstMsga.innerHTML += "<br><span class='spanf'>Un agent d'assistence vient d'etre en line, \n Ecrivez-lui a nouveau</span>";
             } else if (data == "horline") {
-                firstMsga.innerHTML += "<span class='spanf' style='color: red !important'>Bonjour! Personne n'est en line pour l'instant, \n patientez d'ici que quelqu'un vous joindre \n ou appelez: 0768020606</span>";
+                firstMsga.innerHTML += "<span class='spanf' style='color: red !important'>Bonjour! Personne n'est en line pour l'instant, \n Patientez d'ici que quelqu'un vous joindre \n Ou appelez: 0768020606</span>";
             }
         });
 
 
         $(document).on("click", ".live-chat", async function () {
             const firstMsga = document.getElementById("first-msga");
-            firstMsga.innerHTML = "<span class='spanf'>Bonjour, je suis la pour vous aider!</span>";
+            firstMsga.innerHTML += "<span class='spanf'>Bonjour, je suis la pour vous aider!</span>";
 
             const getLabela = document.getElementById("get-labela");
             getLabela.innerHTML = "";
@@ -538,7 +522,7 @@
             const nuwGethtnl = `
               <div id='get-labela'>
                 <div class="online"></div>
-                <img src="../assets/img/avatay.png" alt="">
+                <img src="assets/img/avatay.png" alt="">
               </div>
             `;
             getLabela.innerHTML = nuwGethtnl;
@@ -554,6 +538,7 @@
             getNamaa.innerHTML = nuwnmahtnl;
 
             $("#whatsapp-chat").addClass("showa").removeClass("hidea");
+            $("#whatsapp-chat").addClass("tuesla");
             document.getElementById("get-numbera").innerHTML = $(this).children(".my-numbera").text();
             $(".start-chata, .get-newa").addClass("showa").removeClass("hidea");
             $(".home-chata, .head-homea").addClass("hidea").removeClass("showa");
@@ -563,6 +548,7 @@
 
         $(document).on("click", ".close-chata", function () {
             $("#whatsapp-chat").addClass("hidea").removeClass("showa");
+            $("#whatsapp-chat").removeClass("tuesla")
             socket.close();
 
         });
@@ -570,25 +556,41 @@
 
         $(document).on("click", "#send-ita", function () {
 
-
             var a = document.getElementById("chat-inputa");
             if ("" != a.value) {
                 const messageData = { author: "client", message: a.value, to: mylive, name: sername };
-                socket.emit('send_hoim', messageData, (isAmi) => {
+                socket.emit('send_toadmin', messageData, (isAmi) => {
                     if (!isAmi) {
                         const nolineMsga = document.getElementById("first-msga");
-                        nolineMsga.innerHTML = "<span class='spanf' style='color: red !important'>Bonjour! Personne n'est en line pour l'instant, patientez d'ici que quelqu'un vous joindre ou appelez: 0768020606</span>";
-                        document.getElementById("first-msga").innerHTML += `<br><span class="spans">${a.value}</span><br>`;
-                        document.getElementById("chat-inputa").value = "";
+                        nolineMsga.innerHTML = "<span class='spanf' style='color: red !important'>Bonjour! Personne n'est en line pour l'instant, \n Patientez d'ici que quelqu'un vous joindre \n Ou appelez: 0768020606</span>";
 
+                        if (myMes) {
+
+                            document.getElementById("first-msga").innerHTML += `<br><span class="spans">${a.value}</span><br>`;
+                            document.getElementById("chat-inputa").value = "";
+                        } else {
+
+                            document.getElementById("first-msga").innerHTML = `<br><span class="spans">${a.value}</span><br>`;
+                            document.getElementById("chat-inputa").value = "";
+                        }
+                        myMes = true;
                     } else {
-                        document.getElementById("first-msga").innerHTML += `<br><span class="spans">${a.value}</span><br>`;
-                        document.getElementById("chat-inputa").value = "";
+
+                        if (myMes) {
+                            document.getElementById("first-msga").innerHTML += `<br><span class="spans">${a.value}</span><br>`;
+                            document.getElementById("chat-inputa").value = "";
+                        } else {
+                            document.getElementById("first-msga").innerHTML = `<br><span class="spans">${a.value}</span><br>`;
+                            document.getElementById("chat-inputa").value = "";
+                        }
+                        myMes = true;
 
                     };
                 });
+                        $("#first-msga").animate({ scrollTop: $("#first-msga")[0].scrollHeight }, 500);
 
             }
+
         });
 
 
@@ -628,8 +630,12 @@
                             <span class="spanf">${data.message}</span>
                             `;
 
-            firstMsga.innerHTML += nuwGethtnl;
+            if (myMes) {
+                firstMsga.innerHTML += nuwGethtnl;
 
+            } else {
+                firstMsga.innerHTML = nuwGethtnl;
+            }
         });
     </script>
 </body>

@@ -933,70 +933,19 @@
     <script>
 
         const socket = io(tunalS);
-        socket.connect();
-
-        socket.on('connect', () => {
-            sessionStorage.removeItem('socid');
-
-        });
-
-
-        socket.on('disconnect', () => {
-            sessionStorage.removeItem('socid');
-        });
-
-
-        socket.on('reconnect_attempt', () => {
-            sessionStorage.removeItem('socid');
-
-            console.log('Tentative de reconnexion...');
-        });
-
-        socket.on('reconnect', (attemptNumber) => {
-            sessionStorage.removeItem('socid');
-
-            console.log(`Rétabli la connexion après ${attemptNumber} tentatives.`);
-        });
-
-
-
-
-        const socketWithOptions = io(tunalS, {
-            reconnection: true, // Activer la reconnexion automatique
-            reconnectionAttempts: 3, // Nombre maximal de tentatives de reconnexion
-            reconnectionDelay: 1000, // Délai initial avant la première tentative de reconnexion (en millisecondes)
-            reconnectionDelayMax: 5000, // Délai maximal entre les tentatives de reconnexion (en millisecondes)
-            randomizationFactor: 0.5, // Facteur de randomisation pour les délais de reconnexion
-        });
-
-        socketWithOptions.connect();
-
-        socket.on('reconnect_error', (error) => {
-            sessionStorage.removeItem('socid');
-
-            console.error('Erreur de reconnexion:', error);
-            setTimeout(() => {
-                socket.connect();
-
-            }, 99990);
-        });
-
+        const soid = socket.connect();
         let ClientId = [];
 
+        socket.on('connect', () => {
+            const authen = { author: "admina", id: soid.id };
 
-        socket.on("nouVeau", (id) => {
-            const socid = sessionStorage.getItem('socid');
-            if (socid) {
+            socket.emit('dasboard', authen, (dee) => {
+                ClientId = dee;
+                document.getElementById("chatss").innerText = `${dee.length}`;
 
-            } else {
-                const authen = { author: "admina", id: id };
-                socket.emit('dasboard', authen, (dee) => {
-                    ClientId = dee;
-                    document.getElementById("chatss").innerText = `${dee.length}`;
-
-                    const clientId = document.getElementById("clientId");
-                    dee.forEach((el) => {
-                        clientId.innerHTML += `<a class='informasia aa' href='javascript:void' title='Chat Whatsapp'>
+                const clientId = document.getElementById("clientId");
+                dee.forEach((el) => {
+                    clientId.innerHTML += `<a class='informasia aa' href='javascript:void' title='Chat Whatsapp'>
                             <div class='info-avatara'>
                                 <img src="../assets/img/avatay.png" alt="">
                             </div>
@@ -1007,18 +956,19 @@
                             <span class='span my-numbera'>${el.to}</span>
                         </a>
                         `
-                    });
                 });
-                const socid = sessionStorage.setItem('socid', id);
-            }
+            });
 
         });
 
+        socket.on('disconnecto', (ods) => {
+            socket.emit('disconnector', "admin")
+        });
 
         socket.on("admina", (data) => {
             const asd = $(".tuesla");
 
-            const client = document.getElementById("get-labela").innerText
+            const client = document.getElementById("get-labela").innerText;
             const chatss = document.getElementById("chatss").innerText;
             const clienexi = ClientId.find(item => item.to == data.to);
             if (clienexi) {
@@ -1036,7 +986,7 @@
                             </div>
                             <span class='span my-numbera'>${data.to}</span>
                         </a>
-                        `
+                        `;
             };
 
             if (client == data.to) {
@@ -1046,6 +996,8 @@
               `;
 
                 firstMsga.innerHTML += nuwGethtnl;
+                $("#first-msga").animate({ scrollTop: $("#first-msga")[0].scrollHeight }, 500);
+
             } else if (asd.length < 1) {
                 $("#whatsapp-chat").addClass("showa").removeClass("hidea"),
                     $("#whatsapp-chat").addClass("tuesla");
@@ -1067,11 +1019,12 @@
                         `;
 
                     firstMsga.innerHTML = nuwGethtnl;
+                    $("#first-msga").animate({ scrollTop: $("#first-msga")[0].scrollHeight }, 500);
 
 
                 }, 1300);
 
-            }else{
+            } else {
                 document.getElementById("chatss").innerText = `${parseInt(chatss) + 1}`;
 
             }
@@ -1083,10 +1036,12 @@
             if ("" != a.value) {
                 const messageData = { author: "admina", message: a.value, to: client };
 
-                socket.emit('send_hoim', messageData);
+                socket.emit('send_toclient', messageData);
 
                 document.getElementById("first-msga").innerHTML += `<br><span class="spans">${a.value}</span><br>`;
                 document.getElementById("chat-inputa").value = "";
+                $("#first-msga").animate({ scrollTop: $("#first-msga")[0].scrollHeight }, 500);
+
             }
         });
 
@@ -1107,6 +1062,8 @@
               `;
 
             firstMsga.innerHTML = nuwGethtnl;
+            $("#first-msga").animate({ scrollTop: $("#first-msga")[0].scrollHeight }, 500);
+
         }),
 
             $(document).on("click", ".close-chata", function () {
