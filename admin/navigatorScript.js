@@ -85,7 +85,7 @@ const Reloada = () => {
 
 async function FetchArticle() {
     try {
-        const items = await sendRequestnot('GET', 'boutique');
+        const items = await sendRequestnot('GET', 'boutique/noble');
         if (items) {
             await openArticleDatabase();
             clearArt(items);
@@ -855,7 +855,7 @@ function addOrders(data) {
 }
 
 const NavBaractivity = async () => {
-    const items = await sendRequestforOrderget('GET', 'orders');
+    const items = await sendRequestforOrderget('GET', 'orders/noble');
     await openOrdersDatabase();
     await clearOrder();
     await addOrders(items);

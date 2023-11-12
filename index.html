@@ -1797,6 +1797,7 @@
     <script>
         let myLive = localStorage.getItem('myLive');
         let myMes = false;
+        let assit = "";
 
         const socket = io(tunalS);
         const soid = socket.connect();
@@ -1905,7 +1906,22 @@
 
             var a = document.getElementById("chat-inputa");
             if ("" != a.value) {
-                const messageData = { author: "client", message: a.value, to: myLive, name: name ? name : null };
+                var dt = new Date().getTime();
+                var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+                    var r = (dt + Math.random() * 16) % 16 | 0; dt = Math.floor(dt / 16);
+                    return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16)
+                });
+
+                const messageData = {
+                    to: myLive,
+                    owner: "noble",
+                    admin: assit,
+                    name: name ? name : null,
+                    body: [{
+                        id: uuid.substring(0, 13),
+                        chat: a.value,
+                    }]
+                };
                 socket.emit('send_toadmin', messageData, (isAmi) => {
                     if (!isAmi) {
                         const nolineMsga = document.getElementById("first-msga");
@@ -1941,7 +1957,7 @@
                     });*/
 
 
-                        $("#first-msga").animate({ scrollTop: $("#first-msga")[0].scrollHeight }, 500);
+                    $("#first-msga").animate({ scrollTop: $("#first-msga")[0].scrollHeight }, 500);
 
                 });
 
@@ -1950,6 +1966,7 @@
 
 
         socket.on(myLive, (data) => {
+            assit = data.me
             const asd = $(".tuesla");
             if (asd.length < 1) {
                 const getLabela = document.getElementById("get-labela");

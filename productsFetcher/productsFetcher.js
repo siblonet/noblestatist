@@ -54,7 +54,7 @@ const Reloada = () => {
 
 async function DataLoad() {
     try {
-        const items = await sendRequestnot('GET', 'boutique');
+        const items = await sendRequestnot('GET', 'boutique/noble');
         if (!items) {
             const productContainer = document.getElementById('product-container');
             productContainer.innerHTML = '';

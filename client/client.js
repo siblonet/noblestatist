@@ -339,7 +339,7 @@ async function deleteArticleById() {
     await sendRequestforOrder('DELETE', `boutique/${_ide}`);
     await openArticleDatabase();
     await clearArticlea();
-    const items = await sendRequestforOrderget('GET', 'boutique');
+    const items = await sendRequestforOrderget('GET', 'boutique/noble');
     await addArticlesa(items);
     window.location.reload();
 }

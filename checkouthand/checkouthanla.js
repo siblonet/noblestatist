@@ -57,6 +57,7 @@ async function sendCommen() {
                 lieu: adresseValue,
                 phone: telephoneValue,
                 note: notesValue,
+                owner: "noble",
                 client: mynam,
             };
 
@@ -108,6 +109,7 @@ async function sendCommen() {
                         lieu: adresseValue,
                         phone: telephoneValue,
                         note: notesValue,
+                        owner: "noble",
                         client: response.token,
                     };
 

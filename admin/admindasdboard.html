@@ -935,6 +935,12 @@
         const socket = io(tunalS);
         const soid = socket.connect();
         let ClientId = [];
+        const toKen = sessionStorage.getItem('tibule');
+
+        const splo = toKen.split("°");
+        const phom = splo[3];
+
+        const me = thisiswhat(`${phom}`);
 
         socket.on('connect', () => {
             const authen = { author: "admina", id: soid.id };
@@ -972,8 +978,14 @@
             const chatss = document.getElementById("chatss").innerText;
             const clienexi = ClientId.find(item => item.to == data.to);
             if (clienexi) {
-                clienexi.message = `${clienexi.message}\n${data.message}`;
-            } else {
+
+                clienexi.body.push({
+                    id: data.body[0].id,
+                    chat: data.body[0].chat,
+                });
+
+
+            } else if (data.owner == "noble" && data.admin == "") {
                 ClientId.push(data);
                 const clientId = document.getElementById("clientId");
                 clientId.innerHTML += `<a class='informasia aa' href='javascript:void' title='Chat Whatsapp'>
@@ -992,49 +1004,82 @@
             if (client == data.to) {
                 const firstMsga = document.getElementById("first-msga");
                 const nuwGethtnl = `
-                <br><span class="spanf">${data.message}</span>
+                <br><span class="spanf">${data.body[0].chat}</span>
               `;
 
                 firstMsga.innerHTML += nuwGethtnl;
                 $("#first-msga").animate({ scrollTop: $("#first-msga")[0].scrollHeight }, 500);
 
             } else if (asd.length < 1) {
-                $("#whatsapp-chat").addClass("showa").removeClass("hidea"),
-                    $("#whatsapp-chat").addClass("tuesla");
-                setTimeout(() => {
+                if (data.owner == "noble" && data.admin == me) {
+                    $("#whatsapp-chat").addClass("showa").removeClass("hidea"),
+                        $("#whatsapp-chat").addClass("tuesla");
+                    setTimeout(() => {
 
 
-                    document.getElementById("get-numbera").innerHTML = `${data.to}`,
-                        $(".start-chata, .get-newa").addClass("showa").removeClass("hidea"),
-                        $(".home-chata, .head-homea").addClass("hidea").removeClass("showa"),
-                        document.getElementById("get-namaa").innerHTML = data.name ? data.name : 'non connecter',
-                        document.getElementById("get-labela").innerHTML = data.to
+                        document.getElementById("get-numbera").innerHTML = `${data.to}`,
+                            $(".start-chata, .get-newa").addClass("showa").removeClass("hidea"),
+                            $(".home-chata, .head-homea").addClass("hidea").removeClass("showa"),
+                            document.getElementById("get-namaa").innerHTML = data.name ? data.name : 'non connecter',
+                            document.getElementById("get-labela").innerHTML = data.to
 
-                    document.getElementById("chatss").innerText = "0";
+                        document.getElementById("chatss").innerText = "0";
 
-                    const firstMsga = document.getElementById("first-msga");
+                        const firstMsga = document.getElementById("first-msga");
 
-                    const nuwGethtnl = `
-                        <span class="spanf">${data.message}</span>
+                        const nuwGethtnl = `
+                        <span class="spanf">${data.body[0].chat}</span>
                         `;
 
-                    firstMsga.innerHTML = nuwGethtnl;
-                    $("#first-msga").animate({ scrollTop: $("#first-msga")[0].scrollHeight }, 500);
+                        firstMsga.innerHTML = nuwGethtnl;
+                        $("#first-msga").animate({ scrollTop: $("#first-msga")[0].scrollHeight }, 500);
 
 
-                }, 1300);
+                    }, 1300);
+                } else if (data.owner == "noble" && data.admin == "") {
+                    $("#whatsapp-chat").addClass("showa").removeClass("hidea"),
+                        $("#whatsapp-chat").addClass("tuesla");
+                    setTimeout(() => {
 
-            } else {
+
+                        document.getElementById("get-numbera").innerHTML = `${data.to}`,
+                            $(".start-chata, .get-newa").addClass("showa").removeClass("hidea"),
+                            $(".home-chata, .head-homea").addClass("hidea").removeClass("showa"),
+                            document.getElementById("get-namaa").innerHTML = data.name ? data.name : 'non connecter',
+                            document.getElementById("get-labela").innerHTML = data.to
+
+                        document.getElementById("chatss").innerText = "0";
+
+                        const firstMsga = document.getElementById("first-msga");
+
+                        const nuwGethtnl = `
+                        <span class="spanf">${data.body[0].chat}</span>
+                        `;
+
+                        firstMsga.innerHTML = nuwGethtnl;
+                        $("#first-msga").animate({ scrollTop: $("#first-msga")[0].scrollHeight }, 500);
+
+
+                    }, 1300);
+                }
+
+
+
+            } else if (data.owner == "noble" && data.admin == me) {
+                document.getElementById("chatss").innerText = `${parseInt(chatss) + 1}`;
+
+            } else if (data.owner == "noble" && data.admin == "") {
                 document.getElementById("chatss").innerText = `${parseInt(chatss) + 1}`;
 
             }
+
         });
 
         $(document).on("click", "#send-ita", function () {
             const client = document.getElementById("get-labela").innerText
             var a = document.getElementById("chat-inputa");
             if ("" != a.value) {
-                const messageData = { author: "admina", message: a.value, to: client };
+                const messageData = { author: "admina", message: a.value, to: client, me: me };
 
                 socket.emit('send_toclient', messageData);
 

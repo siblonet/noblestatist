@@ -451,6 +451,7 @@
     <script>
         const toKen = sessionStorage.getItem('tibule');
         let myMes = false;
+        let assit = "";
 
         const splo = toKen.split("°");
         const nam = splo[1];
@@ -558,7 +559,24 @@
 
             var a = document.getElementById("chat-inputa");
             if ("" != a.value) {
-                const messageData = { author: "client", message: a.value, to: mylive, name: sername };
+
+                var dt = new Date().getTime();
+                var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+                    var r = (dt + Math.random() * 16) % 16 | 0; dt = Math.floor(dt / 16);
+                    return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16)
+                });
+
+                const messageData = {
+                    to: myLive,
+                    owner: "noble",
+                    admin: assit,
+                    name: name ? name : null,
+                    body: [{
+                        id: uuid.substring(0, 13),
+                        chat: a.value,
+                    }]
+                };
+
                 socket.emit('send_toadmin', messageData, (isAmi) => {
                     if (!isAmi) {
                         const nolineMsga = document.getElementById("first-msga");
@@ -595,6 +613,7 @@
 
 
         socket.on(mylive, (data) => {
+            assit = data.me
             const asd = $(".tuesla");
             if (asd.length < 1) {
                 const getLabela = document.getElementById("get-labela");
