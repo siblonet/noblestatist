@@ -86,6 +86,7 @@ async function sendCommen() {
                     motdepass: motValue,
                     email: emailValue,
                     phone: telephoneValue,
+                    owner: "noble"
                 };
 
                 const response = await CreatClientd(person, 'POST', 'people');  // Await the result
