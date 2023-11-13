@@ -994,7 +994,7 @@ async function getArticles() {
     ClientData.length = 0;
     AdminData.length = 0;
     let available = 0;
-    const User = await sendRequestforOrderget('GET', 'people/persons');
+    const User = await sendRequestforOrderget('GET', 'people/persons/noble');
     User.forEach(user => {
         if (user.admin == "true") {
             AdminData.push(user);
