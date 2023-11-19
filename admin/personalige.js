@@ -1,17 +1,17 @@
 const pErsonnalige = () => {
     (async function ($) {
         $(".loadavideo").css("display", "block");
-        $("#slidea").css("background-image", "url(assets/loadingc.gif)");
-        $("#slideb").css("background-image", "url(assets/loadingc.gif)");
-        $("#slidec").css("background-image", "url(assets/loadingc.gif)");
+        $("#slidea").css("background-image", "url(../assets/loadingc.gif)");
+        $("#slideb").css("background-image", "url(../assets/loadingc.gif)");
+        $("#slidec").css("background-image", "url(../assets/loadingc.gif)");
 
-        $("#phonea").css("background-image", "url(assets/loadingc.gif)");
-        $("#phoneb").css("background-image", "url(assets/loadingc.gif)");
-        $("#phonec").css("background-image", "url(assets/loadingc.gif)");
+        $("#phonea").css("background-image", "url(../assets/loadingc.gif)");
+        $("#phoneb").css("background-image", "url(../assets/loadingc.gif)");
+        $("#phonec").css("background-image", "url(../assets/loadingc.gif)");
 
-        $("#backglise").css("background-image", 'url(assets/loadingc.gif)');
-        $("#logoextern").css("background-image", "url(assets/loadingc.gif)");
-        $("#loginimg").css("background-image", "url(assets/loadingc.gif)");
+        $("#backglise").css("background-image", 'url(../assets/loadingc.gif)');
+        $("#logoextern").css("background-image", "url(../assets/loadingc.gif)");
+        $("#loginimg").css("background-image", "url(../assets/loadingc.gif)");
 
         if (annoncePers && annoncePers.length > 0) {
             $("#slidea").css("background-image", `url(${annoncePers.find(item => item.which === "slidea") ? annoncePers.find(item => item.which === "slidea").image : "../assets/shaa.png"})`);
