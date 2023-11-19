@@ -1839,7 +1839,27 @@
                 }
                 firstMsga.innerHTML += "<br><span class='spanf'>Le service d'assistance vient d'être en ligne. \n Écrivez-lui à nouveau.</span>";
             } else if (data == "horline") {
-                firstMsga.innerHTML += "<span class='spanf' style='color: red !important'>Bonjour ! Personne n'est en ligne pour l'instant. \n Patientez jusqu'à ce que quelqu'un puisse vous joindre. \n Vous pouvez également appeler au 0768020606.</span>";
+                const getLabela = document.getElementById("get-labela");
+                getLabela.innerHTML = "";
+
+                const nuwGethtnl = `
+              <div id='get-labela'>
+                <div class="offline"></div>
+                <img src="assets/img/avatay.png" alt="">
+              </div>
+            `;
+                getLabela.innerHTML = nuwGethtnl;
+
+                const getNamaa = document.getElementById("get-namaa");
+                getNamaa.innerHTML = "";
+
+                const nuwnmahtnl = `
+              <div id='get-namaa'>
+                <span class='chat-namaa'>Appelez si nécessaire: 0768020606<</span>
+              </div>
+            `;
+                getNamaa.innerHTML = nuwnmahtnl;
+
             }
         });
 
