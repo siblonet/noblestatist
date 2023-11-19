@@ -123,7 +123,7 @@ const SladeLoading = (which) => {
         $(".loadavideo").css("display", "block");
 
     } else {
-        $(`#${which}`).css("background-image", "url(../assets/loadingc.gif)");
+        $(`#${which}`).css("background-image", "url(admin/assets/loadingc.gif)");
 
     }
 
