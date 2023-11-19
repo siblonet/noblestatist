@@ -168,10 +168,8 @@
                 <div class="xton-responsive-menu">
                     <div class="logo">
                         <a href="/">
-                            <img src="" class="main-logo nobleim" alt="logo"
-                                style="height:60px !important;">
-                            <img src="" class="white-logo nobleim" alt="logo"
-                                style="height:60px !important;">
+                            <img src="" class="main-logo nobleim" alt="logo" style="height:60px !important;">
+                            <img src="" class="white-logo nobleim" alt="logo" style="height:60px !important;">
                         </a>
                     </div>
                 </div>
@@ -196,10 +194,8 @@
             <div class="container">
                 <nav class="navbar navbar-expand-md navbar-light">
                     <a class="navbar-brand" href="/">
-                        <img src="" class="main-logo nobleim" alt="logo"
-                            style="max-height:70px !important;">
-                        <img src="" class="white-logo nobleim" alt="logo"
-                            style="max-height:70px !important;">
+                        <img src="" class="main-logo nobleim" alt="logo" style="max-height:70px !important;">
+                        <img src="" class="white-logo nobleim" alt="logo" style="max-height:70px !important;">
                     </a>
                     <div class="collapse navbar-collapse mean-menu">
                         <ul class="navbar-nav">
@@ -462,10 +458,8 @@
             <div class="container">
                 <nav class="navbar navbar-expand-md navbar-light">
                     <a class="navbar-brand" href="index.html">
-                        <img src="" class="main-logo nobleim" alt="logo"
-                            style="max-height:70px !important;">
-                        <img src="" class="white-logo nobleim" alt="logo"
-                            style="max-height:70px !important;">
+                        <img src="" class="main-logo nobleim" alt="logo" style="max-height:70px !important;">
+                        <img src="" class="white-logo nobleim" alt="logo" style="max-height:70px !important;">
                     </a>
                     <div class="collapse navbar-collapse mean-menu">
                         <ul class="navbar-nav">
@@ -1846,7 +1840,30 @@
                 }
                 firstMsga.innerHTML += "<br><span class='spanf'>Le service d'assistance vient d'être en ligne. \n Écrivez-lui à nouveau.</span>";
             } else if (data == "horline") {
-                firstMsga.innerHTML += "<span class='spanf' style='color: red !important'>Bonjour ! Personne n'est en ligne pour l'instant. \n Patientez jusqu'à ce que quelqu'un puisse vous joindre. \n Vous pouvez également appeler au 0768020606.</span>";
+
+
+                const getLabela = document.getElementById("get-labela");
+                getLabela.innerHTML = "";
+
+                const nuwGethtnl = `
+                        <div id='get-labela'>
+                            <div class="offline"></div>
+                            <img src="assets/img/avatay.png" alt="">
+                        </div>
+                        `;
+                getLabela.innerHTML = nuwGethtnl;
+
+                const getNamaa = document.getElementById("get-namaa");
+                getNamaa.innerHTML = "";
+
+                const nuwnmahtnl = `
+                                <div id='get-namaa'>
+                                    <span class='chat-namaa'>Appelez si nécessaire: 0768020606</span>
+                                </div>
+                                `;
+                getNamaa.innerHTML = nuwnmahtnl;
+
+
             }
         });
 
@@ -1924,8 +1941,28 @@
                 };
                 socket.emit('send_toadmin', messageData, (isAmi) => {
                     if (!isAmi) {
-                        const nolineMsga = document.getElementById("first-msga");
-                        nolineMsga.innerHTML = "<span class='spanf' style='color: red !important'>Bonjour! Personne n'est en line pour l'instant, \n Patientez d'ici que quelqu'un vous joindre \n Ou appelez: 0768020606</span>";
+
+                        const getLabela = document.getElementById("get-labela");
+                        getLabela.innerHTML = "";
+
+                        const nuwGethtnl = `
+                            <div id='get-labela'>
+                                <div class="offline"></div>
+                                <img src="assets/img/avatay.png" alt="">
+                            </div>
+                            `;
+                        getLabela.innerHTML = nuwGethtnl;
+
+                        const getNamaa = document.getElementById("get-namaa");
+                        getNamaa.innerHTML = "";
+
+                        const nuwnmahtnl = `
+                            <div id='get-namaa'>
+                                <span class='chat-namaa'>Appelez si nécessaire: 0768020606</span>
+                            </div>
+                            `;
+                        getNamaa.innerHTML = nuwnmahtnl;
+
 
                         if (myMes) {
 
@@ -1938,6 +1975,27 @@
                         }
                         myMes = true;
                     } else {
+
+                        const getLabela = document.getElementById("get-labela");
+                        getLabela.innerHTML = "";
+
+                        const nuwGethtnl = `
+              <div id='get-labela'>
+                <div class="online"></div>
+                <img src="assets/img/avatay.png" alt="">
+              </div>
+            `;
+                        getLabela.innerHTML = nuwGethtnl;
+
+                        const getNamaa = document.getElementById("get-namaa");
+                        getNamaa.innerHTML = "";
+
+                        const nuwnmahtnl = `
+              <div id='get-namaa'>
+                <span class='chat-namaa'>Service Clientèle</span>
+              </div>
+            `;
+                        getNamaa.innerHTML = nuwnmahtnl;
 
                         if (myMes) {
                             document.getElementById("first-msga").innerHTML += `<br><span class="spans">${a.value}</span><br>`;
@@ -1969,6 +2027,11 @@
             assit = data.me
             const asd = $(".tuesla");
             if (asd.length < 1) {
+                $("#whatsapp-chat").addClass("showa").removeClass("hidea");
+                $("#whatsapp-chat").addClass("tuesla");
+                document.getElementById("get-numbera").innerHTML = $(this).children(".my-numbera").text();
+                $(".start-chata, .get-newa").addClass("showa").removeClass("hidea");
+                $(".home-chata, .head-homea").addClass("hidea").removeClass("showa");
                 const getLabela = document.getElementById("get-labela");
                 getLabela.innerHTML = "";
 
@@ -1989,12 +2052,6 @@
               </div>
             `;
                 getNamaa.innerHTML = nuwnmahtnl;
-
-                $("#whatsapp-chat").addClass("showa").removeClass("hidea");
-                $("#whatsapp-chat").addClass("tuesla");
-                document.getElementById("get-numbera").innerHTML = $(this).children(".my-numbera").text();
-                $(".start-chata, .get-newa").addClass("showa").removeClass("hidea");
-                $(".home-chata, .head-homea").addClass("hidea").removeClass("showa");
             }
             const firstMsga = document.getElementById("first-msga");
 
