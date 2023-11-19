@@ -50,8 +50,8 @@ const getAnnonce = async (method, endpoint, data = null) => {
     } else {
         $(".nobleim").attr("src", "assets/img/noble.png")
         $("#chanVideo").attr("src", "assets/background.webm");
-        $("#baVdeo")[0].load();
-        $("#baVdeo")[0].play();
+        $("#background-video")[0].load();
+        $("#background-video")[0].play();
 
         $(".banner-bg1").css("background-image", "url(assets/shaa.png)");
         $(".banner-bg2").css("background-image", "url(assets/img/main-banner2.png)");
