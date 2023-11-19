@@ -168,10 +168,8 @@
                 <div class="xton-responsive-menu">
                     <div class="logo">
                         <a href="/">
-                            <img src="" class="main-logo nobleim" alt="logo"
-                                style="height:60px !important;">
-                            <img src="" class="white-logo nobleim" alt="logo"
-                                style="height:60px !important;">
+                            <img src="" class="main-logo nobleim" alt="logo" style="height:60px !important;">
+                            <img src="" class="white-logo nobleim" alt="logo" style="height:60px !important;">
                         </a>
                     </div>
                 </div>
@@ -196,10 +194,8 @@
             <div class="container">
                 <nav class="navbar navbar-expand-md navbar-light">
                     <a class="navbar-brand" href="/">
-                        <img src="" class="main-logo nobleim" alt="logo"
-                            style="max-height:70px !important;">
-                        <img src="" class="white-logo nobleim" alt="logo"
-                            style="max-height:70px !important;">
+                        <img src="" class="main-logo nobleim" alt="logo" style="max-height:70px !important;">
+                        <img src="" class="white-logo nobleim" alt="logo" style="max-height:70px !important;">
                     </a>
                     <div class="collapse navbar-collapse mean-menu">
                         <ul class="navbar-nav">
@@ -462,10 +458,8 @@
             <div class="container">
                 <nav class="navbar navbar-expand-md navbar-light">
                     <a class="navbar-brand" href="index.html">
-                        <img src="" class="main-logo nobleim" alt="logo"
-                            style="max-height:70px !important;">
-                        <img src="" class="white-logo nobleim" alt="logo"
-                            style="max-height:70px !important;">
+                        <img src="" class="main-logo nobleim" alt="logo" style="max-height:70px !important;">
+                        <img src="" class="white-logo nobleim" alt="logo" style="max-height:70px !important;">
                     </a>
                     <div class="collapse navbar-collapse mean-menu">
                         <ul class="navbar-nav">
@@ -1795,7 +1789,6 @@
     <script src="./pannier/callpanindex.js"></script>
     <script>
         let myLive = localStorage.getItem('myLive');
-        let myMes = false;
         let assit = "";
 
         const socket = io(tunalS);
@@ -1924,29 +1917,56 @@
                 };
                 socket.emit('send_toadmin', messageData, (isAmi) => {
                     if (!isAmi) {
-                        const nolineMsga = document.getElementById("first-msga");
-                        nolineMsga.innerHTML = "<span class='spanf' style='color: red !important'>Bonjour! Personne n'est en line pour l'instant, \n Patientez d'ici que quelqu'un vous joindre \n Ou appelez: 0768020606</span>";
 
-                        if (myMes) {
+                        const getLabela = document.getElementById("get-labela");
+                        getLabela.innerHTML = "";
 
-                            document.getElementById("first-msga").innerHTML += `<br><span class="spans">${a.value}</span><br>`;
-                            document.getElementById("chat-inputa").value = "";
-                        } else {
+                        const nuwGethtnl = `
+              <div id='get-labela'>
+                <div class="offline"></div>
+                <img src="assets/img/avatay.png" alt="">
+              </div>
+            `;
+                        getLabela.innerHTML = nuwGethtnl;
 
-                            document.getElementById("first-msga").innerHTML = `<br><span class="spans">${a.value}</span><br>`;
-                            document.getElementById("chat-inputa").value = "";
-                        }
-                        myMes = true;
+                        const getNamaa = document.getElementById("get-namaa");
+                        getNamaa.innerHTML = "";
+
+                        const nuwnmahtnl = `
+              <div id='get-namaa'>
+                <span class='chat-namaa'>Appelez si nécessaire: 0768020606<</span>
+              </div>
+            `;
+                        getNamaa.innerHTML = nuwnmahtnl;
+
+
+                        document.getElementById("first-msga").innerHTML += `<br><span class="spans">${a.value}</span><br>`;
+                        document.getElementById("chat-inputa").value = "";
+
                     } else {
+                        const getLabela = document.getElementById("get-labela");
+                        getLabela.innerHTML = "";
 
-                        if (myMes) {
-                            document.getElementById("first-msga").innerHTML += `<br><span class="spans">${a.value}</span><br>`;
-                            document.getElementById("chat-inputa").value = "";
-                        } else {
-                            document.getElementById("first-msga").innerHTML = `<br><span class="spans">${a.value}</span><br>`;
-                            document.getElementById("chat-inputa").value = "";
-                        }
-                        myMes = true;
+                        const nuwGethtnl = `
+              <div id='get-labela'>
+                <div class="online"></div>
+                <img src="assets/img/avatay.png" alt="">
+              </div>
+            `;
+                        getLabela.innerHTML = nuwGethtnl;
+
+                        const getNamaa = document.getElementById("get-namaa");
+                        getNamaa.innerHTML = "";
+
+                        const nuwnmahtnl = `
+              <div id='get-namaa'>
+                <span class='chat-namaa'>Service Clientèle</span>
+              </div>
+            `;
+                        getNamaa.innerHTML = nuwnmahtnl;
+                        document.getElementById("first-msga").innerHTML += `<br><span class="spans">${a.value}</span><br>`;
+                        document.getElementById("chat-inputa").value = "";
+
 
                     };
 
@@ -2001,12 +2021,9 @@
             const nuwGethtnl = `
                             <span class="spanf">${data.message}</span>
                             `;
-            if (myMes) {
-                firstMsga.innerHTML += nuwGethtnl;
+            firstMsga.innerHTML += nuwGethtnl;
 
-            } else {
-                firstMsga.innerHTML = nuwGethtnl;
-            }
+
         });
 
     </script>
