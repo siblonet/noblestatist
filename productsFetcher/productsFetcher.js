@@ -79,9 +79,11 @@ async function DataLoad() {
             const loaderRemove = document.getElementById('loaderRemove');
             loaderRemove.innerHTML = "";
             loaderRemove.style.display = "none";
+            
         } else {
+          
             await openArticleDatabase()
-            clearArticle(items)
+            clearArticle(items);
             //populaProduct(items);
         }
 
@@ -129,9 +131,6 @@ function getallArticles() {
             pannierCotent.push(cursor.value);
             cursor.continue();
         } else {
-
-
-
 
         }
     }

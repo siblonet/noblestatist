@@ -77,7 +77,7 @@
             <div class="linec"></div>
         </div>
         <video autoplay muted loop id="background-video">
-            <source src="assets/background.webm" type="video/mp4">
+            <source id="chanVideo" src="assets/background.webm" type="video/mp4">
         </video>
 
         <svg width="100%" xmlns="http://www.w3.org/2000/svg" class="holehvg">
@@ -168,9 +168,9 @@
                 <div class="xton-responsive-menu">
                     <div class="logo">
                         <a href="/">
-                            <img src="assets/img/noble.png" class="main-logo" alt="logo"
+                            <img src="" class="main-logo nobleim" alt="logo"
                                 style="height:60px !important;">
-                            <img src="assets/img/noble.png" class="white-logo" alt="logo"
+                            <img src="" class="white-logo nobleim" alt="logo"
                                 style="height:60px !important;">
                         </a>
                     </div>
@@ -196,9 +196,9 @@
             <div class="container">
                 <nav class="navbar navbar-expand-md navbar-light">
                     <a class="navbar-brand" href="/">
-                        <img src="assets/img/noble.png" class="main-logo" alt="logo"
+                        <img src="" class="main-logo nobleim" alt="logo"
                             style="max-height:70px !important;">
-                        <img src="assets/img/noble.png" class="white-logo" alt="logo"
+                        <img src="" class="white-logo nobleim" alt="logo"
                             style="max-height:70px !important;">
                     </a>
                     <div class="collapse navbar-collapse mean-menu">
@@ -398,7 +398,7 @@
                             <div class="mobilelogo"
                                 style="display: flex; justify-content: space-between; align-items: center; width: 80%; padding-left: 5%; padding-right: 7%;">
                                 <div style="height: 110px; width: 110px; text-align:center; justify-content:center">
-                                    <img src="assets/img/noble.png" class="main-logo" alt="logo"
+                                    <img src="" class="main-logo nobleim" alt="logo"
                                         style="height:100% !important; width:100% !important;">
                                 </div>
 
@@ -462,9 +462,9 @@
             <div class="container">
                 <nav class="navbar navbar-expand-md navbar-light">
                     <a class="navbar-brand" href="index.html">
-                        <img src="assets/img/noble.png" class="main-logo" alt="logo"
+                        <img src="" class="main-logo nobleim" alt="logo"
                             style="max-height:70px !important;">
-                        <img src="assets/img/noble.png" class="white-logo" alt="logo"
+                        <img src="" class="white-logo nobleim" alt="logo"
                             style="max-height:70px !important;">
                     </a>
                     <div class="collapse navbar-collapse mean-menu">
@@ -1767,15 +1767,15 @@
         <img src="assets/img/help.png" alt="">
     </div>
 
-
+    <script src="assets/js/jquery.min.js"></script>
     <script src="./productsFetcher/database_handl.js"></script>
     <script src="./router.js"></script>
+    <script src="./loadeSlide.js"></script>
     <script src="recentproduct.js"></script>
     <script src="./livechat.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
 
     <script src="./productsFetcher/productsFetcher.js"></script>
-    <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/owl.carousel.min.js"></script>
     <script src="assets/js/magnific-popup.min.js"></script>
@@ -2008,6 +2008,7 @@
                 firstMsga.innerHTML = nuwGethtnl;
             }
         });
+
     </script>
 
 

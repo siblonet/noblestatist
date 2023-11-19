@@ -28,6 +28,54 @@
     <link rel="stylesheet" href="admin/noble.css">
 
     <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+    <style>
+        .backi {
+            height: 200px !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+            background-size: cover !important;
+            justify-content: center !important;
+            align-items: center !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+
+        #slided .loadavideo {
+            position: absolute;
+            width: 100% !important;
+            height: 100% !important;
+            left: 0 !important;
+            right: 0 !important;
+            top: 0 !important;
+            z-index: 2;
+            display: none;
+            align-self: center !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+            background-size: cover !important;
+            background-image: url(assets/loadingc.gif);
+        }
+
+        #slided #baVdeo {
+            position: absolute;
+            width: 100% !important;
+            height: 100% !important;
+            left: 0 !important;
+            right: 0 !important;
+            top: 0 !important;
+            z-index: 0;
+            object-fit: cover;
+            align-self: center !important;
+            display: block !important;
+        }
+
+        .imageFile {
+            opacity: 0.5 !important;
+            cursor: pointer !important;
+            background-color: transparent !important;
+        }
+    </style>
 </head>
 
 <body class="sidebar-menu-collapsed" id="renderFirst">
@@ -52,7 +100,7 @@
 
             <div class="logo-icon text-center">
                 <a href="dasboard.html" title="logo">
-                    <img src="../assets/img/logo.jpeg" alt="logo-icon">
+                    <img id="logointerne" src="" alt="logo-icon">
                 </a>
             </div>
 
@@ -84,6 +132,11 @@
                     <li class="active" id="ActiveAr">
                         <a style="cursor: pointer" onclick="NafigatioTo('articles')"><i class="fa fa-th"> </i>
                             <span>Articles</span>
+                        </a>
+                    </li>
+                    <li class="active" id="ActiveAn">
+                        <a style="cursor: pointer" onclick="NafigatioTo('annonce')"><i class="fa fa-th"> </i>
+                            <span>Annonces & Personnalisation</span>
                         </a>
                     </li>
                 </ul>
@@ -926,7 +979,6 @@
     <script src="../clientdb/currentdb.js"></script>
     <script src="admin/navigatorScript.js"></script>
     <script src="admin/loaderScript.js"></script>
-    <script src="admin/admindasdboard.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
 
 
@@ -1126,6 +1178,9 @@
 
             });
     </script>
+    <script src="admin/changesSlide.js"></script>
+    <script src="admin/personalige.js"></script>
+
 </body>
 
 </html>
