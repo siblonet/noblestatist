@@ -30,6 +30,7 @@ const getAnnonce = async (method, endpoint, data = null) => {
         $(".page-linear").css("background-image", `url(${items.find(item => item.which === "loginimg") ? items.find(item => item.which === "loginimg").image : "assets/img/auth.png"})`);
         $(".bg-image1").css("background-image", `url(${items.find(item => item.which === "backglise") ? items.find(item => item.which === "backglise").image : "assets/img/offer-bg.jpg"})`);
     } else {
+        console.log("ele");
         $(".nobleim").attr("src", "assets/img/noble.png");
         $(".page-linear").css("background-image", "url(assets/img/auth.png)");
         $(".bg-image1").css("background-image", "url(assets/img/offer-bg.jpg)");

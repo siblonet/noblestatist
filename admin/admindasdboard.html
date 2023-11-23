@@ -40,7 +40,47 @@
             padding: 0 !important;
         }
 
+        .backiflex {
+            display: flex !important;
+            border: 1px solid rgba(0, 0, 0, 0.125);
+            border-radius: 0.25rem;
+            overflow: hidden;
+        }
 
+        .backiflex .logoextern {
+            border-radius: 25px;
+            background-color: #000000;
+            height: 90%;
+            width: 70%;
+            overflow: hidden;
+            align-items: center;
+            justify-content: center;
+            -webkit-box-shadow: 3px 5px 10px 0 rgba(0, 0, 0, 0.1);
+            box-shadow: 3px 5px 10px 0 rgba(0, 0, 0, 0.451);
+        }
+
+        .backiflex .space {
+            width: 15px;
+            height: 40px;
+        }
+
+        .backiflex .logoextern img {
+            resize: both;
+            height: 100%;
+            width: 100%;
+        }
+
+        .backiflex .msgspace {
+            height: 100%;
+            width: 59%;
+            overflow: hidden;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .backiflex .msgspace {
+            align-self: center;
+        }
         #slided .loadavideo {
             position: absolute;
             width: 100% !important;
@@ -54,7 +94,7 @@
             background-position: center !important;
             background-repeat: no-repeat !important;
             background-size: cover !important;
-            background-image: url(admin/assets/loadingc.gif);
+            background-image: url(assets/loadingc.gif);
         }
 
         #slided #baVdeo {
@@ -942,7 +982,6 @@
         <div id='get-numbera'></div>
         <a class='close-chata aa' href='javascript:void'>×</a>
     </div>
-
 
     <script src="../router.js"></script>
     <script src="../productsFetcher/database_handl.js"></script>

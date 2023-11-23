@@ -10,8 +10,8 @@ const pErsonnalige = () => {
         $("#phonec").css("background-image", "url(admin/assets/loadingc.gif)");
 
         $("#backglise").css("background-image", 'url(admin/assets/loadingc.gif)');
-        $("#logoextern").css("background-image", "url(admin/assets/loadingc.gif)");
-        $("#loginimg").css("background-image", "url(admin/assets/loadingc.gif)");
+        $("#logoextern").attr("src", "admin/assets/loadingc.gif");
+        $("#loginimg").attr("src", "admin/assets/loadingc.gif");
 
         if (annoncePers && annoncePers.length > 0) {
             $("#slidea").css("background-image", `url(${annoncePers.find(item => item.which === "slidea") ? annoncePers.find(item => item.which === "slidea").image : "../assets/shaa.png"})`);
@@ -36,8 +36,8 @@ const pErsonnalige = () => {
 
 
             $("#backglise").css("background-image", `url(${annoncePers.find(item => item.which === "backglise") ? annoncePers.find(item => item.which === "backglise").image : "../assets/img/offer-bg.jpg"})`);
-            $("#logoextern").css("background-image", `url(${annoncePers.find(item => item.which === "logoextern") ? annoncePers.find(item => item.which === "logoextern").image : "../assets/img/noble.png"})`);
-            $("#logointern").css("background-image", `url(${annoncePers.find(item => item.which === "logointern") ? annoncePers.find(item => item.which === "logointern").image : "../assets/img/logo.jpeg"})`);
+            $("#logoextern").attr("src", `${annoncePers.find(item => item.which === "logoextern") ? annoncePers.find(item => item.which === "logoextern").image : "../assets/img/noble.png"}`);
+            $("#logointern").attr("src", `${annoncePers.find(item => item.which === "logointern") ? annoncePers.find(item => item.which === "logointern").image : "../assets/img/logo.jpeg"}`);
             $("#loginimg").css("background-image", `url(${annoncePers.find(item => item.which === "loginimg") ? annoncePers.find(item => item.which === "loginimg").image : "../assets/img/auth.png"})`);
             document.getElementById('backgliseid').value = `${annoncePers.find(item => item.which === "backglise") ? annoncePers.find(item => item.which === "backglise")._id : "huhed9683e"}`;
             document.getElementById('logoexternid').value = `${annoncePers.find(item => item.which === "logoextern") ? annoncePers.find(item => item.which === "logoextern")._id : "huhed9683e"}`;
@@ -59,8 +59,8 @@ const pErsonnalige = () => {
             $("#phonec").css("background-image", "url(../assets/img/main-banner3.png)");
 
             $("#backglise").css("background-image", 'url(../assets/img/offer-bg.jpg)');
-            $("#logoextern").css("background-image", "url(../assets/img/noble.png)");
-            $("#logointern").css("background-image", "url(../assets/img/logo.jpeg)");
+            $("#logoextern").attr("src", "../assets/img/noble.png");
+            $("#logointern").attr("src", "../assets/img/logo.jpeg");
             $("#loginimg").css("background-image", "url(../assets/img/auth.png)");
             $(".loadavideo").css("display", "none");
 

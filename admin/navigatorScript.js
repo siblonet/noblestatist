@@ -868,7 +868,6 @@ const NafigatioTo = async (where) => {
         </div>
     </div>
 
-
 <div class="container-fluid content-top-gap">
         <div class="statistics">
             <div class="row">
@@ -943,10 +942,27 @@ const NafigatioTo = async (where) => {
 
                         </div>
                         <div class="col-sm-6 pl-sm-2 statistics-grid">
-                            <div id="logoextern" class="card card_border border-primary-topc p-4 backi" style="background-color: #000000;">
+                            <div class="backiflex card_border border-primary-topc p-4 backi" style="background-color: #ffffff;">
+                            
+                            <div class="logoextern">
+                             <img  id="logoextern" src="" alt="">
+                            </div>
+
+                            <div class="space">
+                            </div>
+
                                 <input type="hidden" id="logoexternid" value="huhed9683e">
-                                <input onchange="changeIcons(event, 'logoextern', 'logoexternid')" type="file"
-                                    class="imageFile" id="logoexternimg" accept="image/*" />
+                                <div class="msgspace">
+                                        <div class="space">
+                                        </div>
+                                        <p>Si vous souhaitez</p>
+                                        <p>changer de logo,</p>
+                                        <p>cliquez sur</p>
+
+                                        <input onchange="changeIcons(event, 'logoextern', 'logoexternid')" type="file"
+                                        class="imageFile" id="logoexternimg" accept="image/*" />
+                                </div>
+                              
                             </div>
                             <p>Logo de l'exterieure</p>
 
@@ -956,11 +972,30 @@ const NafigatioTo = async (where) => {
                 <div class="col-xl-6 pl-xl-2">
                     <div class="row">
                         <div class="col-sm-6 pr-sm-2 statistics-grid">
-                            <div id="logointern" class="card card_border border-primary-topb p-4 backi">
-                                <input type="hidden" id="logointernid" value="huhed9683e">
-                                <input onchange="changeIcons(event, 'logointern', 'logointernid')" type="file"
+                        <div class="backiflex card_border border-primary-topc p-4 backi" style="background-color: #ffffff;">
+                            
+                        <div class="logoextern">
+                         <img  id="logointern" src="" alt="">
+                        </div>
+
+                        <div class="space">
+                        </div>
+
+                            <input type="hidden" id="logointernid" value="huhed9683e">
+                            <div class="msgspace">
+                                    <div class="space">
+                                    </div>
+                                    <p>Si vous souhaitez</p>
+                                    <p>changer de logo,</p>
+                                    <p>cliquez sur</p>
+
+                                    <input onchange="changeIcons(event, 'logointern', 'logointernid')" type="file"
                                     class="imageFile" id="logointernimg" accept="image/*" />
                             </div>
+                          
+                        </div>
+
+                           
                             <p>Logo de l'interieux</p>
 
                         </div>
