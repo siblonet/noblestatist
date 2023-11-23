@@ -1,6 +1,8 @@
 let orderdb;
 let articldb;
 let panierdb;
+let pageSettings;
+let setPad;
 
 function openArticleDatabase() {
     return new Promise((resolve, reject) => {
@@ -75,6 +77,32 @@ function openOrdersDatabase() {
 
             if (!orderdb.objectStoreNames.contains("OrderdStore")) {
                 orderdb.createObjectStore("OrderdStore", { keyPath: "_id" });
+            }
+        };
+    });
+};
+
+function openPersonnalizingDatabase() {
+    return new Promise((resolve, reject) => {
+        const nameDB = "pageSettings";
+        const versionDB = 4;
+
+        const request = indexedDB.open(nameDB, versionDB);
+
+        request.onerror = (event) => {
+            reject("pageSettings error: " + event.target.errorCode);
+        };
+
+        request.onsuccess = (event) => {
+            pageSettings = event.target.result;
+            resolve();
+        };
+
+        request.onupgradeneeded = (event) => {
+            pageSettings = event.target.result;
+
+            if (!pageSettings.objectStoreNames.contains("PageContents")) {
+                pageSettings.createObjectStore("PageContents", { keyPath: "_id" });
             }
         };
     });

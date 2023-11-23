@@ -2,6 +2,7 @@ let recenProd = [];
 let selct = [];
 let selctSize = [];
 let isAdmin = false;
+
 function getUsenam() {
     const tokens = sessionStorage.getItem('tibule');
     if (tokens && tokens.split("°")) {
