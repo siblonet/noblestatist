@@ -105,6 +105,8 @@ async function productsLeftSidbar(typopro, genre, typo) {
     objectStore.openCursor().onsuccess = (event) => {
         const cursor = event.target.result;
         if (cursor) {
+            console.log(typopro, genre, typo);
+            console.log(cursor.value);
             if (cursor.value.addgenre == genre && cursor.value.addtype == typo && cursor.value.addtypepro == typopro && cursor.value.quantity > 0) {
                 dataFilter.push(cursor.value);
             }
