@@ -423,7 +423,7 @@ const NafigatioTo = async (where) => {
         });
 
         NavBaractivity();
-        getArticles();
+        getUserandArticles();
     } else if (where === "commandes") {
         ActiveDas.classList.remove('active');
         ActiveCo.classList.add('active');
@@ -1023,63 +1023,35 @@ const NafigatioTo = async (where) => {
     }
 }
 
+async function loadOrder() {
+    await openOrdersDatabase()
+    const transactiona = pageSettings.transaction(["OrderdStore"], "readonly");
+    const objectStorea = transactiona.objectStore("OrderdStore");
+    const dataa = [];
 
-function clearOrder() {
-    return new Promise((resolve, reject) => {
-        const transaction = orderdb.transaction(["OrderdStore"], "readwrite");
-        const objectStore = transaction.objectStore("OrderdStore");
-        const clearRequest = objectStore.clear();
-
-        clearRequest.onsuccess = (event) => {
-            resolve("cleared")
-        };
-
-        transaction.onerror = (event) => {
-            console.error("Error accessing object store:", event.target.error);
-            reject("Error accessing object store");
-        };
-
-
-    });
-
-}
-
-
-function addOrders(data) {
-    return new Promise((resolve, reject) => {
-        if (!Array.isArray(data)) {
-            reject(new Error('Data is not an array'));
-            return;
+    objectStorea.openCursor().onsuccess = (event) => {
+        const cursor = event.target.result;
+        if (cursor) {
+            dataa.push(cursor.value);
+            cursor.continue();
         }
+    };
 
-        const transaction = orderdb.transaction(["OrderdStore"], "readwrite");
-        const objectStore = transaction.objectStore("OrderdStore");
+    objectStorea.onerror = (event) => {
+        console.log(event.target.error);
+    };
 
-        const requests = data.map(article => {
-            return new Promise((innerResolve, innerReject) => {
-                const request = objectStore.put(article);
-                request.onsuccess = () => innerResolve();
-                request.onerror = (event) => innerReject(event.target.error);
-            });
-        });
-
-        Promise.all(requests)
-            .then(() => resolve('done'))
-            .catch(error => reject(error));
-    });
-}
+    return dataa
+};
 
 const NavBaractivity = async () => {
-    const items = await sendRequestforOrderget('GET', 'orders/noble');
-    await openOrdersDatabase();
-    await clearOrder();
-    await addOrders(items);
-    //const items = [{ articles: [{ statut: "review" }, { statut: "review" }, { statut: "review" }] }];
+    const items = await loadOrder();
+
     const ordernotif = [];
 
     let odernotnu = 0;
     let totalSold = 0;
-    if (items.length > 0) {
+    if (items && items.length > 0) {
         items.forEach((pan) => {
             pan.articles.forEach((pani) => {
                 totalSold += pani.statut == "done" ? pani.prix * pani.quantcho : 0;
@@ -1205,7 +1177,7 @@ async function getArticleOnly() {
 }
 
 
-async function getArticles() {
+async function getUserandArticles() {
     ClientData.length = 0;
     AdminData.length = 0;
     let available = 0;
@@ -1243,8 +1215,6 @@ async function getArticles() {
 
 
 async function Disconexion() {
-    await openOrdersDatabase();
-    await clearOrder();
     sessionStorage.clear();
     localStorage.clear();
     window.location.href = "login"
@@ -1277,7 +1247,7 @@ async function updateUser() {
 async function deleteUser() {
     const clid = document.getElementById('clientid').value;
 
-    const myode = await sendRequestforOrderget('GET', `orders/myorder/${clid}`);
+    const myode = await Orderdata.find(re => re._id == clid);
 
     if (myode.length < 1) {
         await sendRequestforOrder('DELETE', `people/${clid}`);

@@ -1,31 +1,22 @@
 let annoncePers = [];
-const getAnnonce = async (method, endpoint, data = null) => {
-    const options = {
-        method,
-        headers: {
-            'Content-Type': 'application/json'
+
+(async function ($) {
+    await openPersonnalizingDatabase()
+    const transactiona = pageSettings.transaction(["PageContents"], "readonly");
+    const objectStorea = transactiona.objectStore("PageContents");
+    const items = [];
+
+    objectStorea.openCursor().onsuccess = (event) => {
+        const cursor = event.target.result;
+        if (cursor) {
+            items.push(cursor.value);
+            cursor.continue();
+        } else {
+            annoncePers = items
         }
     };
 
-    if (data) {
-        options.body = JSON.stringify(data);
-    }
-
-    const response = await fetch(apiUrlfine + endpoint, options);
-    const responseData = await response.json();
-
-    if (!response.ok) {
-        return null
-    }
-
-    return responseData;
-};
-
-(async function ($) {
-    const items = await getAnnonce('GET', 'boutique/annoncedata/noble');
-
     if (items && items.length > 0) {
-        annoncePers = items
 
         $("#logointerne").attr("src", `${items.find(item => item.which === "logointern") ? items.find(item => item.which === "logointern").image : "../assets/img/logo.jpeg"}`);
 
