@@ -88,7 +88,7 @@ async function FetchArticle() {
         const items = await sendRequestnot('GET', 'boutique/noble');
         if (items) {
             await openArticleDatabase();
-            clearArt(items);
+            clearArt(items.article);
         }
 
     } catch (e) {
