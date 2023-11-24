@@ -86,42 +86,54 @@ const Reloada = () => {
 async function FetchArticle(act, id, data) {
     await openArticleDatabase();
     try {
-      const transaction = articldb.transaction(["ArticleStore"], "readwrite");
-      const objectStore = transaction.objectStore("ArticleStore");
-  
-      if (act === "PUT") {
-        data._id = id;
+        const transaction = articldb.transaction(["ArticleStore"], "readwrite");
+        const objectStore = transaction.objectStore("ArticleStore");
 
-        const updaworking = objectStore.put(data);
-  
-        updaworking.onsuccess = function () {
-            getArticleOnly()
+        if (act === "PUT") {
+            data._id = id;
+
+            const updaworking = objectStore.put(data);
+
+            updaworking.onsuccess = function () {
+                getArticleOnly()
+            };
+
+            updaworking.onerror = function () {
+                console.error("Update fail");
+            };
+        } else if (act === "Add") {
+            data._id = id;
+            const addworking = objectStore.add(data);
+
+            addworking.onsuccess = function () {
+                getArticleOnly()
+            };
+
+            addworking.onerror = function () {
+                console.error("Update fail");
+            };
+
+        } else if (act === "DEL") {
+            // Ensure the key actually exists in the object store before deleting
+            const deleteRequest = objectStore.delete(id);
+
+            deleteRequest.onsuccess = function () {
+                getArticleOnly()
+            };
+
+            deleteRequest.onerror = function () {
+                console.error("Deleting fail");
+            };
+        }
+
+        transaction.onerror = (event) => {
+            console.error("Transaction error:", event.target.error);
         };
-  
-        updaworking.onerror = function () {
-          console.error("Update fail");
-        };
-      } else if (act === "DEL") {
-        // Ensure the key actually exists in the object store before deleting
-        const deleteRequest = objectStore.delete(id);
-  
-        deleteRequest.onsuccess = function () {
-            getArticleOnly()
-        };
-  
-        deleteRequest.onerror = function () {
-          console.error("Deleting fail");
-        };
-      }
-  
-      transaction.onerror = (event) => {
-        console.error("Transaction error:", event.target.error);
-      };
     } catch (e) {
-      console.error(e);
+        console.error(e);
     }
-  };
-  
+};
+
 
 
 const NafigatioTo = async (where) => {

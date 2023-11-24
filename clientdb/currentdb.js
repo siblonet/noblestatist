@@ -239,8 +239,8 @@ function AddArticleTest() {
 
     const createItem = async () => {
         try {
-            await sendRequestnotoa('POST', 'boutique', product);
-            FetchArticle();
+            const id = await sendRequestnotoa('POST', 'boutique', product);
+            FetchArticle('Add', id.id, product);
 
         } catch (error) {
             console.error('Error creating product:', error.message);
@@ -304,8 +304,8 @@ function AddArticle() {
 
             const createItem = async () => {
                 try {
-                    await sendRequestnotoa('POST', 'boutique', product);
-                    FetchArticle();
+                    const id = await sendRequestnotoa('POST', 'boutique', product);
+                    FetchArticle('Add', id.id, product);
                 } catch (error) {
                     console.error('Error creating product:', error.message);
                 }
