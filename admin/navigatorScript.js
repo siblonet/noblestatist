@@ -91,21 +91,21 @@ async function FetchArticle(act, id, data) {
   
       if (act === "PUT") {
         // Ensure you provide the key if your object store has a key path
-        const updaworking = objectStore.put(data, id);
+        const updaworking = objectStore.put(data);
   
         updaworking.onsuccess = function () {
-          console.error("Update done");
+            getArticleOnly()
         };
   
         updaworking.onerror = function () {
           console.error("Update fail");
         };
-      } else if (act === "DELETE") {
+      } else if (act === "DEL") {
         // Ensure the key actually exists in the object store before deleting
         const deleteRequest = objectStore.delete(id);
   
         deleteRequest.onsuccess = function () {
-          console.error("Deleting done");
+            getArticleOnly()
         };
   
         deleteRequest.onerror = function () {
