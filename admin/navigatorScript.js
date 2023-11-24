@@ -90,7 +90,8 @@ async function FetchArticle(act, id, data) {
       const objectStore = transaction.objectStore("ArticleStore");
   
       if (act === "PUT") {
-        // Ensure you provide the key if your object store has a key path
+        data._id = id;
+
         const updaworking = objectStore.put(data);
   
         updaworking.onsuccess = function () {
