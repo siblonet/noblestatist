@@ -84,48 +84,43 @@ const Reloada = () => {
 
 
 async function FetchArticle(act, id, data) {
-    await openArticleDatabase()
+    await openArticleDatabase();
     try {
-        if (act == 'PUT') {
-            const transaction = articldb.transaction(["ArticleStore"], "readwrite");
-            const objectStore = transaction.objectStore("ArticleStore");
-            const updaworking = objectStore.put(data);
-            updaworking.onsuccess = function () {
-                console.error("update done");
-            };
-
-            updaworking.onerror = function () {
-                console.error("update fail");
-            };
-
-            transaction.onerror = (event) => {
-                console.error("update start error:", event.target.error);
-            };
-
-        } else {
-            const transaction = articldb.transaction(["ArticleStore"], "readwrite");
-            const objectStore = transaction.objectStore("ArticleStore");
-            const updaworking = objectStore.delete(id);
-            updaworking.onsuccess = function () {
-                console.error("deleting done");
-            };
-
-            updaworking.onerror = function () {
-                console.error("deleting fail");
-            };
-
-            transaction.onerror = (event) => {
-                console.error("deleting start error:", event.target.error);
-            };
-
-
-        }
-
+      const transaction = articldb.transaction(["ArticleStore"], "readwrite");
+      const objectStore = transaction.objectStore("ArticleStore");
+  
+      if (act === "PUT") {
+        // Ensure you provide the key if your object store has a key path
+        const updaworking = objectStore.put(data, id);
+  
+        updaworking.onsuccess = function () {
+          console.error("Update done");
+        };
+  
+        updaworking.onerror = function () {
+          console.error("Update fail");
+        };
+      } else if (act === "DELETE") {
+        // Ensure the key actually exists in the object store before deleting
+        const deleteRequest = objectStore.delete(id);
+  
+        deleteRequest.onsuccess = function () {
+          console.error("Deleting done");
+        };
+  
+        deleteRequest.onerror = function () {
+          console.error("Deleting fail");
+        };
+      }
+  
+      transaction.onerror = (event) => {
+        console.error("Transaction error:", event.target.error);
+      };
     } catch (e) {
-        console.log(e)
+      console.error(e);
     }
-
-};
+  };
+  
 
 
 const NafigatioTo = async (where) => {
