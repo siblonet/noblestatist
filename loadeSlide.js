@@ -1,4 +1,4 @@
-(async function ($) {
+function  setPad(setPad) {
     function isMobileDevice() {
         const userAgent = navigator.userAgent.toLowerCase();
         return userAgent.includes('mobile');
@@ -35,4 +35,4 @@
         $(".bg-image1").css("background-image", "url(assets/img/offer-bg.jpg)");
     }
 
-})(jQuery);
+};

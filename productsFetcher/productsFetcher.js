@@ -18,7 +18,7 @@ function addSetting(dat) {
 
     });
 
-    setPad = dat;
+    setPad(dat)
 }
 
 function addOrdersa(dat) {
@@ -190,7 +190,7 @@ if (!sessi) {
                 dataa.push(cursor.value);
                 cursor.continue();
             } else {
-                setPad = dataa
+                setPad(dataa)
             }
         };
 

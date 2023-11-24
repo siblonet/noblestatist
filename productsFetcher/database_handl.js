@@ -2,7 +2,6 @@ let orderdb;
 let articldb;
 let panierdb;
 let pageSettings;
-let setPad;
 
 function openArticleDatabase() {
     return new Promise((resolve, reject) => {
