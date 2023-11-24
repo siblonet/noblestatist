@@ -83,12 +83,42 @@ const Reloada = () => {
 }
 
 
-async function FetchArticle() {
+async function FetchArticle(act, id, data) {
+    await openArticleDatabase()
     try {
-        const items = await sendRequestnot('GET', 'boutique/noble');
-        if (items) {
-            await openArticleDatabase();
-            clearArt(items.article);
+        if (act == 'PUT') {
+            const transaction = articldb.transaction(["ArticleStore"], "readwrite");
+            const objectStore = transaction.objectStore("ArticleStore");
+            const updaworking = objectStore.put(data);
+            updaworking.onsuccess = function () {
+                console.error("update done");
+            };
+
+            updaworking.onerror = function () {
+                console.error("update fail");
+            };
+
+            transaction.onerror = (event) => {
+                console.error("update start error:", event.target.error);
+            };
+
+        } else {
+            const transaction = articldb.transaction(["ArticleStore"], "readwrite");
+            const objectStore = transaction.objectStore("ArticleStore");
+            const updaworking = objectStore.delete(id);
+            updaworking.onsuccess = function () {
+                console.error("deleting done");
+            };
+
+            updaworking.onerror = function () {
+                console.error("deleting fail");
+            };
+
+            transaction.onerror = (event) => {
+                console.error("deleting start error:", event.target.error);
+            };
+
+
         }
 
     } catch (e) {
