@@ -1025,7 +1025,7 @@ const NafigatioTo = async (where) => {
 
 async function loadOrder() {
     await openOrdersDatabase()
-    const transactiona = pageSettings.transaction(["OrderdStore"], "readonly");
+    const transactiona = orderdb.transaction(["OrderdStore"], "readonly");
     const objectStorea = transactiona.objectStore("OrderdStore");
     const dataa = [];
 
