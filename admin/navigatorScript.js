@@ -102,7 +102,7 @@ async function FetchArticle(act, id, data) {
                 console.error("Update fail");
             };
         } else if (act === "Add") {
-            data._id = id;
+            console.log(data);
             const addworking = objectStore.add(data);
 
             addworking.onsuccess = function () {
