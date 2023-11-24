@@ -105,9 +105,7 @@ async function productsLeftSidbar(typopro, genre, typo) {
     objectStore.openCursor().onsuccess = (event) => {
         const cursor = event.target.result;
         if (cursor) {
-            console.log(typopro, genre, typo);
-            console.log(cursor.value);
-            if (cursor.value.addgenre == genre && cursor.value.addtype == typo && cursor.value.addtypepro == typopro && cursor.value.quantity > 0) {
+            if ((cursor.value.addgenre == genre || cursor.value.addgenre == "Tout") && cursor.value.addtype == typo && cursor.value.addtypepro == typopro && cursor.value.quantity > 0) {
                 dataFilter.push(cursor.value);
             }
             cursor.continue();
@@ -403,7 +401,7 @@ async function productsLeftSidbar(typopro, genre, typo) {
                 const productHTML = `
                                         <div class="container">
                                             <div class="section-title">
-                                                <h3><i style="color: #fdd804;">${typopro}</i>, sera à nouveau bientôt disponible</h3>
+                                                <h3><i style="color: #fdd804;">${typopro} ${genre}</i>, sera à nouveau bientôt disponible</h3>
                                             </div>
                                             <div style="align-self: center; align-items: center; justify-content: center; text-align: center">
                                                 <img src="assets/img/error-404.png" alt="Le magasin est vide">
