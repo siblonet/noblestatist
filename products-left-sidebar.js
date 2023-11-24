@@ -88,7 +88,7 @@ function getUrlParameter(ov) {
 const retriva = getUrlParameter('ov');
 if (retriva) {
     const typoret = retriva.split("@");
-    const typo = typoret[1];//"ACCOUTREMENT"/assesoire
+    const typo = typoret[1];//"Accoutrement"/assesoire
     const typopro = typoret[0];//t-shert/robe/patenlon/Bailette
     const genre = typoret[2];//homme/femme/
     productsLeftSidbar(typopro, genre, typo);
