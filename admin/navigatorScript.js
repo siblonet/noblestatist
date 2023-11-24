@@ -788,7 +788,7 @@ const NafigatioTo = async (where) => {
                                 <li>Color: <span style="background-color: ${pani.addcoul.substring(8, 15)} !important; color: #ffffff; padding-left: 5px; padding-right: 5px">${pani.addcoul.substring(8, 15)}</span></li>
                                 <li>Size: <span>${pani.addtail}</span></li>
                                 <li>Material: <span>${pani.addmateri}</span></li>
-                                <li>Type de produit: <span>${pani.addtype}</span></li>
+                                <li>Type: <span>${pani.addtype}</span></li>
                             </ul>
                         </td>
                         <td style="color: #ffffff !important; text-align: center !important;"> 

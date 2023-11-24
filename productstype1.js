@@ -130,7 +130,7 @@ async function productStypes1(viewid) {
                 const productInfoHTML = `
                                     <li><span>Fournisseur:</span> <a href="#">${prod.addfour}</a></li>
                                     <li><span>Disponibilité:</span> <a href="#">${prod.adddispo}</a></li>
-                                    <li><span>Type de produit:</span> <a href="#">${prod.addtype}</a></li>
+                                    <li><span>Type :</span> <a href="#">${prod.addtype}</a></li>
                                     `;
                 productInfo.innerHTML += productInfoHTML;
 
