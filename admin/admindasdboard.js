@@ -146,7 +146,7 @@ async function optionCancileView(_id, proid, arti_id) {
 const imasEdi = [];
 
 function previewImageEdite(event) {
-    const imagePreview = document.getElementById(`Editeimage${imasEdi.filter(er => er.ima !== "one").length + 2}`);
+    const imagePreview = document.getElementById(`Editeimage${imasEdi.filter(er => er.ima !== "one").length + 1}`);
     if (imagePreview) {
         imagePreview.innerHTML = '';
 
@@ -155,9 +155,30 @@ function previewImageEdite(event) {
         if (file) {
             const reader = new FileReader();
 
-            reader.onload = function (e) {
+            reader.onload = async function (e) {
                 const base64Data = e.target.result.split(',')[1];
-                SendeImage(base64Data, file.name, imagePreview);
+                const response = await fetch(apiUrlfine + "boutique/uploadImage", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ ima: base64Data, nam: file.name }),
+                });
+
+                if (response.ok) {
+                    const url = await response.json();
+                    const id = imasEdi.find(eo => eo.ima == "one")._id
+                    imasEdi.find(eo => eo.ima == "one").ima = url.ima;
+                    const img = document.createElement('img');
+                    img.src = url.ima;
+                    img.style.height = '300px';
+                    img.style.width = '200px';
+                    img.setAttribute('onclick', `removeImageEdite('${id}')`);
+                    imagePreview.appendChild(img);
+                    console.log(id);
+                } else {
+                    alert("eche de loperation", response.statusText)
+                }
 
             };
             reader.readAsDataURL(file);
@@ -165,30 +186,7 @@ function previewImageEdite(event) {
     }
 };
 
-async function SendeImage(file, name, imagePreview) {
-    const response = await fetch(apiUrlfine + "boutique/uploadImage", {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ ima: file, nam: name }),
-    });
 
-    if (response.ok) {
-        const url = await response.json();
-        const id = imasEdi.find(eo => eo.ima == "one")._id
-        imasEdi.find(eo => eo.ima == "one").ima = url.ima;
-        const img = document.createElement('img');
-        img.src = url.ima;
-        img.style.height = '300px';
-        img.style.width = '200px';
-        img.setAttribute('onclick', `removeImageEdite('${id}')`);
-        imagePreview.appendChild(img);
-        console.log(id);
-    } else {
-        alert("eche de loperation", response.statusText)
-    }
-}
 
 function removeImageEdite(id) {
 
