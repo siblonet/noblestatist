@@ -168,12 +168,12 @@ function previewImageEdite(event) {
                 if (response.ok) {
                     const url = await response.json();
                     const img = document.createElement('img');
-                    img.src = url;
+                    img.src = url.ima;
                     img.style.height = '300px';
                     img.style.width = '200px';
                     img.setAttribute('onclick', `removeImageEdite('${imasEdi.find(eo => eo.ima == "")._id}')`);
                     imagePreview.appendChild(img);
-                    imasEdi.find(eo => eo.ima == "").ima = url;
+                    imasEdi.find(eo => eo.ima == "").ima = url.ima;
                 } else {
                     alert("eche de loperation")
                 }
