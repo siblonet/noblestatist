@@ -182,7 +182,7 @@ async function SendeImage(file, name, imagePreview) {
         img.style.width = '200px';
         img.setAttribute('onclick', `removeImageEdite('${imasEdi.find(eo => eo.ima == "")._id}')`);
         imagePreview.appendChild(img);
-        imasEdi.find(eo => eo.ima == "").ima = url.ima;
+        imasEdi.find(eo => eo.ima == "one").ima = url.ima;
     } else {
         alert("eche de loperation", response.statusText)
     }
@@ -190,14 +190,14 @@ async function SendeImage(file, name, imagePreview) {
 
 function removeImageEdite(id) {
 
-    imasEdi.find(eo => eo._id == id).ima = "";
+    imasEdi.find(eo => eo._id == id).ima = "one";
     const imagePreviews = document.querySelectorAll('[id^="Editeimage"]');
     imagePreviews.forEach((preview) => {
         preview.innerHTML = '';
     });
 
     imasEdi.forEach((ed, index) => {
-        if (ed.ima !== "") {
+        if (ed.ima !== "one") {
             const imagePreview = document.getElementById(`Editeimage${index + 1}`);
             const img = document.createElement('img');
             img.src = ed.ima;
