@@ -146,30 +146,34 @@ async function optionCancileView(_id, proid, arti_id) {
 const imasEdi = [];
 
 function previewImageEdite(event) {
-    const imagePreview = document.getElementById(`Editeimage${imasEdi.filter(er => er.ima !== "one").length + 1}`);
-    console.log(`Editeimage${imasEdi.filter(er => er.ima !== "one").length + 1}`);
-    if (imagePreview) {
-        imagePreview.innerHTML = '';
+    const file = event.target.files[0];
 
-        const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
 
-        if (file) {
-            const reader = new FileReader();
+        reader.onload = async function (e) {
+            const base64Data = e.target.result.split(',')[1];
+            const response = await fetch(apiUrlfine + "boutique/uploadImage", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ ima: base64Data, nam: file.name }),
+            });
 
-            reader.onload = async function (e) {
-                const base64Data = e.target.result.split(',')[1];
-                const response = await fetch(apiUrlfine + "boutique/uploadImage", {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ ima: base64Data, nam: file.name }),
-                });
+            if (response.ok) {
+                const url = await response.json();
+                
+                // Find the first element in imasEdi with ima set to "one"
+                const firstOneIndex = imasEdi.findIndex(eo => eo.ima === "one");
+                
+                if (firstOneIndex !== -1) {
+                    const id = imasEdi[firstOneIndex]._id;
+                    imasEdi[firstOneIndex].ima = url.ima;
 
-                if (response.ok) {
-                    const url = await response.json();
-                    const id = imasEdi.find(eo => eo.ima == "one")._id
-                    imasEdi.find(eo => eo.ima == "one").ima = url.ima;
+                    const imagePreview = document.getElementById(`Editeimage${firstOneIndex + 1}`);
+                    imagePreview.innerHTML = '';
+
                     const img = document.createElement('img');
                     img.src = url.ima;
                     img.style.height = '300px';
@@ -177,28 +181,28 @@ function previewImageEdite(event) {
                     img.setAttribute('onclick', `removeImageEdite('${id}')`);
                     imagePreview.appendChild(img);
                 } else {
-                    alert("eche de loperation", response.statusText)
+                    alert("No placeholder image found in imasEdi.");
                 }
-
-            };
-            reader.readAsDataURL(file);
+            } else {
+                alert("Operation failed", response.statusText);
+            }
         };
-    }
-};
 
+        reader.readAsDataURL(file);
+    }
+}
 
 
 function removeImageEdite(id) {
-
-    imasEdi.find(eo => eo._id == id).ima = "one";
-    const imagePreviews = document.querySelectorAll('[id^="Editeimage"]');
-    imagePreviews.forEach((preview) => {
-        preview.innerHTML = '';
-    });
+    const removedImage = imasEdi.find((eo) => eo._id === id);
+    if (removedImage) {
+        removedImage.ima = "one";
+    }
 
     imasEdi.forEach((ed, index) => {
+        const imagePreview = document.getElementById(`Editeimage${index + 1}`);
+        imagePreview.innerHTML = '';
         if (ed.ima !== "one") {
-            const imagePreview = document.getElementById(`Editeimage${index + 1}`);
             const img = document.createElement('img');
             img.src = ed.ima;
             img.style.height = '300px';
@@ -206,9 +210,9 @@ function removeImageEdite(id) {
             img.setAttribute('onclick', `removeImageEdite('${ed._id}')`);
             imagePreview.appendChild(img);
         }
-
     });
 }
+
 
 async function EditeViewArticle() {
     const _id = document.getElementById('ediatiid').value;
@@ -277,10 +281,12 @@ async function EditeViewArticle() {
 
 };
 
+
 async function optionEditeView(_id) {
     imasEdi.length = 0
     await openArticleDatabase();
     getArticleById(_id).then(product => {
+
         document.getElementById('ediatiid').value = _id;
         document.getElementById('Editearticle').value = product.addarticle;
         document.getElementById('Editequant').value = parseInt(product.quantity);
@@ -302,6 +308,7 @@ async function optionEditeView(_id) {
         document.getElementById('Editeexpe').value = product.addexpe;
         document.getElementById('Editenotes').value = product.notes;
 
+      
         product.image.forEach((ed, index) => {
             const imagePreview = document.getElementById(`Editeimage${index + 1}`);
             imagePreview.innerHTML = '';
@@ -313,6 +320,7 @@ async function optionEditeView(_id) {
             img.setAttribute('onclick', `removeImageEdite('${ed._id}')`);
             imagePreview.appendChild(img);
         });
+
 
     });
 };
