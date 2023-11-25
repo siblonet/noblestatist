@@ -176,13 +176,15 @@ async function SendeImage(file, name, imagePreview) {
 
     if (response.ok) {
         const url = await response.json();
+        const id = imasEdi.find(eo => eo.ima == "one")._id
+        imasEdi.find(eo => eo.ima == "one").ima = url.ima;
         const img = document.createElement('img');
         img.src = url.ima;
         img.style.height = '300px';
         img.style.width = '200px';
-        img.setAttribute('onclick', `removeImageEdite('${imasEdi.find(eo => eo.ima == "one")._id}')`);
+        img.setAttribute('onclick', `removeImageEdite('${id}')`);
         imagePreview.appendChild(img);
-        imasEdi.find(eo => eo.ima == "one").ima = url.ima;
+        console.log(id);
     } else {
         alert("eche de loperation", response.statusText)
     }
