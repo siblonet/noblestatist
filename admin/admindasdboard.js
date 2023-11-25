@@ -147,7 +147,7 @@ const imasEdi = [];
 
 function previewImageEdite(event) {
     const imagePreview = document.getElementById(`Editeimage${imasEdi.filter(er => er.ima !== "one").length + 1}`);
-    console.log(imagePreview);
+    console.log(`Editeimage${imasEdi.filter(er => er.ima !== "one").length + 1}`);
     if (imagePreview) {
         imagePreview.innerHTML = '';
 
@@ -176,7 +176,6 @@ function previewImageEdite(event) {
                     img.style.width = '200px';
                     img.setAttribute('onclick', `removeImageEdite('${id}')`);
                     imagePreview.appendChild(img);
-                    console.log(id);
                 } else {
                     alert("eche de loperation", response.statusText)
                 }
