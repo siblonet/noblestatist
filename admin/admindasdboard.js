@@ -146,6 +146,7 @@ async function optionCancileView(_id, proid, arti_id) {
 const imasEdi = [];
 
 function previewImageEdite(event) {
+    const fileInput = document.getElementById('imageInputf');
     const file = event.target.files[0];
 
     if (file) {
@@ -183,6 +184,8 @@ function previewImageEdite(event) {
                 } else {
                     alert("No placeholder image found in imasEdi.");
                 }
+
+                fileInput.value = '';
             } else {
                 alert("Operation failed", response.statusText);
             }
