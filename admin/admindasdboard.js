@@ -196,7 +196,7 @@ function removeImageEdite(event) {
         if (imageNumber >= 0 && imageNumber < imasEdi.length) {
             // Remove the item from the array at the specified index
             _idim.push({ id: imasEdi[imageNumber]._id });
-            const createItem = async () => {
+            /*const createItem = async () => {
                 try {
                     await sendRequestforOrder('POST', `boutique/deleteim`, { name: imasEdi[imageNumber].ima });
                 } catch (error) {
@@ -204,7 +204,7 @@ function removeImageEdite(event) {
                 }
             };
 
-            createItem();
+            createItem();*/
             imasEdi.splice(imageNumber, 1);
 
             // Clear the image previews
