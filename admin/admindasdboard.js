@@ -155,9 +155,9 @@ function previewImageEdite(event) {
         if (file) {
             const reader = new FileReader();
 
-            reader.onload = async function (e) {
+            reader.onload = function (e) {
 
-                const response = await fetch(apiUrlfine + "boutique/uploadImage", {
+                const response = fetch(apiUrlfine + "boutique/uploadImage", {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -166,7 +166,7 @@ function previewImageEdite(event) {
                 });
 
                 if (response.ok) {
-                    const url = await response.json();
+                    const url = response.json();
                     const img = document.createElement('img');
                     img.src = url.ima;
                     img.style.height = '300px';
@@ -258,7 +258,6 @@ async function EditeViewArticle() {
             };
             const createItem = async () => {
                 try {
-                    console.log(imasEdi);
                     await sendRequestforOrder('PUT', `boutique/${_id}`, product);
                     FetchArticle('PUT', _id, product);
 
