@@ -1332,3 +1332,31 @@ function optionClientView(clid, whos) {
     }
 
 };
+
+
+function optionMetView() {
+
+    const token = sessionStorage.getItem('tibule');
+    const splo = token.split("°");
+    const userid = thisiswhat(`${splo[0]}`);
+
+    myprofil = AdminData.find(cli => cli._id == userid);
+    document.getElementById('clientid').value = userid;
+    document.getElementById('clientNom').value = myprofil.nom;
+    document.getElementById('clientPrenom').value = myprofil.prenom;
+    document.getElementById('clientEmail').value = myprofil.email;
+    document.getElementById('clientPhone').value = myprofil.phone;
+    document.getElementById('userStatus').classList.add('btn-success');
+    document.getElementById('userStatus').innerText = 'Adminitrateur';
+
+    const usermodif = document.getElementById('usermodif');
+
+    const usermodifHTML = `
+        <button type="button" class="btn btn-outline-success" data-dismiss="modal"
+            onclick="updateUser()">Modifer
+        </button>
+    `;
+    usermodif.innerHTML = usermodifHTML;
+
+
+};
