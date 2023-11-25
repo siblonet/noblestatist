@@ -258,6 +258,7 @@ async function EditeViewArticle() {
             };
             const createItem = async () => {
                 try {
+                    console.log(imasEdi);
                     await sendRequestforOrder('PUT', `boutique/${_id}`, product);
                     FetchArticle('PUT', _id, product);
 
