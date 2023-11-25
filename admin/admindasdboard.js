@@ -151,25 +151,41 @@ function previewImageEdite(event) {
         imagePreview.innerHTML = '';
 
         const file = event.target.files[0];
+
         if (file) {
             const reader = new FileReader();
 
-            reader.onload = function (e) {
-                imasEdi.push({ _id: _idim[0] ? _idim[0].id : imasEdi[0].id, ima: e.target.result, nam: file.name, status: "update" });
-                _idim.length > 0 ? _idim.splice(0, 1) : null;
-                const img = document.createElement('img');
-                img.src = e.target.result;
-                img.style.height = '300px';
-                img.style.width = '200px';
-                img.setAttribute('onclick', 'removeImageEdite(event)');
-                img.setAttribute('id', `EdieId${imasEdi.length}`);
-                imagePreview.appendChild(img);
+            reader.onload = async function (e) {
+
+                const response = await fetch(apiUrlfine + "boutique/uploadImage", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ ima: e.target.result, nam: file.name }),
+                });
+
+                if (response.ok) {
+                    const url = await response.json();
+                    imasEdi.push({ _id: _idim[0] ? _idim[0].id : imasEdi[0].id, ima: url });
+                    _idim.length > 0 ? _idim.splice(0, 1) : null;
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.style.height = '300px';
+                    img.style.width = '200px';
+                    img.setAttribute('onclick', 'removeImageEdite(event)');
+                    img.setAttribute('id', `EdieId${imasEdi.length}`);
+                    imagePreview.appendChild(img);
+                } else {
+                    alert("eche de loperation")
+                }
 
             };
             reader.readAsDataURL(file);
         };
     }
 };
+
 
 const _idim = [];
 
