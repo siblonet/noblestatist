@@ -146,8 +146,8 @@ async function optionCancileView(_id, proid, arti_id) {
 const imasEdi = [];
 
 function previewImageEdite(event) {
-    if (imasEdi.length < 5) {
-        const imagePreview = document.getElementById(`Editeimage${imasEdi.length + 1}`);
+    const imagePreview = document.getElementById(`Editeimage${imasEdi.filter(er => er.ima !== "").length + 1}`);
+    if (imagePreview) {
         imagePreview.innerHTML = '';
 
         const file = event.target.files[0];
@@ -167,15 +167,13 @@ function previewImageEdite(event) {
 
                 if (response.ok) {
                     const url = await response.json();
-                    imasEdi.push({ _id: _idim[0] ? _idim[0].id : imasEdi[0].id, ima: url });
-                    _idim.length > 0 ? _idim.splice(0, 1) : null;
                     const img = document.createElement('img');
-                    img.src = e.target.result;
+                    img.src = url;
                     img.style.height = '300px';
                     img.style.width = '200px';
-                    img.setAttribute('onclick', 'removeImageEdite(event)');
-                    img.setAttribute('id', `EdieId${imasEdi.length}`);
+                    img.setAttribute('onclick', `removeImageEdite(${imasEdi.find(eo => eo.ima == "")._id})`);
                     imagePreview.appendChild(img);
+                    imasEdi.find(eo => eo.ima == "").ima = url;
                 } else {
                     alert("eche de loperation")
                 }
@@ -187,45 +185,27 @@ function previewImageEdite(event) {
 };
 
 
-const _idim = [];
 
-function removeImageEdite(event) {
-    const clickedElementId = event.target.id;
-    if (clickedElementId.startsWith('EdieId')) {
-        const imageNumber = parseInt(clickedElementId.replace('EdieId', '')) - 1;
-        if (imageNumber >= 0 && imageNumber < imasEdi.length) {
-            // Remove the item from the array at the specified index
-            _idim.push({ id: imasEdi[imageNumber]._id });
-            /*const createItem = async () => {
-                try {
-                    await sendRequestforOrder('POST', `boutique/deleteim`, { name: imasEdi[imageNumber].ima });
-                } catch (error) {
-                    console.error('Error updating product:', error.message);
-                }
-            };
+function removeImageEdite(id) {
 
-            createItem();*/
-            imasEdi.splice(imageNumber, 1);
+    imasEdi.find(eo => eo._id == id).ima = "";
+    const imagePreviews = document.querySelectorAll('[id^="Editeimage"]');
+    imagePreviews.forEach((preview) => {
+        preview.innerHTML = '';
+    });
 
-            // Clear the image previews
-            const imagePreviews = document.querySelectorAll('[id^="Editeimage"]');
-            imagePreviews.forEach((preview) => {
-                preview.innerHTML = '';
-            });
-
-            // Update the remaining image previews
-            imasEdi.forEach((ed, index) => {
-                const imagePreview = document.getElementById(`Editeimage${index + 1}`);
-                const img = document.createElement('img');
-                img.src = ed.ima;
-                img.style.height = '300px';
-                img.style.width = '200px';
-                img.setAttribute('onclick', 'removeImageEdite(event)');
-                img.setAttribute('id', `EdieId${index + 1}`);
-                imagePreview.appendChild(img);
-            });
+    imasEdi.forEach((ed, index) => {
+        if (ed.ima !== "") {
+            const imagePreview = document.getElementById(`Editeimage${index + 1}`);
+            const img = document.createElement('img');
+            img.src = ed.ima;
+            img.style.height = '300px';
+            img.style.width = '200px';
+            img.setAttribute('onclick', `removeImageEdite(${ed._id})`);
+            imagePreview.appendChild(img);
         }
-    }
+
+    });
 }
 
 async function EditeViewArticle() {
@@ -328,8 +308,7 @@ async function optionEditeView(_id) {
             img.src = ed.ima;
             img.style.height = '300px';
             img.style.width = '200px';
-            img.setAttribute('onclick', 'removeImageEdite(event)');
-            img.setAttribute('id', `EdieId${index + 1}`);
+            img.setAttribute('onclick', `removeImageEdite(${ed._id})`);
             imagePreview.appendChild(img);
         });
 
