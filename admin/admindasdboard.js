@@ -156,27 +156,7 @@ function previewImageEdite(event) {
             const reader = new FileReader();
 
             reader.onload = function (e) {
-
-                const response = fetch(apiUrlfine + "boutique/uploadImage", {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ ima: e.target.result, nam: file.name }),
-                });
-
-                if (response.ok) {
-                    const url = response.json();
-                    const img = document.createElement('img');
-                    img.src = url.ima;
-                    img.style.height = '300px';
-                    img.style.width = '200px';
-                    img.setAttribute('onclick', `removeImageEdite('${imasEdi.find(eo => eo.ima == "")._id}')`);
-                    imagePreview.appendChild(img);
-                    imasEdi.find(eo => eo.ima == "").ima = url.ima;
-                } else {
-                    alert("eche de loperation")
-                }
+                SendeImage(e.target.result, file.name, imagePreview);
 
             };
             reader.readAsDataURL(file);
@@ -184,7 +164,28 @@ function previewImageEdite(event) {
     }
 };
 
+async function SendeImage(file, name, imagePreview) {
+    const response = await fetch(apiUrlfine + "boutique/uploadImage", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ ima: file, nam: name }),
+    });
 
+    if (response.ok) {
+        const url = await response.json();
+        const img = document.createElement('img');
+        img.src = url.ima;
+        img.style.height = '300px';
+        img.style.width = '200px';
+        img.setAttribute('onclick', `removeImageEdite('${imasEdi.find(eo => eo.ima == "")._id}')`);
+        imagePreview.appendChild(img);
+        imasEdi.find(eo => eo.ima == "").ima = url.ima;
+    } else {
+        alert("eche de loperation", response.statusText)
+    }
+}
 
 function removeImageEdite(id) {
 
