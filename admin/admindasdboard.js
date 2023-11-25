@@ -146,7 +146,7 @@ async function optionCancileView(_id, proid, arti_id) {
 const imasEdi = [];
 
 function previewImageEdite(event) {
-    const imagePreview = document.getElementById(`Editeimage${imasEdi.filter(er => er.ima !== "").length + 1}`);
+    const imagePreview = document.getElementById(`Editeimage${imasEdi.filter(er => er.ima !== "one").length + 1}`);
     if (imagePreview) {
         imagePreview.innerHTML = '';
 
@@ -180,7 +180,7 @@ async function SendeImage(file, name, imagePreview) {
         img.src = url.ima;
         img.style.height = '300px';
         img.style.width = '200px';
-        img.setAttribute('onclick', `removeImageEdite('${imasEdi.find(eo => eo.ima == "")._id}')`);
+        img.setAttribute('onclick', `removeImageEdite('${imasEdi.find(eo => eo.ima == "one")._id}')`);
         imagePreview.appendChild(img);
         imasEdi.find(eo => eo.ima == "one").ima = url.ima;
     } else {
