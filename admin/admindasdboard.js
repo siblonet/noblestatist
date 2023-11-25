@@ -156,7 +156,8 @@ function previewImageEdite(event) {
             const reader = new FileReader();
 
             reader.onload = function (e) {
-                SendeImage(e.target.result, file.name, imagePreview);
+                const base64Data = e.target.result.split(',')[1];
+                SendeImage(base64Data, file.name, imagePreview);
 
             };
             reader.readAsDataURL(file);
