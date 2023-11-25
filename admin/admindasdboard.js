@@ -147,6 +147,7 @@ const imasEdi = [];
 
 function previewImageEdite(event) {
     const imagePreview = document.getElementById(`Editeimage${imasEdi.filter(er => er.ima !== "one").length + 1}`);
+    console.log(imagePreview);
     if (imagePreview) {
         imagePreview.innerHTML = '';
 
