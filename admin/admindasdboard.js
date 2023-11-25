@@ -171,7 +171,7 @@ function previewImageEdite(event) {
                     img.src = url;
                     img.style.height = '300px';
                     img.style.width = '200px';
-                    img.setAttribute('onclick', `removeImageEdite(${imasEdi.find(eo => eo.ima == "")._id})`);
+                    img.setAttribute('onclick', `removeImageEdite('${imasEdi.find(eo => eo.ima == "")._id}')`);
                     imagePreview.appendChild(img);
                     imasEdi.find(eo => eo.ima == "").ima = url;
                 } else {
@@ -201,7 +201,7 @@ function removeImageEdite(id) {
             img.src = ed.ima;
             img.style.height = '300px';
             img.style.width = '200px';
-            img.setAttribute('onclick', `removeImageEdite(${ed._id})`);
+            img.setAttribute('onclick', `removeImageEdite('${ed._id}')`);
             imagePreview.appendChild(img);
         }
 
@@ -308,7 +308,7 @@ async function optionEditeView(_id) {
             img.src = ed.ima;
             img.style.height = '300px';
             img.style.width = '200px';
-            img.setAttribute('onclick', `removeImageEdite(${ed._id})`);
+            img.setAttribute('onclick', `removeImageEdite('${ed._id}')`);
             imagePreview.appendChild(img);
         });
 
