@@ -7,19 +7,26 @@ async function selectStatus(sta) {
 };
 
 async function cancelItemById() {
-    const ido = document.getElementById('ido').value;
-    const proid = document.getElementById('proid').value;
-    const arti_id = document.getElementById('arti_id').value;
-    const quan = document.getElementById('productQuantity').value;
-    const vin_or = Orderdata.find(re => re._id === ido);
-    if (vin_or.articles.length > 1) {
-        await sendRequestforOrder('DELETE', `orders/oarderar/${ido}/${proid}/${arti_id}/${quan}`);
 
-    } else {
-        await sendRequestforOrder('DELETE', `orders/${ido}/${arti_id}/${quan}`);
+    var result = window.confirm("Voulez vous vraiment annuller?");
 
+    if (result) {
+
+        const ido = document.getElementById('ido').value;
+        const proid = document.getElementById('proid').value;
+        const arti_id = document.getElementById('arti_id').value;
+        const quan = document.getElementById('productQuantity').value;
+        const vin_or = Orderdata.find(re => re._id === ido);
+        if (vin_or.articles.length > 1) {
+            await sendRequestforOrder('DELETE', `orders/oarderar/${ido}/${proid}/${arti_id}/${quan}`);
+    
+        } else {
+            await sendRequestforOrder('DELETE', `orders/${ido}/${arti_id}/${quan}`);
+    
+        }
+        window.location.reload()
     }
-    window.location.reload()
+
 };
 
 async function optionCancileView(_id, proid, arti_id) {
@@ -164,10 +171,10 @@ function previewImageEdite(event) {
 
             if (response.ok) {
                 const url = await response.json();
-                
+
                 // Find the first element in imasEdi with ima set to "one"
                 const firstOneIndex = imasEdi.findIndex(eo => eo.ima === "one");
-                
+
                 if (firstOneIndex !== -1) {
                     const id = imasEdi[firstOneIndex]._id;
                     imasEdi[firstOneIndex].ima = url.ima;
@@ -197,23 +204,30 @@ function previewImageEdite(event) {
 
 
 function removeImageEdite(id) {
-    const removedImage = imasEdi.find((eo) => eo._id === id);
-    if (removedImage) {
-        removedImage.ima = "one";
+    var result = window.confirm("Voulez vous vraiment le retirer?");
+
+    if (result) {
+
+        const removedImage = imasEdi.find((eo) => eo._id === id);
+        if (removedImage) {
+            removedImage.ima = "one";
+        }
+    
+        imasEdi.forEach((ed, index) => {
+            const imagePreview = document.getElementById(`Editeimage${index + 1}`);
+            imagePreview.innerHTML = '';
+            if (ed.ima !== "one") {
+                const img = document.createElement('img');
+                img.src = ed.ima;
+                img.style.height = '300px';
+                img.style.width = '200px';
+                img.setAttribute('onclick', `removeImageEdite('${ed._id}')`);
+                imagePreview.appendChild(img);
+            }
+        });
     }
 
-    imasEdi.forEach((ed, index) => {
-        const imagePreview = document.getElementById(`Editeimage${index + 1}`);
-        imagePreview.innerHTML = '';
-        if (ed.ima !== "one") {
-            const img = document.createElement('img');
-            img.src = ed.ima;
-            img.style.height = '300px';
-            img.style.width = '200px';
-            img.setAttribute('onclick', `removeImageEdite('${ed._id}')`);
-            imagePreview.appendChild(img);
-        }
-    });
+
 }
 
 
@@ -311,7 +325,7 @@ async function optionEditeView(_id) {
         document.getElementById('Editeexpe').value = product.addexpe;
         document.getElementById('Editenotes').value = product.notes;
 
-      
+
         product.image.forEach((ed, index) => {
             const imagePreview = document.getElementById(`Editeimage${index + 1}`);
             imagePreview.innerHTML = '';
@@ -329,9 +343,14 @@ async function optionEditeView(_id) {
 };
 
 async function deleteArticleById() {
-    const _ide = document.getElementById("ediatiid").value;
-    await sendRequestforOrder('DELETE', `boutique/${_ide}`);
-    FetchArticle('DEL', _ide, 'DEL');
+    var result = window.confirm("Voulez vous vraiment supprimer?");
+
+    if (result) {
+
+        const _ide = document.getElementById("ediatiid").value;
+        await sendRequestforOrder('DELETE', `boutique/${_ide}`);
+        FetchArticle('DEL', _ide, 'DEL');
+    }
 
 }
 

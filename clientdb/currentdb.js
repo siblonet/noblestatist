@@ -124,32 +124,38 @@ async function sendBase64ToServer(base64Data, fileName) {
 }
 
 function removeImageCreate(event) {
-    const clickedElementId = event.target.id;
-    if (clickedElementId.startsWith('todeleId')) {
-        const imageNumber = parseInt(clickedElementId.replace('todeleId', '')) - 1;
-        if (imageNumber >= 0 && imageNumber) {
-            imas.splice(imageNumber, 1);
+    var result = window.confirm("Voulez vous vraiment le retirer?");
+
+    if (result) {
+        const clickedElementId = event.target.id;
+        if (clickedElementId.startsWith('todeleId')) {
+            const imageNumber = parseInt(clickedElementId.replace('todeleId', '')) - 1;
+            if (imageNumber >= 0 && imageNumber) {
+                imas.splice(imageNumber, 1);
 
 
-            // Clear the image previews
-            const imagePreviews = document.querySelectorAll('[id^="imagePreview"]');
-            imagePreviews.forEach((preview) => {
-                preview.innerHTML = '';
-            });
+                // Clear the image previews
+                const imagePreviews = document.querySelectorAll('[id^="imagePreview"]');
+                imagePreviews.forEach((preview) => {
+                    preview.innerHTML = '';
+                });
 
-            // Update the remaining image previews
-            imas.forEach((ed, index) => {
-                const imagePreview = document.getElementById(`imagePreview${index + 1}`);
-                const img = document.createElement('img');
-                img.src = ed.ima;
-                img.style.height = '300px';
-                img.style.width = '200px';
-                img.setAttribute('onclick', 'removeImageCreate(event)');
-                img.setAttribute('id', `todeleId${index + 1}`);
-                imagePreview.appendChild(img);
-            });
+                // Update the remaining image previews
+                imas.forEach((ed, index) => {
+                    const imagePreview = document.getElementById(`imagePreview${index + 1}`);
+                    const img = document.createElement('img');
+                    img.src = ed.ima;
+                    img.style.height = '300px';
+                    img.style.width = '200px';
+                    img.setAttribute('onclick', 'removeImageCreate(event)');
+                    img.setAttribute('id', `todeleId${index + 1}`);
+                    imagePreview.appendChild(img);
+                });
+            }
         }
+
     }
+
 }
 
 const sendRequest = async (method, endpoint, data = null) => {
@@ -198,42 +204,48 @@ const sendRequestnotoa = async (method, endpoint, data = null) => {
 };
 
 function ClearImage() {
-    imas.forEach((ef, da) => {
-        const imagePreview = document.getElementById(`imagePreview${da + 1}`);
-        imagePreview.innerHTML = '';
-    });
-    imas.length = 0;
+    var result = window.confirm("Voulez vous vraiment vider?");
+
+    if (result) {
+
+        imas.forEach((ef, da) => {
+            const imagePreview = document.getElementById(`imagePreview${da + 1}`);
+            imagePreview.innerHTML = '';
+        });
+        imas.length = 0;
+    }
+
 }
 
 function AddArticleTest() {
     document.getElementById("ajouteencou").innerText = "En cours"
     const product = {
-                    "addarticle": "Chemise Noble à manches court",
-                    "quantity": 1,
-                    "addgenre": "Homme",
-                    "addtransage": "17-55",
-                    "addprix": 5,
-                    "addreduction": 4,
-                    "addoccasion": "promo",
-                    "addfour": "Noble",
-                    "adddispo": "En stock (1articles)",
-                    "addnouveaute": "NOUVEAU",
-                    "addcoul": "#f0cdc4,#05208f,#f0cdc4,#05208f,05208f",
-                    "addtail": "XL,X,M,L,XS",
-                    "addmateri": "Coton",
-                    "addmarque": "Noble",
-                    "addtype": "ACCOUTREMENT",
-                    "addtypepro": "Chemise",
-                    "addphone": "0768020606",
-                    "addexpe": "Non",
-                    "notes": "Une chemise très belle",
-                    "image": [
-                        { "ima": "https://storage.googleapis.com/seeme-7a462.appspot.com/7b3c83ed-2b5b-435d-a9ea-4657597df12echemisenobeb.jpeg" },
-                        { "ima": "https://storage.googleapis.com/seeme-7a462.appspot.com/302167f5-923a-42c3-9867-d2912bc18a5dchemisenobea.jpeg" },
-                        { "ima": "https://storage.googleapis.com/seeme-7a462.appspot.com/896a78e3-fb91-4bba-8804-164b6f2baef2chemisenobeb.jpeg" },
-                        { "ima": "https://storage.googleapis.com/seeme-7a462.appspot.com/c491b541-15aa-4278-bbd3-8347f8def372chemisenobea.jpeg" },
-                        { "ima": "https://storage.googleapis.com/seeme-7a462.appspot.com/f3d90db3-fe78-4b47-8827-627691092ae0chemisenobeb.jpeg" }
-                    ]
+        "addarticle": "Chemise Noble à manches court",
+        "quantity": 1,
+        "addgenre": "Homme",
+        "addtransage": "17-55",
+        "addprix": 5,
+        "addreduction": 4,
+        "addoccasion": "promo",
+        "addfour": "Noble",
+        "adddispo": "En stock (1articles)",
+        "addnouveaute": "NOUVEAU",
+        "addcoul": "#f0cdc4,#05208f,#f0cdc4,#05208f,05208f",
+        "addtail": "XL,X,M,L,XS",
+        "addmateri": "Coton",
+        "addmarque": "Noble",
+        "addtype": "ACCOUTREMENT",
+        "addtypepro": "Chemise",
+        "addphone": "0768020606",
+        "addexpe": "Non",
+        "notes": "Une chemise très belle",
+        "image": [
+            { "ima": "https://storage.googleapis.com/seeme-7a462.appspot.com/7b3c83ed-2b5b-435d-a9ea-4657597df12echemisenobeb.jpeg" },
+            { "ima": "https://storage.googleapis.com/seeme-7a462.appspot.com/302167f5-923a-42c3-9867-d2912bc18a5dchemisenobea.jpeg" },
+            { "ima": "https://storage.googleapis.com/seeme-7a462.appspot.com/896a78e3-fb91-4bba-8804-164b6f2baef2chemisenobeb.jpeg" },
+            { "ima": "https://storage.googleapis.com/seeme-7a462.appspot.com/c491b541-15aa-4278-bbd3-8347f8def372chemisenobea.jpeg" },
+            { "ima": "https://storage.googleapis.com/seeme-7a462.appspot.com/f3d90db3-fe78-4b47-8827-627691092ae0chemisenobeb.jpeg" }
+        ]
     }
 
 
